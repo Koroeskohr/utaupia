@@ -13,4 +13,9 @@ git config --global user.email "Ton email wsh"
 project/bin/postinstall
 ```
 
+### Dans ton navigateur :
+
+127.0.0.1:3000
+
+
 MAINTENANT TU FAIS DU RUBY, OK ?
