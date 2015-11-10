@@ -43,8 +43,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           global: "2.2.1",
           gems: {
             "2.2.1" => [
-              { name: "bundler" },
-              { name: "rails" }
+              { name: "bundler" }
+              #{ name: "rails" } # Doesnt work atm, gotta install after provisioning
             ]
           }
         }]
