@@ -10,7 +10,10 @@ vagrant up
 vagrant ssh
 git config --global user.name "Ton nom wsh"
 git config --global user.email "Ton email wsh"
-project/bin/postinstall
+
+cd project
+ruby /bin/postinstall
+rails server
 ```
 
 ### Dans ton navigateur :
