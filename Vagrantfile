@@ -18,6 +18,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.synced_folder ".", "/home/vagrant/project"
 
+  config.vbguest.auto_update = false
+
 
   # Use Chef Solo to provision our virtual machine
   config.vm.provision :chef_solo do |chef|
