@@ -1,0 +1,7 @@
+<%= form_for(@utauloid) do |f| %>
+	<%= f.text_field :name %>
+	<%= f.select(:gender, Utauloid.genders.keys.map {|gender| [gender.titleize,gender]}) %>
+	<%= f.number_field :age %>
+	<%= f.submit %>
+
+<% end %>
