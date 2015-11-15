@@ -13,6 +13,8 @@ git config --global user.email "Ton email wsh"
 
 cd project
 ruby /bin/postinstall
+
+rake db:migrate
 rails server
 ```
 
