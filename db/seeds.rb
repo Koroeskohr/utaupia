@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+10.times do
+	User.create(nickname: Faker::Name.name, email: Faker::Internet.email)
+end
+
+10.times do
+	utauloid = Utauloid.create(name: Faker::Name.name, age: rand(5..80), gender: ['male', 'female'].sample)
+	utauloid.user = User.first
+	utauloid.save
+end
