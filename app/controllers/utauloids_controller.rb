@@ -3,6 +3,10 @@ class UtauloidsController < ApplicationController
 		@utauloid = Utauloid.find(params[:id])
 	end
 
+	def index
+		@utauloids = Utauloid.all
+	end
+
 	def new
 		@utauloid = Utauloid.new
 	end
