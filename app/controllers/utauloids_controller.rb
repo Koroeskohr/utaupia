@@ -18,6 +18,14 @@ class UtauloidsController < ApplicationController
 		@utauloid = Utauloid.find(params[:id])
 	end
 
+	def update
+		@utauloid = Utauloid.find(params[:id])
+
+		if(@utauloid.update_attributes(utauloid_params))
+			redirect_to @utauloid
+		end
+	end
+
 	private
 		def utauloid_params
 			params.require(:utauloid).permit(:age, :gender, :name)
