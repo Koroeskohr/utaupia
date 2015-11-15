@@ -15,7 +15,10 @@ class UtauloidsController < ApplicationController
 		@utauloid = Utauloid.new(utauloid_params)
 		if @utauloid.save
 			redirect_to @utauloid
+		else
+			render 'new'
 		end
+			
 	end
 
 	def edit
