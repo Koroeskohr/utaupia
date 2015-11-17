@@ -42,4 +42,7 @@ Rails.application.configure do
   # Removes the display of "cannot render web console"
   config.web_console.whitelisted_ips = '10.0.2.2'
 
+  # Devise config
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
 end
