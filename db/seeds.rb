@@ -9,7 +9,7 @@
 puts 'Seeding database'
 
 10.times do
-	User.create!(nickname: Faker::Name.name, email: Faker::Internet.email, password: 'helloaaa', password_confirmation: 'helloaaa')
+  User.create!(nickname: Faker::Name.name, email: Faker::Internet.email, password: 'helloaaa', password_confirmation: 'helloaaa')
 end
 
 10.times do
