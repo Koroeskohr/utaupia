@@ -6,12 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+puts 'Seeding database'
+
 10.times do
-	User.create(nickname: Faker::Name.name, email: Faker::Internet.email)
+	User.create!(nickname: Faker::Name.name, email: Faker::Internet.email, password: 'helloaaa', password_confirmation: 'helloaaa')
 end
 
 10.times do
 	utauloid = Utauloid.create(name: Faker::Name.name, age: rand(5..80), gender: ['male', 'female'].sample)
 	utauloid.user = User.first
-	utauloid.save
+	utauloid.save!
 end
