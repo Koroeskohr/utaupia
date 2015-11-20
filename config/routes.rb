@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   devise_for :users, :path => '', :path_names => { :sign_in => 'login', :sign_out => 'logout', edit: 'account/edit' }
 
   resources :users, only: [:show, :index, :destroy, :edit]
-  root to: 'utauloids#index'
+  root to: 'utauloids#index', as: 'root_path'
 
   resources :utauloids
 
