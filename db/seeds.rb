@@ -8,10 +8,15 @@
 
 puts 'Seeding database'
 
+puts 'Adding users'
 10.times do
   User.create!(nickname: Faker::Name.name, email: Faker::Internet.email, password: 'helloaaa', password_confirmation: 'helloaaa')
 end
 
+puts 'Adding admins'
+User.create!(nickname: 'admin', email: 'admin@admin.com', password: 'adminadmin', password_confirmation: 'adminadmin', role: User.roles[:administrator])
+
+puts 'Adding utauloids'
 10.times do
 	utauloid = Utauloid.create(name: Faker::Name.name, age: rand(5..80), gender: ['male', 'female'].sample)
 	utauloid.user = User.first
