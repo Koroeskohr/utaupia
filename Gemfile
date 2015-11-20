@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 # Custom gems
 gem 'devise'
+gem 'activeadmin', github: 'activeadmin'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
