@@ -1,0 +1,18 @@
+<%= form_for @user, url: admin_user_path(@user) do |f| %>
+	<div class="field">
+		<%= f.label :nickname %>
+		<%= f.text_field :nickname %>
+	</div>
+
+	<div class="field">	
+		<%= f.label :email %>
+		<%= f.email_field :email %>
+	</div>
+
+	<div class="field">
+		<%= f.label :role %>
+		<%= f.select :role, User.roles.keys.map {|role| [role.titleize, role]} %>
+	</div>
+
+	<%= f.submit %>
+<% end %>	
