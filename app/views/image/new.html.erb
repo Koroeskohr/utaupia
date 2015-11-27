@@ -1,0 +1,4 @@
+<%= form_for @image, url: image_create_path, html: { multipart: true } do |form| %>
+  <%= form.file_field :img %>
+  <%= form.submit "Save" %>
+<% end %>
