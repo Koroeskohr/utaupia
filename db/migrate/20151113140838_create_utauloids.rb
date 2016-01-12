@@ -6,7 +6,6 @@ class CreateUtauloids < ActiveRecord::Migration
       t.integer :gender, null: false # Integer is for enumeration in Utauloid model
       t.timestamp :vb_release_date
       t.timestamp :vb_last_update
-      t.boolean :show_appends, null: false
       t.integer :category_id
       t.string :creator
       t.boolean :creator_is_user

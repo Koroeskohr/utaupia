@@ -1,7 +1,7 @@
 class CreateUserInfos < ActiveRecord::Migration
   def change
     create_table :user_infos do |t|
-      t.integer :user_id, null: false;
+      t.integer :user_id, null: false
       t.text :description
       t.boolean :favorites_are_showable, null: false, default: true
       t.boolean :utauloids_are_showable, null: false, default: true
