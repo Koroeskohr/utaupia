@@ -20,6 +20,10 @@ puts 'Adding categories'
 c1 = Category.create!(name: 'Vipperloid')
 c2 = Category.create!(name: 'Pas Vipperloid')
 
+puts 'Adding voice characteristics'
+vc1 = VoiceCharacteristic.create!(name: 'Rocailleux')
+
+
 puts 'Adding utauloids'
 10.times do
 	utauloid = Utauloid.new(name: Faker::Name.name, 
