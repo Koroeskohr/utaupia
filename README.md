@@ -23,7 +23,7 @@ rails server
 127.0.0.1:3000
 
 ### Du coup, pour juste lancer le serveur :
-vagrant up
+vagrant ssh
 cd project
 rails server
 
