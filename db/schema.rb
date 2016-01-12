@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20160112142856) do
   end
 
   create_table "user_infos", force: :cascade do |t|
+    t.integer  "user_id",                                      null: false
     t.text     "description"
     t.boolean  "favorites_are_showable",        default: true, null: false
     t.boolean  "utauloids_are_showable",        default: true, null: false
@@ -31,8 +32,8 @@ ActiveRecord::Schema.define(version: 20160112142856) do
   end
 
   create_table "user_links", force: :cascade do |t|
-    t.text     "link"
-    t.integer  "user_info_id"
+    t.integer  "user_info_id", null: false
+    t.text     "link",         null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -97,7 +98,7 @@ ActiveRecord::Schema.define(version: 20160112142856) do
   end
 
   create_table "voice_banks", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "utauloid_id"
     t.string   "name",                         null: false
     t.text     "download_link",                null: false
     t.datetime "created_at",                   null: false
@@ -105,7 +106,7 @@ ActiveRecord::Schema.define(version: 20160112142856) do
     t.boolean  "is_append",     default: true, null: false
   end
 
-  add_index "voice_banks", ["user_id"], name: "index_voice_banks_on_user_id"
+  add_index "voice_banks", ["utauloid_id"], name: "index_voice_banks_on_utauloid_id"
 
   create_table "voice_characteristics", force: :cascade do |t|
     t.string   "name",       null: false
@@ -124,4 +125,5 @@ ActiveRecord::Schema.define(version: 20160112142856) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 end
