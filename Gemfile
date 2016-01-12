@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 # Custom gems
 gem 'devise'
 
+# validates 
+gem 'validates_timeliness', '~> 4.0'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
