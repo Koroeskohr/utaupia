@@ -95,7 +95,6 @@ ActiveRecord::Schema.define(version: 20160112145641) do
     t.integer  "gender",          null: false
     t.datetime "vb_release_date"
     t.datetime "vb_last_update"
-    t.boolean  "show_appends",    null: false
     t.integer  "category_id"
     t.string   "creator"
     t.boolean  "creator_is_user"
