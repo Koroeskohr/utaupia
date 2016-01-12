@@ -11,12 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160112135113) do
+ActiveRecord::Schema.define(version: 20160112142042) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_infos", force: :cascade do |t|
+    t.text     "description"
+    t.boolean  "favorites_are_showable",        default: true, null: false
+    t.boolean  "utauloids_are_showable",        default: true, null: false
+    t.boolean  "notif_when_vb_updated",         default: true, null: false
+    t.boolean  "notif_when_utauloid_faved",     default: true, null: false
+    t.boolean  "notif_when_utauloid_commented", default: true, null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+  end
+
+  create_table "user_links", force: :cascade do |t|
+    t.text     "link"
+    t.integer  "user_info_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,6 +56,11 @@ ActiveRecord::Schema.define(version: 20160112135113) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "utaloid_characteristics", force: :cascade do |t|
+    t.integer "utauloid_id",             null: false
+    t.integer "voice_characteristic_id", null: false
+  end
 
   create_table "utauloid_types", force: :cascade do |t|
     t.integer "utauloid_id",       null: false
@@ -74,11 +97,16 @@ ActiveRecord::Schema.define(version: 20160112135113) do
 
   add_index "voice_banks", ["user_id"], name: "index_voice_banks_on_user_id"
 
+  create_table "voice_characteristics", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "voicebank_types", force: :cascade do |t|
-    t.integer  "utauloid_id", null: false
-    t.string   "name",        null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
