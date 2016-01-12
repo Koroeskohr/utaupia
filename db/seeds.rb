@@ -16,9 +16,14 @@ end
 puts 'Adding admins'
 User.create!(nickname: 'admin', email: 'admin@admin.com', password: 'adminadmin', password_confirmation: 'adminadmin', role: User.roles[:administrator])
 
+puts 'Adding categories'
+c1 = Category.create!(name: 'Vipperloid')
+c2 = Category.create!(name: 'Pas Vipperloid')
+
 puts 'Adding utauloids'
 10.times do
-	utauloid = Utauloid.create(name: Faker::Name.name, age: rand(5..80), gender: ['male', 'female'].sample)
-	utauloid.user = User.first
-	utauloid.save!
+	utauloid = Utauloid.new(name: Faker::Name.name, 
+       gender: ['male', 'female', 'undefined', 'other'].sample)
+	utauloid.creator = User.first
+  utauloid.save!
 end
