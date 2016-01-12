@@ -7,5 +7,6 @@ class UserInfo < ActiveRecord::Base
 	validates :notif_when_utauloid_faved, presence: true
 	validates :notif_when_utauloid_commented, presence: true
 
-	belongs_to :users
+	belongs_to :user
+  has_many :user_links
 end

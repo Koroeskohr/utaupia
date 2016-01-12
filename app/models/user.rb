@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
   enum role: [:user, :moderator, :administrator]
 
 	has_many :utauloids
+  has_many :favorite_utauloids
+  has_many :favorites, through: :favorite_utauloids, source: :utauloid
+  has_one :user_info
 
   def set_default_role
     self.role ||= :user
