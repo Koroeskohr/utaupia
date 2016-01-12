@@ -22,5 +22,10 @@ rails server
 
 127.0.0.1:3000
 
+### Du coup, pour juste lancer le serveur :
+vagrant up
+cd project
+rails server
+
 
 MAINTENANT TU FAIS DU RUBY, OK ?
