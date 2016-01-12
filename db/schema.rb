@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160112124457) do
+ActiveRecord::Schema.define(version: 20160112135113) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "nickname",                            null: false
@@ -33,23 +39,46 @@ ActiveRecord::Schema.define(version: 20160112124457) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
+  create_table "utauloid_types", force: :cascade do |t|
+    t.integer "utauloid_id",       null: false
+    t.integer "voicebank_type_id", null: false
+  end
+
   create_table "utauloids", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.integer  "gender",     null: false
-    t.integer  "age"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",            null: false
+    t.string   "japanese_name"
+    t.integer  "gender",          null: false
+    t.datetime "vb_release_date"
+    t.datetime "vb_last_update"
+    t.boolean  "show_appends",    null: false
+    t.integer  "category_id"
+    t.string   "creator"
+    t.boolean  "creator_is_user"
+    t.integer  "creator_id"
+    t.integer  "difficulty"
+    t.text     "wiki_url"
+    t.text     "vocadb_url"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "user_id"
   end
 
   create_table "voice_banks", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "name",          null: false
-    t.text     "download_link", null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "name",                         null: false
+    t.text     "download_link",                null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "is_append",     default: true, null: false
   end
 
   add_index "voice_banks", ["user_id"], name: "index_voice_banks_on_user_id"
+
+  create_table "voicebank_types", force: :cascade do |t|
+    t.integer  "utauloid_id", null: false
+    t.string   "name",        null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
 end
