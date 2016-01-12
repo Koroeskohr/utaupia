@@ -21,9 +21,9 @@ class Utauloid < ActiveRecord::Base
   
   has_many :voice_banks
   
-  has_many :voice_characteristics, through: :utauloid_characteristics
-  has_many :voice_languages, through: :utauloid_languages
-  has_many :voicebank_types, through: :utauloid_types
+  has_and_belongs_to_many :voice_characteristics, join_table: :utauloid_characteristics
+  has_and_belongs_to_many :voice_languages, join_table: :utauloid_languages
+  has_and_belongs_to_many :voicebank_types, join_table: :utauloid_types
 
   has_many :favorite_utauloids
   has_many :favorited_by, through: :favorite_utauloids, source: :user
