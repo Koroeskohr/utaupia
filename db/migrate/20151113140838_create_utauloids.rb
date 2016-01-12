@@ -11,7 +11,7 @@ class CreateUtauloids < ActiveRecord::Migration
       t.string :creator
       t.boolean :creator_is_user
       t.integer :creator_id
-      t.int :difficulty
+      t.integer :difficulty
       t.text :wiki_url
       t.text :vocadb_url
 
