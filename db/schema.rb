@@ -39,6 +39,11 @@ ActiveRecord::Schema.define(version: 20160112135113) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
+  create_table "utauloid_types", force: :cascade do |t|
+    t.integer "utauloid_id",       null: false
+    t.integer "voicebank_type_id", null: false
+  end
+
   create_table "utauloids", force: :cascade do |t|
     t.string   "name",            null: false
     t.string   "japanese_name"
@@ -58,4 +63,21 @@ ActiveRecord::Schema.define(version: 20160112135113) do
     t.integer  "user_id"
   end
 
+  create_table "voice_banks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name",                         null: false
+    t.text     "download_link",                null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "is_append",     default: true, null: false
+  end
+
+  add_index "voice_banks", ["user_id"], name: "index_voice_banks_on_user_id"
+
+  create_table "voicebank_types", force: :cascade do |t|
+    t.integer  "utauloid_id", null: false
+    t.string   "name",        null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 end
