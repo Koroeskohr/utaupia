@@ -1,6 +1,6 @@
-class CreateUtaloidLanguages < ActiveRecord::Migration
+class CreateUtauloidLanguages < ActiveRecord::Migration
   def change
-    create_table :utaloid_languages do |t|
+    create_table :utauloid_languages do |t|
     	t.string :name, null: false
     	t.timestamps null: false
     end
