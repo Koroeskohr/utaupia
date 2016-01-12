@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160112142042) do
+ActiveRecord::Schema.define(version: 20160112142856) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       null: false
@@ -58,13 +58,23 @@ ActiveRecord::Schema.define(version: 20160112142042) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "utaloid_characteristics", force: :cascade do |t|
-    t.integer "utauloid_id",             null: false
-    t.integer "voice_characteristic_id", null: false
+    t.integer  "utauloid_id",             null: false
+    t.integer  "voice_characteristic_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "utaloid_languages", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "utauloid_types", force: :cascade do |t|
-    t.integer "utauloid_id",       null: false
-    t.integer "voicebank_type_id", null: false
+    t.integer  "utauloid_id",       null: false
+    t.integer  "voicebank_type_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "utauloids", force: :cascade do |t|
@@ -98,6 +108,12 @@ ActiveRecord::Schema.define(version: 20160112142042) do
   add_index "voice_banks", ["user_id"], name: "index_voice_banks_on_user_id"
 
   create_table "voice_characteristics", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "voice_languages", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
