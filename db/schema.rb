@@ -11,12 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160112145405) do
+ActiveRecord::Schema.define(version: 20160112145641) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "difficulty_votes", force: :cascade do |t|
+    t.integer "user_id",     null: false
+    t.integer "utauloid_id", null: false
+    t.integer "note",        null: false
   end
 
   create_table "favorite_utauloids", force: :cascade do |t|
@@ -63,14 +69,14 @@ ActiveRecord::Schema.define(version: 20160112145405) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
-  create_table "utaloid_characteristics", force: :cascade do |t|
+  create_table "utauloid_characteristics", force: :cascade do |t|
     t.integer  "utauloid_id",             null: false
     t.integer  "voice_characteristic_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "utaloid_languages", force: :cascade do |t|
+  create_table "utauloid_languages", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
