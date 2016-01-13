@@ -1,0 +1,5 @@
+<% @voice_characteristics.each do |c| %>
+<div>
+	<%= link_to c.name, voice_characteristic_path(c) %>
+</div>
+<% end %>

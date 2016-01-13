@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :utauloids
   resources :categories, only: [:show, :index]
   resources :voicebank_types, only: [:show, :index]
+  resources :voice_characteristics, only: [:show, :index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
