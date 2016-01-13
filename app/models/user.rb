@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
 	has_many :utauloids
   has_many :favorite_utauloids
   has_many :favorites, through: :favorite_utauloids, source: :utauloid
+  has_many :utauloid_comments
   has_one :user_info
 
   def set_default_role
