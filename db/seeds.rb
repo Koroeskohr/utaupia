@@ -22,6 +22,12 @@ c2 = Category.create!(name: 'Pas Vipperloid')
 
 puts 'Adding voice characteristics'
 vc1 = VoiceCharacteristic.create!(name: 'Rocailleux')
+vc2 = VoiceCharacteristic.create!(name: 'Léger')
+
+puts 'Adding voicebank type'
+t1 = VoicebankType.create!(name: 'cv')
+t2 = VoicebankType.create!(name: 'vcv')
+t3 = VoicebankType.create!(name: 'vccv')
 
 
 puts 'Adding utauloids'
@@ -31,4 +37,6 @@ puts 'Adding utauloids'
 	utauloid.creator = User.first
   utauloid.save!
   [c1, c2].sample.utauloids << utauloid
+  [vc1, vc2].sample.utauloids << utauloid
+  [t1, t2, t3].sample.utauloids << utauloid
 end

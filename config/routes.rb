@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   root to: 'utauloids#index', as: 'root_path'
 
   resources :utauloids
-  resources :categories
+  resources :categories, only: [:show, :index]
+  resources :voicebank_types, only: [:show, :index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
