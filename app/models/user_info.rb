@@ -1,6 +1,6 @@
 class UserInfo < ActiveRecord::Base
 	validates :user_id, presence: true
-	validates :description
+	validates :description, length: { maximum: 3000 }
 	validates :favorites_are_showable, presence: true
 	validates :utauloids_are_showable, presence: true
 	validates :notif_when_vb_updated, presence: true
