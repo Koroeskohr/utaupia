@@ -14,7 +14,7 @@ puts 'Adding users'
 end
 
 puts 'Adding admins'
-User.create!(nickname: 'admin', email: 'admin@admin.com', password: 'adminadmin', password_confirmation: 'adminadmin', role: User.roles[:administrator])
+User.create!(nickname: 'administrator', email: 'admin@admin.com', password: 'adminadmin', password_confirmation: 'adminadmin', role: User.roles[:administrator])
 
 puts 'Adding categories'
 c1 = Category.create!(name: 'Vipperloid')
@@ -30,4 +30,5 @@ puts 'Adding utauloids'
        gender: ['male', 'female', 'undefined', 'other'].sample)
 	utauloid.creator = User.first
   utauloid.save!
+  [c1, c2].sample.utauloids << utauloid
 end

@@ -17,7 +17,10 @@ ActiveRecord::Schema.define(version: 20160113142510) do
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "slug"
   end
+
+  add_index "categories", ["slug"], name: "index_categories_on_slug"
 
   create_table "difficulty_votes", force: :cascade do |t|
     t.integer "user_id",     null: false
