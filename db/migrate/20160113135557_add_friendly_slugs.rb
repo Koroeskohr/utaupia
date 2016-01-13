@@ -6,6 +6,9 @@ class AddFriendlySlugs < ActiveRecord::Migration
     add_column :users, :slug, :string, unique: true
     add_index :users, :slug
 
+    add_column :categories, :slug, :string, unique: true
+    add_index :categories, :slug
+
     add_column :voicebank_types, :slug, :string, unique: true
     add_index :voicebank_types, :slug
 
