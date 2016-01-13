@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :nickname, use: :slugged
+
   after_initialize :set_default_role, :if => :new_record?
 
   # Include default devise modules. Others available are:

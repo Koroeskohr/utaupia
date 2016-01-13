@@ -1,4 +1,7 @@
 class Utauloid < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
 	enum gender: [:male, :female, :undefined, :other]
   
   validates :name, presence: true, 
