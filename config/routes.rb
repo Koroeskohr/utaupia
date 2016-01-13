@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   resources :utauloids
   resources :categories
 
+  resources :user_links, only: [:create, :update, :destroy]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
