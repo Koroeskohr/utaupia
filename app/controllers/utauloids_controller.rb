@@ -1,6 +1,6 @@
 class UtauloidsController < ApplicationController
 	def show
-		@utauloid = Utauloid.find(params[:id])
+		@utauloid = Utauloid.friendly.find(params[:id])
 	end
 
 	def index
@@ -22,11 +22,11 @@ class UtauloidsController < ApplicationController
 	end
 
 	def edit
-		@utauloid = Utauloid.find(params[:id])
+		@utauloid = Utauloid.friendly.find(params[:id])
 	end
 
 	def update
-		@utauloid = Utauloid.find(params[:id])
+		@utauloid = Utauloid.friendly.find(params[:id])
 
 		if(@utauloid.update_attributes(utauloid_params))
 			redirect_to @utauloid
@@ -35,6 +35,13 @@ class UtauloidsController < ApplicationController
 
 	private
 		def utauloid_params
-			params.require(:utauloid).permit(:age, :gender, :name)
+			params.require(:utauloid).permit(:name,
+																			:japanese_name,
+																			:gender, 
+																			:vb_release_date,
+																			:vb_last_update,
+																			:creator,
+																			:wiki_url,
+																			:vocadb_url)
 		end
 end

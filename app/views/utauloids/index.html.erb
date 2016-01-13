@@ -1,4 +1,4 @@
 <% @utauloids.each do |utauloid| %>
-	<h3><%= utauloid.name %></h3>
+	<h3><%= link_to utauloid.name, utauloid_path(utauloid) %></h3>
 	<p><%= utauloid.gender.titleize %></p>
 <% end %>
