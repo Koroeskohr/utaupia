@@ -1,0 +1,3 @@
+class UserLinksController < ApplicationController
+	
+end
