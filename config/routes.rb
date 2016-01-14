@@ -10,7 +10,7 @@ Rails.application.routes.draw do
                                                    edit: 'account/edit',
                                                    registration: 'account'}
 
-  resources :users, only: [:show, :index, :destroy, :edit]
+  resources :users, only: [:show, :index, :destroy, :edit, :update]
 
   root to: 'utauloids#index', as: 'root_path'
 
