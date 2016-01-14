@@ -1,0 +1,11 @@
+<%= form_for @user do |form| %>
+  <br>
+  <%= form.label :nickname %>
+  <%= form.text_field :nickname %>
+  <br>
+  <%= form.fields_for :user_info do |builder| %>
+    <%= render "user_infos/partials/edit_user_infos", form: builder %>
+  <% end %>
+
+  <%= form.submit "Save" %>
+<% end %>
