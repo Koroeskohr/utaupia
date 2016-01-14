@@ -5,9 +5,7 @@ class UserLinksController < ApplicationController
 	before_action :current_user_is_user, only: [:destroy]
 
 	def create
-		@user_link = UserLink.create(user_links_post_params)
-
-		if @user_link.save!
+		if @user_link = UserLink.create(user_links_post_params)
 			# Display success message && Refresh user links list
 		else
 			# Display error message
