@@ -9,7 +9,7 @@ Rails.application.routes.draw do
                                                    :sign_out => 'logout', 
                                                    edit: 'account/edit' }
 
-  resources :users, only: [:show, :index, :destroy, :edit]
+  resources :users, only: [:show, :index, :destroy, :edit, :update]
   root to: 'utauloids#index', as: 'root_path'
 
   resources :utauloids
