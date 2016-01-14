@@ -7,7 +7,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.friendly.find(params[:id])
+    # TODO : handle redirection
   end
 
-
+  def destroy
+    current_user.destroy
+  end
 end
