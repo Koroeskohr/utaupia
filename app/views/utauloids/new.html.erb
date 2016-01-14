@@ -25,6 +25,10 @@
 	<%= f.collection_select :category_id, Category.all, :id, :name %>
 	<p>
 	<p>
+	<%= f.label :voice_language_ids, "Language" %>
+	<%= f.collection_check_boxes :voice_language_ids, VoiceLanguage.order(:name), :id, :name %>
+	<p>
+	<p>
 	<%= f.label :creator_name, "Name of the creator (if that's not you)" %>
 	<%= f.text_field :creator_name %>
 	</p>
