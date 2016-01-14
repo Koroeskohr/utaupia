@@ -23,6 +23,9 @@ class UtauloidsController < ApplicationController
 		@voice_languages = VoiceLanguage.where(id: utauloid_params[:voice_language_ids])
 		@utauloid.voice_languages << @voice_languages
 
+		@voicebank_types = VoicebankType.where(id: utauloid_params[:voicebank_type_ids])
+		@utauloid.voicebank_types << @voicebank_types
+
 		if @utauloid.creator_name.nil? 
 			@utauloid.creator_is_user = true
 		end
@@ -50,6 +53,14 @@ class UtauloidsController < ApplicationController
 		end
 		@utauloid.voice_languages << @voice_languages unless @utauloid.voice_languages.include?(@voice_languages)
 
+		@voicebank_types = VoicebankType.where(id: utauloid_params[:voicebank_types_ids])
+		@utauloid.voicebank_types.each do |l|
+			if @voicebank_types.include?(l)
+				@utauloid.voicebank_types.delete(l)
+			end
+		end
+		@utauloid.voicebank_types << @voicebank_types unless @utauloid.voicebank_types.include?(@voicebank_types)
+
 		if(@utauloid.update_attributes(utauloid_params))
 			redirect_to @utauloid
 		end
@@ -61,6 +72,7 @@ class UtauloidsController < ApplicationController
 																			:japanese_name,
 																			:gender,
 																			{ :voice_language_ids => [] },
+																			{ :voicebank_type_ids => [] },
 																			:vb_release_date,
 																			:vb_last_update,
 																			:creator_name,
