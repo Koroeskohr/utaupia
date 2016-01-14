@@ -1,6 +1,4 @@
-<% if @utauloid.errors.any? %>
-	<%= @utauloid.errors.full_messages %>
-<% end %>
+<%= render "shared/errors", entity: @utauloid %>
 
 <%= form_for(@utauloid) do |f| %>
 	<p>
