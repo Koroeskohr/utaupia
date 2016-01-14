@@ -1,0 +1,21 @@
+<%= form.label :description %>
+<%= form.text_field :description %>
+<br>
+<%= form.label :favorites_are_showable %>
+<%= form.check_box :favorites_are_showable %>
+<br>
+<%= form.label :utauloids_are_showable %>
+<%= form.check_box :utauloids_are_showable %>
+<br>
+<%= form.label :notif_when_vb_updated %>
+<%= form.check_box :notif_when_vb_updated %>
+<br>
+<%= form.label :notif_when_utauloid_faved %>
+<%= form.check_box :notif_when_utauloid_faved %>
+<br>
+<%= form.label :notif_when_utauloid_commented %>
+<%= form.check_box :notif_when_utauloid_commented %>
+<br>
+<%= form.fields_for :user_links do |builder| %>
+  <%= render "user_links/partials/edit_user_links", form: builder %>
+<% end %>
