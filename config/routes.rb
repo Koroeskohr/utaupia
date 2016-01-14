@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :voice_characteristics, only: [:show, :index]
   resources :voice_languages, only: [:show, :index]
 
+  resources :favorite_utauloids, only: [:create, :destroy]
+
 
   resources :user_links, only: [:create, :update, :destroy]
 
