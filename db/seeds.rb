@@ -47,6 +47,7 @@ puts 'Adding utauloids'
        creator_name: [nil, "someone"].sample)
 	utauloid.creator = User.first
   utauloid.save!
+  [l1, l2].sample.utauloids << utauloid
   [c1, c2].sample.utauloids << utauloid
   [vc1, vc2].sample.utauloids << utauloid
   [t1, t2, t3].sample.utauloids << utauloid
