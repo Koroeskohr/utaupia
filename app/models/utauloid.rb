@@ -12,7 +12,7 @@ class Utauloid < ActiveRecord::Base
                      inclusion: { in: genders.keys }
   validates_datetime :vb_release_date, allow_blank: true
   validates_datetime :vb_last_update, allow_blank: true
-  validates :creator, length: { maximum: 60 } 
+  validates :creator_name, length: { maximum: 60 } 
   validates :creator_id, presence: true 
   validates :difficulty, inclusion: { in: 1..5 }, allow_blank: true
   validates :wiki_url, format: { with: /\A(http(s)?:\/\/)?utau.wikia.com\/wiki\/.*\z/i},

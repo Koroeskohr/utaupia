@@ -104,9 +104,10 @@ ActiveRecord::Schema.define(version: 20160113142510) do
   end
 
   create_table "utauloid_languages", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "utauloid_id"
+    t.integer  "voice_language_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "utauloid_types", force: :cascade do |t|
@@ -123,7 +124,7 @@ ActiveRecord::Schema.define(version: 20160113142510) do
     t.datetime "vb_release_date"
     t.datetime "vb_last_update"
     t.integer  "category_id"
-    t.string   "creator"
+    t.string   "creator_name"
     t.boolean  "creator_is_user"
     t.integer  "creator_id"
     t.integer  "difficulty"

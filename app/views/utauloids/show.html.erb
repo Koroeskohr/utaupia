@@ -1,2 +1,2 @@
 <h1><%= @utauloid.name %></h1>
-<p>Created by <%= @utauloid.creator.nickname %></p>
+<p>Created by <%= @utauloid.creator_is_user ? @utauloid.creator.nickname : @utauloid.creator_name %></p>

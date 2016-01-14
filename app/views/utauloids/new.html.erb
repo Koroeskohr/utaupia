@@ -1,6 +1,47 @@
+<% if @utauloid.errors.any? %>
+	<%= @utauloid.errors.full_messages %>
+<% end %>
+
 <%= form_for(@utauloid) do |f| %>
-	<p>Name : <%= f.text_field :name %></p>
-	<p>Gender : <%= f.select(:gender, Utauloid.genders.keys.map {|gender| [gender.titleize,gender]}) %></p>
-	<p>Age : <%= f.number_field :age %></p>
+	<p>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	</p>
+	<p>
+	<%= f.label :japanese_name %>
+	<%= f.text_field :japanese_name %>
+	</p>
+	<p>
+	<%= f.label :gender %>
+	<%= f.select(:gender, Utauloid.genders.keys.map {|gender| [gender.titleize,gender]}) %></p>
+	<p>
+	<%= f.label :vb_release_date, "Release date" %>
+	<%= f.date_field :vb_release_date %>
+	</p>
+	<p>
+	<%= f.label :vb_last_update, "Last update date" %>
+	<%= f.date_field :vb_last_update %>
+	</p>
+	<p>
+	<%= f.label :category_id %>
+	<%= f.collection_select :category_id, Category.all, :id, :name %>
+	<p>
+	<p>
+	<%= f.label :creator_name, "Name of the creator (if that's not you)" %>
+	<%= f.text_field :creator_name %>
+	</p>
+	<p>
+	<%= f.label :wiki_url, "Utau Wiki URL :" %>
+	<%= f.text_field :wiki_url, placeholder: "http://utau.wikia.com/wiki" %>
+	</p>
+	<p>
+	<%= f.label :vocadb_url, "VocaDB URL :" %>
+	<%= f.text_field :vocadb_url, placeholder: "http://vocadb.net/Ar/" %>
+	</p>
+
+
+
+
+
 	<%= f.submit %>
 <% end %>

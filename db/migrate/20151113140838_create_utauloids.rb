@@ -7,7 +7,7 @@ class CreateUtauloids < ActiveRecord::Migration
       t.timestamp :vb_release_date
       t.timestamp :vb_last_update
       t.integer :category_id
-      t.string :creator
+      t.string :creator_name
       t.boolean :creator_is_user
       t.integer :creator_id
       t.integer :difficulty
