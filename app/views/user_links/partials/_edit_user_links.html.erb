@@ -1,0 +1,10 @@
+<% if form.object.link.blank? %>
+<p>Add link</p>
+<% end %>
+<%= form.label :link %>
+<%= form.text_field :link %>
+<% if !form.object.link.blank? %>
+<%= form.label 'Remove' %>
+<%= form.check_box :_destroy%>
+<% end %>
+<br>
