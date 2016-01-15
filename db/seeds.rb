@@ -39,12 +39,13 @@ puts 'Adding voice languages'
 l1 = VoiceLanguage.create!(name: 'Chinese')
 l2 = VoiceLanguage.create!(name: 'Japanese')
 
-
 puts 'Adding utauloids'
 10.times do
+  creator_name = [nil, "someone"].sample
 	utauloid = Utauloid.new(name: Faker::Name.name, 
        gender: ['male', 'female', 'undefined', 'other'].sample,
-       creator_name: [nil, "someone"].sample)
+       creator_name: creator_name,
+       creator_is_user: creator_name.nil?)
 	utauloid.creator = User.first
   utauloid.save!
   2.times do
