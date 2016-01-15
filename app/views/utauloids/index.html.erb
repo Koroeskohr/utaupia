@@ -1,4 +1,12 @@
 <% @utauloids.each do |utauloid| %>
 	<h3><%= link_to utauloid.name, utauloid_path(utauloid) %></h3>
+	<p><%= utauloid.japanese_name %></p>
 	<p><%= utauloid.gender.titleize %></p>
+	<p><%= utauloid.vb_release_date %></p>
+	<p><%= utauloid.creator_name %></p>
+	<p><%= utauloid.wiki_url %></p>
+	<p><%= utauloid.vocadb_url %></p>
+	<p><%= utauloid.created_at %></p>
+	<p><%= utauloid.updated_at %></p>
+	<p><%= utauloid.slug %></p>
 <% end %>

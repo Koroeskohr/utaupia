@@ -5,4 +5,11 @@
 <% else %>
 	<%= @utauloid.creator_name %>	
 <% end %>
- </p>
+</p>
+
+<% @comments.each do |c| %>
+	<% if !c.message.blank? %>
+		<%= render partial: "utauloid_comments/partials/show", locals: { comment: c } %>
+	<% end %>
+<% end %>
+<%= render partial: "utauloid_comments/partials/new" %>
