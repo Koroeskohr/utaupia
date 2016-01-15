@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :voice_languages, only: [:show, :index]
 
   resources :favorite_utauloids, only: [:create, :destroy]
-
+  resources :utauloid_comments, only: [:create]
 
   resources :user_links, only: [:create, :update, :destroy]
 end
