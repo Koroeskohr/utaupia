@@ -1,0 +1,5 @@
+<%= form_for @comment do |form| %>
+	<%= form.label 'Add a comment' %>
+	<%= form.text_field :message %>
+	<%= form.hidden_field :utauloid_id %>
+<% end %>
