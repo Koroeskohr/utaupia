@@ -33,7 +33,7 @@
 	<%= f.collection_check_boxes :voicebank_type_ids, VoicebankType.order(:name), :id, :name %>
 	<p>
 	<p>
-	<%= f.label :voice_characteristic_ids, "Type" %>
+	<%= f.label :voice_characteristic_ids, "Characteristics" %>
 	<%= f.collection_check_boxes :voice_characteristic_ids, VoiceCharacteristic.order(:name), :id, :name %>
 	<p>
 	<p>
