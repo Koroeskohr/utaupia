@@ -19,21 +19,15 @@ class UtauloidsController < ApplicationController
 	def create
 		@utauloid = Utauloid.new(utauloid_params)
 		@utauloid.creator = current_user
+		puts @utauloid.creator_name
+		puts @utauloid.creator_name.nil?
+		@utauloid.creator_is_user = @utauloid.creator_name.nil? 
 
-		@voice_languages = VoiceLanguage.where(id: utauloid_params[:voice_language_ids])
-		@utauloid.voice_languages << @voice_languages
+		@utauloid.voice_languages << VoiceLanguage.where(id: params[:voice_language_ids])
+		@utauloid.voicebank_types << VoicebankType.where(id: params[:voicebank_type_ids])
+		@utauloid.voice_characteristics << VoiceCharacteristic.where(id: params[:voice_characteristic_ids])
 
-		@voicebank_types = VoicebankType.where(id: utauloid_params[:voicebank_type_ids])
-		@utauloid.voicebank_types << @voicebank_types
-
-		@voice_characteristics = VoiceCharacteristic.where(id: utauloid_params[:voice_characteristic_ids])
-		@utauloid.voice_characteristics << @voice_characteristics
-
-		if @utauloid.creator_name.nil? 
-			@utauloid.creator_is_user = true
-		end
-
-		if @utauloid.save
+		if @utauloid.save!
 			redirect_to @utauloid
 		else
 			render 'new'
@@ -48,31 +42,18 @@ class UtauloidsController < ApplicationController
 	def update
 		@utauloid = Utauloid.friendly.find(params[:id])
 
-		@voice_languages = VoiceLanguage.where(id: utauloid_params[:voice_language_ids])
-		@utauloid.voice_languages.each do |vl|
-			if !@voice_languages.include?(vl)
-				@utauloid.voice_languages.delete(vl)
-			end
-		end
-		@utauloid.voice_languages << @voice_languages unless @utauloid.voice_languages.include?(@voice_languages)
+		params[:voice_language_ids] ||= []
+		params[:voicebank_type_ids] ||= []
+		params[:voice_characteristic_ids] ||= []
 
-		@voicebank_types = VoicebankType.where(id: utauloid_params[:voicebank_type_ids])
-		@utauloid.voicebank_types.each do |vt|
-			if !@voicebank_types.include?(vt)
-				@utauloid.voicebank_types.delete(vt)
-			end
-		end
-		@utauloid.voicebank_types << @voicebank_types unless @utauloid.voicebank_types.include?(@voicebank_types)
+		languages = VoiceLanguage.find params[:voice_language_ids].reject(&:blank?)
+		@utauloid.voice_languages = languages
+		types = VoicebankType.find params[:voicebank_type_ids].reject(&:blank?)
+		@utauloid.voicebank_types = types
+		characteristics = VoiceCharacteristic.find params[:voice_characteristic_ids].reject(&:blank?)
+		@utauloid.voice_characteristics = characteristics
 
-		@voice_characteristics = VoiceCharacteristic.where(id: utauloid_params[:voice_characteristic_ids])
-		@utauloid.voice_characteristics.each do |vt|
-			if !@voice_characteristics.include?(vt)
-				@utauloid.voice_characteristics.delete(vt)
-			end
-		end
-		@utauloid.voice_characteristics << @voice_characteristics unless @utauloid.voice_characteristics.include?(@voice_characteristics)
-
-		if(@utauloid.update_attributes(utauloid_params))
+		if @utauloid.update_attributes(utauloid_params)
 			redirect_to @utauloid
 		end
 	end
