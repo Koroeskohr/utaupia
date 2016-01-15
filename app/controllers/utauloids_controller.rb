@@ -46,17 +46,17 @@ class UtauloidsController < ApplicationController
 		@utauloid = Utauloid.friendly.find(params[:id])
 
 		@voice_languages = VoiceLanguage.where(id: utauloid_params[:voice_language_ids])
-		@utauloid.voice_languages.each do |l|
-			if @voice_languages.include?(l)
-				@utauloid.voice_languages.delete(l)
+		@utauloid.voice_languages.each do |vl|
+			if !@voice_languages.include?(vl)
+				@utauloid.voice_languages.delete(vl)
 			end
 		end
 		@utauloid.voice_languages << @voice_languages unless @utauloid.voice_languages.include?(@voice_languages)
 
-		@voicebank_types = VoicebankType.where(id: utauloid_params[:voicebank_types_ids])
-		@utauloid.voicebank_types.each do |l|
-			if @voicebank_types.include?(l)
-				@utauloid.voicebank_types.delete(l)
+		@voicebank_types = VoicebankType.where(id: utauloid_params[:voicebank_type_ids])
+		@utauloid.voicebank_types.each do |vt|
+			if !@voicebank_types.include?(vt)
+				@utauloid.voicebank_types.delete(vt)
 			end
 		end
 		@utauloid.voicebank_types << @voicebank_types unless @utauloid.voicebank_types.include?(@voicebank_types)
