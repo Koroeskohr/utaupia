@@ -1,2 +1,9 @@
 <h1><%= @utauloid.name %></h1>
 <p>Created by <%= @utauloid.creator_is_user ? @utauloid.creator.nickname : @utauloid.creator_name %></p>
+
+<% @comments.each do |c| %>
+	<% if !c.message.blank? %>
+		<%= render partial: "utauloid_comments/partials/show", locals: { comment: c } %>
+	<% end %>
+<% end %>
+<%= render partial: "utauloid_comments/partials/new" %>
