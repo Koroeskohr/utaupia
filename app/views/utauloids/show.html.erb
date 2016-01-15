@@ -1,2 +1,8 @@
 <h1><%= @utauloid.name %></h1>
-<p>Created by <%= @utauloid.creator_is_user ? @utauloid.creator.nickname : @utauloid.creator_name %></p>
+<p>Created by 
+<% if @utauloid.creator_is_user %>
+	<%= link_to @utauloid.creator.nickname, user_path(@utauloid.creator) %>
+<% else %>
+	<%= @utauloid.creator_name %>	
+<% end %>
+ </p>
