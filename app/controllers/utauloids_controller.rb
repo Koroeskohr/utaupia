@@ -82,6 +82,7 @@ class UtauloidsController < ApplicationController
 			params.require(:utauloid).permit(:name,
 																			:japanese_name,
 																			:gender,
+																			:category_id,
 																			{ :voice_language_ids => [] },
 																			{ :voicebank_type_ids => [] },
 																			{ :voice_characteristic_ids => [] },
