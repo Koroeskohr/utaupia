@@ -47,6 +47,10 @@ puts 'Adding utauloids'
        creator_name: [nil, "someone"].sample)
 	utauloid.creator = User.first
   utauloid.save!
+  2.times do
+    comment = UtauloidComment.new(user_id: 1, utauloid_id: utauloid.id, message: "That an awesome Utauloid !")
+    utauloid.utauloid_comments << comment
+  end
   [l1, l2].sample.utauloids << utauloid
   [c1, c2].sample.utauloids << utauloid
   [vc1, vc2].sample.utauloids << utauloid
