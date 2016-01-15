@@ -7,8 +7,7 @@ Rails.application.routes.draw do
   # removes the users namespace to the sign_in and sign_out actions, and renaming them as login and logout
   devise_for :users, :path => '', :path_names => { sign_in: 'login', 
                                                    sign_out: 'logout', 
-                                                   edit: 'account/edit',
-                                                   registration: 'account'}
+                                                   edit: 'account/edit' }
 
   resources :users, only: [:show, :index, :destroy, :edit, :update]
 
