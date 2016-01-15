@@ -48,11 +48,11 @@ class UtauloidsController < ApplicationController
 		params[:voicebank_type_ids] ||= []
 		params[:voice_characteristic_ids] ||= []
 
-		languages = VoiceLanguage.find params[:voice_language_ids].reject(&:blank?)
+		languages = VoiceLanguage.where(params[:voice_language_ids])
 		@utauloid.voice_languages = languages
-		types = VoicebankType.find params[:voicebank_type_ids].reject(&:blank?)
+		types = VoicebankType.where(params[:voicebank_type_ids])
 		@utauloid.voicebank_types = types
-		characteristics = VoiceCharacteristic.find params[:voice_characteristic_ids].reject(&:blank?)
+		characteristics = VoiceCharacteristic.where(params[:voice_characteristic_ids])
 		@utauloid.voice_characteristics = characteristics
 
 		if @utauloid.update_attributes(utauloid_params)
