@@ -1,0 +1,3 @@
+class UtauloidCommentsController < ApplicationController
+
+end
