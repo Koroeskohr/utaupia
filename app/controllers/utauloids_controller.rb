@@ -4,6 +4,8 @@ class UtauloidsController < ApplicationController
 
 	def show
 		@utauloid = Utauloid.friendly.find(params[:id])
+		@comments = @utauloid.utauloid_comments
+		@comment  = @utauloid.utauloid_comments.build
 	end
 
 	def index
