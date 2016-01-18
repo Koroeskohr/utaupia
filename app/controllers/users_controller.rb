@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :fetch_user, only: [:show, :edit, :update]
   before_action :current_user_is_user_post, only: [:update]
   before_action :current_user_is_user, only: [:edit]
+  before_action :user_info_exists, only: [:update]
 
   def index
     @users = User.all
@@ -49,6 +50,12 @@ private
   def current_user_is_user
     if current_user != @user
       # Display error message && do something
+      raise ActionController::RoutingError.new('Not Found')
+    end
+  end
+
+  def user_info_exists
+    if !UserInfo.exists?(id: user_params[:user_info_attributes][:id], user_id: current_user.id)
       raise ActionController::RoutingError.new('Not Found')
     end
   end
