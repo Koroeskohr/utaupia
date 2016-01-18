@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 # Custom gems
 gem 'devise'
 gem 'friendly_id', '~> 5.1.0'
+gem "paperclip", "~> 4.3"
 
 # validates 
 gem 'validates_timeliness', '~> 4.0'
