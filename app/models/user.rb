@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :favorite_utauloids
   has_many :favorites, through: :favorite_utauloids, source: :utauloid
   has_many :utauloid_comments
+  has_many :difficulty_votes
   has_one :user_info
   accepts_nested_attributes_for :user_info
 
