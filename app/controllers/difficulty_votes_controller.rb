@@ -1,9 +1,9 @@
 class DifficultyVotesController < ApplicationController
 	before_action :authenticate_user!
+	before_action :utauloid_exsits
+	before_action :vote_exists, only: [:update]
 
 	def create
-		raise ActionController::RoutingError.new('Not Found') unless utauloid_exsits
-
 		@vote = DifficultyVote.new(difficulty_vote_params)
 		@vote.user = current_user
 
@@ -15,8 +15,6 @@ class DifficultyVotesController < ApplicationController
 	end
 
 	def update
-		raise ActionController::RoutingError.new('Not Found') unless utauloid_exsits && vote_exists
-
 		@vote = DifficultyVote.find(params[:id])
 
 		if @vote.update_attributes(difficulty_vote_params)
@@ -32,10 +30,14 @@ private
 	end
 
 	def utauloid_exsits
-		Utauloid.exists?(id: difficulty_vote_params[:utauloid_id])
+		if !Utauloid.exists?(id: difficulty_vote_params[:utauloid_id])
+			raise ActionController::RoutingError.new('Not Found')
+		end
 	end
 
 	def vote_exists
-		DifficultyVote.exists?(id: params[:id], user_id: current_user.id, utauloid_id: difficulty_vote_params[:utauloid_id])
+		if !DifficultyVote.exists?(id: params[:id], user_id: current_user.id, utauloid_id: difficulty_vote_params[:utauloid_id])
+			raise ActionController::RoutingError.new('Not Found')
+		end
 	end
 end	
