@@ -11,7 +11,11 @@ class FavoriteUtauloidsController < ApplicationController
   end
 
   def destroy
-    FavoriteUtauloid.where(user_id: current_user.id, utauloid_id: params[:utauloid_id]).destroy
+    if FavoriteUtauloid.where(user_id: current_user.id, utauloid_id: params[:utauloid_id]).destroy
+      render :json => { status: :ok }
+    else
+      render :json => { status: 400 }
+    end
   end
 
 end
