@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    1.times { @user.user_info.user_links.build }
+    @user.user_info.user_links.build
   end
 
   def update
