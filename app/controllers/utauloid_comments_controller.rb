@@ -1,16 +1,15 @@
 class UtauloidCommentsController < ApplicationController
 	before_action :authenticate_user!
+	before_action :utauloid_exists
 
 	def create
-		raise ActionController::RoutingError.new('Not Found') unless utauloid_exists
-		
 		@comment = UtauloidComment.new(utauloid_comments_params)
 		@comment.user = current_user
 
 		if @comment.save
 			redirect_to Utauloid.find(utauloid_comments_params[:utauloid_id])
 		else
-			raise ActionController::RoutingError.new('Not Found')
+			redirect_to Utauloid.find(params[:utauloid_id])
 		end
 	end
 
@@ -20,6 +19,6 @@ private
 	end
 
 	def utauloid_exists
-		Utauloid.exists?(id: utauloid_comments_params[:utauloid_id])
+		Utauloid.exists?(id: params[:utauloid_id])
 	end
 end
