@@ -1,0 +1,3 @@
+class DifficultyVotesController < ApplicationController
+
+end	
