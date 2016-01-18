@@ -1,0 +1,9 @@
+<%= form_for @difficulty_vote do |form| %>
+	<%= form.label 'Difficulty' %>
+	<% (1..5).each do |v| %>
+	<%= v %>
+	<%= form.radio_button :note, v %>
+	<% end %>
+	<%= form.hidden_field :utauloid_id %>
+	<%= form.submit "Vote" %>
+<% end %>
