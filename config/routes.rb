@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   resources :favorite_utauloids, only: [:create, :destroy]
   resources :utauloid_comments, only: [:create]
+  resources :difficulty_votes, only: [:create, :update]
 
   resources :user_links, only: [:create, :update, :destroy]
 end
