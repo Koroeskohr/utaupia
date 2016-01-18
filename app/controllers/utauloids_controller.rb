@@ -6,6 +6,9 @@ class UtauloidsController < ApplicationController
 		@utauloid = Utauloid.friendly.find(params[:id])
 		@comments = @utauloid.utauloid_comments
 		@comment  = @utauloid.utauloid_comments.build
+		if current_user
+			get_difficulty_vote
+		end
 	end
 
 	def index
@@ -60,19 +63,26 @@ class UtauloidsController < ApplicationController
 		end
 	end
 
-	private
-		def utauloid_params
-			params.require(:utauloid).permit(:name,
-																			:japanese_name,
-																			:gender,
-																			:category_id,
-																			{ :voice_language_ids => [] },
-																			{ :voicebank_type_ids => [] },
-																			{ :voice_characteristic_ids => [] },
-																			:vb_release_date,
-																			:vb_last_update,
-																			:creator_name,
-																			:wiki_url,
-																			:vocadb_url)
+private
+	def utauloid_params
+		params.require(:utauloid).permit(:name,
+																		:japanese_name,
+																		:gender,
+																		:category_id,
+																		{ :voice_language_ids => [] },
+																		{ :voicebank_type_ids => [] },
+																		{ :voice_characteristic_ids => [] },
+																		:vb_release_date,
+																		:vb_last_update,
+																		:creator_name,
+																		:wiki_url,
+																		:vocadb_url)
+	end
+
+	def get_difficulty_vote
+		@difficulty_vote = DifficultyVote.where(user_id: current_user.id, utauloid_id: @utauloid.id).first
+		if @difficulty_vote.nil?
+			@difficulty_vote = @utauloid.difficulty_votes.build
 		end
-end
+	end
+end	

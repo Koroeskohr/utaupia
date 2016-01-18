@@ -33,6 +33,7 @@ class Utauloid < ActiveRecord::Base
   has_many :favorited_by, through: :favorite_utauloids, source: :user
 
   has_many :utauloid_comments
+  has_many :difficulty_votes
 	
   belongs_to :creator, class_name: 'User', foreign_key: 'creator_id'
   belongs_to :category

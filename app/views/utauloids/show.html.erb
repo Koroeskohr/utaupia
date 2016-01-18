@@ -7,9 +7,15 @@
 <% end %>
 </p>
 
+<% if current_user %>
+	<%= render partial: "difficulty_votes/partials/vote" %>
+<% end %>
+
 <% @comments.each do |c| %>
 	<% if !c.message.blank? %>
 		<%= render partial: "utauloid_comments/partials/show", locals: { comment: c } %>
 	<% end %>
 <% end %>
-<%= render partial: "utauloid_comments/partials/new" %>
+<% if current_user %>
+	<%= render partial: "utauloid_comments/partials/new" %>
+<% end %>
