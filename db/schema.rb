@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160119092212) do
+ActiveRecord::Schema.define(version: 20160119120123) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       null: false
@@ -28,10 +28,14 @@ ActiveRecord::Schema.define(version: 20160119092212) do
     t.integer "note",        null: false
   end
 
+  add_index "difficulty_votes", ["user_id", "utauloid_id"], name: "index_difficulty_votes_on_user_id_and_utauloid_id"
+
   create_table "favorite_utauloids", force: :cascade do |t|
     t.integer "user_id",     null: false
     t.integer "utauloid_id", null: false
   end
+
+  add_index "favorite_utauloids", ["user_id", "utauloid_id"], name: "index_favorite_utauloids_on_user_id_and_utauloid_id"
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -62,12 +66,16 @@ ActiveRecord::Schema.define(version: 20160119092212) do
     t.datetime "avatar_updated_at"
   end
 
+  add_index "user_infos", ["user_id"], name: "index_user_infos_on_user_id"
+
   create_table "user_links", force: :cascade do |t|
     t.integer  "user_info_id", null: false
     t.text     "link",         null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  add_index "user_links", ["user_info_id"], name: "index_user_links_on_user_info_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "nickname",                               null: false
@@ -99,6 +107,8 @@ ActiveRecord::Schema.define(version: 20160119092212) do
     t.datetime "updated_at"
   end
 
+  add_index "utauloid_characteristics", ["utauloid_id", "voice_characteristic_id"], name: "ul_charac_index"
+
   create_table "utauloid_comments", force: :cascade do |t|
     t.integer  "user_id",     null: false
     t.integer  "utauloid_id", null: false
@@ -107,12 +117,16 @@ ActiveRecord::Schema.define(version: 20160119092212) do
     t.datetime "updated_at",  null: false
   end
 
+  add_index "utauloid_comments", ["user_id", "utauloid_id"], name: "index_utauloid_comments_on_user_id_and_utauloid_id"
+
   create_table "utauloid_languages", force: :cascade do |t|
     t.integer  "utauloid_id"
     t.integer  "voice_language_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
+
+  add_index "utauloid_languages", ["utauloid_id", "voice_language_id"], name: "ul_language_index"
 
   create_table "utauloid_types", force: :cascade do |t|
     t.integer  "utauloid_id",       null: false
@@ -121,10 +135,13 @@ ActiveRecord::Schema.define(version: 20160119092212) do
     t.datetime "updated_at"
   end
 
+  add_index "utauloid_types", ["utauloid_id", "voicebank_type_id"], name: "index_utauloid_types_on_utauloid_id_and_voicebank_type_id"
+
   create_table "utauloids", force: :cascade do |t|
-    t.string   "name",                null: false
+    t.string   "name",                       null: false
     t.string   "japanese_name"
-    t.integer  "gender",              null: false
+    t.text     "description"
+    t.integer  "gender",                     null: false
     t.datetime "vb_release_date"
     t.datetime "vb_last_update"
     t.integer  "category_id"
@@ -134,9 +151,8 @@ ActiveRecord::Schema.define(version: 20160119092212) do
     t.integer  "difficulty"
     t.text     "wiki_url"
     t.text     "vocadb_url"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.integer  "user_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "slug"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
@@ -146,17 +162,23 @@ ActiveRecord::Schema.define(version: 20160119092212) do
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
+    t.string   "audio_preview_file_name"
+    t.string   "audio_preview_content_type"
+    t.integer  "audio_preview_file_size"
+    t.datetime "audio_preview_updated_at"
   end
 
+  add_index "utauloids", ["category_id"], name: "index_utauloids_on_category_id"
+  add_index "utauloids", ["creator_id"], name: "index_utauloids_on_creator_id"
   add_index "utauloids", ["slug"], name: "index_utauloids_on_slug"
 
   create_table "voice_banks", force: :cascade do |t|
     t.integer  "utauloid_id"
-    t.string   "name",                         null: false
-    t.text     "download_link",                null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.boolean  "is_append",     default: true, null: false
+    t.string   "name",                          null: false
+    t.text     "download_link",                 null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.boolean  "is_append",     default: false, null: false
   end
 
   add_index "voice_banks", ["utauloid_id"], name: "index_voice_banks_on_utauloid_id"
