@@ -20,4 +20,5 @@
 /cookbooks
 
 # Ignore uploaded images
-public/avatars
+public/users
+public/utauloids
