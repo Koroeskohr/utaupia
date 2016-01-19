@@ -1,5 +1,6 @@
 <%= image_tag @utauloid.avatar.url(:medium) unless @utauloid.avatar.blank? %>
 <%= image_tag @utauloid.cover.url(:medium) unless @utauloid.cover.blank? %>
+<%= audio_tag @utauloid.audio_preview.url, controls: true %>
 <h1><%= @utauloid.name %></h1>
 <p>Created by 
 <% if @utauloid.creator_is_user %>
