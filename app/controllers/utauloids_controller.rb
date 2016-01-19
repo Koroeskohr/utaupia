@@ -58,7 +58,7 @@ class UtauloidsController < ApplicationController
 		characteristics = VoiceCharacteristic.where(params[:voice_characteristic_ids])
 		@utauloid.voice_characteristics = characteristics
 
-		if @utauloid.update_attributes(utauloid_params)
+		if @utauloid.update_attributes!(utauloid_params)
 			redirect_to @utauloid
 		end
 	end
@@ -67,6 +67,8 @@ private
 	def utauloid_params
 		params.require(:utauloid).permit(:name,
 																		:japanese_name,
+																		:avatar,
+																		:cover,
 																		:gender,
 																		:category_id,
 																		{ :voice_language_ids => [] },
