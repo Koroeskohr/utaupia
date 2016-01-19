@@ -22,6 +22,10 @@ class UsersController < ApplicationController
     redirect_to edit_user_path(@user)
   end
 
+  def utauloids
+    @utauloids = current_user.utauloids
+  end
+
 private
   def user_params
 		params.require(:user).permit(:id, :nickname,
