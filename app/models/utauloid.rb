@@ -8,7 +8,7 @@ class Utauloid < ActiveRecord::Base
                    length: { maximum: 60 } 
   validates :japanese_name, length: { maximum: 60 }, 
                             allow_blank: true
-  validates :description, allow_blank: true
+  validates :description, length: { maximum: 5000 }, allow_blank: true
   validates :gender, presence: true, 
                      inclusion: { in: genders.keys }
   validates_datetime :vb_release_date, allow_blank: true
