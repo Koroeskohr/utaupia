@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :new]
-  before_action :fetch_user, only: [:show, :edit, :update]
+  before_action :authenticate_user!, except: [:index, :show, :new, :utauloids]
+  before_action :fetch_user, only: [:show, :edit, :update, :utauloids]
   before_action :current_user_is_user_post, only: [:update]
   before_action :current_user_is_user, only: [:edit]
   before_action :user_info_exists, only: [:update]
   before_action :user_links_exists, only: [:update]
+  before_action :utauloids_view_allowed, only: [:utauloids]
 
   def index
     @users = User.all
@@ -84,6 +85,12 @@ private
       r = nil
       obj.find{ |*a| r=nested_hash_value(a.last,key) }
       r
+    end
+  end
+
+  def utauloids_view_allowed
+    if !@user.user_info.utauloids_are_showable && current_user != @user
+      raise ActionController::RoutingError.new('Not Found')
     end
   end
 end

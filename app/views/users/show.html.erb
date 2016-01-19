@@ -1,4 +1,4 @@
 <h1><%= @user.nickname %></h1>
 <p><%= @user.email unless @user.nil? %></p>
 <%= link_to 'Edit', edit_user_path(@user) unless current_user != @user %>
-<%= link_to 'My Utauloids', utauloids_user_path(@user) unless current_user != @user %>
+<%= link_to 'My Utauloids', utauloids_user_path(@user) unless current_user != @user && !@user.user_info.utauloids_are_showable %>
