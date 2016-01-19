@@ -5,7 +5,8 @@ class Utauloid < ActiveRecord::Base
 	enum gender: [:male, :female, :undefined, :other]
   
   validates :name, presence: true, 
-                   length: { maximum: 60 } 
+                   length: { maximum: 60 },
+                   uniqueness: true
   validates :japanese_name, length: { maximum: 60 }, 
                             allow_blank: true
   validates :description, length: { maximum: 5000 }, allow_blank: true
