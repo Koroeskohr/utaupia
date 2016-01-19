@@ -1,0 +1,2 @@
+<%= link_to "Add to favorites", add_favorite_path(@utauloid.id), method: :post, remote: true %>
+<%= link_to "Delete favorite", remove_favorite_path(@utauloid.id), remote: true, method: :delete %>
