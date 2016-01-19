@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   enum role: [:user, :moderator, :administrator]
 
-	has_many :utauloids
+  has_many :utauloids, foreign_key: "creator_id"
   has_many :favorite_utauloids
   has_many :favorites, through: :favorite_utauloids, source: :utauloid
   has_many :utauloid_comments
