@@ -20,7 +20,7 @@
 	<%= f.file_field :cover %>
 	</p>
 	<p>
-	<%= audio_tag @utauloid.audio_preview.url, controls: true unnless @utauloid.audio_preview.blank? %>
+	<%= audio_tag @utauloid.audio_preview.url, controls: true unless @utauloid.audio_preview.blank? %>
 	<%= f.label :audio_preview %>
 	<%= f.file_field :audio_preview %>
 	</p>
