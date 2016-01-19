@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160113142510) do
+ActiveRecord::Schema.define(version: 20160119092212) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       null: false
@@ -56,6 +56,10 @@ ActiveRecord::Schema.define(version: 20160113142510) do
     t.boolean  "notif_when_utauloid_commented", default: true, null: false
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "user_links", force: :cascade do |t|
@@ -118,9 +122,9 @@ ActiveRecord::Schema.define(version: 20160113142510) do
   end
 
   create_table "utauloids", force: :cascade do |t|
-    t.string   "name",            null: false
+    t.string   "name",                null: false
     t.string   "japanese_name"
-    t.integer  "gender",          null: false
+    t.integer  "gender",              null: false
     t.datetime "vb_release_date"
     t.datetime "vb_last_update"
     t.integer  "category_id"
@@ -130,10 +134,18 @@ ActiveRecord::Schema.define(version: 20160113142510) do
     t.integer  "difficulty"
     t.text     "wiki_url"
     t.text     "vocadb_url"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "user_id"
     t.string   "slug"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
   end
 
   add_index "utauloids", ["slug"], name: "index_utauloids_on_slug"
