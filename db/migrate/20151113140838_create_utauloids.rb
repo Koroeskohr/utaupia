@@ -3,6 +3,7 @@ class CreateUtauloids < ActiveRecord::Migration
     create_table :utauloids do |t|
       t.string :name, null: false
       t.string :japanese_name
+      t.text :description
       t.integer :gender, null: false # Integer is for enumeration in Utauloid model
       t.timestamp :vb_release_date
       t.timestamp :vb_last_update
