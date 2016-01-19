@@ -18,3 +18,7 @@
 
 /.vagrant
 /cookbooks
+
+# Ignore uploaded images
+public/users
+public/utauloids
