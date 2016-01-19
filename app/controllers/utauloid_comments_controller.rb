@@ -9,8 +9,10 @@ class UtauloidCommentsController < ApplicationController
 		if @comment.save
 			redirect_to Utauloid.find(utauloid_comments_params[:utauloid_id])
 		else
-			redirect_to Utauloid.find(params[:utauloid_id])
+			redirect_to Utauloid.find(utauloid_comments_params[:utauloid_id]), 
+				:flash => { :error => @comment.errors.full_messages.join(', ') }
 		end
+
 	end
 
 private
