@@ -3,7 +3,11 @@
 <h1><%= @utauloid.name %></h1>
 <p>Created by 
 <% if @utauloid.creator_is_user %>
-	<%= link_to @utauloid.creator.nickname, user_path(@utauloid.creator) %>
+	<% if @utauloid.creator.user_info.utauloids_are_showable %>
+		<%= link_to @utauloid.creator.nickname, user_path(@utauloid.creator) %>
+	<% else %>
+		Anonymous
+	<% end %>
 <% else %>
 	<%= @utauloid.creator_name %>	
 <% end %>
