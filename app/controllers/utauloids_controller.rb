@@ -67,6 +67,7 @@ private
 																		:japanese_name,
 																		:avatar,
 																		:cover,
+																		:audio_preview,
 																		:gender,
 																		:category_id,
 																		{ :voice_language_ids => [] },
