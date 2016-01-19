@@ -18,3 +18,5 @@
 
 /.vagrant
 /cookbooks
+
+.byebug_history
