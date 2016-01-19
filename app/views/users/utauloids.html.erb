@@ -1,0 +1,9 @@
+<% if !@utauloids.blank? %>
+	<% @utauloids.each do |utau| %>
+		<%= render 'utauloids/partials/list_item', utau: utau %>
+	<% end %>
+<% else %>
+	<p>You have no utauloid yet. Add one!</p>
+<% end %>
+
+<%= link_to 'Add utauloid', new_utauloid_path %>
