@@ -3,7 +3,7 @@ class FavoriteUtauloidsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    if FavoriteUtauloid.create(user_id: current_user.id, utauloid_id: params[:utauloid_id])
+    if FavoriteUtauloid.create!(user_id: current_user.id, utauloid_id: params[:utauloid_id])
       render :json => { status: :ok, message: "Success" }
     else
       render :json => { status: 400 }
@@ -11,7 +11,11 @@ class FavoriteUtauloidsController < ApplicationController
   end
 
   def destroy
-    FavoriteUtauloid.where(user_id: current_user.id, utauloid_id: params[:utauloid_id]).destroy
+    if FavoriteUtauloid.find_by(user_id: current_user.id, utauloid_id: params[:utauloid_id]).destroy
+      render :json => { status: :ok }
+    else
+      render :json => { status: 400 }
+    end
   end
 
 end

@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   resources :voice_characteristics, only: [:show, :index]
   resources :voice_languages, only: [:show, :index]
 
-  resources :favorite_utauloids, only: [:create, :destroy]
+  post '/favorite_utauloids/:utauloid_id', to: 'favorite_utauloids#create', as: 'add_favorite'
+  delete '/favorite_utauloids/:utauloid_id', to: 'favorite_utauloids#destroy', as: 'remove_favorite'
+
   resources :utauloid_comments, only: [:create]
   resources :difficulty_votes, only: [:create, :update]
 

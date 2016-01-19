@@ -12,6 +12,7 @@
 
 <% if current_user %>
 	<%= render partial: "difficulty_votes/partials/vote" %>
+	<%= render partial: 'favorite_utauloids/partials/favorites' %>
 <% end %>
 
 <% @comments.each do |c| %>

@@ -1,6 +1,6 @@
 class DifficultyVotesController < ApplicationController
 	before_action :authenticate_user!
-	before_action :utauloid_exsits
+	before_action :utauloid_exists
 	before_action :vote_exists, only: [:update]
 
 	def create
@@ -29,7 +29,7 @@ private
 		params.require(:difficulty_vote).permit(:note, :utauloid_id)
 	end
 
-	def utauloid_exsits
+	def utauloid_exists
 		if !Utauloid.exists?(id: difficulty_vote_params[:utauloid_id])
 			raise ActionController::RoutingError.new('Not Found')
 		end
