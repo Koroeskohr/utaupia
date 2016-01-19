@@ -1,7 +1,6 @@
 class UtauloidsController < ApplicationController
 	before_action :authenticate_user!, except: [:show, :index]
 
-
 	def show
 		@utauloid = Utauloid.friendly.find(params[:id])
 		@comments = @utauloid.utauloid_comments
@@ -81,7 +80,7 @@ private
 	end
 
 	def get_difficulty_vote
-		@difficulty_vote = DifficultyVote.where(user_id: current_user.id, utauloid_id: @utauloid.id).first
+		@difficulty_vote = DifficultyVote.find_by!(user_id: current_user.id, utauloid_id: @utauloid.id)
 		if @difficulty_vote.nil?
 			@difficulty_vote = @utauloid.difficulty_votes.build
 		end
