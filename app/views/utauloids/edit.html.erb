@@ -20,6 +20,11 @@
 	<%= f.file_field :cover %>
 	</p>
 	<p>
+	<%= audio_tag @utauloid.audio_preview.url, controls: true %>
+	<%= f.label :audio_preview %>
+	<%= f.file_field :audio_preview %>
+	</p>
+	<p>
 	<%= f.label :gender %>
 	<%= f.select(:gender, Utauloid.genders.keys.map {|gender| [gender.titleize,gender]}) %></p>
 	<p>
