@@ -18,14 +18,14 @@ class UsersController < ApplicationController
   end
 
   def update
-  	@user.update!(user_params)
+    @user.update!(user_params)
     redirect_to edit_user_path(@user)
   end
 
 private
   def user_params
 		params.require(:user).permit(:id, :nickname,
-			:user_info_attributes => [:id, :description, :favorites_are_showable, :utauloids_are_showable, :notif_when_vb_updated, :notif_when_utauloid_faved, :notif_when_utauloid_commented,
+			:user_info_attributes => [:id, :avatar, :description, :favorites_are_showable, :utauloids_are_showable, :notif_when_vb_updated, :notif_when_utauloid_faved, :notif_when_utauloid_commented,
 				:user_links_attributes => [:id, :link, :_destroy]
 			]
 		)

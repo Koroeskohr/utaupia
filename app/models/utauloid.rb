@@ -37,4 +37,36 @@ class Utauloid < ActiveRecord::Base
 	
   belongs_to :creator, class_name: 'User', foreign_key: 'creator_id'
   belongs_to :category
+
+  has_attached_file :avatar,
+    :path => ":rails_root/public/utauloids/:attachment/:hash_:style.:extension",
+    :url => "/utauloids/:attachment/:hash_:style.:extension",
+    :hash_secret => RANDOM_SECRET,
+    styles: {
+      medium: "100x",
+      thumb: "100x100#" },
+    :convert_options => {
+      :medium => "-quality 80",
+      :thumb => "-quality 80"
+    },
+    default_url: ":rails_root/public/assets/:attachment/:style/missing.png"
+
+  validates_attachment_content_type :avatar, content_type: /\Aimage/
+  validates_attachment_size :avatar, { in: 0..500.kilobytes }
+
+  has_attached_file :cover,
+    :path => ":rails_root/public/utauloids/:attachment/:hash_:style.:extension",
+    :url => "/utauloids/:attachment/:hash_:style.:extension",
+    :hash_secret => RANDOM_SECRET,
+    styles: {
+      medium: "100x",
+      thumb: "100x100#" },
+    :convert_options => {
+      :medium => "-quality 80",
+      :thumb => "-quality 80"
+    },
+    default_url: ":rails_root/public/assets/:attachment/:style/missing.png"
+
+  validates_attachment_content_type :cover, content_type: /\Aimage/
+  validates_attachment_size :cover, { in: 0..1000.kilobytes }
 end

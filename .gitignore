@@ -20,3 +20,7 @@
 /cookbooks
 
 .byebug_history
+
+# Ignore uploaded images
+public/users
+public/utauloids
