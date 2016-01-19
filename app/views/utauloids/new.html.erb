@@ -10,12 +10,10 @@
 	<%= f.text_field :japanese_name %>
 	</p>
 	<p>
-	<%= image_tag @utauloid.avatar.url(:medium) unless @utauloid.avatar.blank? %>
 	<%= f.label :avatar %>
 	<%= f.file_field :avatar %>
 	</p>
 	<p>
-	<%= image_tag @utauloid.cover.url(:medium) unless @utauloid.cover.blank? %>
 	<%= f.label :cover %>
 	<%= f.file_field :cover %>
 	</p>
