@@ -69,4 +69,12 @@ class Utauloid < ActiveRecord::Base
 
   validates_attachment_content_type :cover, content_type: /\Aimage/
   validates_attachment_size :cover, { in: 0..1000.kilobytes }
+
+  has_attached_file :audio_preview,
+    :path => ":rails_root/public/utauloids/:attachment/:hash.:extension",
+    :url => "/utauloids/:attachment/:hash.:extension",
+    :hash_secret => RANDOM_SECRET
+
+  validates_attachment_content_type :audio_preview, :content_type => /\Aaudio/ #[ 'audio/mpeg', 'audio/x-mpeg', 'audio/mp3', 'audio/x-mp3', 'audio/mpeg3', 'audio/x-mpeg3', 'audio/mpg', 'audio/x-mpg', 'audio/x-mpegaudio' ]
+  validates_attachment_size :audio_preview, { in: 0..1000.kilobytes }
 end
