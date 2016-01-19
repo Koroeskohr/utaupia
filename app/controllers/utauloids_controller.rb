@@ -24,8 +24,6 @@ class UtauloidsController < ApplicationController
 	def create
 		@utauloid = Utauloid.new(utauloid_params)
 		@utauloid.creator = current_user
-		puts @utauloid.creator_name
-		puts @utauloid.creator_name.nil?
 		@utauloid.creator_is_user = @utauloid.creator_name.nil? 
 
 		@utauloid.voice_languages << VoiceLanguage.where(id: params[:voice_language_ids])
