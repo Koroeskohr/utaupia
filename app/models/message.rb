@@ -5,10 +5,9 @@ class Message < ActiveRecord::Base
 
 	validates :user_id, presence: true
 	validates :message_type, presence: true,
-														inclusion: { in: message_type.keys }
+														inclusion: { in: message_types.keys }
 	validates :message, presence: true,
 											length: { maximum: 1000 }
-	validates :author_id, allow_blank: true
 	validates :deleted, inclusion: { in: [true, false] },
 																 allow_blank: true
 	validates :seen, inclusion: { in: [true, false] },
