@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def utauloids
-    @utauloids = current_user.utauloids
+    @utauloids = @user.utauloids
   end
 
 private
@@ -39,7 +39,11 @@ private
   end
 
   def fetch_user
-    @user = User.friendly.find(params[:id])
+    if !current_user.nil?
+      @user = params[:id].blank? ? current_user : User.friendly.find(params[:id])
+    else
+      redirect_to :root_path
+    end
     # TODO : handle redirection
   end
 
