@@ -10,19 +10,42 @@ class MessagesController < ApplicationController
 	end
 
 	def show
-
+		@message = current_user.messages.find(params[:id])
+		@message.seen = true
+		@message.save
 	end
 
 	def create
+		
+	end
 
+	def mark_as_seen
+		current_user.messages.find(params[:id]).update_attributes({ seen: true })
+		redirect_to messages_path
+	end
+
+	def mark_as_not_seen
+		current_user.messages.find(params[:id]).update_attributes({ seen: false })
+		redirect_to messages_path
+	end
+
+	def add_multiple_to_bin
+		if !params[:delete_messages].blank?
+			current_user.messages.where(id: get_messages_ids_params[:delete_messages]).update_all({ deleted: true })
+		end
+		redirect_to messages_path
 	end
 
 	def add_to_bin
-		Message.find(params[:id]).update_attributes({ deleted: true })
+		current_user.messages.find(params[:id]).update_attributes({ deleted: true })
 		redirect_to messages_path
 	end
 
 private
+	def get_messages_ids_params
+		params.permit({ :delete_messages => [] },)
+	end
+
 	def get_filtered_message_types(filters)
 		r = []
 		r.push(Message.message_types[:notif_new_comment]) if filters.include?("new_comment")

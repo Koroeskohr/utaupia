@@ -40,6 +40,8 @@ class Utauloid < ActiveRecord::Base
   belongs_to :creator, class_name: 'User', foreign_key: 'creator_id'
   belongs_to :category
 
+  has_many :reports, as: :reportable
+
   has_attached_file :avatar,
     :path => ":rails_root/public/utauloids/:attachment/:hash_:style.:extension",
     :url => "/utauloids/:attachment/:hash_:style.:extension",

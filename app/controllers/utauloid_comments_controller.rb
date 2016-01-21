@@ -3,8 +3,7 @@ class UtauloidCommentsController < ApplicationController
 	before_action :utauloid_exists
 
 	def create
-		@comment = UtauloidComment.new(utauloid_comments_params)
-		@comment.user = current_user
+		@comment = current_user.utauloid_comments.new(utauloid_comments_params)
 
 		if @comment.save
 			redirect_to Utauloid.find(utauloid_comments_params[:utauloid_id])
@@ -12,7 +11,6 @@ class UtauloidCommentsController < ApplicationController
 			redirect_to Utauloid.find(utauloid_comments_params[:utauloid_id]), 
 				:flash => { :error => @comment.errors.full_messages.join(', ') }
 		end
-
 	end
 
 private

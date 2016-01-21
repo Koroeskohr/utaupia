@@ -8,8 +8,6 @@ class Message < ActiveRecord::Base
 														inclusion: { in: message_types.keys }
 	validates :message, presence: true,
 											length: { maximum: 1000 }
-	validates :deleted, inclusion: { in: [true, false] },
-																 allow_blank: true
-	validates :seen, inclusion: { in: [true, false] },
-															allow_blank: true
+	validates :deleted, inclusion: { in: [true, false] }
+	validates :seen, inclusion: { in: [true, false] }
 end
