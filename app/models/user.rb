@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   has_many :utauloid_comments
   has_many :difficulty_votes
   has_one :user_info
+  has_many :messages
   accepts_nested_attributes_for :user_info
 
   def set_default_role
