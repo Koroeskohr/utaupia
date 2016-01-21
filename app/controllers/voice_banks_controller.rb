@@ -26,6 +26,14 @@ class VoiceBanksController < ApplicationController
   end
 
   def update
+    @voice_bank = VoiceBank.find_by_id(params[:id])
+
+    return redirect_to :root_path unless @voice_bank.utauloid.creator == current_user
+    if @voice_bank.update_attributes(update_voice_bank_params)
+      redirect_to @voice_bank.utauloid
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -36,5 +44,8 @@ class VoiceBanksController < ApplicationController
     params.require(:voice_bank).permit(:name, :download_link, :is_append, :utauloid_id)
   end
 
+  def update_voice_bank_params
+    params.require(:voice_bank).permit(:name, :download_link, :is_append)
+  end
 
 end
