@@ -1,7 +1,13 @@
-<% @utauloids.each do |utauloid| %>
-	<h3><%= link_to utauloid.name, utauloid_path(utauloid) %></h3>
-	<p><%= utauloid.japanese_name %></p>
-	<p><%= utauloid.gender.titleize %></p>
-	<p><%= utauloid.vb_release_date %></p>
-	<p><%= utauloid.creator_name %></p>
+<%= render 'utauloids/partials/search' %>
+
+<% if !@utauloids.blank? %>
+	<% @utauloids.each do |utauloid| %>
+		<h3><%= link_to utauloid.name, utauloid_path(utauloid) %></h3>
+		<p><%= utauloid.japanese_name %></p>
+		<p><%= utauloid.gender.titleize %></p>
+		<p><%= utauloid.vb_release_date %></p>
+		<p><%= utauloid.creator_name %></p>
+	<% end %>
+<% else %>
+	<p>0 utauloid match your search.</p>
 <% end %>

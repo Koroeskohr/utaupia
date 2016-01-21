@@ -42,7 +42,9 @@ l2 = VoiceLanguage.create!(name: 'Japanese')
 puts 'Adding utauloids'
 10.times do
   creator_name = [nil, "someone"].sample
-	utauloid = Utauloid.new(name: Faker::Name.name, 
+	utauloid = Utauloid.new(name: Faker::Name.name,
+       vb_release_date: (rand*10).days.ago,
+       vb_last_update: (rand*8).days.ago,
        gender: ['male', 'female', 'undefined', 'other'].sample,
        creator_name: creator_name,
        creator_is_user: creator_name.nil?)

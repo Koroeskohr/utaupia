@@ -79,4 +79,33 @@ class Utauloid < ActiveRecord::Base
 
   validates_attachment_content_type :audio_preview, :content_type => /\Aaudio/ #[ 'audio/mpeg', 'audio/x-mpeg', 'audio/mp3', 'audio/x-mp3', 'audio/mpeg3', 'audio/x-mpeg3', 'audio/mpg', 'audio/x-mpg', 'audio/x-mpegaudio' ]
   validates_attachment_size :audio_preview, { in: 0..1000.kilobytes }
+
+  scope :with_name, -> name { where("utauloids.name LIKE ?", "%#{name}%") unless name.blank? }
+  scope :with_gender, -> gender { where(gender: gender) unless gender.blank? }
+  scope :with_category, -> category { where(category: category) unless category.blank? }
+  scope :with_creator_name, -> creator_name {
+    if !creator_name.blank?
+      joins(:creator)
+        .joins("INNER JOIN user_infos ON (user_infos.user_id = users.id)")
+        .where("(utauloids.creator_is_user = ? AND users.nickname LIKE ? AND user_infos.utauloids_are_showable = ?) OR (utauloids.creator_is_user = ? AND utauloids.creator_name LIKE ?)", true, "%#{creator_name}%", true, false, "%#{creator_name}%")
+    end
+  }
+  scope :with_voice_language, -> language { joins(:voice_languages).where(voice_languages: { id: language }) unless language.blank? }
+  scope :with_voicebank_type, -> voicebank_type { joins(:voicebank_types).where(voicebank_types: { id: voicebank_type }) unless voicebank_type.blank? }
+  scope :with_voice_characteristic, -> voice_characteristic { joins(:voice_characteristics).where(voice_characteristics: { id: voice_characteristic }) unless voice_characteristic.blank? }
+  scope :with_release_date, -> release_date { where("utauloids.vb_release_date >= ?", UtauloidsController.helpers.get_query_date(release_date)) unless release_date.blank? }
+  scope :with_update_date, -> update_date { where("utauloids.vb_last_update >= ?", UtauloidsController.helpers.get_query_date(update_date)) unless update_date.blank? }
+
+  def self.search(s = {})
+    self
+      .with_name(s[:name])
+      .with_gender(s[:gender])
+      .with_category(s[:group])
+      .with_creator_name(s[:creator_name])
+      .with_voice_language(s[:language])
+      .with_voicebank_type(s[:voicebank_type])
+      .with_voice_characteristic(s[:voice_characteristic])
+      .with_release_date(s[:release_date])
+      .with_update_date(s[:update_date])
+  end
 end
