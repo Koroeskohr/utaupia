@@ -8,6 +8,7 @@ gem "paperclip", "~> 4.3"
 
 # validates 
 gem 'validates_timeliness', '~> 4.0'
+gem 'validate_url', '~> 1.0', '>= 1.0.2'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
