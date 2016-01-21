@@ -27,7 +27,10 @@ Rails.application.routes.draw do
 
   root to: 'utauloids#index', as: 'root_path'
 
-  resources :utauloids
+  resources :utauloids do
+    get 'report', on: :member
+  end
+
   resources :categories, only: [:show, :index]
   resources :voicebank_types, only: [:show, :index]
   resources :voice_characteristics, only: [:show, :index]
