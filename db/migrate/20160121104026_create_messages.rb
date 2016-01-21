@@ -5,8 +5,8 @@ class CreateMessages < ActiveRecord::Migration
     	t.integer :message_type, null: false
     	t.text :message, null: false
     	t.integer :author_id
-    	t.boolean :deleted, default: false
-    	t.boolean :seen, default: false
+    	t.boolean :deleted, null: false, default: false
+    	t.boolean :seen, nulle: false, default: false
       t.timestamps null: false
     end
   end
