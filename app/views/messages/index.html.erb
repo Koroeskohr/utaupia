@@ -26,8 +26,11 @@
 	<p><%= submit_tag "Filter" %></p>
 <% end %>
 <% if !@messages.blank? %>
-	<% @messages.each do |message| %>
-		<%= render "messages/partials/list_item", message: message %>
+	<%= form_tag messages_path, method: 'post' do %>
+		<%= submit_tag "Delete selected" %>
+		<% @messages.each do |message| %>
+			<%= render "messages/partials/list_item", message: message %>
+		<% end %>
 	<% end %>
 <% else %>
 You have 0 messages
