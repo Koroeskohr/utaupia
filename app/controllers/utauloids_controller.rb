@@ -96,6 +96,8 @@ private
 									{ :language => [] },
 									{ :voicebank_type => [] },
 									{ :voice_characteristic => [] },
+									:release_date,
+									:update_date,
 									:creator_name,
 									:group)
 	end
