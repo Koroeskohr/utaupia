@@ -17,9 +17,13 @@ Rails.application.routes.draw do
   get '/account', to: 'users#show'
   get 'my-utauloids', to: 'users#utauloids'
 
-  match "/account/messages", to: "messages#index", as: "messages", via: [:get, :post]
-  get '/account/messages/:id', to: 'messages#show', as: "message"
-  get '/account/messages/:id/delete', to: 'messages#add_to_bin', as: "delete_message"
+  get '/account/messages', to: 'messages#index', as: 'messages'
+  post '/account/messages/delete', to: 'messages#add_multiple_to_bin', as: 'delete_messages'
+  get '/account/messages/:id', to: 'messages#show', as: 'message'
+  get '/account/messages/:id/delete', to: 'messages#add_to_bin', as: 'delete_message'
+
+  post '/account/user_inks/create', to: 'user_links#create', as: 'user_links'
+  match '/account/user_links/:id', to: 'user_links#update', as: 'user_link', via: [:patch, :put, :delete]
 
   root to: 'utauloids#index', as: 'root_path'
 
@@ -38,5 +42,4 @@ Rails.application.routes.draw do
   resources :utauloid_comments, only: [:create]
   resources :difficulty_votes, only: [:create, :update]
 
-  resources :user_links, only: [:create, :update, :destroy]
 end
