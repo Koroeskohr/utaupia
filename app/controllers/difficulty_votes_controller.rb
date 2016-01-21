@@ -4,8 +4,7 @@ class DifficultyVotesController < ApplicationController
 	before_action :vote_exists, only: [:update]
 
 	def create
-		@vote = DifficultyVote.new(difficulty_vote_params)
-		@vote.user = current_user
+		@vote = current_user.difficulty_votes.new(difficulty_vote_params)
 
 		if @vote.save
 			redirect_to Utauloid.find(difficulty_vote_params[:utauloid_id])
@@ -15,7 +14,7 @@ class DifficultyVotesController < ApplicationController
 	end
 
 	def update
-		@vote = DifficultyVote.find(params[:id])
+		@vote = current_user.difficulty_votes.find(params[:id])
 
 		if @vote.update_attributes(difficulty_vote_params)
 			redirect_to Utauloid.find(difficulty_vote_params[:utauloid_id])
@@ -36,7 +35,7 @@ private
 	end
 
 	def vote_exists
-		if !DifficultyVote.exists?(id: params[:id], user_id: current_user.id, utauloid_id: difficulty_vote_params[:utauloid_id])
+		if !current_user.difficulty_votes.exists?(id: params[:id])
 			raise ActionController::RoutingError.new('Not Found')
 		end
 	end
