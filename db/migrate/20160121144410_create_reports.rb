@@ -7,5 +7,7 @@ class CreateReports < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :reports, [:user_id, :reportable_id, :reportable_type]
   end
 end
