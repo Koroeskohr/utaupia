@@ -3,7 +3,7 @@ class Utauloid < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
 	enum gender: [:male, :female, :undefined, :other]
-  
+
   validates :name, presence: true, 
                    length: { maximum: 60 },
                    uniqueness: true
@@ -18,15 +18,15 @@ class Utauloid < ActiveRecord::Base
   validates :creator_is_user, inclusion: { in: [true, false] }
   validates :creator_id, presence: true 
   validates :difficulty, inclusion: { in: 1..5 }, allow_blank: true
-  validates :wiki_url, format: { with: /\A(http(s)?:\/\/)?utau.wikia.com\/wiki\/.*\z/i},
+  validates :wiki_url, format: { with: /\A(http(s)?:\/\/)?utau.wikia.com\/wiki\/.*\z/i },
                        length: { maximum: 300 },
                        allow_blank: true
-  validates :vocadb_url, format: { with: /\A(http(s)?:\/\/)?(www.)?vocadb.net\/.*\z/i},
+  validates :vocadb_url, format: { with: /\A(http(s)?:\/\/)?(www.)?vocadb.net\/.*\z/i },
                          length: { maximum: 300 },
                          allow_blank: true
-  
+
   has_many :voice_banks
-  
+
   has_and_belongs_to_many :voice_characteristics, join_table: :utauloid_characteristics
   has_and_belongs_to_many :voice_languages, join_table: :utauloid_languages
   has_and_belongs_to_many :voicebank_types, join_table: :utauloid_types
@@ -36,7 +36,7 @@ class Utauloid < ActiveRecord::Base
 
   has_many :utauloid_comments
   has_many :difficulty_votes
-	
+
   belongs_to :creator, class_name: 'User', foreign_key: 'creator_id'
   belongs_to :category
 
