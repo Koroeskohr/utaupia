@@ -66,7 +66,8 @@ class UtauloidsController < ApplicationController
 
 	def report
 		utauloid = Utauloid.friendly.find(params[:id])
-		if utauloid.report.create(user_id: current_user.id)
+		
+		if utauloid.report.where(user_id: current_user.id).blank? && utauloid.report.create(user_id: current_user.id)
 			redirect_to utauloid
 		else
 			raise ActionController::RoutingError.new('Not Found')
