@@ -11,7 +11,11 @@ class UtauloidsController < ApplicationController
 	end
 
 	def index
-		@utauloids = Utauloid.all
+		if params[:commit] && params[:commit].downcase == "search"
+			@utauloids = Utauloid.search(get_search_params)
+		else
+			@utauloids = Utauloid.all
+		end
 	end
 
 	def new
@@ -84,5 +88,15 @@ private
 		if @difficulty_vote.nil?
 			@difficulty_vote = @utauloid.difficulty_votes.build
 		end
+	end
+
+	def get_search_params
+		params.permit(:name,
+									{ :gender => [] },
+									{ :language => [] },
+									{ :voicebank_type => [] },
+									{ :voice_characteristic => [] },
+									:creator_name,
+									:group)
 	end
 end	
