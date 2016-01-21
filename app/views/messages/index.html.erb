@@ -26,7 +26,7 @@
 	<p><%= submit_tag "Filter" %></p>
 <% end %>
 <% if !@messages.blank? %>
-	<%= form_tag messages_path, method: 'post' do %>
+	<%= form_tag delete_messages_path, method: 'post' do %>
 		<%= submit_tag "Delete selected" %>
 		<% @messages.each do |message| %>
 			<%= render "messages/partials/list_item", message: message %>
