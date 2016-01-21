@@ -11,10 +11,22 @@ class MessagesController < ApplicationController
 
 	def show
 		@message = current_user.messages.find(params[:id])
+		@message.seen = true
+		@message.save
 	end
 
 	def create
 		
+	end
+
+	def mark_as_seen
+		current_user.messages.find(params[:id]).update_attributes({ seen: true })
+		redirect_to messages_path
+	end
+
+	def mark_as_not_seen
+		current_user.messages.find(params[:id]).update_attributes({ seen: false })
+		redirect_to messages_path
 	end
 
 	def add_multiple_to_bin
