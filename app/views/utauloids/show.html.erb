@@ -13,6 +13,8 @@
 <% end %>
 </p>
 
+<%= link_to 'Report', report_utauloid_path(@utauloid) %>
+
 <% if current_user %>
 	<%= render partial: "difficulty_votes/partials/vote" %>
 	<%= render partial: 'favorite_utauloids/partials/favorites' %>
