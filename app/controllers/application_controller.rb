@@ -11,6 +11,6 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_xhr
-    redirect_to root_path unless request.xhr?
+    redirect_to :root_path unless request.xhr?
   end
 end
