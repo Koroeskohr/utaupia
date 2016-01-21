@@ -18,6 +18,12 @@
 	<%= render partial: 'favorite_utauloids/partials/favorites' %>
 <% end %>
 
+<h2>Voice banks</h2>
+<% @voice_banks.each do |vb| %>
+  <%= render partial: "voice_banks/partials/voice_bank", locals: { voice_bank: vb } %>
+<% end %>
+
+<h2>Comments</h2>
 <% @comments.each do |c| %>
 	<% if !c.message.blank? %>
 		<%= render partial: "utauloid_comments/partials/show", locals: { comment: c } %>

@@ -1,0 +1,9 @@
+<div class="voice_bank">
+  <p><%= voice_bank.name %></p>
+  <p><%= link_to "Download", voice_bank.download_link.to_s %></p>
+  <p><%= "Append" if voice_bank.is_append %></p>
+
+  <%= link_to "Edit voice bank", edit_voice_bank_path(voice_bank) %>
+
+</div>
+<br/><br/>
