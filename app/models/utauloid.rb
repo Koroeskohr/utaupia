@@ -93,6 +93,8 @@ class Utauloid < ActiveRecord::Base
   scope :with_voice_language, -> language { joins(:voice_languages).where(voice_languages: { id: language }) unless language.blank? }
   scope :with_voicebank_type, -> voicebank_type { joins(:voicebank_types).where(voicebank_types: { id: voicebank_type }) unless voicebank_type.blank? }
   scope :with_voice_characteristic, -> voice_characteristic { joins(:voice_characteristics).where(voice_characteristics: { id: voice_characteristic }) unless voice_characteristic.blank? }
+  scope :with_release_date, -> release_date { where("utauloids.vb_release_date >= ?", UtauloidsController.helpers.get_query_date(release_date)) unless release_date.blank? }
+  scope :with_update_date, -> update_date { where("utauloids.vb_last_update >= ?", UtauloidsController.helpers.get_query_date(update_date)) unless update_date.blank? }
 
   def self.search(s = {})
     self
@@ -103,5 +105,7 @@ class Utauloid < ActiveRecord::Base
       .with_voice_language(s[:language])
       .with_voicebank_type(s[:voicebank_type])
       .with_voice_characteristic(s[:voice_characteristic])
+      .with_release_date(s[:release_date])
+      .with_update_date(s[:update_date])
   end
 end
