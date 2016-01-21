@@ -53,9 +53,17 @@
 	<p>
 	<%= label_tag :release_date %>
 	<% if params[:release_date].nil? %>
-
+			<%= select_tag :release_date, options_from_collection_for_select(get_search_date_options, :first, :last), { include_blank: 'None' } %>
 	<% else %>
-
+			<%= select_tag :release_date, options_from_collection_for_select(get_search_date_options, :first, :last, params[:release_date]), { include_blank: 'None' } %>
+	<% end %>
+	</p>
+	<p>
+	<%= label_tag :update_date %>
+	<% if params[:update_date].nil? %>
+			<%= select_tag :update_date, options_from_collection_for_select(get_search_date_options, :first, :last), { include_blank: 'None' } %>
+	<% else %>
+			<%= select_tag :update_date, options_from_collection_for_select(get_search_date_options, :first, :last, params[:update_date]), { include_blank: 'None' } %>
 	<% end %>
 	</p>
 	<p>
