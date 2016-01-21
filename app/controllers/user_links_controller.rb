@@ -1,11 +1,9 @@
 class UserLinksController < ApplicationController
 	before_action :authenticate_user!
 	before_action :fetch_user_link, only: [:update, :destroy]
-	before_action :current_user_is_user_post, only: [:create, :update]
-	before_action :current_user_is_user, only: [:destroy]
 
 	def create
-		if @user_link = UserLink.create(user_links_post_params)
+		if @user_link = current_user.user_info.user_links.create(user_links_post_params)
 			# Display success message && Refresh user links list
 		else
 			# Display error message
@@ -34,20 +32,6 @@ private
 	end
 
 	def fetch_user_link
-		@user_link = UserLink.find(params[:id])
-	end
-
-	def current_user_is_user_post
-		if current_user.user_info.id != params[:user_link][:user_info_id].to_i
-			# Display error message && do something
-			raise ActionController::RoutingError.new('Not Found')
-		end
-	end
-
-	def current_user_is_user
-		if current_user.user_info.id != @user_link.user_info_id
-			# Display error message && do something
-			raise ActionController::RoutingError.new('Not Found')
-		end
+		@user_link = current_user.user_info.user_links.find(params[:id])
 	end
 end
