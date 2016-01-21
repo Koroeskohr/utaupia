@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     get 'utauloids', on: :member
   end
 
+  get '/account', to: 'users#show'
+
   root to: 'utauloids#index', as: 'root_path'
 
   resources :utauloids

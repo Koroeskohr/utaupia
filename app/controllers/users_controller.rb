@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :new, :utauloids]
-  before_action :fetch_user, only: [:show, :edit, :update, :utauloids]
+  before_action :fetch_user, only: [:edit, :update, :utauloids]
   before_action :current_user_is_user_post, only: [:update]
   before_action :current_user_is_user, only: [:edit]
   before_action :user_info_exists, only: [:update]
@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    authenticate_user! if current_user.nil? && params[:id].blank?
+    @user = params[:id].blank? ? current_user : User.friendly.find(params[:id])
   end
 
   def edit
