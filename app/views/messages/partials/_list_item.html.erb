@@ -5,4 +5,6 @@
 	<p><%= link_to message.message, message_path(message) %></p>
 	<p><%= message.message_type %></p>
 	<%= link_to 'delete', delete_message_path(message) %>
+	<%= link_to 'Mark as seen', mark_as_seen_message_path(message) unless message.seen %>
+	<%= link_to 'Mark as not seen', mark_as_not_seen_message_path(message) unless !message.seen %>
 </div>
