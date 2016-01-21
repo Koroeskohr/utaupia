@@ -1,0 +1,16 @@
+<%= form_for @voice_bank do |f| %>
+  <div class="field">
+  	<%= f.label :name %>
+  	<%= f.text_field :name %>
+  </div>
+
+	<div class="field">
+    <%= f.label :download_link %>
+	 <%= f.text_field :download_link %>
+	</div>
+
+	<div class="field">
+		<%= f.label :is_append %>
+		<%= f.check_box :is_append %>
+	</div>
+<% end %>

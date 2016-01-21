@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :utauloids
   resources :categories, only: [:show, :index]
   resources :voicebank_types, only: [:show, :index]
+  resources :voice_banks, only: [:new, :edit, :create, :update, :destroy]
   resources :voice_characteristics, only: [:show, :index]
   resources :voice_languages, only: [:show, :index]
 
