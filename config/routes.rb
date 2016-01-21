@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get '/account', to: 'users#show'
   get 'my-utauloids', to: 'users#utauloids'
 
-  get '/account/messages/', to:'messages#index', as: "messages"
+  match "/account/messages", to: "messages#index", as: "messages", via: [:get, :post]
   get '/account/messages/:id', to: 'messages#show', as: "message"
   get '/account/messages/:id/delete', to: 'messages#add_to_bin', as: "delete_message"
 
