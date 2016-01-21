@@ -39,10 +39,14 @@ private
   end
 
   def fetch_user
-    if !current_user.nil?
-      @user = params[:id].blank? ? current_user : User.friendly.find(params[:id])
+    if !params[:id].blank?
+      @user = User.friendly.find(params[:id])
     else
-      redirect_to :root_path
+      if current_user.nil?
+        redirect_to :root_path
+      else
+        @user = current_user
+      end
     end
     # TODO : handle redirection
   end
