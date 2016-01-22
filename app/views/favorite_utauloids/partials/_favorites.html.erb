@@ -1,2 +1,5 @@
-<%= link_to "Add to favorites", add_favorite_path(@utauloid.id), method: :post, remote: true %>
-<%= link_to "Delete favorite", remove_favorite_path(@utauloid.id), remote: true, method: :delete %>
+<% if current_user.favorites.include? @utauloid %>
+<%= link_to "Delete favorite", remove_favorite_path(@utauloid.id), remote: true, method: :delete, class: 'favorites delete' %>
+<% else %>
+<%= link_to "Add to favorites", add_favorite_path(@utauloid.id), method: :post, remote: true, class: 'favorites add' %>
+<% end %>
