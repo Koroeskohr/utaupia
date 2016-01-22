@@ -61,6 +61,7 @@ class UtauloidsController < ApplicationController
 		@utauloid.voice_characteristics = characteristics
 
 		if @utauloid.update_attributes!(utauloid_params)
+			MessagesService.create_messages({ utauloid_id: @utauloid.id, message_type: "notif_new_update"})
 			redirect_to @utauloid
 		end
 	end
