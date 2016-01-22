@@ -35,7 +35,7 @@ class UtauloidsController < ApplicationController
 		@utauloid.voice_characteristics << VoiceCharacteristic.where(id: params[:voice_characteristic_ids])
 
 		if @utauloid.save!
-			redirect_to @utauloid
+			redirect_to new_voice_bank_path(@utauloid)
 		else
 			render 'new'
 		end
