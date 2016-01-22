@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   post '/favorite_utauloids/:utauloid_id', to: 'favorite_utauloids#create', as: 'add_favorite'
   delete '/favorite_utauloids/:utauloid_id', to: 'favorite_utauloids#destroy', as: 'remove_favorite'
 
-  resources :utauloid_comments, only: [:create]
+  resources :utauloid_comments, only: [:create, :edit, :update]
   resources :difficulty_votes, only: [:create, :update]
 
 end
