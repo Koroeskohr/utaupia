@@ -27,13 +27,15 @@ class UtauloidsController < ApplicationController
 
 	def create
 		@utauloid = Utauloid.new(utauloid_params)
+		byebug
 		@utauloid.creator = current_user
+		byebug
 		@utauloid.creator_is_user = @utauloid.creator_name.blank? 
-
+		byebug
 		@utauloid.voice_languages << VoiceLanguage.where(id: params[:voice_language_ids])
 		@utauloid.voicebank_types << VoicebankType.where(id: params[:voicebank_type_ids])
 		@utauloid.voice_characteristics << VoiceCharacteristic.where(id: params[:voice_characteristic_ids])
-
+		byebug
 		if @utauloid.save!
 			redirect_to new_voice_bank_path(@utauloid)
 		else
