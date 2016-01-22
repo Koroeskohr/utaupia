@@ -6,6 +6,7 @@ class UtauloidCommentsController < ApplicationController
 		@comment = current_user.utauloid_comments.new(utauloid_comments_params)
 
 		if @comment.save
+			MessagesService.create_messages({ message_type: "notif_new_comment", utauloid_id: utauloid_comments_params[:utauloid_id], user_id: current_user.id })
 			redirect_to Utauloid.find(utauloid_comments_params[:utauloid_id])
 		else
 			redirect_to Utauloid.find(utauloid_comments_params[:utauloid_id]), 
