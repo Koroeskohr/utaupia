@@ -24,7 +24,10 @@ class User < ActiveRecord::Base
   has_many :messages
   accepts_nested_attributes_for :user_info
 
+
+  private
   def set_default_role
     self.role ||= :user
   end
+
 end
