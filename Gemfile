@@ -40,13 +40,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+  gem 'faker', '~> 1.5.0'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
   gem 'faker', '~> 1.5.0'
-  
+
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 end
