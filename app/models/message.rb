@@ -1,3 +1,4 @@
+# Notifications = Messages with author_id = 0 = Utaupia (system)
 class Message < ActiveRecord::Base
 	belongs_to :user
 

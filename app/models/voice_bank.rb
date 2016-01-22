@@ -1,6 +1,7 @@
 class VoiceBank < ActiveRecord::Base
   include UrlHelper
 
+  # may be useless
   after_save :add_protocol_to_url
 
 	validates :utauloid_id, presence: true
