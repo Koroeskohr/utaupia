@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   resources :voice_languages, only: [:show, :index]
 
   resources :voice_banks, only: [:edit, :create, :update, :destroy]
-  get '/utauloids/:utauloid_id/add-voice-bank', to: 'voice_banks#new'
+  get '/utauloids/:utauloid_id/add-voice-bank', to: 'voice_banks#new', as: 'new_voice_bank'
 
   post '/favorite_utauloids/:utauloid_id', to: 'favorite_utauloids#create', as: 'add_favorite'
   delete '/favorite_utauloids/:utauloid_id', to: 'favorite_utauloids#destroy', as: 'remove_favorite'
