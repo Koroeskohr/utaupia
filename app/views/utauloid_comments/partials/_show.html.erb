@@ -1,5 +1,4 @@
-<div class="comment">
-	<p><%= comment.user.nickname %></p>
-	<p><%= comment.created_at.strftime("%b %-d, %Y, at %H:%M") %></p>
-	<p><%= comment.message %></p>
-</div>
+<p><%= comment.user.nickname %></p>
+<%= link_to "Edit", edit_utauloid_comment_path(comment), remote: true, id: "edit_comment_#{comment.id}" unless current_user.id != comment.user_id %>
+<p><%= comment.created_at.strftime("%b %-d, %Y, at %H:%M") %></p>
+<p><%= comment.message %></p>
