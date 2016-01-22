@@ -8,7 +8,7 @@ class MessagesService
 			when "notif_new_comment"
 				create_messages_new_comment(message_type, utauloid_id, params[:user_id])
 			when "notif_new_favorite"
-				create_message_new_favorite(message_type, utauloid_id)
+				create_message_new_favorite(message_type, utauloid_id, params[:user_id])
 			when "notif_new_update"
 				create_messages_update(message_type, utauloid_id)
 			end
@@ -33,8 +33,22 @@ class MessagesService
 		end
 	end
 
-	def self.create_message_new_favorite(message_type, utauloid_id)
+	def self.create_message_new_favorite(message_type, utauloid_id, user_id)
+		user = User.joins(:user_info)
+								.where("user_infos.notif_when_utauloid_faved = ?", true)
+								.joins(:utauloids)
+								.where("utauloids.id = ? AND utauloids.creator_is_user = ? AND users.id = utauloids.creator_id", utauloid_id, true)
+								.limit(1)
+								.first
 
+		if !user.blank?
+			utauloid = Utauloid.find(utauloid_id)
+			commenter = User.find(user_id)
+
+			user.messages.create(message_type: message_type,
+													title: "New favorite on your Utauloid #{utauloid.name}:",
+													message: "#{commenter.nickname} fav your Utauloid #{utauloid.name}. Check it!")
+		end
 	end
 
 	def self.create_messages_update(message_type, utauloid_id)

@@ -4,6 +4,7 @@ class FavoriteUtauloidsController < ApplicationController
 
   def create
     if FavoriteUtauloid.create!(user_id: current_user.id, utauloid_id: params[:utauloid_id])
+      MessagesService.create_messages({ message_type: "notif_new_favorite", utauloid_id: params[:utauloid_id], user_id: current_user.id })
       render :json => { status: :ok, message: "Success" }
     else
       render :json => { status: 400 }
