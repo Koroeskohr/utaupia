@@ -55,10 +55,11 @@ ActiveRecord::Schema.define(version: 20160121144410) do
     t.integer  "message_type",                 null: false
     t.text     "message",                      null: false
     t.integer  "author_id"
-    t.boolean  "deleted",      default: false
+    t.boolean  "deleted",      default: false, null: false
     t.boolean  "seen",         default: false
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.text     "title"
   end
 
   create_table "reports", force: :cascade do |t|
