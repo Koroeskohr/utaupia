@@ -2,7 +2,7 @@
 	<%= image_tag current_user.user_info.avatar.url(:thumb) unless current_user.user_info.avatar.blank? %>
 	<%= link_to current_user.nickname,  account_path %>
 	<% if !current_user.messages.where(seen: false, deleted: false).blank? %>
-	<%= link_to "You have #{current_user.messages.where(seen: false).count} unseen messages.", messages_path %>
+	<%= link_to "You have #{current_user.messages.where(seen: false, deleted: false).count} unseen messages.", messages_path %>
 	<% end %>
 	<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
 </div>
