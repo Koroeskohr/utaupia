@@ -1,4 +1,4 @@
-<%= form_for @difficulty_vote do |form| %>
+<%= form_for @difficulty_vote, remote: true do |form| %>
 	<%= form.label 'Difficulty' %>
 	<% (1..5).each do |v| %>
 	<%= v %>
