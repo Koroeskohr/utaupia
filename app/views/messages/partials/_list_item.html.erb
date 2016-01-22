@@ -1,7 +1,7 @@
 <div>
 	<p><%= check_box_tag "delete_messages[]", message.id, false, id: "messages_#{message.id}" %></p>
 
-	<p><%= message.author_id %></p>
+	<p><%= message.author_id.blank? ? "Utaupia" : User.find(message.author_id).nickname %></p>
 	<p><%= link_to message.title, message_path(message) %></p>
 	<p><%= message.message_type %></p>
 	<%= link_to 'delete', delete_message_path(message) unless message.deleted %>

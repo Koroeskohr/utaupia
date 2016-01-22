@@ -1,2 +1,3 @@
+<p><%= @message.author_id.blank? ? "Utaupia" : User.find(@message.author_id).nickname %></p>
 <p><%= @message.title %></p>
 <p><%= @message.message %></p>
