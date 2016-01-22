@@ -3,9 +3,9 @@ class MessagesController < ApplicationController
 
 	def index
 		if !params[:filters].blank?
-			@messages = current_user.messages.where(deleted: false, message_type: get_filtered_message_types(params[:filters]))
+			@messages = current_user.messages.where(deleted: !params[:bin].blank?, message_type: get_filtered_message_types(params[:filters]))
 		else
-			@messages = current_user.messages.where(deleted: false)
+			@messages = current_user.messages.where(deleted: !params[:bin].blank?)
 		end
 	end
 

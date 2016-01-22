@@ -23,6 +23,14 @@
 		<%= check_box_tag "filters[]", :favorite_updated, params[:filters].include?("favorite_updated") ? true : false, id: "filters_#{:favorite_updated}" %>
 	<% end %>
 	</p>
+	<p>
+	<%= label_tag "Bin" %>
+	<% if params[:bin].nil? %>
+		<%= check_box_tag "bin", :bin, false, id: "bin" %>
+	<% else %>
+		<%= check_box_tag "bin", :bin, true, id: "bin" %>
+	<% end %>
+	</p>
 	<p><%= submit_tag "Filter" %></p>
 <% end %>
 <% if !@messages.blank? %>
