@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160121104026) do
+ActiveRecord::Schema.define(version: 20160121144410) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       null: false
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 20160121104026) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end
+
+  create_table "reports", force: :cascade do |t|
+    t.integer  "user_id",         null: false
+    t.integer  "reportable_id",   null: false
+    t.string   "reportable_type", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "reports", ["user_id", "reportable_id", "reportable_type"], name: "index_reports_on_user_id_and_reportable_id_and_reportable_type"
 
   create_table "user_infos", force: :cascade do |t|
     t.integer  "user_id",                                      null: false
