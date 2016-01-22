@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get '/account/messages/:id/mark_as_seen', to: 'messages#mark_as_seen', as: 'mark_as_seen_message'
   get '/account/messages/:id/mark_as_not_seen', to: 'messages#mark_as_not_seen', as: 'mark_as_not_seen_message'
 
-  post '/account/user_inks/create', to: 'user_links#create', as: 'user_links'
+  post '/account/user_links/create', to: 'user_links#create', as: 'user_links'
   match '/account/user_links/:id', to: 'user_links#update', as: 'user_link', via: [:patch, :put, :delete]
 
   root to: 'utauloids#index', as: 'root_path'
