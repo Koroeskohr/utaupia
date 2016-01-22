@@ -1,4 +1,5 @@
 class UtauloidsController < ApplicationController
+	before_action :ensure_xhr, only: [:report]
 	before_action :authenticate_user!, except: [:show, :index]
 
 	def show
@@ -68,9 +69,9 @@ class UtauloidsController < ApplicationController
 		utauloid = Utauloid.friendly.find(params[:id])
 
 		if utauloid.reports.where(user_id: current_user.id).blank? && utauloid.reports.create(user_id: current_user.id)
-			redirect_to utauloid
+			render :json => { status: :ok, message: "Success" }
 		else
-			raise ActionController::RoutingError.new('Not Found')
+			render :json => { status: 404 }
 		end
 	end
 

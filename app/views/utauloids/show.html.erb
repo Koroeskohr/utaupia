@@ -13,7 +13,7 @@
 <% end %>
 </p>
 
-<%= link_to 'Report', report_utauloid_path(@utauloid) %>
+<%= link_to 'Report', report_utauloid_path(@utauloid), id: "report_utauloid_#{@utauloid.id}", remote: true if current_user && !@utauloid.reports.exists?(user_id: current_user.id) %>
 
 <% if current_user %>
 	<%= render partial: "difficulty_votes/partials/vote" %>

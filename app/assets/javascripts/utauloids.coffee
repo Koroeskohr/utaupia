@@ -21,3 +21,13 @@ $(document).on("click", "a[id^=edit_comment_]", () ->
 	    console.log("error while fetching the comment")
 	  )
 )
+
+$(document).on("page:change", ->
+	$("a[id^=report_utauloid_]")
+		.on("ajax:success", (e, data, status, xhr) ->
+			$(this).remove();
+		)
+		.on("ajax:error", (e, xhr, status, error) ->
+			console.log("error while updating the comment");
+		)
+)
