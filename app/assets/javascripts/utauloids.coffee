@@ -77,8 +77,8 @@ playAudio = (audio_id) ->
 $(document).on("page:change", ->
 	$("#search-form")
 		.on("ajax:success", (e, xhr, status, error) ->
-			console.log(xhr.responseText);
-			$('.grid').html(xhr);			
+			$('.grid').html(xhr);
+			set_audio_preview_events();
 		)
 		.on("ajax:error", (e, xhr, status, error) ->
 			console.log("Error while fetching the search results");
