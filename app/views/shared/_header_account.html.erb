@@ -1,8 +1,23 @@
-<div>
-	<%= image_tag current_user.user_info.avatar.url(:thumb) unless current_user.user_info.avatar.blank? %>
-	<%= link_to current_user.nickname,  account_path %>
-	<% if !current_user.messages.where(seen: false, deleted: false).blank? %>
-	<%= link_to "You have #{current_user.messages.where(seen: false, deleted: false).count} unseen messages.", messages_path %>
+<div class="col-sm-4">
+	<div class="dropdown">
+	<% if user_signed_in? %>
+		<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= t('account') %></a>
+	<% else %>
+		<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= t('login') %></a>
 	<% end %>
-	<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+		<div class="dropdown-menu row">
+		  <div class="col-sm-12">
+	  	<% if user_signed_in? %>
+				<%= image_tag current_user.user_info.avatar.url(:thumb) unless current_user.user_info.avatar.blank? %>
+				<%= link_to current_user.nickname,  account_path %>
+				<% if !current_user.messages.where(seen: false, deleted: false).blank? %>
+				<%= link_to "You have #{current_user.messages.where(seen: false, deleted: false).count} unseen messages.", messages_path %>
+				<% end %>
+				<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+			<% else %>
+				<%= render 'devise/shared/signin' unless user_signed_in? %>
+			<% end %>
+		  </div>
+		</div>
+	</div>
 </div>

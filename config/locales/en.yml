@@ -21,14 +21,18 @@
 
 en:
   about: 'About us'
+  account: 'Account'
   charactecistics: 'Characteristics'
   creator_name: 'Creator Name'
+  email: "Email"
   find_an_utauloid: 'Find an UTAUloid!'
   gender: 'Gender'
   group: 'Group'
   language: 'Language'
   last_update: 'Last Update'
+  login: 'Login'
   news: 'News'
+  password: "Password"
   range: 'Range'
   release_date: 'Release Date'
   search_name_placeholder: 'Search an UTAUloid name'

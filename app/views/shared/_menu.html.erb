@@ -1,7 +1,16 @@
-<ul>
-	<li><%= t('what_is_utau') %></li>
-	<li><%= t('news') %></li>
-	<li><%= link_to t('find_an_utauloid'), utauloids_path %></li>
-	<li><%= t('tutorial') %></li>
-	<li><%= t('about') %></li>
-</ul>
+<div class="menu">
+	<div class="container">
+		<div class="row">
+			<nav class="main-menu col-sm-8">
+				<ul>
+					<li><%= link_to t('find_an_utauloid'), utauloids_path %></li>
+					<li><%= t('news') %></li>
+					<li><%= t('what_is_utau') %></li>
+					<li><%= t('tutorial') %></li>
+					<li><%= t('about') %></li>
+				</ul>
+			</nav>
+			<%= render "shared/header_account" %>
+		</div>
+	</div>
+</div>
