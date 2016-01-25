@@ -1,11 +1,12 @@
-<%= render 'utauloids/partials/search' %>
-
-<% if !@utauloids.blank? %>
-	<% @utauloids.each do |utauloid| %>
-		<h3><%= link_to utauloid.name, utauloid_path(utauloid) %></h3>
-		<p><%= utauloid.vb_release_date %></p>
-		<p><%= utauloid.creator_name %></p>
-	<% end %>
-<% else %>
-	<p>0 utauloid match your search.</p>
-<% end %>
+<div class="list">
+	<%= render 'utauloids/partials/search' %>
+	<div class="grid">
+		<% if !@utauloids.blank? %>
+			<% @utauloids.each do |utauloid| %>
+				<%= render 'utauloids/partials/list_item', utau: utauloid %>
+			<% end %>
+		<% else %>
+			<%= render 'utauloids/partials/search_not_found' %>
+		<% end %>
+	</div>
+</div>
