@@ -21,7 +21,13 @@
 
 en:
   about: 'About us'
+  charactecistics: 'Characteristics'
   find_an_utauloid: 'Find an UTAUloid!'
+  gender: 'Gender'
+  language: 'Language'
   news: 'News'
+  range: 'Range'
   tutorial: 'Tutorial'
+  utauloid_showcase: "Today's featured UTAUloid"
+  voicebank_type: 'Voicebank Type'
   what_is_utau: 'What is UTAU?'
