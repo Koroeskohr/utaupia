@@ -1,18 +1,5 @@
 class Admin::UsersController < Admin::AdminController
-  before_action :fetch_user, only: [:edit, :show, :update, :destroy]
-
-  def index
-    @users = User.all
-  end
-
-  def show
-  end
-
-  def edit
-  end
-
-  def new
-  end
+  before_action :fetch_user, only: [:update, :destroy]
 
   def create
     @user = User.new(admin_user_params)
@@ -43,8 +30,4 @@ private
   def fetch_user
     @user = User.find(params[:id])
   end 
-
-  def redirect_to_admin(resource)
-    redirect_to [:admin, resource]
-  end
 end
