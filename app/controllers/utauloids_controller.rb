@@ -15,6 +15,9 @@ class UtauloidsController < ApplicationController
 	def index
 		if params[:commit] && params[:commit].downcase == "search"
 			@utauloids = Utauloid.search(get_search_params)
+			if request.xhr?
+				render partial: 'utauloids/partials/list', locals: { utauloids: @utauloids }, layout: false
+			end
 		else
 			@utauloids = Utauloid.all
 		end
