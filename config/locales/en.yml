@@ -22,12 +22,19 @@
 en:
   about: 'About us'
   charactecistics: 'Characteristics'
+  creator_name: 'Creator Name'
   find_an_utauloid: 'Find an UTAUloid!'
   gender: 'Gender'
+  group: 'Group'
   language: 'Language'
+  last_update: 'Last Update'
   news: 'News'
   range: 'Range'
+  release_date: 'Release Date'
+  search_name_placeholder: 'Search an UTAUloid name'
+  search_creator_name_placeholder: "Search a voicebank creator's name"
   tutorial: 'Tutorial'
   utauloid_showcase: "Today's featured UTAUloid"
+  voice_characterisation: "Voice Characterisation"
   voicebank_type: 'Voicebank Type'
   what_is_utau: 'What is UTAU?'
