@@ -27,9 +27,11 @@
 
 <h2>Comments</h2>
 <div id="comments_list">
-<% @comments.each do |c| %>
-	<% if !c.message.blank? %>
-		<%= render partial: "utauloid_comments/partials/list_item", locals: { comment: c } %>
+<% if !@comments.blank? %>
+	<% @comments.each do |c| %>
+		<% if !c.message.blank? %>
+			<%= render partial: "utauloid_comments/partials/list_item", locals: { comment: c } %>
+		<% end %>
 	<% end %>
 <% end %>
 </div>

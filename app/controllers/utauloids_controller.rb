@@ -5,7 +5,7 @@ class UtauloidsController < ApplicationController
 	def show
 		@utauloid = Utauloid.friendly.find(params[:id])
 		@comments = @utauloid.utauloid_comments
-		@comment  = @utauloid.utauloid_comments.build
+		@comment  = @utauloid.utauloid_comments.build unless !current_user
 		@voice_banks = @utauloid.voice_banks.order(is_append: :asc)
 		if current_user
 			get_difficulty_vote
