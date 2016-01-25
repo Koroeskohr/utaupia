@@ -1,4 +1,4 @@
-<%= image_tag current_user.user_info.avatar.url(:medium) unless current_user.user_info.avatar.blank? %>
+<%= image_tag current_user.user_info.avatar.url(:medium) %>
 <%= form.label :avatar %>
 <%= form.file_field :avatar %>
 <br>

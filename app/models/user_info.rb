@@ -21,7 +21,7 @@ class UserInfo < ActiveRecord::Base
 			:medium => "-quality 80",
 			:thumb => "-quality 80"
 		},
-		default_url: ":rails_root/public/assets/:attachment/:style/missing.png"
+		default_url: "/users/:attachment/user_default_avatar.jpg"
 
 	validates_attachment_content_type :avatar, content_type: /\Aimage/
 	validates_attachment_size :avatar, { in: 0..500.kilobytes }
