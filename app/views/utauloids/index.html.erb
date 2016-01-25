@@ -1,12 +1,6 @@
 <div class="list">
 	<%= render 'utauloids/partials/search' %>
 	<div class="grid">
-		<% if !@utauloids.blank? %>
-			<% @utauloids.each do |utauloid| %>
-				<%= render 'utauloids/partials/list_item', utau: utauloid %>
-			<% end %>
-		<% else %>
-			<%= render 'utauloids/partials/search_not_found' %>
-		<% end %>
+		<%= render 'utauloids/partials/list', utauloids: @utauloids %>
 	</div>
 </div>
