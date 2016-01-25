@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Custom gems
 gem 'devise'
 gem 'friendly_id', '~> 5.1.0'
@@ -11,6 +10,8 @@ gem 'will_paginate', '~> 3.1'
 gem 'validates_timeliness', '~> 4.0'
 gem 'validate_url', '~> 1.0', '>= 1.0.2'
 
+# Admin 
+gem 'activeadmin', github: 'activeadmin'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
