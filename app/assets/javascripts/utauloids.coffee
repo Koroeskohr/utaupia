@@ -3,36 +3,37 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 # favorites
-
-$(document)
-  .on("ajax:success", (e, data, status, xhr) ->
-    console.log(this)
-    $(this).promise().done( () ->
-      $("a.favorites").toggleClass("none")
-    )
-  )
-  .on("ajax:error", (e, xhr, status, error) ->
-    console.log("error while faving the utauloid")
-  )
+$(document).on("page:change", ->
+	$("a.favorites")
+		.on("ajax:success", (e, xhr, status, error) ->
+			$("a.favorites").toggleClass("none");
+		)
+		.on("ajax:error", (e, xhr, status, error) ->
+			console.log("error while faving the utauloid");
+		)
+)
+# favorites
 
 # comments & reports
-$(document).on("page:before-change", ->
-  set_comments_events();
-)
-
 $(document).on("page:change", ->
 	set_comments_events();
 	set_report_events();
 )
 
+$(document).on("page:update", ->
+  set_comments_events();
+)
+
 set_comments_events = () ->
-	$("a[id^=edit_comment_")
+	$("a[id^=edit_comment_]")
 		.on("ajax:success", (e, data, status, xhr) ->
 			parent_id = $(this).parent().attr('id');
+			console.log(xhr);
 			$(this).parent().html(xhr.responseText);
 
 			$("#" + parent_id).find("form[id^=edit_utauloid_" + parent_id + "]")
 				.on("ajax:success", (e, data, status, xhr) ->
+					console.log(xhr);
 					$(this).parent().html(xhr.responseText)
 				)
 			.on("ajax:error", (e, xhr, status, error) ->
@@ -51,10 +52,9 @@ set_report_events = () ->
 	.on("ajax:error", (e, xhr, status, error) ->
 		console.log("error while updating the comment");
 	)
-#comments
+# comments
 
-#audio preview
-
+# audio preview
 $(document).on("page:change", ->
 	set_audio_preview_events()
 )
@@ -62,7 +62,6 @@ $(document).on("page:change", ->
 set_audio_preview_events = () ->
 	$("button[id^=audio_]")
 		.on("click", () ->
-			console.log(this);
 			playAudio($(this).attr('id'));
 		)
 
@@ -72,6 +71,17 @@ playAudio = (audio_id) ->
 		player.play();
 	else
 		player.pause();
-	
+# audio preview
 
-#audio preview
+# search form
+$(document).on("page:change", ->
+	$("#search-form")
+		.on("ajax:success", (e, xhr, status, error) ->
+			console.log(xhr.responseText);
+			$('.grid').html(xhr);			
+		)
+		.on("ajax:error", (e, xhr, status, error) ->
+			console.log("Error while fetching the search results");
+		)
+)
+# search form
