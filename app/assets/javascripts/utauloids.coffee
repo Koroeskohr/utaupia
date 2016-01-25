@@ -52,3 +52,26 @@ set_report_events = () ->
 		console.log("error while updating the comment");
 	)
 #comments
+
+#audio preview
+
+$(document).on("page:change", ->
+	set_audio_preview_events()
+)
+
+set_audio_preview_events = () ->
+	$("button[id^=audio_]")
+		.on("click", () ->
+			console.log(this);
+			playAudio($(this).attr('id'));
+		)
+
+playAudio = (audio_id) ->
+	player = $("audio[id=" + audio_id + "]").get(0);
+	if player.paused
+		player.play();
+	else
+		player.pause();
+	
+
+#audio preview

@@ -1,4 +1,4 @@
-<%= image_tag @utauloid.cover.url(:medium) unless @utauloid.cover.blank? %>
+<%= image_tag @utauloid.cover.url(:medium) %>
 <%= audio_tag @utauloid.audio_preview.url, controls: true unless @utauloid.audio_preview.blank? %>
 <h1><%= @utauloid.name %></h1>
 <p>Created by 

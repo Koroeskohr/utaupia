@@ -53,7 +53,7 @@ class Utauloid < ActiveRecord::Base
       :medium => "-quality 80",
       :thumb => "-quality 80"
     },
-    default_url: ":rails_root/public/assets/:attachment/:style/missing.png"
+    default_url: "/utauloids/:attachment/utauloid_default_avatar.jpg"
 
   validates_attachment_content_type :avatar, content_type: /\Aimage/
   validates_attachment_size :avatar, { in: 0..500.kilobytes }
@@ -69,7 +69,7 @@ class Utauloid < ActiveRecord::Base
       :medium => "-quality 80",
       :thumb => "-quality 80"
     },
-    default_url: ":rails_root/public/assets/:attachment/:style/missing.png"
+    default_url: "/utauloids/:attachment/utauloid_default_cover.jpg"
 
   validates_attachment_content_type :cover, content_type: /\Aimage/
   validates_attachment_size :cover, { in: 0..1000.kilobytes }
