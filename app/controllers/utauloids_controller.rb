@@ -1,10 +1,11 @@
 class UtauloidsController < ApplicationController
+	before_action :ensure_xhr, only: [:report]
 	before_action :authenticate_user!, except: [:show, :index]
 
 	def show
 		@utauloid = Utauloid.friendly.find(params[:id])
 		@comments = @utauloid.utauloid_comments
-		@comment  = @utauloid.utauloid_comments.build
+		@comment  = @utauloid.utauloid_comments.build unless !current_user
 		@voice_banks = @utauloid.voice_banks.order(is_append: :asc)
 		if current_user
 			get_difficulty_vote
@@ -68,9 +69,9 @@ class UtauloidsController < ApplicationController
 		utauloid = Utauloid.friendly.find(params[:id])
 
 		if utauloid.reports.where(user_id: current_user.id).blank? && utauloid.reports.create(user_id: current_user.id)
-			redirect_to utauloid
+			render :json => { status: :ok, message: "Success" }
 		else
-			raise ActionController::RoutingError.new('Not Found')
+			render :json => { status: 404 }
 		end
 	end
 
