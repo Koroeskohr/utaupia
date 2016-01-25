@@ -1,19 +1,12 @@
-<div class="showcase">
-	<% if !@utauloid_showcase.blank? %>
-		<h2>Showcase</h2>
-		<%= @utauloid_showcase.name %>
-	<% end %>
-</div>
-<div class="">
-	<div class="search_form">
-		<%= render 'utauloids/partials/search' %>
-	</div>
-	<div class="list">
+<% if !@utauloid_showcase.blank? %>
+	<%= render 'utauloids/partials/showcase', utau: @utauloid_showcase %>
+<% end %>
+<div class="list">
+	<%= render 'utauloids/partials/search' %>
+	<div class="grid">
 		<% if !@utauloids.blank? %>
 			<% @utauloids.each do |utauloid| %>
-				<h3><%= link_to utauloid.name, utauloid_path(utauloid) %></h3>
-				<p><%= utauloid.vb_release_date %></p>
-				<p><%= utauloid.creator_name %></p>
+				<%= render 'utauloids/partials/list_item', utau: utauloid %>
 			<% end %>
 		<% end %>
 	</div>

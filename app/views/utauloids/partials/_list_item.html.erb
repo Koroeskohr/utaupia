@@ -1,5 +1,5 @@
-<div>
-<%= image_tag utau.avatar.url(:medium) unless utau.avatar.blank? %>
-<p><%= utau.name %></p>
-<%= link_to 'Display', utauloid_path(utau) %>
+<div class="grid-item">
+	<%= image_tag utau.avatar.url(:medium) unless utau.avatar.blank? %>
+	<h3><%= utau.name %></h3>
+	<%= link_to 'Display', utauloid_path(utau) %>
 </div>

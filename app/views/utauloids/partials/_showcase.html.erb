@@ -1,0 +1,16 @@
+<div class="showcase">
+	<h2><%= t('utauloid_showcase') %></h2>
+	<div>
+		<h3><%= link_to "#{utau.name} - #{utau.japanese_name}", utau %></h3>
+		<p><%= "#{t('gender')}: #{utau.gender}" %></p>
+		<p><%= "#{t('language')}: #{utau.voicebank_types.collect { |c| c.name }.join(", ")}" %></p>
+		<p><%= "#{('voicebank_type')}: #{utau.voice_languages.collect { |c| c.name }.join(", ")}" %></p>
+		<p><%= "#{('characteristics')}: #{utau.voice_characteristics.collect { |c| c.name }.join(", ")}" %></p>
+	</div>
+	<div>
+		<%= audio_tag utau.audio_preview.url, controls: true unless utau.audio_preview.blank? %>
+	</div>
+	<div>
+		<%= image_tag utau.avatar.url(:medium) unless utau.avatar.blank? %>
+	</div>
+</div>
