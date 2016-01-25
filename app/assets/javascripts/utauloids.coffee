@@ -20,4 +20,14 @@ $(document).on("click", "a[id^=edit_comment_]", () ->
 	  .on("ajax:error", (e, xhr, status, error) ->
 	    console.log("error while fetching the comment")
 	  )
+# favorites
+
+$(document).on("click", "a.favorites", () ->
+  $(this)
+    .on("ajax:success", (e, data, status, xhr) ->
+      $("a.favorites").toggleClass("none")
+    )
+    .on("ajax:error", (e, xhr, status, error) ->
+      console.log("error while faving the utauloid")
+    )
 )
