@@ -1,6 +1,7 @@
 class FavoriteUtauloidsController < ApplicationController
   before_action :ensure_xhr
   before_action :authenticate_user!
+  before_action :utauloid_exists
 
   def create
     if FavoriteUtauloid.create!(user_id: current_user.id, utauloid_id: params[:utauloid_id])
@@ -20,4 +21,10 @@ class FavoriteUtauloidsController < ApplicationController
     end
   end
 
+private
+  def utauloid_exists
+    if !Utauloid.exists?(id: params[:utauloid_id])
+      render :json => { status: 404 }
+    end
+  end
 end
