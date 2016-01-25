@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'devise'
 gem 'friendly_id', '~> 5.1.0'
 gem "paperclip", "~> 4.3"
+gem 'will_paginate', '~> 3.1'
 
 # validates 
 gem 'validates_timeliness', '~> 4.0'
