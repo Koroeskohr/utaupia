@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   post '/account/user_links/create', to: 'user_links#create', as: 'user_links'
   match '/account/user_links/:id', to: 'user_links#update', as: 'user_link', via: [:patch, :put, :delete]
 
-  root to: 'utauloids#index', as: 'root_path'
+  root to: 'homepage#index', as: 'root_path'
 
   resources :utauloids do
     get 'report', on: :member
