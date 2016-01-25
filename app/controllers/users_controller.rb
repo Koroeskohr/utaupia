@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   before_action :utauloids_view_allowed, only: [:utauloids]
 
   def index
-    @users = User.all
+    @users = User.paginate(:page => params[:page])
   end
 
   def show

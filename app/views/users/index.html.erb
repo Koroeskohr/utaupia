@@ -2,3 +2,4 @@
 	<h3><%= link_to user.nickname, user_path(user) %></h3>
 	<p><%= user.email %></p>
 <% end %>
+<%= will_paginate @users %>
