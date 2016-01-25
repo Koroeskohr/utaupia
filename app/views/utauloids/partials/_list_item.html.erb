@@ -1,5 +1,9 @@
 <div class="grid-item">
-	<%= image_tag utau.avatar.url(:medium) unless utau.avatar.blank? %>
-	<h3><%= utau.name %></h3>
-	<%= link_to 'Display', utauloid_path(utau) %>
+	<% if !utau.audio_preview.blank? %>
+		<div class="grid-audio-preview">
+			<audio id="<%= "audio_#{utau.id}" %>" preload='none' src='<%= utau.audio_preview.url %>' type='<%= utau.audio_preview.content_type %>'></audio>
+			<button id="<%= "audio_#{utau.id}" %>">play</button>
+		</div>
+	<% end %>
+	<%= link_to image_tag(utau.avatar.url(:medium), alt: utau.name), utau, title: utau.name %>
 </div>
