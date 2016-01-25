@@ -3,15 +3,17 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 # favorites
-$(document).on("click", "a.favorites", () ->
-  $(this)
-    .on("ajax:success", (e, data, status, xhr) ->
+
+$(document)
+  .on("ajax:success", (e, data, status, xhr) ->
+    console.log(this)
+    $(this).promise().done( () ->
       $("a.favorites").toggleClass("none")
     )
-    .on("ajax:error", (e, xhr, status, error) ->
-      console.log("error while faving the utauloid")
-    )
-)
+  )
+  .on("ajax:error", (e, xhr, status, error) ->
+    console.log("error while faving the utauloid")
+  )
 
 # comments & reports
 $(document).on("page:before-change", ->
