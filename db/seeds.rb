@@ -59,3 +59,6 @@ puts 'Adding utauloids'
   [vc1, vc2].sample.utauloids << utauloid
   [t1, t2, t3].sample.utauloids << utauloid
 end
+
+puts 'Add homepage'
+Homepage.create()
