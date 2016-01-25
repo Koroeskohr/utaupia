@@ -20,4 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  about: 'About us'
+  find_an_utauloid: 'Find an UTAUloid!'
+  news: 'News'
+  tutorial: 'Tutorial'
+  what_is_utau: 'What is UTAU?'

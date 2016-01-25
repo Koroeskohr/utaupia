@@ -7,8 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render 'devise/shared/signin' unless user_signed_in? %>
-<%= render "shared/header_account" if user_signed_in? %>
+<header>
+	<%= render 'shared/menu' %>
+	<%= render 'devise/shared/signin' unless user_signed_in? %>
+	<%= render "shared/header_account" if user_signed_in? %>
+</header>
 <%= yield %>
 
 </body>
