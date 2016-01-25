@@ -20,13 +20,13 @@ puts 'Adding users and UserInfo'
   UserInfo.create!(user_id: user_count)
 end
 
-puts 'Confirming all users'
-User.all.update_all confirmed_at: Time.now
-
 puts 'Adding admins'
 user_count += 1
 User.create!(nickname: 'administrator', email: 'admin@admin.com', password: 'adminadmin', password_confirmation: 'adminadmin', role: User.roles[:administrator])
 UserInfo.create!(user_id: user_count)
+
+puts 'Confirming all users'
+User.all.update_all confirmed_at: Time.now
 
 puts 'Adding categories'
 c1 = Category.create!(name: 'Vipperloid')
