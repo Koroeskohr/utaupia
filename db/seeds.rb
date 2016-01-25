@@ -11,11 +11,17 @@ puts 'Seeding database'
 user_count = 0
 
 puts 'Adding users and UserInfo'
-10.times do |i|
+51.times do |i|
 	user_count += 1
-  User.create!(nickname: Faker::Name.name, email: Faker::Internet.email, password: 'helloaaa', password_confirmation: 'helloaaa')
+  puts "Adding user #{user_count}"
+  u = User.new(nickname: Faker::Name.name, email: Faker::Internet.email, password: 'helloaaa', password_confirmation: 'helloaaa')
+  u.skip_confirmation!
+  u.save!
   UserInfo.create!(user_id: user_count)
 end
+
+puts 'Confirming all users'
+User.all.update_all confirmed_at: Time.now
 
 puts 'Adding admins'
 user_count += 1
@@ -61,4 +67,4 @@ puts 'Adding utauloids'
 end
 
 puts 'Add homepage'
-Homepage.create()
+Homepage.create
