@@ -39,7 +39,7 @@ en:
   release_date: 'Release Date'
   search_advanced: 'Advanced options'
   search_name_placeholder: 'Search an UTAUloid name'
-  search_creator_name_placeholder: "Search a voicebank creator's name"
+  search_creator_name_placeholder: "Search with creator's name"
   showcase_listen_preview: "Listen a preview:"
   sign_out: 'Sign out'
   tutorial: 'Tutorial'

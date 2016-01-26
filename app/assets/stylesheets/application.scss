@@ -235,6 +235,10 @@ header .dropdown-menu .btn {
 	padding: 20px;
 }
 
+.search input[type=checkbox] {
+	display: none;
+}
+
 .search-top {
   height: 80px;
   padding-top: 15px;
@@ -243,40 +247,39 @@ header .dropdown-menu .btn {
   font-size: xx-large;
 }
 
-.search .form-group-top {
-	margin-bottom: 30px;
+.search .form-characteristics {
+	text-align: center;
 }
 
-.search .form-group-left .row {
+.search .form-group-top .form-row {
+	margin-bottom: 20px;
+}
+
+.search .form-group-left .row,
+.search .form-group-right .row {
 	margin-bottom: 10px;
 }
 
-.search .form-group-left label.main-label {
-	margin-top: 5px;
+.search .form-group-top label.main-label {
 	margin-bottom: 5px;
 }
 
-.search .form-group-left label.label:not(:first-child) {
-	margin-top: 20px;
+.search .form-group-left label.main-label,
+.search .form-group-right label.main-label {
+	margin-top: 7px;
+	margin-bottom: 5px;
 }
 
 .search .form-group-left .row > div {
 	display: inline-block;
 }
 
-.search .form-group-right {
-	text-align: left;
-}
-
-.search input[type=checkbox] {
-	display: none;
-}
-
-.search .search-characteristics label:not(.btn) {
-	margin-bottom: 10px;
+.search .btn:not(.btn-primary) {
+	margin-bottom: 5px;
 }
 
 .search .btn-primary {
+	clear: both;
 	display: block;
 	margin-top: 20px;
  	padding: 10px 20px;
@@ -369,5 +372,9 @@ header .dropdown-menu .btn {
 
 	.showcase .row-content {
 		height: 300px;
+	}
+
+	.search .form-group-left {
+		border-right: 1px solid #eee;
 	}
 }

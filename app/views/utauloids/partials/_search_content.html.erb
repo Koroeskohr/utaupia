@@ -1,56 +1,10 @@
-<div class="form-group form-group-top">
-	<div class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+<div class="form-group-top row">
+	<div class="form-row col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
 		<%= text_field_tag :name, params[:name], value: params[:name], placeholder: "#{t('search_name_placeholder')}", class: "form-control" %>
 	</div>
-</div>
-<div class="form-group">
-	<div class="form-group-left col-sm-5 col-xs-12">
+	<div class="form-row form-characteristics col-ms-12 col-xs-12">
 		<div class="row">
-			<%= label_tag t('gender'), nil, class: "main-label col-sm-3" %>
-			<div class="col-sm-9">
-			  <% Utauloid.genders.keys.map {|gender| [gender.titleize,gender]}.each_with_index do |g, i| %>
-				  <% if params[:gender].nil? %>
-				  	<%= label_tag g.first, nil, id: "gender_#{g.second}", class: "btn btn-default" %>
-				  	<%= check_box_tag "gender[]", g.second, false, id: "gender_#{g.second}", class: "" %>
-				  <% else %>
-				  	<%= label_tag g.first, nil, id: "gender_#{g.second}", class: "btn #{params[:gender].include?(g.second) ? 'btn-success' : 'btn-default'}" %>
-						<%= check_box_tag "gender[]", g.second, params[:gender].include?(g.second) ? true : false, id: "gender_#{g.second}", class: "" %>
-				  <% end %>
-				<% end %>
-			</div>
-		</div>
-		<div class="row">
-			<%= label_tag t('language'), nil, class: "main-label col-sm-3" %>
-			<div class="col-sm-9">
-			  <% VoiceLanguage.order(:name).each_with_index do |l, i| %>
-				  <% if params[:language].nil? %>
-				  	<%= label_tag l.name, nil, id: "language_#{l.id}", class: "btn btn-default" %>
-				  	<%= check_box_tag "language[]", l.id, false, id: "language_#{l.id}", class: "" %>
-				  <% else %>
-				  	<%= label_tag l.name, nil, id: "language_#{l.id}", class: "btn #{params[:language].include?(l.id.to_s) ? 'btn-success' : 'btn-default'}" %>
-				  	<%= check_box_tag "language[]", l.id, params[:language].include?(l.id.to_s) ? true : false, id: "language_#{l.id}", class: "" %>
-				  <% end %>
-				<% end %>
-			</div>
-		</div>
-		<div class="row">
-			<%= label_tag t('voicebank_type'), nil, class: "main-label col-sm-3" %>
-		  <div class="col-sm-9">
-			  <% VoicebankType.order(:name).each_with_index do |vbt, i| %>
-				  <% if params[:voicebank_type].nil? %>
-				  	<%= label_tag vbt.name, nil, id: "voicebank_type_#{vbt.id}", class: "btn btn-default" %>
-				  	<%= check_box_tag "voicebank_type[]", vbt.id, false, id: "voicebank_type_#{vbt.id}", class: "" %>
-				  <% else %>
-				  	<%= label_tag vbt.name, nil, id: "voicebank_type_#{vbt.id}", class: "btn #{params[:voicebank_type].include?(vbt.id.to_s) ? 'btn-success' : 'btn-default'}" %>
-				  	<%= check_box_tag "voicebank_type[]", vbt.id, params[:voicebank_type].include?(vbt.id.to_s) ? true : false, id: "voicebank_type_#{vbt.id}", class: "" %>
-				  <% end %>
-				<% end %>
-			</div>
-		</div>
-	</div>
-	<div class="form-group-right col-sm-7 col-xs-12 search-characteristics">
-		<div class="row">
-			<%= label_tag t('voice_characterisation'), nil, class: "col-sm-12 col-xs-12" %>
+			<%= label_tag t('voice_characterisation'), nil, class: "main-label col-sm-12 col-xs-12" %>
 			<div class="col-sm-12 col-xs-12">
 			  <% VoiceCharacteristic.order(:name).each_with_index do |vc, i| %>
 				  <% if params[:voice_characteristic].nil? %>
@@ -65,37 +19,93 @@
 		</div>
 	</div>
 </div>
-<div class="form-group-bottom">
-	<div class="form-group">
-		<%= label_tag t('creator_name'), nil, class: "col-sm-2 control-label" %>
-		<div class="col-sm-4">
-			<%= text_field_tag :creator_name, params[:creator_name], placeholder: "#{t('search_creator_name_placeholder')}", class: "form-control" %>
+<div class="row">
+	<div class="form-group-left col-sm-5 col-xs-12">
+		<div class="row">
+			<%= label_tag t('gender'), nil, class: "main-label col-sm-3 col-xs-3" %>
+			<div class="col-sm-9 col-xs-9">
+			  <% Utauloid.genders.keys.map {|gender| [gender.titleize,gender]}.each_with_index do |g, i| %>
+				  <% if params[:gender].nil? %>
+				  	<%= label_tag g.first, nil, id: "gender_#{g.second}", class: "btn btn-default" %>
+				  	<%= check_box_tag "gender[]", g.second, false, id: "gender_#{g.second}", class: "" %>
+				  <% else %>
+				  	<%= label_tag g.first, nil, id: "gender_#{g.second}", class: "btn #{params[:gender].include?(g.second) ? 'btn-success' : 'btn-default'}" %>
+						<%= check_box_tag "gender[]", g.second, params[:gender].include?(g.second) ? true : false, id: "gender_#{g.second}", class: "" %>
+				  <% end %>
+				<% end %>
+			</div>
 		</div>
-		<%= label_tag t('release_date'), nil, class: "col-sm-2 control-label" %>
-		<div class="col-sm-4">
-			<% if params[:release_date].nil? %>
-					<%= select_tag :release_date, options_from_collection_for_select(get_search_date_options, :first, :last), { include_blank: 'None', class: "form-control" } %>
-			<% else %>
-					<%= select_tag :release_date, options_from_collection_for_select(get_search_date_options, :first, :last, params[:release_date]), { include_blank: 'None', class: "form-control" } %>
-			<% end %>
+		<div class="row">
+			<%= label_tag t('language'), nil, class: "main-label col-sm-3 col-xs-3" %>
+			<div class="col-sm-9 col-xs-9">
+			  <% VoiceLanguage.order(:name).each_with_index do |l, i| %>
+				  <% if params[:language].nil? %>
+				  	<%= label_tag l.name, nil, id: "language_#{l.id}", class: "btn btn-default" %>
+				  	<%= check_box_tag "language[]", l.id, false, id: "language_#{l.id}", class: "" %>
+				  <% else %>
+				  	<%= label_tag l.name, nil, id: "language_#{l.id}", class: "btn #{params[:language].include?(l.id.to_s) ? 'btn-success' : 'btn-default'}" %>
+				  	<%= check_box_tag "language[]", l.id, params[:language].include?(l.id.to_s) ? true : false, id: "language_#{l.id}", class: "" %>
+				  <% end %>
+				<% end %>
+			</div>
+		</div>
+		<div class="row">
+			<%= label_tag t('voicebank_type'), nil, class: "main-label col-sm-3 col-xs-3" %>
+		  <div class="col-sm-9 col-xs-9">
+			  <% VoicebankType.order(:name).each_with_index do |vbt, i| %>
+				  <% if params[:voicebank_type].nil? %>
+				  	<%= label_tag vbt.name, nil, id: "voicebank_type_#{vbt.id}", class: "btn btn-default" %>
+				  	<%= check_box_tag "voicebank_type[]", vbt.id, false, id: "voicebank_type_#{vbt.id}", class: "" %>
+				  <% else %>
+				  	<%= label_tag vbt.name, nil, id: "voicebank_type_#{vbt.id}", class: "btn #{params[:voicebank_type].include?(vbt.id.to_s) ? 'btn-success' : 'btn-default'}" %>
+				  	<%= check_box_tag "voicebank_type[]", vbt.id, params[:voicebank_type].include?(vbt.id.to_s) ? true : false, id: "voicebank_type_#{vbt.id}", class: "" %>
+				  <% end %>
+				<% end %>
+			</div>
 		</div>
 	</div>
-	<div class="form-group">
-		<%= label_tag t('last_update'), nil, class: "col-sm-2 control-label" %>
-		<div class="col-sm-4">
-			<% if params[:update_date].nil? %>
-					<%= select_tag :update_date, options_from_collection_for_select(get_search_date_options, :first, :last), { include_blank: 'None', class: "form-control" } %>
-			<% else %>
-					<%= select_tag :update_date, options_from_collection_for_select(get_search_date_options, :first, :last, params[:update_date]), { include_blank: 'None', class: "form-control" } %>
-			<% end %>
-		</div>
-		<%= label_tag t('group'), nil, class: "col-sm-2 control-label" %>
-		<div class="col-sm-4">
-			<% if params[:group].nil? %>
-				<%= select_tag :group, options_from_collection_for_select(Category.order(:name), :id, :name), { include_blank: 'None', class: "form-control" } %>
-			<% else %>
-				<%= select_tag :group, options_from_collection_for_select(Category.order(:name), :id, :name, params[:group]), { include_blank: 'None', class: "form-control" } %>
-			<% end %>
+	<div class="form-group-right col-sm-7 col-xs-12 search-characteristics">
+		<div class="row">
+			<div class="col-sm-6 col-xs-12">
+				<div class="row">
+					<%= label_tag t('creator_name'), nil, class: "main-label col-sm-4 col-xs-3" %>
+					<div class="col-sm-8 col-xs-9">
+						<%= text_field_tag :creator_name, params[:creator_name], placeholder: "#{t('search_creator_name_placeholder')}", class: "form-control" %>
+					</div>
+				</div>
+				<div class="row">
+					<%= label_tag t('release_date'), nil, class: "main-label col-sm-4 col-xs-3" %>
+					<div class="col-sm-8 col-xs-9">
+						<% if params[:release_date].nil? %>
+								<%= select_tag :release_date, options_from_collection_for_select(get_search_date_options, :first, :last), { include_blank: 'None', class: "form-control" } %>
+						<% else %>
+								<%= select_tag :release_date, options_from_collection_for_select(get_search_date_options, :first, :last, params[:release_date]), { include_blank: 'None', class: "form-control" } %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-xs-12">
+				<div class="row">
+					<%= label_tag t('last_update'), nil, class: "main-label col-sm-4 col-xs-3" %>
+					<div class="col-sm-8 col-xs-9">
+						<% if params[:update_date].nil? %>
+								<%= select_tag :update_date, options_from_collection_for_select(get_search_date_options, :first, :last), { include_blank: 'None', class: "form-control" } %>
+						<% else %>
+								<%= select_tag :update_date, options_from_collection_for_select(get_search_date_options, :first, :last, params[:update_date]), { include_blank: 'None', class: "form-control" } %>
+						<% end %>
+					</div>
+				</div>
+				<div class="row">
+					<%= label_tag t('group'), nil, class: "main-label col-sm-4 col-xs-3" %>
+					<div class="col-sm-8 col-xs-9">
+						<% if params[:group].nil? %>
+							<%= select_tag :group, options_from_collection_for_select(Category.order(:name), :id, :name), { include_blank: 'None', class: "form-control" } %>
+						<% else %>
+							<%= select_tag :group, options_from_collection_for_select(Category.order(:name), :id, :name, params[:group]), { include_blank: 'None', class: "form-control" } %>
+						<% end %>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
