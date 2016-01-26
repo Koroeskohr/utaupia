@@ -63,7 +63,7 @@ class Utauloid < ActiveRecord::Base
     :url => "/utauloids/:attachment/:hash_:style.:extension",
     :hash_secret => RANDOM_SECRET,
     styles: {
-      medium: "100x",
+      medium: "500x",
       thumb: "100x100#" },
     :convert_options => {
       :medium => "-quality 80",
