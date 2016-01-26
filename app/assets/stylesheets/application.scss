@@ -46,7 +46,9 @@ table {
 }
 
 @import url(https://fonts.googleapis.com/css?family=Lato:300);
-
+$black: #000000;
+$dark-grey: #333333;
+$white: #eeeeee;
 $pink-light: #f7e2fd;
 $pink: #e589f9;
 $blue-light: #e8e8f8;
@@ -87,11 +89,11 @@ header ul {
 }
 
 .main-menu ul {
-	color: #eeeeee;
+	color: $white;
 }
 
 header a {
-	color: #eeeeee;
+	color: $white;
 }
 
 header a:hover, header a:active, header a:focus {
@@ -99,20 +101,97 @@ header a:hover, header a:active, header a:focus {
 	text-decoration: none;
 }
 
-.main-menu li, header .dropdown a {
+.main-menu li {
 	display: inline-block;
-	padding: 15px 20px;
+	padding: 15px 0;
 	font-size: large;
 }
 
 .main-menu li:not(:last-child) {
-
+	padding-right: 20px;
 }
 
 header .dropdown {
 	text-align: right;
 }
 
+header .dropdown > a {
+	display: inline-block;
+	padding: 15px 0;
+	font-size: large;
+}
+
+header .dropdown-menu {
+	left: auto;
+	right: 0;
+	padding: 20px 0;
+	background-color: #444444;
+	color: $white;
+}
+
+header .dropdown-menu.login {
+	width: 250px;
+	padding: 20px;
+}
+
+header .dropdown-menu.login .btn {
+	float: right;
+}
+
+header .dropdown-menu a {
+	display: block;
+	font-size: medium;
+}
+
+header .dropdown-menu a:not(:last-child) {
+	margin-bottom: 20px;
+}
+
+header .dropdown-menu a:hover, header .dropdown-menu a:active, header .dropdown-menu a:focus {
+}
+
+header .dropdown-menu input.form-control:first-child {
+	margin-bottom: 10px;
+}
+
+header .dropdown-menu .btn {
+	padding: 5px 10px;
+}
+
 .search {
 	padding: 20px;
+}
+
+@media (max-width: 768px) {
+	.main-menu li {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+	header ul, header .dropdown {
+		text-align: center;
+	}
+
+	header .dropdown-menu.account, header .dropdown-menu.login {
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	header .dropdown-menu.account {
+		width: 200px;
+	}
+
+	header .dropdown-menu.account img {
+		margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+	}
+}
+
+@media (min-width: 769px) {
+	header .dropdown-menu.account {
+		min-width: 300px;
+	}
 }

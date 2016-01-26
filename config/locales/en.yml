@@ -32,11 +32,14 @@ en:
   last_update: 'Last Update'
   login: 'Login'
   news: 'News'
+  has_notifications: 'You have %{number} unseen messages.'
+  has_no_notifications: 'You have 0 notifications.'
   password: "Password"
   range: 'Range'
   release_date: 'Release Date'
   search_name_placeholder: 'Search an UTAUloid name'
   search_creator_name_placeholder: "Search a voicebank creator's name"
+  sign_out: 'Sign out'
   tutorial: 'Tutorial'
   utauloid_showcase: "Today's featured UTAUloid"
   voice_characterisation: "Voice Characterisation"
