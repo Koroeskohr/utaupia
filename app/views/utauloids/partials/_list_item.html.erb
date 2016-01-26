@@ -1,9 +1,18 @@
-<div class="grid-item">
-	<% if !utau.audio_preview.blank? %>
-		<div class="grid-audio-preview">
-			<audio id="<%= "audio_#{utau.id}" %>" preload='none' src='<%= utau.audio_preview.url %>' type='<%= utau.audio_preview.content_type %>'></audio>
-			<button id="<%= "audio_#{utau.id}" %>">play</button>
+<div class="grid-item col-lg-2 col-sm-3 col-xs-6">
+	<div class="grid-item-content">
+		<div class="grid-item-hover">
+		<% if !utau.audio_preview.blank? %>
+			<div class="grid-item-audio-preview">
+				<audio id="<%= "audio_#{utau.id}" %>" preload='none' src='<%= utau.audio_preview.url %>' type='<%= utau.audio_preview.content_type %>'></audio>
+				<a href="#" id="<%= "audio_#{utau.id}" %>">play</a>
+			</div>
+		<% end %>
+			<div class="grid-item-name">
+				<h3><%= link_to utau.name, utau, title: utau.name %></h3>
+			</div>
 		</div>
-	<% end %>
-	<%= link_to image_tag(utau.avatar.url(:medium), alt: utau.name), utau, title: utau.name %>
+		<div class="grid-item-image-container">
+			<%= image_tag(utau.avatar.url(:thumb), alt: utau.name) %>
+		</div>
+	</div>
 </div>

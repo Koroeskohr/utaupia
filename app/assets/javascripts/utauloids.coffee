@@ -60,7 +60,7 @@ $(document).on("page:change", ->
 )
 
 set_audio_preview_events = () ->
-	$("button[id^=audio_]")
+	$("a[id^=audio_]")
 		.on("click", () ->
 			playAudio($(this).attr('id'));
 		)
