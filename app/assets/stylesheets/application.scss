@@ -46,6 +46,7 @@ table {
 }
 
 @import url(https://fonts.googleapis.com/css?family=Lato:300);
+$transition: all 0.15s ease-in-out 0s;
 $black: #000000;
 $dark-grey: #333333;
 $white: #eeeeee;
@@ -59,6 +60,10 @@ body {
 
 .none {
 	display: none;
+}
+
+a {
+	transition: $transition;
 }
 
 header {
@@ -80,8 +85,14 @@ header .account-container .form-group {
 	text-align: right;
 }
 
+body {
+		background-image: url("/assets/body-bg.jpg");
+
+}
 header .menu {
-	background: linear-gradient(#666, #444);
+	background-image: url("/assets/menu-bg.jpg");
+	background-color: linear-gradient(#666, #444);
+	box-shadow: $pink 0 1px 10px;
 }
 
 header ul {
