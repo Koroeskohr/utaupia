@@ -48,7 +48,7 @@ class Utauloid < ActiveRecord::Base
     :hash_secret => RANDOM_SECRET,
     styles: {
       medium: "100x",
-      thumb: "100x100#" },
+      thumb: "150x150#" },
     :convert_options => {
       :medium => "-quality 80",
       :thumb => "-quality 80"
