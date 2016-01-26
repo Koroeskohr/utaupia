@@ -26,10 +26,16 @@ class Utauloid < ActiveRecord::Base
                          allow_blank: true
 
   has_many :voice_banks
+  accepts_nested_attributes_for :voice_banks, :allow_destroy => true
 
   has_and_belongs_to_many :voice_characteristics, join_table: :utauloid_characteristics
   has_and_belongs_to_many :voice_languages, join_table: :utauloid_languages
   has_and_belongs_to_many :voicebank_types, join_table: :utauloid_types
+
+  accepts_nested_attributes_for :voice_characteristics, :allow_destroy => true
+  accepts_nested_attributes_for :voice_languages, :allow_destroy => true
+  accepts_nested_attributes_for :voicebank_types, :allow_destroy => true
+
 
   has_many :favorite_utauloids
   has_many :favorited_by, through: :favorite_utauloids, source: :user
@@ -109,5 +115,9 @@ class Utauloid < ActiveRecord::Base
       .with_voice_characteristic(s[:voice_characteristic])
       .with_release_date(s[:release_date])
       .with_update_date(s[:update_date])
+  end
+
+  def creator
+    creator_is_user ? User.find_by_id(creator_id) : creator_name
   end
 end
