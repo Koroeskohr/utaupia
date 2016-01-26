@@ -22,8 +22,12 @@ ActiveAdmin.register User do
     id_column
     column :nickname
     column :email
-    column :banned
-    column :role
+    column :banned do |user| 
+      user.banned ? status_tag("red", label: "Yes" ) : status_tag("No")
+    end
+    column :role do |user| 
+      user.role.titleize 
+    end
     column :last_sign_in_at
     column :last_sign_in_ip
     column :created_at
