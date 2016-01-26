@@ -1,16 +1,25 @@
-<div class="showcase">
-	<h2><%= t('utauloid_showcase') %></h2>
-	<div>
-		<h3><%= link_to "#{utau.name} - #{utau.japanese_name}", utau %></h3>
-		<p><%= "#{t('gender')}: #{utau.gender}" %></p>
-		<p><%= "#{t('language')}: #{utau.voicebank_types.collect { |c| c.name }.join(", ")}" %></p>
-		<p><%= "#{('voicebank_type')}: #{utau.voice_languages.collect { |c| c.name }.join(", ")}" %></p>
-		<p><%= "#{('characteristics')}: #{utau.voice_characteristics.collect { |c| c.name }.join(", ")}" %></p>
-	</div>
-	<div>
-		<%= audio_tag utau.audio_preview.url, controls: true unless utau.audio_preview.blank? %>
-	</div>
-	<div>
-		<%= image_tag utau.avatar.url(:medium) unless utau.avatar.blank? %>
+<div class="showcase row">
+	<div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 showcase-container">
+		<div class="row row-top">
+			<div class="col-sm-12 col-xs-12 showcase-top">
+				<h2><%= t('utauloid_showcase') %></h2>
+			</div>
+		</div>
+		<div class="row row-content">
+			<div class="col-sm-5 col-xs-12 showcase-left">
+				<%= image_tag utau.cover.url(:medium), class: "img-responsive" %>
+			</div>
+			<div class="col-sm-7 col-xs-12 showcase-right">
+				<h3><%= link_to "#{utau.name} - #{utau.japanese_name}", utau %></h3>
+				<p><span class='bright-pink'><%= "#{t('gender')}: " %></span><%=t('utau.gender') %></p>
+				<p><span class='bright-pink'><%= "#{t('language')}: " %></span><%= "#{utau.voicebank_types.collect { |c| c.name }.join(", ")}" %></p>
+				<p><span class='bright-pink'><%= "#{t('voicebank_type')}: " %></span><%= "#{utau.voice_languages.collect { |c| c.name }.join(", ")}" %></p>
+				<p><span class='bright-pink'><%= "#{t('characteristics')}: " %></span><%= "#{utau.voice_characteristics.collect { |c| c.name }.join(", ")}" %></p>
+				<div class="showcase-audio">
+					<p><%= t('showcase_listen_preview') %></p>
+					<%= audio_tag utau.audio_preview.url, controls: true unless utau.audio_preview.blank? %>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

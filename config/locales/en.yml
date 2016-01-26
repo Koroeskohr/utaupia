@@ -22,7 +22,7 @@
 en:
   about: 'About us'
   account: 'Account'
-  charactecistics: 'Characteristics'
+  characteristics: 'Characteristics'
   creator_name: 'Creator Name'
   email: "Email"
   find_an_utauloid: 'Find an UTAUloid!'
@@ -39,6 +39,7 @@ en:
   release_date: 'Release Date'
   search_name_placeholder: 'Search an UTAUloid name'
   search_creator_name_placeholder: "Search a voicebank creator's name"
+  showcase_listen_preview: "Listen a preview:"
   sign_out: 'Sign out'
   tutorial: 'Tutorial'
   utauloid_showcase: "Today's featured UTAUloid"
