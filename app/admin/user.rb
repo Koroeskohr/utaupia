@@ -23,7 +23,7 @@ ActiveAdmin.register User do
     column :nickname
     column :email
     column :banned do |user| 
-      user.banned ? status_tag("red", label: "Yes" ) : status_tag("No")
+      user.banned ? status_tag("red", label: "Yes") : status_tag("No")
     end
     column :role do |user| 
       user.role.titleize 
@@ -36,6 +36,9 @@ ActiveAdmin.register User do
 
   show :title => :nickname do
     panel "User info" do
+      div do
+        status_tag("red", label: "Banned") if user.banned
+      end
       attributes_table_for user do
         row('Description') { user.user_info.description }
       end
