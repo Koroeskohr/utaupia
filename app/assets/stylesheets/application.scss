@@ -56,6 +56,11 @@ $blue-light: #e8e8f8;
 
 body {
 	background-color: $blue-light;
+	font-family: Lato, sans-serif;
+}
+
+.clearfix {
+	
 }
 
 .none {
@@ -67,13 +72,15 @@ a {
 }
 
 header {
-	position: relative;
-	margin-bottom: 50px;
-	font-family: Lato, sans-serif;
-}
-
-header .logo {
-	height: 130px;
+	z-index: 1;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin-bottom: 20px;
+	background: rgba(0,0,0,0) url("/assets/menu-bg.png") repeat-x scroll 0 0;
+	background-size: auto 100%;
+	box-shadow: $pink 0 1px 10px;
 }
 
 header .account-container {
@@ -81,45 +88,30 @@ header .account-container {
 }
 
 header .account-container .form-group {
-	margin-bottom: 5px;
 	text-align: right;
 }
 
 body {
 		background-image: url("/assets/body-bg.jpg");
-
-}
-header .menu {
-	background-image: url("/assets/menu-bg.jpg");
-	background-color: linear-gradient(#666, #444);
-	box-shadow: $pink 0 1px 10px;
-}
-
-header ul {
-	text-align: left;
 }
 
 .main-menu ul {
-	color: $white;
+	color: $white !important;
 }
 
 header a {
-	color: $white;
+	color: $white !important;
 }
 
 header a:hover, header a:active, header a:focus {
-	color: $pink;
+	color: $pink !important;
 	text-decoration: none;
+	background-color: rgba(0,0,0,0) !important;
 }
 
 .main-menu li {
-	display: inline-block;
 	padding: 15px 0;
 	font-size: large;
-}
-
-.main-menu li:not(:last-child) {
-	padding-right: 20px;
 }
 
 header .dropdown {
@@ -133,11 +125,9 @@ header .dropdown > a {
 }
 
 header .dropdown-menu {
-	left: auto;
-	right: 0;
 	padding: 20px 0;
-	background-color: #444444;
-	color: $white;
+	background-color: rgba(68, 68, 68, 0.9);
+	color: $white !important;
 }
 
 header .dropdown-menu.login {
@@ -155,10 +145,12 @@ header .dropdown-menu a {
 }
 
 header .dropdown-menu a:not(:last-child) {
+	color: $white;
 	margin-bottom: 20px;
 }
 
 header .dropdown-menu a:hover, header .dropdown-menu a:active, header .dropdown-menu a:focus {
+	color: $pink;
 }
 
 header .dropdown-menu input.form-control:first-child {
@@ -168,19 +160,42 @@ header .dropdown-menu input.form-control:first-child {
 header .dropdown-menu .btn {
 	padding: 5px 10px;
 }
+.main-container {
+	margin-top: 100px;
+}
+
+.showcase .img-responsive {
+	max-height: 300px;
+	margin-left: auto;
+	margin-right: auto;
+}
 
 .search {
 	padding: 20px;
 }
 
 @media (max-width: 768px) {
+	.main-menu li, .menu-xs-button {
+		display: block;
+		text-align: center;
+	}
+
 	.main-menu li {
+		padding: 0;
+	}
+
+	.menu-xs-button {
 		padding-top: 10px;
 		padding-bottom: 10px;
 	}
 
-	header ul, header .dropdown {
+	header .visible-xs, header .dropdown {
 		text-align: center;
+	}
+
+	header .dropdown-menu {
+		left: 0;
+		right: 0;
 	}
 
 	header .dropdown-menu.account, header .dropdown-menu.login {
@@ -204,5 +219,22 @@ header .dropdown-menu .btn {
 @media (min-width: 769px) {
 	header .dropdown-menu.account {
 		min-width: 300px;
+	}
+
+	header ul {
+		text-align: left;
+	}
+
+	.main-menu li {
+		display: inline-block;
+	}
+
+	.main-menu li:not(:last-child) {
+		padding-right: 20px;
+	}
+
+	header .dropdown-menu {
+		left: auto;
+		right: 0;
 	}
 }
