@@ -66,5 +66,12 @@ puts 'Adding utauloids'
   [t1, t2, t3].sample.utauloids << utauloid
 end
 
-puts 'Add homepage'
+puts 'Adding voice banks'
+100.times do 
+  vb = VoiceBank.new(name: Faker::Lorem.sentence(1), download_link: "http://google.com")
+  vb.utauloid = Utauloid.all.sample
+  vb.save!
+end
+
+puts 'Creating homepage'
 Homepage.create
