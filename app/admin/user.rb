@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :nickname, :role, :email
+  permit_params :nickname, :role, :email, :banned
 
   scope :all, :default => true
   scope :banned do |users|
@@ -31,6 +31,15 @@ ActiveAdmin.register User do
   end
 
   show :title => :nickname do
+    panel "User info" do
+      attributes_table_for user do
+        row('Description') { user.user_info.description }
+      end
+
+      table_for user.user_info.user_links do
+        column('Link') { |user_link| link_to user_link.link, user_link.link } 
+      end
+    end
     panel "Utauloids" do
       table_for(user.utauloids) do
         # column("Utauloid", :sortable => :id) {|utauloid| link_to "##{utauloid.id}", admin_utauloid_path(utauloid) }
@@ -41,14 +50,38 @@ ActiveAdmin.register User do
     end
   end
 
+  sidebar "User Details", :only => :show do
+    attributes_table_for user do
+      row('Avatar') { image_tag user.user_info.avatar.url(:thumb) }
+      row('Nickname') { user.nickname }
+      row('Email') { user.email }
+      row('Created at') { pretty_format(user.created_at) }
+    end
+
+    if user.banned?
+      link_to 'Unban user', user_unban_path(user), :data => { confirm: "Do you really want to unban #{user.nickname}?" }
+    else
+      link_to 'Ban user', user_ban_path(user), :data => { confirm: "Do you really want to ban #{user.nickname}?" }
+    end
+  end
+
   form do |f|
     f.semantic_errors # shows errors on :base
-    inputs 'Details' do
+    f.inputs 'Details' do
       input :nickname
       input :email
       input :banned
       input :role, :as => :select, :collection => User.roles.keys.to_a.map { |u| [u.humanize, u] }
       li "Created at #{f.object.created_at}" unless f.object.new_record?
+    end
+
+    f.inputs do
+      f.has_many :user_info, heading: 'User info', new_record: false do |u|
+        u.input :description
+        u.has_many :user_links, allow_destroy: true, new_record: false do |ul|
+          ul.input :link
+        end
+      end
     end
     f.actions
   end
