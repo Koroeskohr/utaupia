@@ -1,0 +1,24 @@
+active_admin_form_for resource do |f|
+  f.semantic_errors # shows errors on :base
+  f.inputs 'Details' do
+    f.input :name
+    f.input :japanese_name
+    f.input :description
+    f.input :gender, :as => :select, :collection => Utauloid.genders.keys.to_a.map { |g| [g.humanize, g] }
+    f.input :category_id, :as => :select, :collection => Category.all
+    f.input :voice_characteristics, :as => :check_boxes, :collection => VoiceCharacteristic.all
+    f.input :voice_languages, :as => :check_boxes, :collection => VoiceLanguage.all
+    f.input :voicebank_types, :as => :check_boxes, :collection => VoicebankType.all
+    f.input :wiki_url
+    f.input :vocadb_url
+
+    f.has_many :voice_banks, heading: "Voice banks", allow_destroy: true do |vb|
+      vb.input :name
+      vb.input :download_link
+    end
+
+    li "Created at #{f.object.created_at}" unless f.object.new_record?
+  end
+
+  f.actions
+end
