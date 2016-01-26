@@ -32,7 +32,7 @@ class UtauloidsController < ApplicationController
 	def create
 		@utauloid = Utauloid.new(utauloid_params)
 		@utauloid.creator = current_user
-		@utauloid.creator_is_user = @utauloid.creator_name.nil? 
+		@utauloid.creator_is_user = @utauloid.creator_name.blank?
 		@utauloid.voice_languages << VoiceLanguage.where(id: params[:voice_language_ids])
 		@utauloid.voicebank_types << VoicebankType.where(id: params[:voicebank_type_ids])
 		@utauloid.voice_characteristics << VoiceCharacteristic.where(id: params[:voice_characteristic_ids])
@@ -61,6 +61,8 @@ class UtauloidsController < ApplicationController
 		@utauloid.voicebank_types = types
 		characteristics = VoiceCharacteristic.where(params[:voice_characteristic_ids])
 		@utauloid.voice_characteristics = characteristics
+
+		@utauloid.creator_is_user = utauloid_params[:creator_name].blank? 
 
 		if @utauloid.update_attributes!(utauloid_params)
 			MessagesService.create_messages({ utauloid_id: @utauloid.id, message_type: "notif_new_update"})
