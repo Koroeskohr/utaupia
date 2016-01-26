@@ -83,5 +83,13 @@ $(document).on("page:change", ->
 		.on("ajax:error", (e, xhr, status, error) ->
 			console.log("Error while fetching the search results");
 		)
+
+	$("form[id=search-form] label.btn")
+		.on("click", (e) ->
+			$(this).toggleClass('btn-default');
+			$(this).toggleClass('btn-success');
+			checkbox = $("input[type=checkbox][id=" + $(this).attr('id') + "]");
+			$(checkbox).prop('checked', !$(checkbox).prop("checked"));
+		)
 )
 # search form

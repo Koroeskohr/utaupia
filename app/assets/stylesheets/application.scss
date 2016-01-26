@@ -170,6 +170,10 @@ header .dropdown-menu .btn {
 	margin-top: 100px;
 }
 
+.showcase {
+	margin-bottom: 50px;
+}
+
 .showcase-container {
 	background-color: #ffffff;
 	box-shadow: 4px 4px 4px #ccc;
@@ -222,8 +226,62 @@ header .dropdown-menu .btn {
 	margin-bottom: 20px;
 }
 
+.list {
+
+}
+
 .search {
+	background-color: #ffffff;
 	padding: 20px;
+}
+
+.search-top {
+  height: 80px;
+  padding-top: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: xx-large;
+}
+
+.search .form-group-top {
+	margin-bottom: 30px;
+}
+
+.search .form-group-left .row {
+	margin-bottom: 10px;
+}
+
+.search .form-group-left label.main-label {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.search .form-group-left label.label:not(:first-child) {
+	margin-top: 20px;
+}
+
+.search .form-group-left .row > div {
+	display: inline-block;
+}
+
+.search .form-group-right {
+	text-align: left;
+}
+
+.search input[type=checkbox] {
+	display: none;
+}
+
+.search .search-characteristics label:not(.btn) {
+	margin-bottom: 10px;
+}
+
+.search .btn-primary {
+	display: block;
+	margin-top: 20px;
+ 	padding: 10px 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width: 768px) {
@@ -279,6 +337,11 @@ header .dropdown-menu .btn {
 	.showcase-right {
 		border-left: 1px solid #888;
 		text-align: center;
+	}
+
+	.search .form-group-bottom label {
+		margin-bottom: 5px;
+		margin-top: 5px;
 	}
 }
 
