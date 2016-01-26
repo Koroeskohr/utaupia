@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index, :destroy, :edit, :update]
   resources :users do
     get 'utauloids', on: :member
+    get 'ban'
+    get 'unban'
   end
 
   get '/account', to: 'users#show'
