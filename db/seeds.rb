@@ -20,13 +20,13 @@ puts 'Adding users and UserInfo'
   UserInfo.create!(user_id: user_count)
 end
 
-puts 'Confirming all users'
-User.all.update_all confirmed_at: Time.now
-
 puts 'Adding admins'
 user_count += 1
 User.create!(nickname: 'administrator', email: 'admin@admin.com', password: 'adminadmin', password_confirmation: 'adminadmin', role: User.roles[:administrator])
 UserInfo.create!(user_id: user_count)
+
+puts 'Confirming all users'
+User.all.update_all confirmed_at: Time.now
 
 puts 'Adding categories'
 c1 = Category.create!(name: 'Vipperloid')
@@ -66,5 +66,12 @@ puts 'Adding utauloids'
   [t1, t2, t3].sample.utauloids << utauloid
 end
 
-puts 'Add homepage'
+puts 'Adding voice banks'
+100.times do 
+  vb = VoiceBank.new(name: Faker::Lorem.sentence(1), download_link: "http://google.com")
+  vb.utauloid = Utauloid.all.sample
+  vb.save!
+end
+
+puts 'Creating homepage'
 Homepage.create

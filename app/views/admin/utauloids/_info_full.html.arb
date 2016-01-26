@@ -1,0 +1,39 @@
+div.panel "Utauloid info" do
+  attributes_table_for utauloid do
+    row :id
+    row :name
+    row :japanese_name
+    row :description
+    row :gender do
+      utauloid.gender.titleize
+    end
+    row "Release date", :vb_release_date do
+      pretty_format utauloid.vb_release_date
+    end
+    row "Last update", :vb_last_update do
+      pretty_format utauloid.vb_last_update
+    end
+    row :category do 
+      utauloid.category.name
+    end
+    row :creator do |utauloid|
+      if utauloid.creator.is_a? User
+        link_to utauloid.creator.nickname, admin_user_path(utauloid.creator)
+      else
+        utauloid.creator
+      end
+    end
+    row :voice_characteristics do |utauloid|
+      utauloid.voice_characteristics.pluck(:name).join ', '
+    end
+    row :voice_languages do |utauloid|
+      utauloid.voice_languages.pluck(:name).join ', '
+    end
+    row :voicebank_types do |utauloid|
+      utauloid.voicebank_types.pluck(:name).join ', '
+    end
+    row :difficulty
+    row :wiki_url
+    row :vocadb_url
+  end
+end

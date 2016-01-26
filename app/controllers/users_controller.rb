@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :new, :utauloids]
-  before_action :fetch_user, only: [:edit, :update, :utauloids]
+  before_action :fetch_user, only: [:edit, :update, :utauloids, :ban, :unban]
   before_action :current_user_is_user_post, only: [:update]
   before_action :current_user_is_user, only: [:edit]
   before_action :user_info_exists, only: [:update]
   before_action :user_links_exists, only: [:update]
   before_action :utauloids_view_allowed, only: [:utauloids]
+  before_action :ensure_admin, only: [:ban, :unban]
 
   def index
     @users = User.paginate(:page => params[:page])
@@ -29,6 +30,18 @@ class UsersController < ApplicationController
     @utauloids = @user.utauloids
   end
 
+  def ban
+    @user.banned = true
+    @user.save!
+    redirect_to [:admin, @user]
+  end
+
+  def unban
+    @user.banned = false
+    @user.save!
+    redirect_to [:admin, @user]
+  end
+
 private
   def user_params
 		params.require(:user).permit(:id, :nickname,
@@ -41,6 +54,8 @@ private
   def fetch_user
     if !params[:id].blank?
       @user = User.friendly.find(params[:id])
+    elsif !params[:user_id].blank?
+      @user = User.friendly.find(params[:user_id])
     else
       if current_user.nil?
         redirect_to :root_path

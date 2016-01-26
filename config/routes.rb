@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    resources :users
-  end
+  ActiveAdmin.routes(self)
 
   # removes the users namespace to the sign_in and sign_out actions, and renaming them as login and logout
   devise_for :users, :path => '', :path_names => { sign_in: 'login', 
@@ -12,6 +10,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index, :destroy, :edit, :update]
   resources :users do
     get 'utauloids', on: :member
+    get 'ban'
+    get 'unban'
   end
 
   get '/account', to: 'users#show'
