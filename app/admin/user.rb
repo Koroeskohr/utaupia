@@ -49,8 +49,8 @@ ActiveAdmin.register User do
     end
     panel "Utauloids" do
       table_for(user.utauloids) do
-        # column("Utauloid", :sortable => :id) {|utauloid| link_to "##{utauloid.id}", admin_utauloid_path(utauloid) }
-        column("Utauloid", :sortable => :id) {|utauloid| "##{utauloid.id}" }
+        column("Utauloid", :sortable => :id) {|utauloid| link_to "##{utauloid.id}", admin_utauloid_path(utauloid) }
+        #column("Utauloid", :sortable => :id) {|utauloid| "##{utauloid.id}" }
         column("Name") {|utauloid| utauloid.name }
         column("Date", :sortable => :created_at){|utauloid| pretty_format(utauloid.created_at) }
       end
