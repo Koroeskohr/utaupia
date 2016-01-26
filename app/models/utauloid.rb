@@ -83,7 +83,7 @@ class Utauloid < ActiveRecord::Base
   validates_attachment_size :audio_preview, { in: 0..1000.kilobytes }
 
   scope :with_name, -> name { where("utauloids.name LIKE ?", "%#{name}%") unless name.blank? }
-  scope :with_gender, -> gender { where(gender: gender) unless gender.blank? }
+  scope :with_gender, -> gender { where(gender: self.genders.values_at(*gender)) unless gender.blank? }
   scope :with_category, -> category { where(category: category) unless category.blank? }
   scope :with_creator_name, -> creator_name {
     if !creator_name.blank?
