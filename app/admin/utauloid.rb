@@ -1,5 +1,5 @@
 ActiveAdmin.register Utauloid do
-  menu priority: 2
+  menu priority: 3
 
 	permit_params :name, :japanese_name, :description, 
 		:gender, :category_id, :wiki_url, :vocadb_url, 

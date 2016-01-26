@@ -1,4 +1,6 @@
 ActiveAdmin.register User do
+  menu priority: 2
+
   permit_params :nickname, :role, :email, :banned
 
   scope :all, :default => true
@@ -31,7 +33,10 @@ ActiveAdmin.register User do
     column :last_sign_in_at
     column :last_sign_in_ip
     column :created_at
-    actions
+    actions defaults: false do |user|
+      para link_to "View", admin_user_path(user)
+      para link_to "Edit", edit_admin_user_path(user)
+    end
   end
 
   show :title => :nickname do
@@ -50,7 +55,6 @@ ActiveAdmin.register User do
     panel "Utauloids" do
       table_for(user.utauloids) do
         column("Utauloid", :sortable => :id) {|utauloid| link_to "##{utauloid.id}", admin_utauloid_path(utauloid) }
-        #column("Utauloid", :sortable => :id) {|utauloid| "##{utauloid.id}" }
         column("Name") {|utauloid| utauloid.name }
         column("Date", :sortable => :created_at){|utauloid| pretty_format(utauloid.created_at) }
       end
