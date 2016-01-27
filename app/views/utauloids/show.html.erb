@@ -89,7 +89,7 @@
 		<div class="utauloid-view-voicebanks col-sm-3 col-sm-offset-1 col-xs-12">
 			<h2><%= t('voicebanks') %></h2>
 			<% if @utauloid.voice_banks.blank? %>
-				fuck
+
 			<% else %>
 			  <%= render partial: "voice_banks/partials/list_for_utauloid", locals: {utauloid: @utauloid} %>
 			<% end %>
