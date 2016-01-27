@@ -47,6 +47,7 @@ set_comments_events = () ->
 set_report_events = () ->
 	$("a[id^=report_utauloid_]")
 	.on("ajax:success", (e, data, status, xhr) ->
+		$(this).after("Your report has been sent.");
 		$(this).remove();
 	)
 	.on("ajax:error", (e, xhr, status, error) ->
