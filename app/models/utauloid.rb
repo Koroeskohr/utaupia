@@ -120,4 +120,8 @@ class Utauloid < ActiveRecord::Base
   def creator
     creator_is_user ? User.find_by_id(creator_id) : creator_name
   end
+
+  def uploader
+    User.find_by_id(creator_id)
+  end
 end
