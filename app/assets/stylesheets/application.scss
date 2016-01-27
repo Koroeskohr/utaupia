@@ -504,6 +504,10 @@ header .dropdown-menu .btn {
 	border-bottom: 1px solid #dddddd;
 }
 
+.utauloid-view .voice-bank a {
+	margin-right: 10px;
+}
+
 #comments_list {
 	margin-bottom: 20px;
 }
@@ -579,6 +583,13 @@ header .dropdown-menu .btn {
 .utauloid-edit .checkbox-inline:not(:first-child) {
 	margin-left: 10px;
 }
+
+.voicebank-new,
+.voicebank-edit {
+	background-color: white;
+	padding: 30px;
+}
+
 
 @media (max-width: 768px) {
 	.main-menu li, .menu-xs-button {

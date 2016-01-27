@@ -1,22 +1,19 @@
-<%= form_for @voice_bank do |f| %>
-	<%= f.hidden_field :utauloid_id %>
-
-	<div class="form-group">
-		<%= f.label :name, 'Title of the bank' %>
-		<%= f.text_field :name, class: 'form-control' %>
-	</div>
-
-	<div class="form-group">
-		<%= f.label :download_link %>
-		<%= f.text_field :download_link, class: 'form-control', value: 'http://' %>
-	</div>
-
-	<div class="form-group">
-		<%= f.label :is_append, "This voicebank is an append" %>
-		<%= f.check_box :is_append %>
-	</div>
-
-	<%= f.submit %>
-<% end %>
-
-<%= render 'voice_banks/partials/list_for_utauloid', utauloid: @voice_bank.utauloid %>
+<div class="voicebank-new">
+	<%= form_for @voice_bank, html: {class: 'form-horizontal'} do |f| %>
+		<%= f.hidden_field :utauloid_id %>
+		<div class="form-group">
+			<%= f.label :name, 'Title of the bank' %>
+			<%= f.text_field :name, class: 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= f.label :download_link %>
+			<%= f.text_field :download_link, class: 'form-control', value: 'http://' %>
+		</div>
+		<div class="form-group">
+			<%= f.label :is_append, "This voicebank is an append" %>
+			<%= f.check_box :is_append %>
+		</div>
+		<%= f.submit t('submit'), class: 'btn btn-success' %>
+	<% end %>
+	<%= render 'voice_banks/partials/list_for_utauloid', utauloid: @voice_bank.utauloid %>
+</div>
