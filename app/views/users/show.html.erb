@@ -5,10 +5,12 @@
 		</div>
 		<div class="col-sm-9 col-xs-12">
 			<div class="user-infos">
-				<h2><%= @user.nickname %></h2>
-				<% if @user == current_user %>
-					<%= link_to t('user_edit'), edit_user_path(@user) unless current_user != @user %>
-				<% end %>
+				<div class="user-infos-top">
+					<h1><%= @user.nickname %></h1>
+					<% if @user == current_user %>
+						<%= link_to t('user_edit'), edit_user_path(@user) unless current_user != @user %>
+					<% end %>
+				</div>
 				<div class="user-description">
 					<h3><%= t('description') %></h3>
 					<% if @user.user_info.description.blank? %>
@@ -21,7 +23,7 @@
 					<% if !@user.user_info.user_links.blank? %>
 						<h3><%= t('user_links') %></h3>
 						<% @user.user_info.user_links.each do |l| %>
-							<p><%= l.link %></p>
+							<a href="<%= l.link %>" target="_blank" class="user-link"><%= l.link %></a>
 						<% end %>
 					<% end %>
 				</div>
@@ -31,7 +33,7 @@
 	<div class="row">
 		<% if @user.user_info.utauloids_are_showable? %>
 		<div class="col-sm-12 col-xs-12 user-utauloids">
-			<h3><%= t('user_utauloids') %></h3>
+			<h2><%= t('user_utauloids') %></h2>
 			<% if @user.utauloids.blank? %>
 			<p><%= t('user_dont_have_utauloids') %></p>
 			<% else %>
@@ -47,7 +49,7 @@
 		<% end %>
 		<% if @user.user_info.favorites_are_showable? %>
 		<div class="col-sm-12 col-xs-12 user-favorite-utauloids">
-			<h3><%= t('user_favorites') %></h3>
+			<h2><%= t('user_favorites') %></h2>
 			<% if @user.favorites.blank? %>
 			<p><%= t('user_dont_have_favorites') %></p>
 			<% else %>

@@ -613,6 +613,42 @@ header .dropdown-menu .btn {
 	color: #ccc;
 }
 
+.user-view {
+	background-color: white;
+	padding: 30px;
+}
+
+.user-view h1 {
+	font-size: xx-large;
+}
+
+.user-view h2 {
+	font-size: x-large;
+	margin-bottom: 10px;
+}
+
+.user-view h3 {
+	margin-bottom: 10px;
+	font-size: large;
+	color: #aaaaaa;
+}
+
+.user-view > .row {
+	margin-bottom: 30px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #dddddd;
+}
+
+.user-view .user-infos-top,
+.user-view .user-description {
+	margin-bottom: 30px;
+}
+
+.user-view .user-link {
+	display: block;
+	margin-bottom: 5px;
+}
+
 @media (max-width: 768px) {
 	.main-menu li, .menu-xs-button {
 		display: block;
