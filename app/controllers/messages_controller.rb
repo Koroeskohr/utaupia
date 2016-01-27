@@ -7,12 +7,16 @@ class MessagesController < ApplicationController
 		else
 			@messages = current_user.messages.where(deleted: !params[:bin].blank?)
 		end
+
+		@page_title = current_user.nickname
 	end
 
 	def show
 		@message = current_user.messages.find(params[:id])
 		@message.seen = true
 		@message.save
+
+		@page_title = current_user.nickname
 	end
 
 	def create

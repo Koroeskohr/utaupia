@@ -15,10 +15,14 @@ class UsersController < ApplicationController
   def show
     authenticate_user! if current_user.nil? && params[:id].blank?
     @user = params[:id].blank? ? current_user : User.friendly.find(params[:id])
+
+    @page_title = @user.nickname
   end
 
   def edit
     @user.user_info.user_links.build
+
+    @page_title = I18n.t('edit') + " " + @user.nickname
   end
 
   def update
