@@ -72,6 +72,19 @@ a {
 	transition: $transition;
 }
 
+a,
+a:hover,
+a:active {
+	outline: none;
+}
+
+a.disabled,
+a.disabled:hover,
+a.disabled:active {
+	cursor: default;
+	color: #aaaaaa !important;
+}
+
 .bright-pink {
 	color: $bright-pink;
 }
@@ -666,6 +679,72 @@ header .dropdown-menu .btn {
 .user-edit .user-link-block {
 	display: block;
 	margin-bottom: 10px;
+}
+
+.user-messages {
+	background-color: white;
+	padding: 30px;
+}
+
+.user-messages label {
+	margin-right: 10px;
+}
+
+.user-messages #form_message_filter input[type=checkbox] {
+	display: none;
+}
+
+#form_message_filter {
+	margin-bottom: 20px;
+}
+
+.user-messages #form_message_filter input[type=submit] {
+	margin-left: 30px;
+}
+
+.messages-list {
+	margin-top: 30px;
+}
+
+.message-item {
+  padding: 10px 10px 15px 10px;
+	border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.message-item > div {
+	margin-bottom: 10px;
+}
+
+.message-item-sender .large,
+.message-item-title .large,
+.message-item-type .large,
+.message-item-checkbox-block .large {
+	font-size: large;
+}
+
+.message-item-sender *,
+.message-item-title *,
+.message-item-type *,
+.message-item-checkbox-block * {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.message-view {
+	background-color: white;
+	padding: 30px;
+}
+
+.message-view h1 {
+	font-size: xx-large;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.message-view h2 {
+	font-size: large;
 }
 
 @media (max-width: 768px) {
