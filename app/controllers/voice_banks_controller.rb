@@ -18,7 +18,7 @@ class VoiceBanksController < ApplicationController
     @voice_bank = VoiceBank.new(voice_bank_params)
     @voice_bank.utauloid = @utauloid
 
-    if @voice_bank.save!
+    if @voice_bank.save
       redirect_to @voice_bank.utauloid
     else
       render 'new'
@@ -30,6 +30,7 @@ class VoiceBanksController < ApplicationController
 
     return redirect_to :root_path unless @voice_bank.utauloid.creator == current_user
     if @voice_bank.update_attributes(update_voice_bank_params)
+      flash[:success] = "Voice bank successfully updated"
       redirect_to @voice_bank.utauloid
     else
       render 'edit'
