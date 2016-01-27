@@ -19,6 +19,8 @@ class UtauloidsController < ApplicationController
 		if current_user
 			get_difficulty_vote
 		end
+
+		@page_title = @utauloid.name
 	end
 
 	def index

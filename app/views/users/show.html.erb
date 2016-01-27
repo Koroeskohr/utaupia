@@ -8,7 +8,8 @@
 				<div class="user-infos-top">
 					<h1><%= @user.nickname %></h1>
 					<% if @user == current_user %>
-						<%= link_to t('user_edit'), edit_user_path(@user) unless current_user != @user %>
+						<%= link_to t('user_edit'), edit_user_path(@user) %>
+						<%= link_to t('user_notifications'), messages_path %>
 					<% end %>
 				</div>
 				<div class="user-description">
