@@ -87,7 +87,10 @@
 	</div>
 	<div class="row utauloid-view-bottom">
 		<div class="utauloid-view-voicebanks col-sm-3 col-sm-offset-1 col-xs-12">
-			<h2><%= t('voicebanks') %></h2>
+			<div class="utauloid-view-voicebanks-top">
+				<h2><%= t('voicebanks') %></h2>
+				<%= link_to t('voicebank_add'), new_voice_bank_path(@utauloid) %>
+			</div>
 			<% if @utauloid.voice_banks.blank? %>
 
 			<% else %>

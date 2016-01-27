@@ -15,5 +15,12 @@
 		</div>
 		<%= f.submit t('submit'), class: 'btn btn-success' %>
 	<% end %>
-	<%= render 'voice_banks/partials/list_for_utauloid', utauloid: @voice_bank.utauloid %>
+	<div class="voicebank-new-voicebank-list">
+		<h2><%= t('voicebanks') %></h2>
+		<% if @utauloid.voice_banks.blank? %>
+
+		<% else %>
+		  <%= render partial: "voice_banks/partials/list_for_utauloid", locals: {utauloid: @utauloid} %>
+		<% end %>
+	</div>
 </div>

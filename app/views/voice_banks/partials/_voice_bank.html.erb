@@ -1,5 +1,8 @@
 <div class="voice-bank">
   <h4><%= voice_bank.name %></h4>
+  <% if voice_bank.is_append %>
+  	<span class="is-append"><%= t('voicebank_is_append') %></span>
+  <% end %>
  	<%= link_to "Download", voice_bank.download_link.to_s %>
   <%= link_to "Edit voice bank", edit_voice_bank_path(voice_bank) if voice_bank.utauloid.creator == current_user %>
 </div>

@@ -48,19 +48,19 @@ en:
   has_no_notifications: 'You have 0 notifications.'
   name: 'Name'
   note_this_utauloid: 'Note the difficulty'
-  password: "Password"
+  password: 'Password'
   range: 'Range'
   release_date: 'Release Date'
   report: 'Report'
   search_advanced: 'Advanced options'
   search_name_placeholder: 'Search an UTAUloid name'
   search_creator_name_placeholder: "Search with creator's name"
-  showcase_listen_preview: "Listen a preview:"
+  showcase_listen_preview: 'Listen a preview:'
   sign_out: 'Sign out'
   submit: 'Submit'
   thumbnail: 'Thumbnail'
   tutorial: 'Tutorial'
-  utauloid_dont_have_audio_preview: "No audio preview available"
+  utauloid_dont_have_audio_preview: 'No audio preview available'
   utauloid_dont_have_vote: 'Nobody has noted this Utauloid yet.'
   user_dont_have_favorites: "This user don't have favorites yet."
   user_dont_have_utauloids: "This user don't have UTAUloids."
@@ -70,8 +70,10 @@ en:
   user_utauloids: "User's UTAUloids"
   utauloid_showcase: "Today's featured UTAUloid"
   vocadb_url: 'Vocadb url'
-  voice_characterisation: "Voice Characterisation"
-  voicebanks: "Voicebanks"
+  voice_characterisation: 'Voice Characterisation'
+  voicebank_add: 'Add voicebank'
+  voicebank_is_append: 'Append'
+  voicebanks: 'Voicebanks'
   voicebank_type: 'Voicebank Type'
   what_is_utau: 'What is UTAU?'
   wiki_url: 'Wiki url'

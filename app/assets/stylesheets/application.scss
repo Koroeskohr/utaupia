@@ -493,18 +493,21 @@ header .dropdown-menu .btn {
 	margin: 10px;
 }
 
-.utauloid-view .utauloid-view-bottom h2 {
-	font-size: x-large;
+.utauloid-view .utauloid-view-voicebanks-top {
 	margin-bottom: 20px;
 }
 
-.utauloid-view .voice-bank {
+.utauloid-view .utauloid-view-bottom h2 {
+	font-size: x-large;
+}
+
+.voice-bank {
 	padding-bottom: 10px;
 	margin-bottom: 20px;
 	border-bottom: 1px solid #dddddd;
 }
 
-.utauloid-view .voice-bank a {
+.voice-bank a {
 	margin-right: 10px;
 }
 
@@ -590,6 +593,21 @@ header .dropdown-menu .btn {
 	padding: 30px;
 }
 
+#new_voice_bank {
+	margin-bottom: 30px;
+}
+
+.voicebank-new-voicebank-list h2 {
+	font-size: x-large;
+	margin-bottom: 20px;
+}
+
+.voice-bank .is-append {
+	display: block;
+	font-size: small;
+	margin-bottom: 15px;
+	color: #ccc;
+}
 
 @media (max-width: 768px) {
 	.main-menu li, .menu-xs-button {
