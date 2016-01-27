@@ -47,6 +47,7 @@ set_comments_events = () ->
 set_report_events = () ->
 	$("a[id^=report_utauloid_]")
 	.on("ajax:success", (e, data, status, xhr) ->
+		$(this).after("Your report has been sent.");
 		$(this).remove();
 	)
 	.on("ajax:error", (e, xhr, status, error) ->
@@ -106,3 +107,24 @@ $(document).on("page:change", ->
 		)
 )
 # search form
+
+# difficulty vote
+$(document).on("page:change", ->
+	$("form[id^=edit_difficulty_vote_]")
+		.on("ajax:success", (e, xhr, status, error) ->
+			$('#utauloid-view-note').html(xhr + "<br>Your vote has been updated.");
+		)
+		.on("ajax:error", (e, xhr, status, error) ->
+			console.log("Error while voting");
+		)
+
+	$("form[id=new_difficulty_vote]")
+		.on("ajax:success", (e, xhr, status, error) ->
+			$('#utauloid-view-note').html(xhr + "<br>Thanks for voting!");
+			$(this).remove();
+		)
+		.on("ajax:error", (e, xhr, status, error) ->
+			console.log("Error while voting");
+		)
+)
+# difficulty vote

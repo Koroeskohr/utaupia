@@ -30,10 +30,12 @@ en:
   creator_name_if_not_you: "Name of the creator (if it's not you)"
   comments: 'Comments'
   cover: 'Cover'
+  delete: 'Delete'
   description: 'Description'
   description_empty: "This user didn't write a description yet."
   difficulty: 'Difficulty'
   difficulty_vote: '%{note}/5 based on %{count} votes.'
+  download: 'Download'
   edit: 'Edit'
   email: "Email"
   find_an_utauloid: 'Find an UTAUloid!'

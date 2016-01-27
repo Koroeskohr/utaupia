@@ -3,6 +3,7 @@
   <% if voice_bank.is_append %>
   	<span class="is-append"><%= t('voicebank_is_append') %></span>
   <% end %>
- 	<%= link_to "Download", voice_bank.download_link.to_s %>
-  <%= link_to "Edit voice bank", edit_voice_bank_path(voice_bank) if voice_bank.utauloid.creator == current_user %>
+ 	<%= link_to t('download'), voice_bank.download_link.to_s %>
+  <%= link_to t('edit'), edit_voice_bank_path(voice_bank) if voice_bank.utauloid.creator == current_user %>
+  <%= link_to t('delete'), voice_bank_path(voice_bank), method: 'delete' if voice_bank.utauloid.creator == current_user %>
 </div>

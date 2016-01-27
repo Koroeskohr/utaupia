@@ -13,7 +13,15 @@ class DifficultyVotesController < ApplicationController
 		@vote = current_user.difficulty_votes.new(difficulty_vote_params)
 
 		if @vote.save
-			render :json => { status: :ok, message: "Success" }
+			notes = Utauloid.find(difficulty_vote_params[:utauloid_id]).difficulty_votes
+			if !notes.blank?
+				note = 0
+				notes.each do |n|
+					note += n.note
+				end
+				note = (note.to_f/notes.count.to_f).round
+			end
+			render partial: 'difficulty_votes/partials/utauloid_difficulty_note', locals: {note: note, count: notes.count}, layout: false
 		else
 			render :json => { status: 404 }
 		end
@@ -23,7 +31,15 @@ class DifficultyVotesController < ApplicationController
 		@vote = current_user.difficulty_votes.find(params[:id])
 
 		if @vote.update_attributes(difficulty_vote_params)
-			render :json => { status: :ok, message: "Success" }
+			notes = Utauloid.find(@vote.utauloid_id).difficulty_votes
+			if !notes.blank?
+				note = 0
+				notes.each do |n|
+					note += n.note
+				end
+				note = (note.to_f/notes.count.to_f).round
+			end
+			render partial: 'difficulty_votes/partials/utauloid_difficulty_note', locals: {note: note, count: notes.count}, layout: false
 		else
 			render :json => { status: 404 }
 		end
