@@ -1,5 +1,5 @@
 def authenticate_admin_user!
-  redirect_to new_user_session_path unless current_user.administrator?
+  redirect_to new_user_session_path unless current_user.present? && current_user.administrator?
 end
 
 ActiveAdmin.setup do |config|
