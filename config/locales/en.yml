@@ -38,6 +38,7 @@ en:
   download: 'Download'
   edit: 'Edit'
   email: "Email"
+  favorites_are_showable: 'Show your favorites'
   find_an_utauloid: 'Find an UTAUloid!'
   gender: 'Gender'
   group: 'Group'
@@ -50,6 +51,9 @@ en:
   has_no_notifications: 'You have 0 notifications.'
   name: 'Name'
   note_this_utauloid: 'Note the difficulty'
+  notif_when_utauloid_commented: 'Recieve notification when someone post a comment on one of your UTAUloids'
+  notif_when_utauloid_faved: 'Revieve notification when someone favorite one of your UTAUloids'
+  notif_when_vb_updated: 'Recieve notification when a voicebank in your favorites is updated'
   password: 'Password'
   range: 'Range'
   release_date: 'Release Date'
@@ -64,6 +68,7 @@ en:
   tutorial: 'Tutorial'
   utauloid_dont_have_audio_preview: 'No audio preview available'
   utauloid_dont_have_vote: 'Nobody has noted this Utauloid yet.'
+  utauloids_are_showable: 'Show your UTAUloids'
   user_dont_have_favorites: "This user don't have favorites yet."
   user_dont_have_utauloids: "This user don't have UTAUloids."
   user_edit: 'Edit my account'

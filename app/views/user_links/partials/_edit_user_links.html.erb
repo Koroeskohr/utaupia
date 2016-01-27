@@ -1,10 +1,15 @@
 <% if form.object.link.blank? %>
-<p>Add link</p>
+<h3 class="col-sm-12 col-xs-12" >Add link</h3>
 <% end %>
-<%= form.label :link %>
-<%= form.text_field :link %>
-<% if !form.object.link.blank? %>
-<%= form.label 'Remove' %>
-<%= form.check_box :_destroy%>
-<% end %>
-<br>
+<div class="user-link-block">
+	<div class="col-sm-6 col-xs-10">
+		<%= form.text_field :link, class: 'form-control' %>
+	</div>
+	<div class="user-link-remove-block col-sm-2 col-xs-2">
+		<% if !form.object.link.blank? %>
+			<%= form.label 'Remove' %>
+			<%= form.check_box :_destroy%>
+		<% end %>
+	</div>
+	<div class="clearfix"></div>
+</div>

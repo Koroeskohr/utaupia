@@ -61,7 +61,7 @@ body {
 }
 
 .clearfix {
-	
+	clear: both;
 }
 
 .none {
@@ -647,6 +647,25 @@ header .dropdown-menu .btn {
 .user-view .user-link {
 	display: block;
 	margin-bottom: 5px;
+}
+
+.user-edit {
+	background-color: white;
+	padding: 30px;
+}
+
+.user-edit .form-group {
+	margin-bottom: 20px;
+}
+
+.user-edit .main-label,
+.user-edit h3 {
+	margin-bottom: 10px;
+}
+
+.user-edit .user-link-block {
+	display: block;
+	margin-bottom: 10px;
 }
 
 @media (max-width: 768px) {
