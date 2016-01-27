@@ -22,8 +22,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update!(user_params)
-    redirect_to edit_user_path(@user)
+    if @user.update(user_params)
+      flash[:success] = "Your profile have been successfully updated"
+      redirect_to user_path(@user)
+    else
+      render 'edit'
+    end
   end
 
   def utauloids
@@ -58,16 +62,12 @@ private
       @user = User.friendly.find(params[:user_id])
     else
       if current_user.nil?
-        redirect_to :root_path
+        redirect_to :root_path, :flash => { :error => "An error happened : user doesn't exist" }
       else
         @user = current_user
       end
     end
     # TODO : handle redirection
-  end
-
-  def destroy
-    current_user.destroy
   end
 
   def current_user_is_user_post
