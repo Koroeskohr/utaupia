@@ -1,5 +1,6 @@
 <%= form_for @comment, html: {class: 'form-comment'} do |form| %>
 	<%= form.label 'Add a comment' %>
-	<%= form.text_field :message, class: 'form-control' %>
+	<%= form.text_field :message, class: 'form-control', required: true %>
 	<%= form.hidden_field :utauloid_id %>
+  <%# form.submit "Submit your comment" %>
 <% end %>

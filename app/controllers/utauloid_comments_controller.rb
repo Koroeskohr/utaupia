@@ -10,8 +10,7 @@ class UtauloidCommentsController < ApplicationController
 			MessagesService.create_messages({ message_type: "notif_new_comment", utauloid_id: utauloid_comments_params[:utauloid_id], user_id: current_user.id })
 			redirect_to Utauloid.find(utauloid_comments_params[:utauloid_id])
 		else
-			redirect_to Utauloid.find(utauloid_comments_params[:utauloid_id]), 
-				:flash => { :error => @comment.errors.full_messages.join(', ') }
+			redirect_to Utauloid.find(utauloid_comments_params[:utauloid_id]), flash: { error: @comment.errors.full_messages.first }
 		end
 	end
 
