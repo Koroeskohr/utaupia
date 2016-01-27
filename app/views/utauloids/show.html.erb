@@ -1,5 +1,5 @@
 <div class="utauloid-view">
-	<div class="row">
+	<div class="row utauloid-view-informations">
 		<div class="utauloid-view-image-container col-sm-4 col-xs-12">
 			<%= image_tag @utauloid.cover.url(:medium) %>
 		</div>
@@ -10,67 +10,91 @@
 				<%= render partial: 'favorite_utauloids/partials/favorites' unless !user_signed_in? %>
 			</div>
 			<div class="utauloid-view-top">
-				<div class="utauloid-view-name">
-					<h1>
-						<%= @utauloid.name %>
-						<%= " - #{@utauloid.japanese_name}" unless @utauloid.japanese_name.blank? %>
-					</h1>
-				</div>
-				<div class="utauloid-view-created-by">
-					<h3><%= t('created_by') %></h3>
-					<p>
-					<% if @utauloid.creator_is_user && @utauloid.creator.user_info.utauloids_are_showable %>
-						<%= link_to @utauloid.creator.nickname, user_path(@utauloid.creator) %>
-					<% elsif @utauloid.creator_is_user && !@utauloid.creator.user_info.utauloids_are_showable %>
-						<%= t('anonymous') %>
-					<% else %>
-						<%= @utauloid.creator_name %>	
-					<% end %>
-					</p>
+				<div class="row">
+					<div class="col-sm-10 col-xs-10">
+						<div class="utauloid-view-name">
+							<h1>
+								<%= @utauloid.name %>
+								<%= " - #{@utauloid.japanese_name}" unless @utauloid.japanese_name.blank? %>
+							</h1>
+						</div>
+						<div class="utauloid-view-created-by">
+							<h3><%= t('created_by') %></h3>
+							<p>
+							<% if @utauloid.creator_is_user && @utauloid.creator.user_info.utauloids_are_showable %>
+								<%= link_to @utauloid.creator.nickname, user_path(@utauloid.creator) %>
+							<% elsif @utauloid.creator_is_user && !@utauloid.creator.user_info.utauloids_are_showable %>
+								<%= t('anonymous') %>
+							<% else %>
+								<%= @utauloid.creator_name %>	
+							<% end %>
+							</p>
+						</div>
+					</div>
+					<div class="utauloid-view-audio-preview col-sm-2 col-xs-2">
+						<% if !@utauloid.audio_preview.blank? %>
+							<audio id="<%= "audio_#{@utauloid.id}" %>" preload='none' src='<%= @utauloid.audio_preview.url %>' type='<%= @utauloid.audio_preview.content_type %>'></audio>
+							<span class="audio-preview paused" id="<%= "audio_#{@utauloid.id}" %>"></span>
+						<% end %>
+					</div>
 				</div>
 			</div>
 			<div class="utauloid-view-details row">
 				<div class="col-sm-6 col-xs-12">
-					<h3 class='bright-pink'><%= "#{t('gender')}" %></h3>
-					<p><%= @utauloid.gender.capitalize   %></p>
-					<h3 class='bright-pink'><%= "#{t('language')}" %></h3>
-					<p><%= "#{@utauloid.voicebank_types.collect { |c| c.name.upcase }.join(", ")}" %></p>
-					<h3 class='bright-pink'><%= "#{t('voicebank_type')}" %></h3>
-					<p><%= "#{@utauloid.voice_languages.collect { |c| c.name.capitalize }.join(", ")}" %></p>
-					<h3 class='bright-pink'><%= "#{t('characteristics')}" %></h3>
-					<p><%= "#{@utauloid.voice_characteristics.collect { |c| c.name.capitalize }.join(", ")}" %></p>
+					<div class="odd">
+						<h3 class='bright-pink'><%= "#{t('gender')}" %></h3>
+						<p><%= @utauloid.gender.capitalize   %></p>
+					</div>
+					<div class="even">
+						<h3 class='bright-pink'><%= "#{t('language')}" %></h3>
+						<p><%= "#{@utauloid.voicebank_types.collect { |c| c.name.upcase }.join(", ")}" %></p>
+					</div>
+					<div class="odd">
+						<h3 class='bright-pink'><%= "#{t('voicebank_type')}" %></h3>
+						<p><%= "#{@utauloid.voice_languages.collect { |c| c.name.capitalize }.join(", ")}" %></p>
+					</div>
+					<div class="even">
+						<h3 class='bright-pink'><%= "#{t('characteristics')}" %></h3>
+						<p><%= "#{@utauloid.voice_characteristics.collect { |c| c.name.capitalize }.join(", ")}" %></p>
+					</div>
 				</div>
 				<div class="col-sm-6 col-xs-12">
-					<h3 class='bright-pink'><%= "#{t('release_date')}" %></h3>
-					<p><%= @utauloid.vb_release_date.strftime("%F") %></p>
-					<h3 class='bright-pink'><%= "#{t('last_update')}" %></h3>
-					<p><%= @utauloid.vb_last_update.strftime("%F") %></p>
-					<div class="utauloid-view-difficulty">
-						<h3 class='bright-pink'><%= "#{t('difficulty')}" %></h3>
-						<% if !@note.blank? %>
-							<p><%= t('difficulty_vote', note: @note, count: @utauloid.difficulty_votes.count) %></p>
-						<% else %>
-							<p><%= t('utauloid_dont_have_vote') %></p>
-						<% end %>
-						<h4><%= t('note_this_utauloid') %></h4>
-						<% if user_signed_in? %>
-							<%= render partial: "difficulty_votes/partials/vote" %>
-						<% end %>
+					<div class="odd">
+						<h3 class='bright-pink'><%= "#{t('release_date')}" %></h3>
+						<p><%= @utauloid.vb_release_date.strftime("%F") %></p>
+					</div>
+					<div class="even">
+						<h3 class='bright-pink'><%= "#{t('last_update')}" %></h3>
+						<p><%= @utauloid.vb_last_update.strftime("%F") %></p>
+					</div>
+					<div class="odd">
+						<div class="utauloid-view-difficulty">
+							<h3 class='bright-pink'><%= "#{t('difficulty')}" %></h3>
+							<% if !@note.blank? %>
+								<p><%= t('difficulty_vote', note: @note, count: @utauloid.difficulty_votes.count) %></p>
+							<% else %>
+								<p><%= t('utauloid_dont_have_vote') %></p>
+							<% end %>
+							<h4><%= t('note_this_utauloid') %></h4>
+							<% if user_signed_in? %>
+								<%= render partial: "difficulty_votes/partials/vote" %>
+							<% end %>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-sm-6 col-sm-offset-3 col-xs-12">
+	<div class="row utauloid-view-bottom">
+		<div class="utauloid-view-voicebanks col-sm-3 col-sm-offset-1 col-xs-12">
 			<h2><%= t('voicebanks') %></h2>
-			<% @voice_banks.each do |vb| %>
-			  <%= render partial: "voice_banks/partials/voice_bank", locals: { voice_bank: vb } %>
+			<% if @utauloid.voice_banks.blank? %>
+				fuck
+			<% else %>
+			  <%= render partial: "voice_banks/partials/list_for_utauloid", locals: {utauloid: @utauloid} %>
 			<% end %>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-6 col-sm-offset-3 col-xs-12">
+		<div class="utauloid-view-comments col-sm-7 col-sm-offset-1 col-xs-12">
 			<h2><%= t('comments') %></h2>
 				<div id="comments_list">
 				<% if !@comments.blank? %>
@@ -86,5 +110,4 @@
 				<% end %>
 		</div>
 	</div>
-	<%= audio_tag @utauloid.audio_preview.url, controls: true unless @utauloid.audio_preview.blank? %>
 </div>

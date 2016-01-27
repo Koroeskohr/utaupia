@@ -412,6 +412,7 @@ header .dropdown-menu .btn {
 
 .utauloid-view .utauloid-view-image-container img {
 	max-width: 100%;
+	max-height: 500px;
 }
 
 .utauloid-view .utauloid-view-infos {
@@ -427,10 +428,6 @@ header .dropdown-menu .btn {
 	font-size: large;
 }
 
-.utauloid-view .utauloid-view-details p {
-	margin-bottom: 20px;
-}
-
 .utauloid-view .utauloid-view-actions {
 	margin-bottom: 10px;
 }
@@ -439,6 +436,7 @@ header .dropdown-menu .btn {
 	margin-right: 10px;
 }
 
+.utauloid-view .utauloid-view-infos,
 .utauloid-view .utauloid-view-top {
 	margin-bottom: 30px;
 	padding-bottom: 10px;
@@ -454,6 +452,31 @@ header .dropdown-menu .btn {
 	margin-bottom: 5px;
 }
 
+.utauloid-view .audio-preview {
+	display: block;
+	width: 50;
+	height: 50px;
+}
+
+.utauloid-view .utauloid-view-audio-preview span.audio-preview.paused {
+	background: rgba(0,0,0,0) url("/assets/audio_preview_play_icon.png") no-repeat scroll center center / 50px 50px;
+}
+
+.utauloid-view .utauloid-view-audio-preview span.audio-preview.played {
+	background: rgba(0,0,0,0) url("/assets/audio_preview_pause_icon.png") no-repeat scroll center center / 50px 50px;
+}
+
+.utauloid-view .even,
+.utauloid-view .odd {
+	padding: 5px;
+	padding-bottom: 10px;
+	margin-bottom: 15px;
+}
+
+.utauloid-view .even {
+	background-color: #f8f8f8;
+}
+
 .utauloid-view .utauloid-view-created-by {
 	color: #aaaaaa;
 }
@@ -464,6 +487,17 @@ header .dropdown-menu .btn {
 
 .utauloid-view .form-difficulty .btn {
 	margin: 10px;
+}
+
+.utauloid-view .utauloid-view-bottom h2 {
+	font-size: x-large;
+	margin-bottom: 20px;
+}
+
+.utauloid-view .voice-bank {
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #dddddd;
 }
 
 @media (max-width: 768px) {
