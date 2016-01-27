@@ -45,7 +45,7 @@ class UtauloidsController < ApplicationController
 		@utauloid.voice_languages << VoiceLanguage.where(id: params[:voice_language_ids])
 		@utauloid.voicebank_types << VoicebankType.where(id: params[:voicebank_type_ids])
 		@utauloid.voice_characteristics << VoiceCharacteristic.where(id: params[:voice_characteristic_ids])
-		if @utauloid.save!
+		if @utauloid.save
 			redirect_to new_voice_bank_path(@utauloid)
 		else
 			render 'new'
@@ -73,9 +73,12 @@ class UtauloidsController < ApplicationController
 
 		@utauloid.creator_is_user = utauloid_params[:creator_name].blank? 
 
-		if @utauloid.update_attributes!(utauloid_params)
+		if @utauloid.update_attributes(utauloid_params)
 			MessagesService.create_messages({ utauloid_id: @utauloid.id, message_type: "notif_new_update"})
+			flash[:success] = "Utauloid successfully updated"
 			redirect_to @utauloid
+		else
+			render 'edit'
 		end
 	end
 
