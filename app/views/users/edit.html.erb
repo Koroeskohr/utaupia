@@ -1,11 +1,16 @@
-<%= form_for @user, html: { multipart: true } do |form| %>
-  <br>
-  <%= form.label :nickname %>
-  <%= form.text_field :nickname %>
-  <br>
-  <%= form.fields_for :user_info do |builder| %>
-    <%= render "user_infos/partials/edit_user_infos", form: builder %>
-  <% end %>
-
-  <%= form.submit "Save" %>
-<% end %>
+<div class="user-edit">
+	<%= form_for @user, html: { multipart: true, class: 'form-horizontal' } do |form| %>
+	  <div class="form-group">
+	  	<%= form.label :nickname, t('name'), class: 'main-label col-sm-2 col-xs-12' %>
+	  	<div class="col-sm-10 col-xs-12">
+	  		<%= form.text_field :nickname, class: 'form-control' %>	
+	  	</div>
+	  </div>
+	  <div class="user-edit-user-infos">
+		  <%= form.fields_for :user_info do |builder| %>
+		    <%= render "user_infos/partials/edit_user_infos", form: builder %>
+		  <% end %>
+	  </div>
+	  <%= form.submit t('edit'), class: 'btn btn-success' %>
+	<% end %>
+</div>
