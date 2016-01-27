@@ -1,6 +1,7 @@
 class UtauloidsController < ApplicationController
 	before_action :ensure_xhr, only: [:report]
 	before_action :authenticate_user!, except: [:show, :index]
+	before_action :ensure_belonging, only: [:edit]
 
 	def show
 		@utauloid = Utauloid.friendly.find(params[:id])
@@ -124,5 +125,9 @@ private
 									:update_date,
 									:creator_name,
 									:group)
+	end
+
+	def ensure_belonging
+		redirect_to(:back) unless Utauloid.friendly.find(params[:id]).uploader == current_user
 	end
 end	
