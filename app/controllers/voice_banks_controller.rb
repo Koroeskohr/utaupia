@@ -13,10 +13,10 @@ class VoiceBanksController < ApplicationController
   end
 
   def create
-    utauloid = Utauloid.find(params[:voice_bank][:utauloid_id])
-    return redirect_to :root_path unless utauloid.creator == current_user
+    @utauloid = Utauloid.find(params[:voice_bank][:utauloid_id])
+    return redirect_to :root_path unless @utauloid.creator == current_user
     @voice_bank = VoiceBank.new(voice_bank_params)
-    @voice_bank.utauloid = utauloid
+    @voice_bank.utauloid = @utauloid
 
     if @voice_bank.save!
       redirect_to @voice_bank.utauloid
