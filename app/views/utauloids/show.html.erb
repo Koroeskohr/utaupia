@@ -61,11 +61,19 @@
 				<div class="col-sm-6 col-xs-12">
 					<div class="odd">
 						<h3 class='bright-pink'><%= "#{t('release_date')}" %></h3>
+						<% if @utauloid.vb_release_date.nil? %>
+						<p>Unknown</p>
+						<% else %>
 						<p><%= @utauloid.vb_release_date.strftime("%F") %></p>
+						<% end %>
 					</div>
 					<div class="even">
 						<h3 class='bright-pink'><%= "#{t('last_update')}" %></h3>
+						<% if @utauloid.vb_last_update.nil? %>
+						<p>Unknown</p>
+						<% else %>
 						<p><%= @utauloid.vb_last_update.strftime("%F") %></p>
+						<% end %>
 					</div>
 					<div class="odd">
 						<div class="utauloid-view-difficulty">
