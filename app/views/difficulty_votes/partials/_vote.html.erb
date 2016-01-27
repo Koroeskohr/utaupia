@@ -3,7 +3,7 @@
 	<div class="">
 		<% (1..5).each do |v| %>
 			<div class="radio-inline">
-				<%= form.radio_button :note, v %>
+				<%= form.radio_button :note, v, required: true %>
 				<%= v %>
 			</div>
 		<% end %>
