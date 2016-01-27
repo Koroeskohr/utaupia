@@ -8,6 +8,7 @@ class UtauloidCommentsController < ApplicationController
 
 		if @comment.save
 			MessagesService.create_messages({ message_type: "notif_new_comment", utauloid_id: utauloid_comments_params[:utauloid_id], user_id: current_user.id })
+			flash[:success] = "Your comment has been added"
 			redirect_to Utauloid.find(utauloid_comments_params[:utauloid_id])
 		else
 			redirect_to Utauloid.find(utauloid_comments_params[:utauloid_id]), flash: { error: @comment.errors.full_messages.first }
