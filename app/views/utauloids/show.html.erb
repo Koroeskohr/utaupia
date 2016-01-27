@@ -56,30 +56,29 @@
 		</div>
 	</div>
 	<div class="row">
-
+		<div class="col-sm-6 col-sm-offset-3 col-xs-12">
+			<h3><%= t('voicebanks') %></h3>
+			<% @voice_banks.each do |vb| %>
+			  <%= render partial: "voice_banks/partials/voice_bank", locals: { voice_bank: vb } %>
+			<% end %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3 col-xs-12">
+			<h3><%= t('comments') %></h3>
+				<div id="comments_list">
+				<% if !@comments.blank? %>
+					<% @comments.each do |c| %>
+						<% if !c.message.blank? %>
+							<%= render partial: "utauloid_comments/partials/list_item", locals: { comment: c } %>
+						<% end %>
+					<% end %>
+				<% end %>
+				</div>
+				<% if current_user %>
+					<%= render partial: "utauloid_comments/partials/new" %>
+				<% end %>
+		</div>
 	</div>
 	<%= audio_tag @utauloid.audio_preview.url, controls: true unless @utauloid.audio_preview.blank? %>
-
-
-
-	
-
-	<h2>Voice banks</h2>
-	<% @voice_banks.each do |vb| %>
-	  <%= render partial: "voice_banks/partials/voice_bank", locals: { voice_bank: vb } %>
-	<% end %>
-
-	<h2>Comments</h2>
-	<div id="comments_list">
-	<% if !@comments.blank? %>
-		<% @comments.each do |c| %>
-			<% if !c.message.blank? %>
-				<%= render partial: "utauloid_comments/partials/list_item", locals: { comment: c } %>
-			<% end %>
-		<% end %>
-	<% end %>
-	</div>
-	<% if current_user %>
-		<%= render partial: "utauloid_comments/partials/new" %>
-	<% end %>
 </div>

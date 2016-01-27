@@ -26,6 +26,7 @@ en:
   characteristics: 'Characteristics'
   created_by: 'Created by'
   creator_name: 'Creator Name'
+  comments: 'Comments'
   description: 'Description'
   description_empty: "This user didn't write a description yet."
   difficulty: 'Difficulty'
@@ -62,5 +63,6 @@ en:
   user_utauloids: "User's UTAUloids"
   utauloid_showcase: "Today's featured UTAUloid"
   voice_characterisation: "Voice Characterisation"
+  voicebanks: "Voicebanks"
   voicebank_type: 'Voicebank Type'
   what_is_utau: 'What is UTAU?'
