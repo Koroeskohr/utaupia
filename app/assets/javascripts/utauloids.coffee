@@ -60,9 +60,22 @@ $(document).on("page:change", ->
 )
 
 set_audio_preview_events = () ->
-	$("a[id^=audio_]")
+	$("span[id^=audio_]")
 		.on("click", () ->
+			$(this).toggleClass('played');
+			$(this).toggleClass('paused');
+			pauseAllAudio($(this).attr('id'));
 			playAudio($(this).attr('id'));
+		)
+
+pauseAllAudio = (audio_id) ->
+	$("audio:not(#" + audio_id + ")").each( ->
+			this.pause();
+		)
+
+	$("span:not(#" + audio_id + "):not(.paused)").each( ->
+			$(this).toggleClass('played');
+			$(this).toggleClass('paused');
 		)
 
 playAudio = (audio_id) ->

@@ -24,6 +24,9 @@ en:
   account: 'Account'
   characteristics: 'Characteristics'
   creator_name: 'Creator Name'
+  description: 'Description'
+  description_empty: "This user didn't write a description yet."
+  edit: 'Edit'
   email: "Email"
   find_an_utauloid: 'Find an UTAUloid!'
   gender: 'Gender'
@@ -43,6 +46,13 @@ en:
   showcase_listen_preview: "Listen a preview:"
   sign_out: 'Sign out'
   tutorial: 'Tutorial'
+  utauloid_dont_have_audio_preview: "No audio preview available"
+  user_dont_have_favorites: "This user don't have favorites yet."
+  user_dont_have_utauloids: "This user don't have UTAUloids."
+  user_edit: 'Edit my account'
+  user_favorites: "User's favorites"
+  user_links: "User's personal links"
+  user_utauloids: "User's UTAUloids"
   utauloid_showcase: "Today's featured UTAUloid"
   voice_characterisation: "Voice Characterisation"
   voicebank_type: 'Voicebank Type'

@@ -1,8 +1,65 @@
-<h1><%= @user.nickname %></h1>
-<p><%= @user.email unless @user.nil? %></p>
-<%= link_to 'Edit', edit_user_path(@user) unless current_user != @user %>
-<% if current_user == @user %>
-<%= link_to 'My Utauloids', utauloids_user_path(@user) %>
-<% elsif @user.user_info.utauloids_are_showable %>
-<%= link_to "#{@user.nickname}'s Utauloids", utauloids_user_path(@user) %>
-<% end %>
+<div class="user-view">
+	<div class="row">
+		<div class="col-sm-3 col-xs-12">
+			<%= image_tag @user.user_info.avatar.url(:medium), alt: @user.nickname %>		
+		</div>
+		<div class="col-sm-9 col-xs-12">
+			<div class="user-infos">
+				<h2><%= @user.nickname %></h2>
+				<% if @user == current_user %>
+					<%= link_to t('user_edit'), edit_user_path(@user) unless current_user != @user %>
+				<% end %>
+				<div class="user-description">
+					<h3><%= t('description') %></h3>
+					<% if @user.user_info.description.blank? %>
+					<p><%= t('description_empty') %></p>
+					<% else %>
+					<p><%= @user.user_info.description %></p>
+					<% end %>
+				</div>
+				<div class="user-links">
+					<% if !@user.user_info.user_links.blank? %>
+						<h3><%= t('user_links') %></h3>
+						<% @user.user_info.user_links.each do |l| %>
+							<p><%= l.link %></p>
+						<% end %>
+					<% end %>
+				</div>
+			</div>		
+		</div>
+	</div>
+	<div class="row">
+		<% if @user.user_info.utauloids_are_showable? %>
+		<div class="col-sm-12 col-xs-12 user-utauloids">
+			<h3><%= t('user_utauloids') %></h3>
+			<% if @user.utauloids.blank? %>
+			<p><%= t('user_dont_have_utauloids') %></p>
+			<% else %>
+				<div class="grid">
+					<div class="row">
+					<% @user.utauloids.each do |u| %>
+						<%= render 'utauloids/partials/list_item', utau: u %>
+					<% end %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+		<% end %>
+		<% if @user.user_info.favorites_are_showable? %>
+		<div class="col-sm-12 col-xs-12 user-favorite-utauloids">
+			<h3><%= t('user_favorites') %></h3>
+			<% if @user.favorites.blank? %>
+			<p><%= t('user_dont_have_favorites') %></p>
+			<% else %>
+				<div class="grid">
+					<div class="row">
+					<% @user.favorites.each do |u| %>
+						<%= render 'utauloids/partials/list_item', utau: u %>
+					<% end %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+		<% end %>
+	</div>
+</div>
