@@ -43,6 +43,13 @@ ActiveAdmin.register Utauloid do
 	show :title => :name do
 		render 'info_full', utauloid: utauloid
 		render 'voice_banks', utauloid: utauloid
+
+	end
+	member_action :showcase, method: :post do
+	  redirect_to admin_utauloid_path(utauloid)
+	end
+	action_item :showcase, only: :show do
+	  link_to 'Set as showcase', showcase_admin_utauloid_path(utauloid), method: :post
 	end
 
 	form partial: 'form'
@@ -50,6 +57,13 @@ ActiveAdmin.register Utauloid do
 	controller do
 		def find_resource
 			scoped_collection.friendly.find(params[:id])
+		end
+
+		def showcase
+		  homepage = Homepage.instance
+		  homepage.utauloid_showcase = Utauloid.friendly.find(params[:id])
+		  homepage.save!
+		  redirect_to :root_path
 		end
 	end
 
