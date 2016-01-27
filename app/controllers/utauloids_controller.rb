@@ -1,7 +1,6 @@
 class UtauloidsController < ApplicationController
 	before_action :ensure_xhr, only: [:report]
 	before_action :authenticate_user!, except: [:show, :index]
-	before_action :ensure_belonging, only: [:edit]
 
 	def show
 		@utauloid = Utauloid.friendly.find(params[:id])
