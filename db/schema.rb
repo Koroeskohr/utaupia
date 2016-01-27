@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20160125122849) do
     t.integer  "message_type",                 null: false
     t.text     "message",                      null: false
     t.integer  "author_id"
-    t.boolean  "deleted",      default: false
+    t.boolean  "deleted",      default: false, null: false
     t.boolean  "seen",         default: false
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
@@ -170,12 +170,12 @@ ActiveRecord::Schema.define(version: 20160125122849) do
   add_index "utauloid_types", ["utauloid_id", "voicebank_type_id"], name: "index_utauloid_types_on_utauloid_id_and_voicebank_type_id"
 
   create_table "utauloids", force: :cascade do |t|
-    t.string   "name",                       null: false
+    t.string   "name",                                                       null: false
     t.string   "japanese_name"
     t.text     "description"
-    t.integer  "gender",                     null: false
-    t.datetime "vb_release_date"
-    t.datetime "vb_last_update"
+    t.integer  "gender",                                                     null: false
+    t.datetime "vb_release_date",            default: '2016-01-27 13:55:01'
+    t.datetime "vb_last_update",             default: '2016-01-27 13:55:01'
     t.integer  "category_id"
     t.string   "creator_name"
     t.boolean  "creator_is_user"
@@ -183,8 +183,8 @@ ActiveRecord::Schema.define(version: 20160125122849) do
     t.integer  "difficulty"
     t.text     "wiki_url"
     t.text     "vocadb_url"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
     t.string   "slug"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"

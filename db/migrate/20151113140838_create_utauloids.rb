@@ -5,8 +5,8 @@ class CreateUtauloids < ActiveRecord::Migration
       t.string :japanese_name
       t.text :description
       t.integer :gender, null: false # Integer is for enumeration in Utauloid model
-      t.timestamp :vb_release_date
-      t.timestamp :vb_last_update
+      t.timestamp :vb_release_date, default: Time.now()
+      t.timestamp :vb_last_update, default: Time.now()
       t.integer :category_id
       t.string :creator_name
       t.boolean :creator_is_user

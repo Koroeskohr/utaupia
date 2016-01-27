@@ -1,5 +1,5 @@
-<%= form_for @comment do |form| %>
+<%= form_for @comment, html: {class: 'form-comment'} do |form| %>
 	<%= form.label 'Add a comment' %>
-	<%= form.text_field :message %>
+	<%= form.text_field :message, class: 'form-control' %>
 	<%= form.hidden_field :utauloid_id %>
 <% end %>

@@ -27,14 +27,14 @@ $(document).on("page:update", ->
 set_comments_events = () ->
 	$("a[id^=edit_comment_]")
 		.on("ajax:success", (e, data, status, xhr) ->
-			parent_id = $(this).parent().attr('id');
+			parent_id = $(this).closest('.comment-item').attr('id');
 			console.log(xhr);
-			$(this).parent().html(xhr.responseText);
+			$('#' + parent_id).html(xhr.responseText);
 
 			$("#" + parent_id).find("form[id^=edit_utauloid_" + parent_id + "]")
 				.on("ajax:success", (e, data, status, xhr) ->
 					console.log(xhr);
-					$(this).parent().html(xhr.responseText)
+					$('#' + parent_id).html(xhr.responseText)
 				)
 			.on("ajax:error", (e, xhr, status, error) ->
 				console.log("error while updating the comment")
@@ -60,9 +60,22 @@ $(document).on("page:change", ->
 )
 
 set_audio_preview_events = () ->
-	$("a[id^=audio_]")
+	$("span[id^=audio_]")
 		.on("click", () ->
+			$(this).toggleClass('played');
+			$(this).toggleClass('paused');
+			pauseAllAudio($(this).attr('id'));
 			playAudio($(this).attr('id'));
+		)
+
+pauseAllAudio = (audio_id) ->
+	$("audio:not(#" + audio_id + ")").each( ->
+			this.pause();
+		)
+
+	$("span:not(#" + audio_id + "):not(.paused)").each( ->
+			$(this).toggleClass('played');
+			$(this).toggleClass('paused');
 		)
 
 playAudio = (audio_id) ->

@@ -7,6 +7,14 @@ class UtauloidsController < ApplicationController
 		@comments = @utauloid.utauloid_comments
 		@comment  = @utauloid.utauloid_comments.build unless !current_user
 		@voice_banks = @utauloid.voice_banks.order(is_append: :asc)
+		notes = @utauloid.difficulty_votes.all
+		if !notes.blank?
+			@note = 0
+			notes.each do |n|
+				@note += n.note
+			end
+			@note = (@note.to_f/notes.count.to_f).round
+		end
 		if current_user
 			get_difficulty_vote
 		end
