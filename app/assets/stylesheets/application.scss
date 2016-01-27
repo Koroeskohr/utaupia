@@ -233,7 +233,7 @@ header .dropdown-menu .btn {
 .search {
 	background-color: #ffffff;
 	padding: 20px;
-	margin-bottom: 50px;
+	margin-bottom: 10px;
 }
 
 .search input[type=checkbox] {
@@ -289,6 +289,8 @@ header .dropdown-menu .btn {
 }
 
 .grid {
+	padding: 30px;
+	background-color: white;
 	text-align: center;
 }
 
@@ -300,7 +302,7 @@ header .dropdown-menu .btn {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
-  border: 2px solid $bright-pink;
+  border: 4px solid $bright-pink;
 }
 
 .grid-item-append {
