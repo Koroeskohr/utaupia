@@ -22,11 +22,14 @@
 en:
   about: 'About us'
   account: 'Account'
+  audio_preview: 'Audio preview'
   anonymous: 'Anonymous'
   characteristics: 'Characteristics'
   created_by: 'Created by'
   creator_name: 'Creator Name'
+  creator_name_if_not_you: "Name of the creator (if it's not you)"
   comments: 'Comments'
+  cover: 'Cover'
   description: 'Description'
   description_empty: "This user didn't write a description yet."
   difficulty: 'Difficulty'
@@ -36,12 +39,14 @@ en:
   find_an_utauloid: 'Find an UTAUloid!'
   gender: 'Gender'
   group: 'Group'
+  japanese_name: 'Japanese name'
   language: 'Language'
   last_update: 'Last Update'
   login: 'Login'
   news: 'News'
   has_notifications: 'You have %{number} unseen messages.'
   has_no_notifications: 'You have 0 notifications.'
+  name: 'Name'
   note_this_utauloid: 'Note the difficulty'
   password: "Password"
   range: 'Range'
@@ -52,6 +57,8 @@ en:
   search_creator_name_placeholder: "Search with creator's name"
   showcase_listen_preview: "Listen a preview:"
   sign_out: 'Sign out'
+  submit: 'Submit'
+  thumbnail: 'Thumbnail'
   tutorial: 'Tutorial'
   utauloid_dont_have_audio_preview: "No audio preview available"
   utauloid_dont_have_vote: 'Nobody has noted this Utauloid yet.'
@@ -62,7 +69,9 @@ en:
   user_links: "User's personal links"
   user_utauloids: "User's UTAUloids"
   utauloid_showcase: "Today's featured UTAUloid"
+  vocadb_url: 'Vocadb url'
   voice_characterisation: "Voice Characterisation"
   voicebanks: "Voicebanks"
   voicebank_type: 'Voicebank Type'
   what_is_utau: 'What is UTAU?'
+  wiki_url: 'Wiki url'
