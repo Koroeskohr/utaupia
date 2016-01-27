@@ -70,12 +70,13 @@
 					<div class="odd">
 						<div class="utauloid-view-difficulty">
 							<h3 class='bright-pink'><%= "#{t('difficulty')}" %></h3>
-							<% if !@note.blank? %>
-								<p><%= t('difficulty_vote', note: @note, count: @utauloid.difficulty_votes.count) %></p>
-							<% else %>
-								<p><%= t('utauloid_dont_have_vote') %></p>
-							<% end %>
-							<h4><%= t('note_this_utauloid') %></h4>
+							<div id="utauloid-view-note">
+								<% if !@note.blank? %>
+									<%= render partial: 'difficulty_votes/partials/utauloid_difficulty_note', locals: {note: @note, count: @utauloid.difficulty_votes.count} %>
+								<% else %>
+									<p><%= t('utauloid_dont_have_vote') %></p>
+								<% end %>
+							</div>
 							<% if user_signed_in? %>
 								<%= render partial: "difficulty_votes/partials/vote" %>
 							<% end %>
@@ -89,7 +90,7 @@
 		<div class="utauloid-view-voicebanks col-sm-3 col-sm-offset-1 col-xs-12">
 			<div class="utauloid-view-voicebanks-top">
 				<h2><%= t('voicebanks') %></h2>
-				<%= link_to t('voicebank_add'), new_voice_bank_path(@utauloid) %>
+				<%= link_to t('voicebank_add'), new_voice_bank_path(@utauloid) if @utauloid.creator == current_user %>
 			</div>
 			<% if @utauloid.voice_banks.blank? %>
 

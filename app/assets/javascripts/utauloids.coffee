@@ -106,3 +106,24 @@ $(document).on("page:change", ->
 		)
 )
 # search form
+
+# difficulty vote
+$(document).on("page:change", ->
+	$("form[id^=edit_difficulty_vote_]")
+		.on("ajax:success", (e, xhr, status, error) ->
+			$('#utauloid-view-note').html(xhr + "<br>Your vote has been updated.");
+		)
+		.on("ajax:error", (e, xhr, status, error) ->
+			console.log("Error while voting");
+		)
+
+	$("form[id=new_difficulty_vote]")
+		.on("ajax:success", (e, xhr, status, error) ->
+			$('#utauloid-view-note').html(xhr + "<br>Thanks for voting!");
+			$(this).remove();
+		)
+		.on("ajax:error", (e, xhr, status, error) ->
+			console.log("Error while voting");
+		)
+)
+# difficulty vote

@@ -1,4 +1,5 @@
 <%= form_for @difficulty_vote, remote: true, html: {class: 'form-difficulty'} do |form| %>
+	<h4><%= t('note_this_utauloid') %></h4>
 	<div class="">
 		<% (1..5).each do |v| %>
 			<div class="radio-inline">
