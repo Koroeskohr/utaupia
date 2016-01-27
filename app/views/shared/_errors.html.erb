@@ -1,3 +1,9 @@
 <% if entity.errors.any? %>
-	<%= entity.errors.full_messages %>
+<div class="alert alert-danger" role="alert">
+	<ul>
+    <% entity.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+</div>
 <% end %>
