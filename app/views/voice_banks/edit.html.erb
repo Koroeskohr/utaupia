@@ -1,4 +1,5 @@
 <div class="voicebank-edit">
+  <%= render 'shared/errors', entity: @voice_bank %>
   <%= form_for @voice_bank, html: {class: 'form-horizontal'} do |f| %>
     <%= f.hidden_field :utauloid_id %>
     <div class="form-group">
