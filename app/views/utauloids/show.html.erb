@@ -7,57 +7,63 @@
 			<div class="utauloid-view-actions">
 				<%= link_to t('edit'), edit_utauloid_path(@utauloid) unless !user_signed_in? %>
 				<%= link_to t('report'), report_utauloid_path(@utauloid), id: "report_utauloid_#{@utauloid.id}", remote: true if current_user && !@utauloid.reports.exists?(user_id: current_user.id) %>
+				<%= render partial: 'favorite_utauloids/partials/favorites' unless !user_signed_in? %>
 			</div>
-			<div class="utauloid-view-name">
-				<h1>
-					<%= @utauloid.name %>
-					<%= " - #{@utauloid.japanese_name}" unless !@utauloid.japanese_name.blank? %>
-				</h1>
-			</div>
-			<div class="utauoid-view-created-by">
-				<h3><%= t('created_by') %></h3>
-				<p>
-				<% if @utauloid.creator_is_user && @utauloid.creator.user_info.utauloids_are_showable %>
-					<%= link_to @utauloid.creator.nickname, user_path(@utauloid.creator) %>
-				<% elsif @utauloid.creator_is_user && !@utauloid.creator.user_info.utauloids_are_showable %>
-					<%= t('anonymous') %>
-				<% else %>
-					<%= @utauloid.creator_name %>	
-				<% end %>
-				</p>
-			</div>
-			<div class="utauloid-view-details">
-				<h3 class='bright-pink'><%= "#{t('gender')}" %></h3>
-				<p><%=t('@utauloid.gender') %></p>
-				<h3 class='bright-pink'><%= "#{t('language')}" %></h3>
-				<p><%= "#{@utauloid.voicebank_types.collect { |c| c.name }.join(", ")}" %></p>
-				<h3 class='bright-pink'><%= "#{t('voicebank_type')}" %></h3>
-				<p><%= "#{@utauloid.voice_languages.collect { |c| c.name }.join(", ")}" %></p>
-				<h3 class='bright-pink'><%= "#{t('characteristics')}" %></h3>
-				<p><%= "#{@utauloid.voice_characteristics.collect { |c| c.name }.join(", ")}" %></p>
-				<h3 class='bright-pink'><%= "#{t('release_date')}" %></h3>
-				<p><%= @utauloid.vb_release_date %></p>
-				<h3 class='bright-pink'><%= "#{t('last_update')}" %></h3>
-				<p><%= @utauloid.vb_last_update %></p>
-				<div class="utauloid-view-difficulty">
-					<h3 class='bright-pink'><%= "#{t('difficulty')}" %></h3>
-					<% if !@note.blank? %>
-						<p><%= t('difficulty_vote', note: @note, count: @utauloid.difficulty_votes.count) %></p>
+			<div class="utauloid-view-top">
+				<div class="utauloid-view-name">
+					<h1>
+						<%= @utauloid.name %>
+						<%= " - #{@utauloid.japanese_name}" unless @utauloid.japanese_name.blank? %>
+					</h1>
+				</div>
+				<div class="utauloid-view-created-by">
+					<h3><%= t('created_by') %></h3>
+					<p>
+					<% if @utauloid.creator_is_user && @utauloid.creator.user_info.utauloids_are_showable %>
+						<%= link_to @utauloid.creator.nickname, user_path(@utauloid.creator) %>
+					<% elsif @utauloid.creator_is_user && !@utauloid.creator.user_info.utauloids_are_showable %>
+						<%= t('anonymous') %>
 					<% else %>
-						<p><%= t('utauloid_dont_have_vote') %></p>
+						<%= @utauloid.creator_name %>	
 					<% end %>
-					<h4><%= t('note_this_utauloid') %></h4>
-					<% if user_signed_in? %>
-						<%= render partial: "difficulty_votes/partials/vote" %>
-						<%= render partial: 'favorite_utauloids/partials/favorites' %>
-					<% end %>
+					</p>
+				</div>
+			</div>
+			<div class="utauloid-view-details row">
+				<div class="col-sm-6 col-xs-12">
+					<h3 class='bright-pink'><%= "#{t('gender')}" %></h3>
+					<p><%= @utauloid.gender.capitalize   %></p>
+					<h3 class='bright-pink'><%= "#{t('language')}" %></h3>
+					<p><%= "#{@utauloid.voicebank_types.collect { |c| c.name.upcase }.join(", ")}" %></p>
+					<h3 class='bright-pink'><%= "#{t('voicebank_type')}" %></h3>
+					<p><%= "#{@utauloid.voice_languages.collect { |c| c.name.capitalize }.join(", ")}" %></p>
+					<h3 class='bright-pink'><%= "#{t('characteristics')}" %></h3>
+					<p><%= "#{@utauloid.voice_characteristics.collect { |c| c.name.capitalize }.join(", ")}" %></p>
+				</div>
+				<div class="col-sm-6 col-xs-12">
+					<h3 class='bright-pink'><%= "#{t('release_date')}" %></h3>
+					<p><%= @utauloid.vb_release_date.strftime("%F") %></p>
+					<h3 class='bright-pink'><%= "#{t('last_update')}" %></h3>
+					<p><%= @utauloid.vb_last_update.strftime("%F") %></p>
+					<div class="utauloid-view-difficulty">
+						<h3 class='bright-pink'><%= "#{t('difficulty')}" %></h3>
+						<% if !@note.blank? %>
+							<p><%= t('difficulty_vote', note: @note, count: @utauloid.difficulty_votes.count) %></p>
+						<% else %>
+							<p><%= t('utauloid_dont_have_vote') %></p>
+						<% end %>
+						<h4><%= t('note_this_utauloid') %></h4>
+						<% if user_signed_in? %>
+							<%= render partial: "difficulty_votes/partials/vote" %>
+						<% end %>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-3 col-xs-12">
-			<h3><%= t('voicebanks') %></h3>
+			<h2><%= t('voicebanks') %></h2>
 			<% @voice_banks.each do |vb| %>
 			  <%= render partial: "voice_banks/partials/voice_bank", locals: { voice_bank: vb } %>
 			<% end %>
@@ -65,7 +71,7 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-3 col-xs-12">
-			<h3><%= t('comments') %></h3>
+			<h2><%= t('comments') %></h2>
 				<div id="comments_list">
 				<% if !@comments.blank? %>
 					<% @comments.each do |c| %>

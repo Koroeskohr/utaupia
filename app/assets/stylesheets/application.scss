@@ -405,6 +405,67 @@ header .dropdown-menu .btn {
 	max-height: 100%;
 }
 
+.utauloid-view {
+	padding: 30px;
+	background-color: white;
+}
+
+.utauloid-view .utauloid-view-image-container img {
+	max-width: 100%;
+}
+
+.utauloid-view .utauloid-view-infos {
+	padding-top: 20px;
+}
+
+.utauloid-view .utauloid-view-infos h1 {
+	font-size: xx-large;
+}
+
+.utauloid-view .utauloid-view-details h3 {
+	margin-bottom: 10px;
+	font-size: large;
+}
+
+.utauloid-view .utauloid-view-details p {
+	margin-bottom: 20px;
+}
+
+.utauloid-view .utauloid-view-actions {
+	margin-bottom: 10px;
+}
+
+.utauloid-view .utauloid-view-actions a {
+	margin-right: 10px;
+}
+
+.utauloid-view .utauloid-view-top {
+	margin-bottom: 30px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #dddddd;
+}
+
+.utauloid-view .utauloid-view-top h3,
+.utauloid-view .utauloid-view-top p {
+	display: inline-block;
+}
+
+.utauloid-view .utauloid-view-name {
+	margin-bottom: 5px;
+}
+
+.utauloid-view .utauloid-view-created-by {
+	color: #aaaaaa;
+}
+
+.utauloid-view .utauloid-view-created-by a {
+	color: $bright-pink;
+}
+
+.utauloid-view .form-difficulty .btn {
+	margin: 10px;
+}
+
 @media (max-width: 768px) {
 	.main-menu li, .menu-xs-button {
 		display: block;
