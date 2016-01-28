@@ -13,9 +13,6 @@ k = User.new(nickname: 'koroeskohr', email: 'somebodywas@gmail.com', password: '
 k.skip_confirmation!
 k.save!
 
-puts 'Adding admin user info'
-k.user_info = UserInfo.create
-
 puts 'Adding categories'
 c1 = Category.create!(name: 'Vipperloid')
 
