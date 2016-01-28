@@ -96,7 +96,7 @@ header {
 	left: 0;
 	right: 0;
 	margin-bottom: 20px;
-	background: rgba(0,0,0,0) url("/assets/menu-bg.png") repeat-x scroll 0 0;
+	background: rgba(0,0,0,0) asset-url("menu-bg.png") repeat-x scroll 0 0;
 	background-size: auto 100%;
 	box-shadow: $pink 0 1px 10px;
 }
@@ -110,7 +110,7 @@ header .account-container .form-group {
 }
 
 body {
-		background-image: url("/assets/body-bg.jpg");
+		background-image: asset-url("body-bg.jpg");
 }
 
 .main-menu ul {
@@ -361,11 +361,11 @@ header .dropdown-menu .btn {
 }
 
 .grid-item-content .grid-item-hover .grid-item-audio-preview span.audio-preview.paused {
-	background: rgba(0,0,0,0) url("/assets/audio_preview_play_icon.png") no-repeat scroll center center / 70px 70px;
+	background: rgba(0,0,0,0) asset-url("audio_preview_play_icon.png") no-repeat scroll center center / 70px 70px;
 }
 
 .grid-item-content .grid-item-hover .grid-item-audio-preview span.audio-preview.played {
-	background: rgba(0,0,0,0) url("/assets/audio_preview_pause_icon.png") no-repeat scroll center center / 70px 70px;
+	background: rgba(0,0,0,0) asset-url("audio_preview_pause_icon.png") no-repeat scroll center center / 70px 70px;
 }
 
 .grid-item-content .grid-item-hover .grid-item-audio-preview span:not(.audio-preview) {
@@ -476,11 +476,11 @@ header .dropdown-menu .btn {
 }
 
 .utauloid-view .utauloid-view-audio-preview span.audio-preview.paused {
-	background: rgba(0,0,0,0) url("/assets/audio_preview_play_icon.png") no-repeat scroll center center / 50px 50px;
+	background: rgba(0,0,0,0) asset-url("audio_preview_play_icon.png") no-repeat scroll center center / 50px 50px;
 }
 
 .utauloid-view .utauloid-view-audio-preview span.audio-preview.played {
-	background: rgba(0,0,0,0) url("/assets/audio_preview_pause_icon.png") no-repeat scroll center center / 50px 50px;
+	background: rgba(0,0,0,0) asset-url("audio_preview_pause_icon.png") no-repeat scroll center center / 50px 50px;
 }
 
 .utauloid-view .even,
@@ -589,11 +589,11 @@ header .dropdown-menu .btn {
 }
 
 .utauloid-edit span.audio-preview.paused {
-	background: rgba(0,0,0,0) url("/assets/audio_preview_play_icon.png") no-repeat scroll center center / 50px 50px;
+	background: rgba(0,0,0,0) asset-url("audio_preview_play_icon.png") no-repeat scroll center center / 50px 50px;
 }
 
 .utauloid-edit span.audio-preview.played {
-	background: rgba(0,0,0,0) url("/assets/audio_preview_pause_icon.png") no-repeat scroll center center / 50px 50px;
+	background: rgba(0,0,0,0) asset-url("audio_preview_pause_icon.png") no-repeat scroll center center / 50px 50px;
 }
 
 .utauloid-edit .checkbox-inline {
