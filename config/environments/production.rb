@@ -82,4 +82,14 @@ Rails.application.configure do
 
   Rails.application.routes.default_url_options[:host] = 'hidden-peak-37696.heroku.com'
 
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => "gmail.com",
+    :user_name            => "utaupiatestsmtp@gmail.com",
+    :password             => "utauloid",
+    :authentication       => :plain,
+    :enable_starttls_auto => true
+  }
+
 end
