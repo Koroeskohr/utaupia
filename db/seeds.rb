@@ -32,5 +32,17 @@ l2 = VoiceLanguage.create!(name: 'Japanese')
 l1 = VoiceLanguage.create!(name: 'Chinese')
 l3 = VoiceLanguage.create!(name: 'English')
 
+
+creator_name = [nil, "someone"].sample
+utauloid = Utauloid.new(name: "Dieu",
+     vb_release_date: (rand*10).days.ago,
+     vb_last_update: (rand*8).days.ago,
+     gender: ['male', 'female', 'undefined', 'other'].sample,
+     creator_name: "Oui",
+     creator_is_user: false)
+utauloid.creator = User.first
+utauloid.save!
+
+
 puts 'Creating homepage'
 Homepage.create

@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   def not_found
     message = "An unexpected error happened"
     logger.error message
-    redirect_to :root_path, :flash => { :error => message }
+    redirect_to utauloids_path, :flash => { :error => message }
   end
 
 end
