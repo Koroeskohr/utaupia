@@ -62,3 +62,7 @@ group :development do
   gem 'spring'
 end
 
+group :production do
+  ruby "2.2.0"
+end
+
