@@ -4,7 +4,7 @@ class UserLinksController < ApplicationController
 	before_action :authenticate_user!
 	before_action :fetch_user_link, only: [:update, :destroy]
 
-	before_save :add_protocol_to_url
+	# before_save :add_protocol_to_url
 
 
 	def create
