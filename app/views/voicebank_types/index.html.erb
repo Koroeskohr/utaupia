@@ -1,0 +1,5 @@
+<% @voicebank_types.each do |type| %>
+<div>
+	<%= link_to type.name, voicebank_type_path(type) %>
+</div>
+<% end %>

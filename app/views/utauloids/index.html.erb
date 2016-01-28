@@ -1,5 +1,6 @@
-<% @utauloids.each do |utauloid| %>
-	<h3><%= utauloid.name %></h3>
-	<p><%= utauloid.gender.titleize %></p>
-	<p><%= utauloid.age %></p>
-<% end %>
+<div class="list">
+	<%= render 'utauloids/partials/search' %>
+	<div class="grid">
+		<%= render 'utauloids/partials/list', utauloids: @utauloids %>
+	</div>
+</div>

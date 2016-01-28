@@ -1,0 +1,2 @@
+module VoiceBanksHelper
+end

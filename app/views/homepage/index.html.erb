@@ -1,0 +1,9 @@
+<% if !@utauloid_showcase.blank? %>
+	<%= render 'utauloids/partials/showcase', utau: @utauloid_showcase %>
+<% end %>
+<div class="list">
+	<%= render 'utauloids/partials/search' %>
+	<div class="grid">
+		<%= render 'utauloids/partials/list', utauloids: @utauloids %>
+	</div>
+</div>

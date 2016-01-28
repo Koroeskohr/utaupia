@@ -1,0 +1,59 @@
+<div class="user-messages">
+	<%= form_tag messages_path, :method => 'get', class: 'form-inline', id: 'form_message_filter' do %>
+		<div class="form-group">
+			<% if params[:filters].nil? %>
+				<%= label_tag "New comment on VB", "New comment on VB", class: 'btn btn-default', id: "filters_#{:new_comment}" %>
+				<%= check_box_tag "filters[]", :new_comment, false, id: "filters_#{:new_comment}" %>
+			<% else %>
+				<% if params[:filters].include?("new_comment") %>
+					<%= label_tag "New comment on VB", "New comment on VB", class: 'btn btn-success', id: "filters_#{:new_comment}" %>
+				<% else %>
+					<%= label_tag "New comment on VB", "New comment on VB", class: 'btn btn-default', id: "filters_#{:new_comment}" %>
+				<% end %>
+				<%= check_box_tag "filters[]", :new_comment, params[:filters].include?("new_comment") ? true : false, id: "filters_#{:new_comment}" %>
+			<% end %>
+			<% if params[:filters].nil? %>
+				<%= label_tag "Favorites", "Favorites", class: 'btn btn-default', id: "filters_#{:new_favorite}" %>
+				<%= check_box_tag "filters[]", :new_favorite, false, id: "filters_#{:new_favorite}" %>
+			<% else %>
+				<% if params[:filters].include?("new_favorite") %>
+					<%= label_tag "Favorites", "Favorites", class: 'btn btn-success', id: "filters_#{:new_favorite}" %>
+				<% else %>
+					<%= label_tag "Favorites", "Favorites", class: 'btn btn-default', id: "filters_#{:new_favorite}" %>
+				<% end %>
+				<%= check_box_tag "filters[]", :new_favorite, params[:filters].include?("new_favorite") ? true : false, id: "filters_#{:new_favorite}" %>
+			<% end %>
+			<% if params[:filters].nil? %>
+				<%= label_tag "Updates on my favorites VB", "Updates on my favorites VB", class: 'btn btn-default', id: "filters_#{:favorite_updated}" %>
+				<%= check_box_tag "filters[]", :favorite_updated, false, id: "filters_#{:favorite_updated}" %>
+			<% else %>
+				<% if params[:filters].include?("favorite_updated") %>
+					<%= label_tag "Updates on my favorites VB", "Updates on my favorites VB", class: 'btn btn-success', id: "filters_#{:favorite_updated}" %>
+				<% else %>
+					<%= label_tag "Updates on my favorites VB", "Updates on my favorites VB", class: 'btn btn-default', id: "filters_#{:favorite_updated}" %>
+				<% end %>
+				<%= check_box_tag "filters[]", :favorite_updated, params[:filters].include?("favorite_updated") ? true : false, id: "filters_#{:favorite_updated}" %>
+			<% end %>
+			<% if params[:bin].nil? %>
+				<%= label_tag "Bin", "Bin", class: 'btn btn-default', id: 'bin' %>
+				<%= check_box_tag "bin", :bin, false, id: "bin" %>
+			<% else %>
+				<%= label_tag "Bin", "Bin", class: 'btn btn-success', id: 'bin' %>
+				<%= check_box_tag "bin", :bin, true, id: "bin" %>
+			<% end %>
+		</div>
+		<%= submit_tag "Filter", class: 'btn btn-primary' %>
+	<% end %>
+	<% if !@messages.blank? %>
+		<%= form_tag delete_messages_path, method: 'post' do %>
+			<%= submit_tag "Delete selected", class: 'btn btn-danger' %>
+			<div class="messages-list">
+				<% @messages.each do |message| %>
+					<%= render "messages/partials/list_item", message: message %>
+				<% end %>
+			</div>
+		<% end %>
+	<% else %>
+	You have 0 messages
+	<% end %>
+</div>

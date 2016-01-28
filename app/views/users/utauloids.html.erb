@@ -1,0 +1,13 @@
+<% if !@utauloids.blank? %>
+	<% @utauloids.each do |utau| %>
+		<%= render 'utauloids/partials/list_item', utau: utau %>
+	<% end %>
+<% else %>
+  <% if @user == current_user %>
+	<p>You have no utauloid yet. Add one!</p>
+  <% else %>
+  <p>This user has no utauloid.</p>
+  <% end %> 
+<% end %>
+
+<%= link_to 'Add utauloid', new_utauloid_path if @user == current_user %>

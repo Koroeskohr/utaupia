@@ -1,0 +1,7 @@
+<h2><%= @voice_characteristic.name %></h2>
+
+<% @voice_characteristic.utauloids.each do |u| %>
+<div>
+	<%= u.name %>
+</div>
+<% end %>

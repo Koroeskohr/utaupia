@@ -1,0 +1,7 @@
+<h2><%= @voice_language.name %></h2>
+
+<% @voice_language.utauloids.each do |language| %>
+<div>
+	<%= language.name %>
+</div>
+<% end %>

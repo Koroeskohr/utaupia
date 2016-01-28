@@ -1,0 +1,5 @@
+<% @voice_languages.each do |language| %>
+<div>
+	<%= link_to language.name, voice_language_path(language) %>
+</div>
+<% end %>

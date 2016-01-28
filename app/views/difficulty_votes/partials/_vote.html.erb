@@ -1,0 +1,13 @@
+<%= form_for @difficulty_vote, remote: true, html: {class: 'form-difficulty'} do |form| %>
+	<h4><%= t('note_this_utauloid') %></h4>
+	<div class="">
+		<% (1..5).each do |v| %>
+			<div class="radio-inline">
+				<%= form.radio_button :note, v, required: true %>
+				<%= v %>
+			</div>
+		<% end %>
+		<%= form.hidden_field :utauloid_id %>
+		<%= form.submit "Vote", class: 'btn btn-success' %>
+	</div>
+<% end %>

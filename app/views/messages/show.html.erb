@@ -1,0 +1,5 @@
+<div class="message-view">
+	<h2><%= @message.author_id.blank? ? "Utaupia" : User.find(@message.author_id).nickname %></h2>
+	<h1><%= @message.title %></h1>
+	<p><%= @message.message %></p>
+</div>

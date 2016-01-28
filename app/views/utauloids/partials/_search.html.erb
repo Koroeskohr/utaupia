@@ -1,0 +1,16 @@
+<div class="search">
+	<div class="row">
+		<div class="col-sm-12 col-xs-12 search-top">
+			<%= t('find_an_utauloid') %>
+		</div>
+	</div>
+	<% if params[:controller] == 'homepage' %>
+		<%= form_tag utauloids_path, :method => 'get', class: "form-horizontal", id: "search-form" do %>
+			<%= render 'utauloids/partials/search_content' %>
+		<% end %>
+	<% else %>
+		<%= form_tag utauloids_path, :method => 'get', remote: true, class: "form-horizontal", id: "search-form" do %>
+			<%= render 'utauloids/partials/search_content' %>
+		<% end %>
+	<% end %>
+</div>

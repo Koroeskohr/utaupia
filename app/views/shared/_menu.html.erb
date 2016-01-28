@@ -1,0 +1,26 @@
+<div class="menu">
+	<div class="container">
+		<div class="row">
+			<nav class="main-menu col-sm-10 col-xs-12">
+				<ul class="hidden-xs">
+					<li><%= link_to t('find_an_utauloid'), utauloids_path %></li>
+					<li><%= link_to t('news'), "", title: "Comming soon", class: 'disabled' %></li>
+					<li><%= link_to t('what_is_utau'), "", title: "Comming soon", class: 'disabled' %></li>
+					<li><%= link_to t('tutorial'), "", title: "Comming soon", class: 'disabled' %></li>
+					<li><%= link_to t('about'), "", title: "Comming soon", class: 'disabled' %></li>
+				</ul>
+				<div class="visible-xs hidden-sm">
+					<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="menu-xs-button"><%= t('menu') %></a>
+					<ul class="dropdown-menu">
+						<li><%= link_to t('find_an_utauloid'), utauloids_path %></li>
+						<li><%= link_to t('news'), root_path_path %></li>
+						<li><%= link_to t('what_link_to is_utau'), root_path_path %></li>
+						<li><%= link_to t('tlink_to utorial'), root_path_path %></li>
+						<li><%= link_to ('about'), root_path_path %></li>
+					</ul>
+				</div>
+			</nav>
+			<%= render "shared/header_account" %>
+		</div>
+	</div>
+</div>

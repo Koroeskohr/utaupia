@@ -18,3 +18,10 @@
 
 /.vagrant
 /cookbooks
+
+.byebug_history
+/vendor/cache
+
+# Ignore uploaded images
+public/users
+public/utauloids

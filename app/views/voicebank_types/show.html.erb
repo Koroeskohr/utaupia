@@ -1,0 +1,7 @@
+<h2><%= @voicebank_type.name %></h2>
+
+<% @voicebank_type.utauloids.each do |u| %>
+<div>
+	<%= u.name %>
+</div>
+<% end %>

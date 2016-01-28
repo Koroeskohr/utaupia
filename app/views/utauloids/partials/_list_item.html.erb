@@ -1,0 +1,25 @@
+<div class="grid-item col-lg-2 col-sm-3 col-xs-6">
+	<div class="grid-item-content">
+		<% if utau.voice_banks.count > 1 %>
+		<div class="grid-item-append">
+			<%= image_tag 'append_list_item_banner.png' %>
+		</div>
+		<% end %>
+		<div class="grid-item-hover">
+			<div class="grid-item-audio-preview">
+			<% if !utau.audio_preview.blank? %>
+				<audio id="<%= "audio_#{utau.id}" %>" preload='none' src='<%= utau.audio_preview.url %>' type='<%= utau.audio_preview.content_type %>'></audio>
+				<span class="audio-preview paused" id="<%= "audio_#{utau.id}" %>"></span>
+			<% else %>
+				<span><%= t('utauloid_dont_have_audio_preview') %></span>
+			<% end %>
+			</div>
+			<div class="grid-item-name">
+				<h3><%= link_to utau.name, utau, title: utau.name %></h3>
+			</div>
+		</div>
+		<div class="grid-item-image-container">
+			<%= image_tag(utau.avatar.url(:thumb), alt: utau.name) %>
+		</div>
+	</div>
+</div>

@@ -1,2 +1,68 @@
-<h1><%= @user.nickname %></h1>
-<p><%= @user.email unless @user.nil? %></p>
+<div class="user-view">
+	<div class="row">
+		<div class="col-sm-3 col-xs-12">
+			<%= image_tag @user.user_info.avatar.url(:medium), alt: @user.nickname %>		
+		</div>
+		<div class="col-sm-9 col-xs-12">
+			<div class="user-infos">
+				<div class="user-infos-top">
+					<h1><%= @user.nickname %></h1>
+					<% if @user == current_user %>
+						<%= link_to t('user_edit'), edit_user_path(@user) %>
+						<%= link_to t('user_notifications'), messages_path %>
+					<% end %>
+				</div>
+				<div class="user-description">
+					<h3><%= t('description') %></h3>
+					<% if @user.user_info.description.blank? %>
+					<p><%= t('description_empty') %></p>
+					<% else %>
+					<p><%= @user.user_info.description %></p>
+					<% end %>
+				</div>
+				<div class="user-links">
+					<% if !@user.user_info.user_links.blank? %>
+						<h3><%= t('user_links') %></h3>
+						<% @user.user_info.user_links.each do |l| %>
+							<a href="<%= l.link %>" target="_blank" class="user-link"><%= l.link %></a>
+						<% end %>
+					<% end %>
+				</div>
+			</div>		
+		</div>
+	</div>
+	<div class="row">
+		<% if @user.user_info.utauloids_are_showable? %>
+		<div class="col-sm-12 col-xs-12 user-utauloids">
+			<h2><%= t('user_utauloids') %></h2>
+			<% if @user.utauloids.blank? %>
+			<p><%= t('user_dont_have_utauloids') %></p>
+			<% else %>
+				<div class="grid">
+					<div class="row">
+					<% @user.utauloids.each do |u| %>
+						<%= render 'utauloids/partials/list_item', utau: u %>
+					<% end %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+		<% end %>
+		<% if @user.user_info.favorites_are_showable? %>
+		<div class="col-sm-12 col-xs-12 user-favorite-utauloids">
+			<h2><%= t('user_favorites') %></h2>
+			<% if @user.favorites.blank? %>
+			<p><%= t('user_dont_have_favorites') %></p>
+			<% else %>
+				<div class="grid">
+					<div class="row">
+					<% @user.favorites.each do |u| %>
+						<%= render 'utauloids/partials/list_item', utau: u %>
+					<% end %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+		<% end %>
+	</div>
+</div>

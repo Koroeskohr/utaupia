@@ -1,0 +1,18 @@
+<div class="message-item">
+	<div class="message-item-checkbox-block">
+		<p>Delete</p>
+		<%= check_box_tag "delete_messages[]", message.id, false, id: "messages_#{message.id}" %>
+	</div>
+
+	<div class="user-message-sender">
+		<span>Sender: </span>
+		<span class="large"><%= message.author_id.blank? ? "Utaupia" : User.find(message.author_id).nickname %></span>
+	</div>
+	<div class="message-item-title">
+		<span>Title: </span>
+		<span class="large"><%= link_to message.title, message_path(message) %></span>
+	</div>
+	<%= link_to 'delete', delete_message_path(message) unless message.deleted %>
+	<%= link_to 'Mark as seen', mark_as_seen_message_path(message) unless message.seen %>
+	<%= link_to 'Mark as not seen', mark_as_not_seen_message_path(message) unless !message.seen %>
+</div>
