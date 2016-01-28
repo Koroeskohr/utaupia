@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  after_create :create_user_info
+
   extend FriendlyId
   friendly_id :nickname, use: :slugged
 
@@ -33,6 +35,10 @@ class User < ActiveRecord::Base
   private
   def set_default_role
     self.role ||= :user
+  end
+
+  def create_user_info
+    self.user_info = UserInfo.create
   end
 
 end
