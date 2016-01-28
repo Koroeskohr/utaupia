@@ -747,6 +747,29 @@ header .dropdown-menu .btn {
 	font-size: large;
 }
 
+.signup {
+	background-color: white;
+	padding: 30px;
+}
+
+.signup .signup-title h2 {
+	font-size: x-large;
+}
+
+.signup label {
+	margin-bottom: 10px;
+}
+
+.signup-error {
+	background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
+}
+
+.signup-error #error_explanation {
+	padding: 10px;
+}
+
 @media (max-width: 768px) {
 	.main-menu li, .menu-xs-button {
 		display: block;
