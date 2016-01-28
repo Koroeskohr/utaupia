@@ -23,7 +23,7 @@ ActiveAdmin.register Utauloid do
 			utauloid.gender.titleize 
 		end
 		column :category do |utauloid|
-			utauloid.category.name
+			utauloid.category.name unless utauloid.category.nil?
 		end
 
 		column :creator do |utauloid|
