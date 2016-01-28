@@ -18,14 +18,17 @@ rake db:migrate
 rails server
 ```
 
-### Dans ton navigateur :
-
-127.0.0.1:3000
-
-### Du coup, pour juste lancer le serveur :
+### Du coup, pour lancer le serveur :
+```
 vagrant ssh
 cd project
 rails server
+```
+
+### Dans ton navigateur, tu tapes ça :
+
+127.0.0.1:3000
 
 
-MAINTENANT TU FAIS DU RUBY, OK ?
+
+Maintenant tu fais du Rails, bisous
