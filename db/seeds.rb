@@ -23,6 +23,8 @@ end
 puts 'Adding admins'
 user_count += 1
 User.create!(nickname: 'administrator', email: 'admin@admin.com', password: 'adminadmin', password_confirmation: 'adminadmin', role: User.roles[:administrator])
+
+puts 'Adding admin user info'
 UserInfo.create!(user_id: user_count)
 
 puts 'Confirming all users'
