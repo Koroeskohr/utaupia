@@ -75,7 +75,7 @@ a {
 a,
 a:hover,
 a:active {
-	outline: none;
+	outline: none !important;
 }
 
 a.disabled,
@@ -132,10 +132,7 @@ header a:hover, header a:active, header a:focus {
 	font-size: large;
 }
 
-header .dropdown {
-	text-align: right;
-}
-
+header .add-utau > a,
 header .dropdown > a {
 	display: inline-block;
 	padding: 15px 0;
@@ -747,6 +744,29 @@ header .dropdown-menu .btn {
 	font-size: large;
 }
 
+.signup {
+	background-color: white;
+	padding: 30px;
+}
+
+.signup .signup-title h2 {
+	font-size: x-large;
+}
+
+.signup label {
+	margin-bottom: 10px;
+}
+
+.signup-error {
+	background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
+}
+
+.signup-error #error_explanation {
+	padding: 10px;
+}
+
 @media (max-width: 768px) {
 	.main-menu li, .menu-xs-button {
 		display: block;
@@ -762,7 +782,8 @@ header .dropdown-menu .btn {
 		padding-bottom: 10px;
 	}
 
-	header .visible-xs, header .dropdown {
+	header .visible-xs,
+	header .menu-right {
 		text-align: center;
 	}
 
@@ -808,7 +829,7 @@ header .dropdown-menu .btn {
 	}
 }
 
-@media (min-width: 769px) {
+@media (min-width: 768px) {
 	header .dropdown-menu.account {
 		min-width: 300px;
 	}
@@ -823,6 +844,10 @@ header .dropdown-menu .btn {
 
 	.main-menu li:not(:last-child) {
 		padding-right: 20px;
+	}
+
+	header .menu-right {
+		text-align: right;
 	}
 
 	header .dropdown-menu {
