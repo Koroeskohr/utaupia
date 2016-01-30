@@ -14,9 +14,9 @@ ActiveAdmin.register_page "Homepage" do
             text_node "Current showcased utauloid : "
             text_node link_to(homepage.utauloid_showcase.name, admin_utauloid_path(homepage.utauloid_showcase))
           end
-          para do
-            text_node link_to "Change showcased utauloid in Utauloids page", admin_utauloids_path
-          end
+        end
+        para do
+          text_node link_to "Change showcased utauloid in Utauloids page", admin_utauloids_path
         end
       end
     end
