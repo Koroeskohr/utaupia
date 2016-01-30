@@ -14,7 +14,7 @@ div.panel "Utauloid info" do
       pretty_format utauloid.vb_last_update
     end
     row :category do 
-      utauloid.category.name
+      utauloid.category.name unless utauloid.category.nil?
     end
     row :creator do |utauloid|
       if utauloid.creator.is_a? User
