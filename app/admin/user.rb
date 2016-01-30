@@ -2,7 +2,7 @@ ActiveAdmin.register User do
   menu priority: 2
   config.batch_actions = false
 
-  actions :all, except: [:destroy]
+  actions :all, except: [:destroy, :new, :create]
 
   permit_params :nickname, :role, :email, :banned
 
