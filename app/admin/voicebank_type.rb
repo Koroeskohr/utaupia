@@ -10,7 +10,7 @@ ActiveAdmin.register VoicebankType do
 
   show :title => :name do
     panel "Info" do
-      attributes_table_for category do
+      attributes_table_for voicebank_type do
         row :name
         row :created_at
         row :updated_at
@@ -18,7 +18,7 @@ ActiveAdmin.register VoicebankType do
     end
 
     panel "Utauloids" do
-      table_for category.utauloids do
+      table_for voicebank_type.utauloids do
         column :id
         column :name do |u| 
           link_to u.name, admin_utauloid_path(u)  

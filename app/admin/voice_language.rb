@@ -10,7 +10,7 @@ ActiveAdmin.register VoiceLanguage do
 
   show :title => :name do
     panel "Info" do
-      attributes_table_for category do
+      attributes_table_for voice_language do
         row :name
         row :created_at
         row :updated_at
@@ -18,7 +18,7 @@ ActiveAdmin.register VoiceLanguage do
     end
 
     panel "Utauloids" do
-      table_for category.utauloids do
+      table_for voice_language.utauloids do
         column :id
         column :name do |u| 
           link_to u.name, admin_utauloid_path(u)  
@@ -30,7 +30,7 @@ ActiveAdmin.register VoiceLanguage do
 
   form do |f|
     f.semantic_errors # shows errors on :base
-    f.inputs 'Category' do
+    f.inputs 'Voice Language' do
       f.input :name
     end
     f.actions

@@ -14,7 +14,7 @@ ActiveAdmin.register VoiceCharacteristic do
 
   show :title => :name do
     panel "Info" do
-      attributes_table_for category do
+      attributes_table_for voice_characteristic do
         row :name
         row :created_at
         row :updated_at
@@ -22,7 +22,7 @@ ActiveAdmin.register VoiceCharacteristic do
     end
 
     panel "Utauloids" do
-      table_for category.utauloids do
+      table_for voice_characteristic.utauloids do
         column :id
         column :name do |u| 
           link_to u.name, admin_utauloid_path(u)  
@@ -34,7 +34,7 @@ ActiveAdmin.register VoiceCharacteristic do
 
   form do |f|
     f.semantic_errors # shows errors on :base
-    f.inputs 'Category' do
+    f.inputs 'Voice Characteristic' do
       f.input :name
     end
     f.actions
