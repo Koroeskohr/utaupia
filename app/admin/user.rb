@@ -92,6 +92,7 @@ ActiveAdmin.register User do
     f.inputs do
       f.has_many :user_info, heading: 'User info', new_record: false do |u|
         u.input :description
+        u.input :avatar, as: :file, hint: image_tag(user.user_info.avatar.url)
         u.has_many :user_links, allow_destroy: true, new_record: false do |ul|
           ul.input :link
         end
