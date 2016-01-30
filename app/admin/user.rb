@@ -4,7 +4,8 @@ ActiveAdmin.register User do
 
   actions :all, except: [:destroy, :new, :create]
 
-  permit_params :nickname, :role, :email, :banned
+  permit_params :nickname, :role, :email, :banned, 
+    user_info_attributes: [ :id, :avatar, :description ]
 
   scope :all, :default => true
   scope :banned do |users|
