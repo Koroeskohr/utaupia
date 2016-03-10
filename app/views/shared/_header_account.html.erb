@@ -13,10 +13,12 @@
 				<div class="dropdown-menu row <%= user_signed_in? ? "account" : "login" %>">
 			  <% if user_signed_in? %>
 					<div class="col-sm-4 col-xs-12">
-						<%= image_tag current_user.user_info.avatar.url(:thumb), class: "img-responsive" %>
+						<%= link_to account_path do  %>
+							<%= image_tag current_user.user_info.avatar.url(:thumb), class: "img-responsive" %>
+						<% end %>
 					</div>
 					<div class="col-sm-8 col-xs-12">
-						<%= link_to current_user.nickname,  account_path %>
+						<%= link_to current_user.nickname, account_path %>
 						<% if !current_user.messages.where(seen: false, deleted: false).blank? %>
 						<%= link_to "#{t('has_notifications', number: current_user.messages.where(seen: false, deleted: false).count)}", messages_path %>
 						<% else %>
