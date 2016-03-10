@@ -23,15 +23,17 @@ puts 'Adding voicebank types'
 t1 = VoicebankType.create!(name: 'CV')
 t2 = VoicebankType.create!(name: 'VCV')
 t3 = VoicebankType.create!(name: 'VCCV')
+t4 = VoicebankType.create!(name: 'Other')
 
 puts 'Adding voice languages'
 l2 = VoiceLanguage.create!(name: 'Japanese')
 l1 = VoiceLanguage.create!(name: 'Chinese')
 l3 = VoiceLanguage.create!(name: 'English')
+l4 = VoiceLanguage.create!(name: 'Other')
 
 
 creator_name = [nil, "someone"].sample
-utauloid = Utauloid.new(name: "Dieu",
+utauloid = Utauloid.new(name: "Test buddy",
      vb_release_date: (rand*10).days.ago,
      vb_last_update: (rand*8).days.ago,
      gender: ['male', 'female', 'undefined', 'other'].sample,
