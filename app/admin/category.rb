@@ -8,6 +8,7 @@ ActiveAdmin.register Category do
     column :name
     column :created_at
     column :updated_at
+    actions defaults: true
   end
 
   show :title => :name do

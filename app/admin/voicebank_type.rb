@@ -6,6 +6,7 @@ ActiveAdmin.register VoicebankType do
   index do
     selectable_column
     column :name
+    actions defaults: true
   end
 
   show :title => :name do

@@ -1,70 +1,79 @@
 ActiveAdmin.register Utauloid do
   menu priority: 3
 
-	permit_params :name, :japanese_name, :description, 
-		:gender, :category_id, :wiki_url, :vocadb_url, 
-		voice_characteristic_ids: [],
-		voice_language_ids: [],
-		voicebank_type_ids: []
+  actions :all, except: [:new, :create]
 
-	scope :all, :default => true
+  permit_params :name, :japanese_name, :description, 
+    :gender, :category_id, :wiki_url, :vocadb_url, 
+    voice_characteristic_ids: [],
+    voice_language_ids: [],
+    voicebank_type_ids: []
 
-	filter :name
-	filter :japanese_name
-	filter :gender
-	filter :category_id
+  scope :all, :default => true
 
-	index do
-		selectable_column
-		id_column
-		column :name
-		column :japanese_name
-		column :gender do |utauloid| 
-			utauloid.gender.titleize 
-		end
-		column :category do |utauloid|
-			utauloid.category.name unless utauloid.category.nil?
-		end
+  filter :name
+  filter :japanese_name
+  filter :gender
+  filter :category_id
 
-		column :creator do |utauloid|
-			if utauloid.creator.is_a? User
-				link_to utauloid.creator.nickname, admin_user_path(utauloid.creator)
-			else
-				utauloid.creator
-			end
-		end
-		column :wiki_url
-		column :vocadb_url
-		column :created_at
-		column :updated_at
-		actions
-	end
+  index do
+    selectable_column
+    id_column
+    column :name
+    column :japanese_name
+    column :gender do |utauloid| 
+      utauloid.gender.titleize 
+    end
+    column :category do |utauloid|
+      utauloid.category.name unless utauloid.category.nil?
+    end
 
-	show :title => :name do
-		render 'info_full', utauloid: utauloid
-		render 'voice_banks', utauloid: utauloid
+    column :creator do |utauloid|
+      if utauloid.creator.is_a? User
+        link_to utauloid.creator.nickname, admin_user_path(utauloid.creator)
+      else
+        utauloid.creator
+      end
+    end
+    column :wiki_url
+    column :vocadb_url
+    column :created_at
+    column :updated_at
+    actions
+  end
 
-	end
-	member_action :showcase, method: :post do
-	  redirect_to admin_utauloid_path(utauloid)
-	end
-	action_item :showcase, only: :show do
-	  link_to 'Set as showcase', showcase_admin_utauloid_path(utauloid), method: :post
-	end
+  show :title => :name do
+    render 'info_full', utauloid: utauloid
+    render 'voice_banks', utauloid: utauloid
+  end
 
-	form partial: 'form'
+  member_action :showcase, method: :post do
+    redirect_to admin_utauloid_path(utauloid)
+  end
 
-	controller do
-		def find_resource
-			scoped_collection.friendly.find(params[:id])
-		end
+  action_item :showcase, only: :show do
+    link_to 'Set as showcase', showcase_admin_utauloid_path(utauloid), method: :post
+  end
 
-		def showcase
-		  homepage = Homepage.instance
-		  homepage.utauloid_showcase = Utauloid.friendly.find(params[:id])
-		  homepage.save!
-		  redirect_to :root_path
-		end
-	end
+  form partial: 'form'
+
+  controller do
+    def find_resource
+      scoped_collection.friendly.find(params[:id])
+    end
+
+    def showcase
+      homepage = Homepage.instance
+      homepage.utauloid_showcase = Utauloid.friendly.find(params[:id])
+      homepage.save!
+      redirect_to :root_path
+    end
+
+    def update
+      update! do |success, failure|
+        success.html { redirect_to admin_utauloids_path }
+      end
+    end
+  end
 
 end

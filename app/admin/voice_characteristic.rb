@@ -7,8 +7,8 @@ ActiveAdmin.register VoiceCharacteristic do
     selectable_column
     column :name
     actions defaults: false do |vc|
-      link_to "Edit", edit_admin_voice_characteristic_path(vc) #TODO : h4lp
-      link_to "Delete", admin_voice_characteristic_path(vc), method: :delete, data: { confirm: "Really delete #{vc.name}?" }
+      text_node link_to "Edit", edit_admin_voice_characteristic_path(vc)
+      text_node link_to "Delete", admin_voice_characteristic_path(vc), method: :delete, data: { confirm: "Really delete #{vc.name}?" }
     end
   end
 
