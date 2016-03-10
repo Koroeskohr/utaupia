@@ -46,11 +46,11 @@
 						<p><%= @utauloid.gender.capitalize   %></p>
 					</div>
 					<div class="even">
-						<h3 class='bright-pink'><%= "#{t('language')}" %></h3>
+						<h3 class='bright-pink'><%= "#{t('voicebank_type')}" %></h3>
 						<p><%= "#{@utauloid.voicebank_types.collect { |c| c.name.upcase }.join(", ")}" %></p>
 					</div>
 					<div class="odd">
-						<h3 class='bright-pink'><%= "#{t('voicebank_type')}" %></h3>
+						<h3 class='bright-pink'><%= "#{t('language')}" %></h3>
 						<p><%= "#{@utauloid.voice_languages.collect { |c| c.name.capitalize }.join(", ")}" %></p>
 					</div>
 					<div class="even">
