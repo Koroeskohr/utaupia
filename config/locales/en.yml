@@ -10,7 +10,7 @@ en:
   comments: 'Comments'
   cover: 'Cover'
   delete: 'Delete'
-  description: 'Description'
+  description: 'About me'
   description_empty: "This user didn't write a description yet."
   difficulty: 'Difficulty'
   difficulty_vote: '%{note}/5 based on %{count} votes.'
