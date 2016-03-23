@@ -1,4 +1,7 @@
 <div class="message-view">
+	<div class="message-view-nav">
+		<%= link_to t('back_to_notification'), messages_path %>
+	</div>
 	<h2><%= @message.author_id.blank? ? "Utaupia" : User.find(@message.author_id).nickname %></h2>
 	<h1><%= @message.title %></h1>
 	<p><%= @message.message %></p>
