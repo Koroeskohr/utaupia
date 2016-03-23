@@ -2,5 +2,5 @@
 	<%= form.label 'Add a comment' %>
 	<%= form.text_field :message, class: 'form-control', required: true %>
 	<%= form.hidden_field :utauloid_id %>
-  <%# form.submit "Submit your comment" %>
+  <%= form.submit "Submit your comment", class: 'btn btn-success' %>
 <% end %>
