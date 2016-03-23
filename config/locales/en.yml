@@ -25,6 +25,7 @@ en:
   japanese_name: 'Japanese name'
   language: 'Language'
   last_update: 'Last Update'
+  last_utauloids: 'Last utauloids'
   login: 'Login'
   news: 'News'
   has_notifications: 'You have %{number} unseen messages.'

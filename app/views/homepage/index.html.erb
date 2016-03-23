@@ -4,6 +4,9 @@
 <div class="list">
 	<%= render 'utauloids/partials/search' %>
 	<div class="grid">
+		<div class="grid-top">
+			<h2><%= t('last_utauloids') %></h2>
+		</div>
 		<%= render 'utauloids/partials/list', utauloids: @utauloids %>
 	</div>
 </div>
