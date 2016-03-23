@@ -12,8 +12,8 @@
 			<div class="col-sm-7 col-xs-12 showcase-right">
 				<h3><%= link_to "#{utau.name} - #{utau.japanese_name}", utau %></h3>
 				<p><span class='bright-pink'><%= "#{t('gender')}: " %></span><%=t('utau.gender') %></p>
-				<p><span class='bright-pink'><%= "#{t('language')}: " %></span><%= "#{utau.voicebank_types.collect { |c| c.name }.join(", ")}" %></p>
-				<p><span class='bright-pink'><%= "#{t('voicebank_type')}: " %></span><%= "#{utau.voice_languages.collect { |c| c.name }.join(", ")}" %></p>
+				<p><span class='bright-pink'><%= "#{t('language')}: " %></span><%= "#{utau.voice_languages.collect { |c| c.name }.join(", ")}" %></p>
+				<p><span class='bright-pink'><%= "#{t('voicebank_type')}: " %></span><%= "#{utau.voicebank_types.collect { |c| c.name }.join(", ")}" %></p>
 				<p><span class='bright-pink'><%= "#{t('characteristics')}: " %></span><%= "#{utau.voice_characteristics.collect { |c| c.name }.join(", ")}" %></p>
 				<div class="showcase-audio">
 					<p><%= t('showcase_listen_preview') %></p>
