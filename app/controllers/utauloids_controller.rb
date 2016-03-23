@@ -29,7 +29,7 @@ class UtauloidsController < ApplicationController
 				render partial: 'utauloids/partials/list', locals: { utauloids: @utauloids }, layout: false
 			end
 		else
-			@utauloids = Utauloid.all
+			@utauloids = Utauloid.all.reverse
 		end
 	end
 
