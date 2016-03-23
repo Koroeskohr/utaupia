@@ -115,6 +115,8 @@ class Utauloid < ActiveRecord::Base
       .with_voice_characteristic(s[:voice_characteristic])
       .with_release_date(s[:release_date])
       .with_update_date(s[:update_date])
+      .order("id DESC")
+      .uniq
   end
 
   def creator
