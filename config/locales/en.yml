@@ -2,6 +2,7 @@ en:
   about: 'About us'
   account: 'Account'
   audio_preview: 'Audio preview'
+  audio_preview_max_filesize: "Your file can't exceed 1000kb."
   anonymous: 'Anonymous'
   back_to_notification: 'Go back to notifications'
   cancel: 'Cancel'

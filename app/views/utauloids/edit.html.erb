@@ -36,7 +36,10 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<%= f.label :audio_preview, t('audio_preview'), class: 'col-sm-2 col-xs-2' %>
+			<div class="col-sm-2 col-xs-2">
+				<%= f.label :audio_preview, t('audio_preview') %>
+				<span class='sub-label'><%= t('audio_preview_max_filesize') %></span>
+			</div>
 			<div class="col-sm-3 col-xs-12">
 				<%= f.file_field :audio_preview, class: '' %>
 			</div>

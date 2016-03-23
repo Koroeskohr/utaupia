@@ -608,6 +608,12 @@ header .dropdown-menu .btn {
 	height: 50px;
 }
 
+.utauloid-edit .sub-label {
+	color: #888;
+  display: block;
+  font-size: 12px;
+}
+
 .utauloid-edit span.audio-preview.paused {
 	background: rgba(0,0,0,0) asset-url("audio_preview_play_icon.png") no-repeat scroll center center / 50px 50px;
 }
