@@ -36,6 +36,8 @@ class Utauloid < ActiveRecord::Base
   accepts_nested_attributes_for :voice_languages, :allow_destroy => true
   accepts_nested_attributes_for :voicebank_types, :allow_destroy => true
 
+  validates :voice_languages, presence: true
+  validates :voicebank_types, presence: true
 
   has_many :favorite_utauloids
   has_many :favorited_by, through: :favorite_utauloids, source: :user
