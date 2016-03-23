@@ -75,21 +75,23 @@
 						<p><%= @utauloid.vb_last_update.strftime("%F") %></p>
 						<% end %>
 					</div>
+					<!--
 					<div class="odd">
 						<div class="utauloid-view-difficulty">
-							<h3 class='bright-pink'><%= "#{t('difficulty')}" %></h3>
+							<h3 class='bright-pink'><%#= "#{t('difficulty')}" %></h3>
 							<div id="utauloid-view-note">
-								<% if !@note.blank? %>
-									<%= render partial: 'difficulty_votes/partials/utauloid_difficulty_note', locals: {note: @note, count: @utauloid.difficulty_votes.count} %>
-								<% else %>
-									<p><%= t('utauloid_dont_have_vote') %></p>
-								<% end %>
+								<%# if !@note.blank? %>
+									<%#= render partial: 'difficulty_votes/partials/utauloid_difficulty_note', locals: {note: @note, count: @utauloid.difficulty_votes.count} %>
+								<%# else %>
+									<p><%#= t('utauloid_dont_have_vote') %></p>
+								<%# end %>
 							</div>
-							<% if user_signed_in? %>
-								<%= render partial: "difficulty_votes/partials/vote" %>
-							<% end %>
+							<%# if user_signed_in? %>
+								<%#= render partial: "difficulty_votes/partials/vote" %>
+							<%# end %>
 						</div>
 					</div>
+					-->
 				</div>
 			</div>
 		</div>
