@@ -89,6 +89,17 @@ a.disabled:active {
 	color: $bright-pink;
 }
 
+footer {
+	margin-top: 50px;
+	text-align: center;
+	background: transparent url("/assets/menu-bg-844205c1936ce3d1a7f0996e3893f277adf4488cdde4fac6325e2e33de13d4d3.png") repeat-x scroll 0 0 / auto 100%;
+	color: $white
+}
+
+.footer-content {
+	padding: 30px;
+}
+
 header {
 	z-index: 100;
 	position: fixed;
@@ -117,11 +128,17 @@ body {
 	color: $white !important;
 }
 
-header a {
+header a,
+footer a {
 	color: $white !important;
 }
 
-header a:hover, header a:active, header a:focus {
+header a:hover,
+header a:active,
+header a:focus,
+footer a:hover,
+footer a:active,
+footer a:focus {
 	color: $pink !important;
 	text-decoration: none;
 	background-color: rgba(0,0,0,0) !important;
@@ -250,7 +267,8 @@ header .dropdown-menu .btn {
 	display: none;
 }
 
-.search-top {
+.search-top,
+.grid-top {
   height: 80px;
   padding-top: 15px;
   text-align: center;
@@ -374,6 +392,10 @@ header .dropdown-menu .btn {
 .grid-item-content .grid-item-hover span.audio-preview {
 	color: $white;
 	cursor: pointer;
+  overflow: hidden;
+  word-wrap: break-word;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .grid-item-content .grid-item-hover a:hover,
