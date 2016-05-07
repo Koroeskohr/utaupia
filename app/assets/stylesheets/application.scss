@@ -3,23 +3,29 @@
 @import "bootstrap3-switch";
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 @import url(https://fonts.googleapis.com/css?family=Raleway:300);
+@import "font-awesome";
+
+@import "reset";
 
 $border-gray: #e9e8ed;
 $text-color: #516981;
 $text-color-dark: #385169;
 $text-color-light: #a4afba;
+$text-blue-light: #a3b1bf;
+$blue: #2f4052;
+$blue-dark: #293646;
 $green: #00bc9c;
 $green-border: #00b395;
 $green-hover: #01a98c;
 $green-hover-border: #01a387;
 $text-montserrat-default-letter-spacing: -0.5px;
 
-@mixin border-gray-bottom($size) {
-	border-bottom: $size $border-gray solid;
+@mixin border-bottom($size, $color) {
+	border-bottom: $size $color solid;
 }
 
-@mixin border-gray-top($size) {
-	border-top: $size $border-gray solid;
+@mixin border-top($size, $color) {
+	border-top: $size $color solid;
 }
 
 .btn,
@@ -28,6 +34,15 @@ input {
 	font-family: "Montserrat";
 	border-radius: 2px !important;
 	text-transform: uppercase !important;
+}
+
+a:not(.btn),
+a:not(.btn):hover,
+a:not(.btn):active,
+a:not(.btn):visited {
+	text-decoration: none;
+	border-bottom: 1px solid transparent;
+	transition: all 0.2s ease 0s;
 }
 
 .btn-white,
@@ -79,5 +94,9 @@ a.btn-white:hover {
 	max-height: 100%;
 }
 
-@import "reset";
 @import "header";
+@import "footer";
+
+/*
+TODO: Change btn-success hover color to match current green
+*/
