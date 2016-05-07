@@ -264,7 +264,9 @@ header .dropdown-menu .btn {
 	margin-bottom: 10px;
 }
 
-.search input[type=checkbox] {
+.search input[type=checkbox],
+#new_utauloid input[type=checkbox],
+.utauloid-edit > form input[type=checkbox] {
 	display: none;
 }
 
