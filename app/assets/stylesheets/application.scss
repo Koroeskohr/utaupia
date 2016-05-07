@@ -39,20 +39,26 @@ input {
 a:not(.btn),
 a:not(.btn):hover,
 a:not(.btn):active,
-a:not(.btn):visited {
+a:not(.btn):active:hover,
+a:not(.btn):active:focus,
+a:not(.btn):focus {
 	text-decoration: none;
 	border-bottom: 1px solid transparent;
 	transition: all 0.2s ease 0s;
 }
 
 .btn-white,
-.btn-white:visited,
-.btn-white:active,
 .btn-white:hover,
+.btn-white:active,
+.btn-white:active:hover,
+.btn-white:active:focus,
+.btn-white:focus,
 a.btn-white,
-a.btn-white:visited,
+a.btn-white:hover,
 a.btn-white:active,
-a.btn-white:hover {
+a.btn-white:active:hover,
+a.btn-white:active:focus,
+a.btn-white:focus {
 	color: white !important;
 }
 
@@ -61,7 +67,11 @@ a.btn-white:hover {
 	border-color: $green-border;
 }
 
-.btn-success:hover {
+.btn-success:hover,
+.btn-success:active,
+.btn-success:active:hover,
+.btn-success:active:focus,
+.btn-success:focus {
 	background-color: $green-hover;
 	border-color: $green-hover-border;
 }
@@ -96,7 +106,3 @@ a.btn-white:hover {
 
 @import "header";
 @import "footer";
-
-/*
-TODO: Change btn-success hover color to match current green
-*/

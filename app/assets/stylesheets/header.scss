@@ -6,17 +6,23 @@
 
 .main-header a,
 .main-header a:visited,
+.main-header a:hover,
 .main-header a:active,
-.main-header a:hover {
+.main-header a:active:hover,
+.main-header a:active:focus,
+.main-header a:focus {
 	color: $text-color;
 }
 
-.main-header a:not(.a-without-hover):hover {
+.main-header a:not(.btn):not(.a-without-hover):hover {
 	border-color: $text-color;
 }
 
+.main-header .main-header-nav-logo > a:hover,
 .main-header .main-header-nav-logo > a:active,
-.main-header .main-header-nav-logo > a:hover {
+.main-header .main-header-nav-logo > a:active:hover,
+.main-header .main-header-nav-logo > a:active:focus,
+.main-header .main-header-nav-logo > a:focus {
 	color: $text-color-dark;
 	text-decoration: none;
 }
