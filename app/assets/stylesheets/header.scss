@@ -1,0 +1,216 @@
+.main-header {
+	font-family: "Montserrat";
+	color: $text-color;
+	@include border-gray-bottom(1px);
+}
+
+.main-header a,
+.main-header a:visited,
+.main-header a:active,
+.main-header a:hover {
+	color: $text-color;
+}
+
+.main-header .main-header-nav-logo > a:active,
+.main-header .main-header-nav-logo > a:hover {
+	color: $text-color-dark;
+	text-decoration: none;
+}
+
+.main-header > .container,
+.main-header > .container .row {
+	height: 100%;
+}
+
+.main-header-nav {
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.main-header-nav > ul {
+	height: 100%;
+	display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.main-header-nav > ul > li {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	font-size: 15px;
+	letter-spacing: $text-montserrat-default-letter-spacing;
+}
+
+.main-header-nav > ul > li.main-header-nav-logo {
+	height: 100%;
+	font-weight: bold;
+	font-size: 55px;
+	letter-spacing: -4px;
+}
+
+.main-header-nav > ul > li:not(.main-header-nav-logo) {
+	text-transform: uppercase;
+}
+
+.main-header-account-dropdown {
+	left: auto;
+	right: 0;
+	width: 300px;
+	padding: 20px 10px;
+	border-radius: 0px;
+	border-color: $green;
+}
+
+.main-header-account-dropdown:after {
+	bottom: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(0, 0, 0, 0);
+	border-bottom-color: $green;
+	border-width: 10px;
+	margin-left: -10px;
+}
+
+.main-header-account-dropdown > div:not(.main-header-account-dropdown-formlogin) {
+	width: 50%;
+	float: left;
+	font-family: "Raleway";
+	text-transform: none;
+}
+
+.main-header-account .img-circle-container {
+	width: 50px;
+	height: 50px;
+}
+
+.main-header-account-dropdown > div > span {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.main-header-account-dropdown-username {
+	font-family: "Montserrat";
+}
+
+
+.main-header-account-dropdown-formlogin {
+	width: 100%;
+}
+
+.main-header-account-dropdown-formlogin form input {
+	font-family: "Raleway";
+	font-size: 11px;
+}
+
+.main-header-account-dropdown-formlogin form > .form-group {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 15px;
+}
+
+.main-header-account-dropdown-formlogin form > .form-group:not(.form-group-title) {
+	font-family: "Raleway";
+	text-transform: none;
+}
+
+.main-header-account-dropdown-formlogin form > .form-group:last-child {
+	@include border-gray-top(1px);
+	padding-top: 20px;
+}
+
+.main-header-account-dropdown-formlogin form > .form-group-submit > * {
+		width: 100%;
+}
+
+@media (max-width: $screen-xs-max) {
+	.main-header-nav {
+		display: block;
+		text-align: center;
+	}
+
+	.main-header-nav > ul {
+		display: inline-block;
+	}
+
+	.main-header-nav > ul,
+	.main-header-nav > ul > li:not(:last-child) {
+		margin-bottom: 10px;
+	}
+
+	.main-header-nav-dropdown,
+	.main-header-account-dropdown {
+		left: 50%;
+		right: auto;
+		transform: translateX(-50%);
+	}
+
+	.main-header-nav-dropdown {
+		top: 99%;
+	}
+
+	
+	.main-header-account-dropdown.account {
+		top: 122%;
+	}
+
+	.main-header-account-dropdown.login {
+		top: 175%;
+	}
+
+	.main-header-account-dropdown:after {
+		left: 50%;
+	}
+
+	.main-header-nav-dropdown {
+		border-radius: 0px;
+	}
+
+	.main-header-account .flex-row {
+		justify-content: center;
+	}
+}
+
+@media (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {
+	.main-header-nav > ul > li {
+		font-size: 10px;
+	}
+}
+
+@media (min-width: $screen-sm-min) {
+	.main-header {
+		height: 110px;
+	}
+
+	.main-header-nav > ul > li {
+		margin-right: 20px; 
+	}
+
+	.main-header-nav > ul > li.main-header-nav-logo {
+		margin-right: 50px;
+	}
+
+	.main-header-account .img-circle-container {
+		margin-left: 10px;
+	}
+
+	.main-header-account-dropdown.account {
+		top: 125%;
+	}
+
+	.main-header-account-dropdown.login {
+		top: 200%;
+	}
+
+	.main-header-account-dropdown:after {
+		left: 92%;
+	}
+}
