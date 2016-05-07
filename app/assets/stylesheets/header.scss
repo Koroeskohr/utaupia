@@ -1,7 +1,7 @@
 .main-header {
 	font-family: "Montserrat";
 	color: $text-color;
-	@include border-gray-bottom(1px);
+	@include border-bottom(1px, $border-gray);
 }
 
 .main-header a,
@@ -9,6 +9,10 @@
 .main-header a:active,
 .main-header a:hover {
 	color: $text-color;
+}
+
+.main-header a:not(.a-without-hover):hover {
+	border-color: $text-color;
 }
 
 .main-header .main-header-nav-logo > a:active,
@@ -123,7 +127,7 @@
 }
 
 .main-header-account-dropdown-formlogin form > .form-group:last-child {
-	@include border-gray-top(1px);
+	@include border-top(1px, $border-gray);
 	padding-top: 20px;
 }
 
