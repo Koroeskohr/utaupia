@@ -28,6 +28,10 @@ $text-montserrat-default-letter-spacing: -0.5px;
 	border-top: $size $color solid;
 }
 
+@mixin border-right($size, $color) {
+	border-right: $size $color solid;
+}
+
 .btn,
 a.btn,
 input {
@@ -106,3 +110,4 @@ a.btn-white:focus {
 
 @import "header";
 @import "footer";
+@import "showcase";

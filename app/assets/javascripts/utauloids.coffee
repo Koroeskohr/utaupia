@@ -61,10 +61,13 @@ $(document).on("page:change", ->
 )
 
 set_audio_preview_events = () ->
-	$("span[id^=audio_]")
+	$("div[id^=audio_]")
 		.on("click", () ->
-			$(this).toggleClass('played');
-			$(this).toggleClass('paused');
+			$(this).find('i.fa').toggleClass('fa-play-circle-o');
+			$(this).find('i.fa').toggleClass('fa-pause-circle-o');
+			if $(this).hasClass('showcase-utauloid-audio-preview-button')
+				$(this).toggleClass('showcase-utauloid-audio-preview-button-open');
+
 			pauseAllAudio($(this).attr('id'));
 			playAudio($(this).attr('id'));
 		)
@@ -74,9 +77,9 @@ pauseAllAudio = (audio_id) ->
 			this.pause();
 		)
 
-	$("span:not(#" + audio_id + "):not(.paused)").each( ->
-			$(this).toggleClass('played');
-			$(this).toggleClass('paused');
+	$("div[id^=audio_]:not(#" + audio_id + ") i.fa.fa-pause-circle-o").each( ->
+			$(this).toggleClass('fa-play-circle-o');
+			$(this).toggleClass('fa-pause-circle-o');
 		)
 
 playAudio = (audio_id) ->
