@@ -1,16 +1,20 @@
-<div class="search">
-	<div class="row">
-		<div class="col-sm-12 col-xs-12 search-top">
-			<%= t('find_an_utauloid') %>
+<div class="utauloid-list-search">
+	<div class="utauloid-list-search-form-container">
+		<div class="container">
+			<div class="row">
+				<div class="utauloid-list-search-title col-xs-12 col-sm-12">
+					<%= t('find_an_utauloid') %>
+				</div>
+			</div>
+			<% if params[:controller] == 'homepage' %>
+				<%= form_tag utauloids_path, :method => 'get', class: "utauloid-list-search-form", id: "utauloid-list-search-form" do %>
+					<%= render 'utauloids/partials/search_content' %>
+				<% end %>
+			<% else %>
+				<%= form_tag utauloids_path, :method => 'get', remote: true, class: "utauloid-list-search-form", id: "utauloid-list-search-form" do %>
+					<%= render 'utauloids/partials/search_content' %>
+				<% end %>
+			<% end %>
 		</div>
 	</div>
-	<% if params[:controller] == 'homepage' %>
-		<%= form_tag utauloids_path, :method => 'get', class: "form-horizontal", id: "search-form" do %>
-			<%= render 'utauloids/partials/search_content' %>
-		<% end %>
-	<% else %>
-		<%= form_tag utauloids_path, :method => 'get', remote: true, class: "form-horizontal", id: "search-form" do %>
-			<%= render 'utauloids/partials/search_content' %>
-		<% end %>
-	<% end %>
 </div>

@@ -33,6 +33,10 @@ $text-montserrat-default-letter-spacing: -0.5px;
 	border-right: $size $color solid;
 }
 
+@mixin border-left($size, $color) {
+	border-left: $size $color solid;
+}
+
 .btn,
 a.btn,
 input {
@@ -81,6 +85,20 @@ a.btn-white:focus {
 	border-color: $green-hover-border;
 }
 
+.btn-default {
+	color: $text-color;
+}
+
+.btn-default:hover,
+.btn-default:active,
+.btn-default:active:hover,
+.btn-default:active:focus,
+.btn-default:focus {
+	background-color: $text-color;
+	color: white;
+	border-color: $text-color-dark;
+}
+
 .form-control:focus {
 	border-color: $green;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset 0 0 8px rgba(0, 188, 156, 0.6);
@@ -98,6 +116,33 @@ a.btn-white:focus {
 	justify-content: center;
 }
 
+.flex-horizontal-center {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.flex-horizontal-center-wrap {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.flex-left-wrap {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
+
+.flex-left-nowrap {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	flex-wrap: nowrap;
+}
+
 .img-circle-container {
 	border-radius: 50%;
 	overflow: hidden;
@@ -112,3 +157,4 @@ a.btn-white:focus {
 @import "header";
 @import "footer";
 @import "showcase";
+@import "search_form";

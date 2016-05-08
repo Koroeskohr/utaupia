@@ -1,0 +1,118 @@
+.utauloid-list-search-form-container {
+	padding-top: 55px;
+	font-family: "Montserrat";
+	background-color: midnightblue;
+	color: white;
+}
+
+.utauloid-list-search-title {
+	margin-bottom: 55px;
+	font-size: 80px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.utauloid-list-search-form .flex-left-wrap,
+.utauloid-list-search-form .flex-left-nowrap {
+	width: 100%;
+}
+
+.utauloid-list-search-form .form-group {
+	margin-bottom: 0px;
+}
+
+.utauloid-list-search-form input[type=checkbox] {
+	display: none;
+}
+
+.utauloid-list-search-form label.btn {
+	margin-bottom: 20px;
+	padding: 15px 30px;
+	font-size: 12px;
+}
+
+.utauloid-list-search-form label.btn:not(:last-child) {
+	margin-right: 15px;
+}
+
+.utauloid-list-search-form-name,
+.utauloid-list-search-form-characteristics {
+	text-align: center;
+	letter-spacing: $text-montserrat-default-letter-spacing;
+}
+
+.utauloid-list-search-form-name {
+	margin-bottom: 50px;
+}
+
+.utauloid-list-search-form-name input {
+	height: 60px;
+}
+
+.utauloid-list-search-form-name-wrapper > i {
+	position: absolute;
+	top: 15px;
+	right: 30px;
+	font-size: 25px;
+	color: $text-color-light;
+}
+
+.utauloid-list-search-form-name-wrapper > input {
+	padding-right: 50px;
+}
+
+.utauloid-list-search-form-characteristics {
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+.utauloid-list-search-form-characteristics .utauloid-list-search-form-label {
+	margin-bottom: 30px;
+}
+
+.utauloid-list-search-form > .utauloid-list-search-form-inline {
+	margin-top: 30px;
+}
+
+.utauloid-list-search-form-inline-hidden .form-group {
+	padding-top: 30px;
+}
+
+.utauloid-list-search-form-inline > div:not(:last-child) {
+	@include border-right(1px, white);
+}
+
+.utauloid-list-search-form-inline .utauloid-list-search-form-inline-label {
+	padding-right: 15px;
+}
+
+.utauloid-list-search-form-inline .utauloid-list-search-form-label {
+	width: 100px;
+}
+
+.utauloid-list-search-form-inline label.btn {
+	padding: 10px 15px;
+}
+
+.utauloid-list-search-form-inline select {
+	margin-bottom: 15px;
+}
+
+.utauloid-list-search-form-inline-date-first,
+.utauloid-list-search-form-inline-date-first > .flex-left-nowrap,
+.utauloid-list-search-form-inline-date-second,
+.utauloid-list-search-form-inline-date-second > .flex-left-nowrap {
+	width: auto !important;
+}
+
+@media (max-width: $screen-xs-max) {
+	.utauloid-list-search-form-inline-date {
+		display: block;
+	}
+}
+
+@media (min-width: $screen-lg-min) {
+	.utauloid-list-search-form-inline-date-second {
+		margin-left: 30px;
+	}
+}

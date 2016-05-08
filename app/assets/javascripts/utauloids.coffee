@@ -92,7 +92,7 @@ playAudio = (audio_id) ->
 
 # search form
 $(document).on("page:change", ->
-	$("#search-form")
+	$("#utauloid-list-search-form")
 		.on("ajax:success", (e, xhr, status, error) ->
 			$('.grid').html(xhr);
 			set_audio_preview_events();
@@ -101,7 +101,7 @@ $(document).on("page:change", ->
 			console.log("Error while fetching the search results");
 		)
 
-	$("form[id=search-form] label.btn")
+	$("form[id=utauloid-list-search-form] label.btn")
 		.on("click", (e) ->
 			$(this).toggleClass('btn-default');
 			$(this).toggleClass('btn-success');

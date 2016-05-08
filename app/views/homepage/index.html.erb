@@ -2,10 +2,10 @@
 	<% if !@utauloid_showcase.blank? %>
 		<%= render 'utauloids/partials/showcase', utau: @utauloid_showcase %>
 	<% end %>
-	<div class="list">
+	<div class="utauloid-list">
 		<%= render 'utauloids/partials/search' %>
-		<div class="grid">
-			<div class="grid-top">
+		<div class="utauloid-list-grid">
+			<div class="utauloid-list-grid-top">
 				<h2><%= t('last_utauloids') %></h2>
 			</div>
 			<%= render 'utauloids/partials/list', utauloids: @utauloids %>
