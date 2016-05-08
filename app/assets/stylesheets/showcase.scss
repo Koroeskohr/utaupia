@@ -50,8 +50,8 @@
 	margin: 35px 20px;
 	padding-top: 15px;
 	padding-bottom: 15px;
-	@include border-top(1px, white);
-	@include border-bottom(1px, white);
+	@include border-top(1px, $border-white);
+	@include border-bottom(1px, $border-white);
 	color: white;
 }
 
@@ -107,7 +107,7 @@
 }
 
 .showcase-utauloid-content-infos-top > div {
-	@include border-bottom(1px, white);
+	@include border-bottom(1px, $border-white);
 }
 
 .showcase-utauloid-content-infos-top-name,
@@ -155,6 +155,6 @@
 
 @media (min-width: $screen-sm-min) {
 	.showcase-utauloid-content-infos-bottom > div:not(:last-child) {
-		@include border-right(1px, white);
+		@include border-right(1px, $border-white);
 	}
 }
