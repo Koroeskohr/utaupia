@@ -1,6 +1,8 @@
 .utauloid-list-search-form-container {
 	position: relative;
 	padding-top: 55px;
+	padding-bottom: 80px;
+	margin-bottom: 70px;
 	font-family: "Montserrat";
 	color: white;
 }
@@ -39,9 +41,9 @@
 
 .utauloid-list-search-title {
 	margin-bottom: 55px;
-	font-size: 80px;
 	text-transform: uppercase;
 	text-align: center;
+	word-wrap: break-word;
 }
 
 .utauloid-list-search-form .flex-left-wrap,
@@ -184,14 +186,28 @@
 	width: auto !important;
 }
 
+.utauloid-list-search-form-submit {
+	padding: 20px 20px 0 20px;
+}
+
 .utauloid-list-search-form-submit > input.btn {
 	width: 230px;
 	height: 65px;
 }
 
 @media (max-width: $screen-xs-max) {
+	.utauloid-list-search-title {
+		font-size: 60px;
+	}
+
 	.utauloid-list-search-form-inline-date {
 		display: block;
+	}
+}
+
+@media (min-width: $screen-sm-min) {
+	.utauloid-list-search-title {
+		font-size: 80px;
 	}
 }
 

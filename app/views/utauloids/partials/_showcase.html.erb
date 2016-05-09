@@ -28,11 +28,11 @@
 								<div class="row">
 									<div class="showcase-utauloid-content-infos-top col-xs-12 col-sm-12">
 										<div>
-											<h3 class="showcase-utauloid-content-infos-top-name"><%= link_to "#{utau.name} - #{utau.japanese_name}", utau %></h3>
+											<h3 class="showcase-utauloid-content-infos-top-name"><%= link_to "#{utau.name} - #{utau.japanese_name}", utau, title:"#{utau.name} - #{utau.japanese_name}" %></h3>
 											<span class="showcase-utauloid-content-infos-top-creator">
 												<%= t('created_by') %> -
 												<% if utau.creator_is_user && utau.creator.user_info.utauloids_are_showable %>
-													<%= link_to utau.creator.nickname, user_path(utau.creator) %>
+													<%= link_to utau.creator.nickname, user_path(utau.creator), title:utau.creator.nickname %>
 												<% elsif utau.creator_is_user && !utau.creator.user_info.utauloids_are_showable %>
 													<%= t('anonymous') %>
 												<% else %>
