@@ -1,8 +1,40 @@
 .utauloid-list-search-form-container {
+	position: relative;
 	padding-top: 55px;
 	font-family: "Montserrat";
-	background-color: midnightblue;
 	color: white;
+}
+
+.utauloid-list-search-form-container-background {
+  z-index: -1;
+  overflow: hidden;
+  display: block;
+	position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+	left: 0;
+  right: 0;
+  background-color: $blue-dark;
+}
+
+.utauloid-list-search-form-container-background-image {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	        transform: translateX(-50%);
+	min-width: 1917px;
+	width: 100%;
+	height: 100%;
+	background-image: url('search_bg.jpg');
+	background-attachment: scroll;
+	background-blend-mode: multiply;
+	background-clip: border-box;
+	background-origin: padding-box;
+	background-position: top center;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 .utauloid-list-search-title {
@@ -33,6 +65,10 @@
 
 .utauloid-list-search-form label.btn:not(:last-child) {
 	margin-right: 15px;
+}
+
+.utauloid-list-search-form-label {
+	text-transform: uppercase;
 }
 
 .utauloid-list-search-form-name,
@@ -74,6 +110,31 @@
 	margin-top: 30px;
 }
 
+.utauloid-list-search-form-hidden-button,
+.utauloid-list-search-form-submit {
+	text-align: center;
+	padding: 20px;
+}
+
+#utauloid-list-search-form-hidden-button {
+	cursor: pointer;
+}
+
+#utauloid-list-search-form-hidden-button > i {
+	margin-left: 10px;
+}
+
+#utauloid-list-search-form-hidden {
+	display: block;
+	max-height: 0px;
+	overflow: hidden;
+	transition: max-height 0.5s ease 0s;
+}
+
+#utauloid-list-search-form-hidden.utauloid-list-search-form-hidden-open {
+	max-height: 1000px;
+}
+
 .utauloid-list-search-form-inline-hidden .form-group {
 	padding-top: 30px;
 }
@@ -103,6 +164,11 @@
 .utauloid-list-search-form-inline-date-second,
 .utauloid-list-search-form-inline-date-second > .flex-left-nowrap {
 	width: auto !important;
+}
+
+.utauloid-list-search-form-submit > input.btn {
+	width: 230px;
+	height: 65px;
 }
 
 @media (max-width: $screen-xs-max) {

@@ -36,6 +36,7 @@ en:
   has_no_notifications: 'You have 0 notifications.'
   menu: 'Menu'
   name: 'Name'
+  more_filters: 'More filters'
   note_this_utauloid: 'Note the difficulty'
   notif_when_utauloid_commented: 'Receive a notification when someone posts a comment on one of your UTAUloids'
   notif_when_utauloid_faved: 'Receive a notification when someone favorites one of your UTAUloids'

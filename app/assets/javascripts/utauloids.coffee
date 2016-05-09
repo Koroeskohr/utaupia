@@ -92,6 +92,12 @@ playAudio = (audio_id) ->
 
 # search form
 $(document).on("page:change", ->
+	$("#utauloid-list-search-form-hidden-button")
+		.on("click", (e) ->
+			$("#utauloid-list-search-form-hidden").toggleClass("utauloid-list-search-form-hidden-open");
+			$(this).find("i.fa").toggleClass("fa-chevron-down").toggleClass("fa-chevron-up");
+		)
+
 	$("#utauloid-list-search-form")
 		.on("ajax:success", (e, xhr, status, error) ->
 			$('.grid').html(xhr);

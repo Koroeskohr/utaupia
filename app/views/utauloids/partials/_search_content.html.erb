@@ -77,7 +77,18 @@
 		</div>
 	</div>
 </div>
-<div class="utauloid-list-search-form-hidden">
+
+<% if !params[:voicebank_type].nil? || !params[:group].nil? || !params[:release_date].nil? || !params[:update_date].nil? || !params[:creator_name].nil? %>
+<div class="utauloid-list-search-form-hidden-button">
+	<span id="utauloid-list-search-form-hidden-button"><%= t('more_filters') %><%= fa_icon "chevron-up" %></span>
+</div>
+<div id="utauloid-list-search-form-hidden" class="utauloid-list-search-form-hidden-open">
+<% else %>
+<div class="utauloid-list-search-form-hidden-button">
+	<span id="utauloid-list-search-form-hidden-button"><%= t('more_filters') %><%= fa_icon "chevron-down" %></span>
+</div>
+<div id="utauloid-list-search-form-hidden">
+<% end %>
 	<div class="row utauloid-list-search-form-inline">
 		<div class="col-xs-12 col-sm-6">
 			<div class="form-group">
@@ -177,5 +188,6 @@
 	</div>
 </div>
 
-<br><br><br><br><br>
-<%= submit_tag "Search", class: "btn btn-default" %>
+<div class="utauloid-list-search-form-submit">
+	<%= submit_tag "Search", class: "btn btn-success" %>
+</div>
