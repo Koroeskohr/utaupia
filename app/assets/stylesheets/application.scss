@@ -9,6 +9,7 @@
 
 $border-gray: #e9e8ed;
 $border-white: rgba(255, 255, 255, 0.5);
+$background-green: rgba(0, 188, 166, 0.7);
 $text-color: #516981;
 $text-color-dark: #385169;
 $text-color-light: #a4afba;
@@ -129,6 +130,13 @@ a.btn-white:focus {
 	flex-wrap: wrap;
 }
 
+.flex-horizontal-space-between-wrap {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
 .flex-left-wrap {
 	display: flex;
 	flex-direction: row;
@@ -154,7 +162,12 @@ a.btn-white:focus {
 	max-height: 100%;
 }
 
+.main-container {
+	margin-bottom: 60px;
+}
+
 @import "header";
 @import "footer";
 @import "showcase";
 @import "search_form";
+@import "grid";

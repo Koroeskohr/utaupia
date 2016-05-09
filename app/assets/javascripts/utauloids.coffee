@@ -100,7 +100,7 @@ $(document).on("page:change", ->
 
 	$("#utauloid-list-search-form")
 		.on("ajax:success", (e, xhr, status, error) ->
-			$('.grid').html(xhr);
+			$('#utauloid-list-grid-items').html(xhr);
 			set_audio_preview_events();
 		)
 		.on("ajax:error", (e, xhr, status, error) ->

@@ -1,6 +1,7 @@
 en:
   about: 'About us'
   account: 'Account'
+  all_utauloids: 'All UTAUloids'
   audio_preview: 'Audio preview'
   audio_preview_max_filesize: "Your file can't exceed 1000kb."
   anonymous: 'Anonymous'
@@ -29,7 +30,7 @@ en:
   japanese_name: 'Japanese name'
   language: 'Language'
   last_update: 'Last Update'
-  last_utauloids: 'Last utauloids'
+  last_utauloids: 'Latest UTAUloids'
   login: 'Login'
   news: 'News'
   has_notifications: 'You have %{number} unseen messages.'
@@ -48,6 +49,7 @@ en:
   search_advanced: 'Advanced options'
   search_name_placeholder: 'Search an UTAUloid name'
   search_creator_name_placeholder: "Search with creator's name"
+  see_all_utauloids: 'See all UTAUloids'
   showcase_listen_preview: 'Listen to a preview:'
   sign_out: 'Sign out'
   sign_up: 'Sign up'
