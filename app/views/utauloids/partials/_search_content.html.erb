@@ -120,11 +120,14 @@
 					</div>
 					<div>
 						<div class="flex-left-wrap">
-							<% if params[:group].nil? %>
-								<%= select_tag :group, options_from_collection_for_select(Category.order(:name), :id, :name), { include_blank: 'None', class: "form-control" } %>
-							<% else %>
-								<%= select_tag :group, options_from_collection_for_select(Category.order(:name), :id, :name, params[:group]), { include_blank: 'None', class: "form-control" } %>
-							<% end %>
+							<div class="select-container">
+								<%= fa_icon "chevron-down" %>
+								<% if params[:group].nil? %>
+									<%= select_tag :group, options_from_collection_for_select(Category.order(:name), :id, :name), { include_blank: 'None', class: "form-control" } %>
+								<% else %>
+									<%= select_tag :group, options_from_collection_for_select(Category.order(:name), :id, :name, params[:group]), { include_blank: 'None', class: "form-control" } %>
+								<% end %>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -144,11 +147,14 @@
 						</div>
 						<div>
 							<div class="flex-left-wrap">
-								<% if params[:release_date].nil? %>
-										<%= select_tag :release_date, options_from_collection_for_select(get_search_date_options, :first, :last), { include_blank: 'None', class: "form-control" } %>
-								<% else %>
-										<%= select_tag :release_date, options_from_collection_for_select(get_search_date_options, :first, :last, params[:release_date]), { include_blank: 'None', class: "form-control" } %>
-								<% end %>
+								<div class="select-container">
+									<%= fa_icon "chevron-down" %>
+									<% if params[:release_date].nil? %>
+											<%= select_tag :release_date, options_from_collection_for_select(get_search_date_options, :first, :last), { include_blank: 'None', class: "form-control" } %>
+									<% else %>
+											<%= select_tag :release_date, options_from_collection_for_select(get_search_date_options, :first, :last, params[:release_date]), { include_blank: 'None', class: "form-control" } %>
+									<% end %>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -160,11 +166,14 @@
 						</div>
 						<div>
 							<div class="flex-left-wrap">
-								<% if params[:update_date].nil? %>
-										<%= select_tag :update_date, options_from_collection_for_select(get_search_date_options, :first, :last), { include_blank: 'None', class: "form-control" } %>
-								<% else %>
-										<%= select_tag :update_date, options_from_collection_for_select(get_search_date_options, :first, :last, params[:update_date]), { include_blank: 'None', class: "form-control" } %>
-								<% end %>
+								<div class="select-container">
+									<%= fa_icon "chevron-down" %>
+									<% if params[:update_date].nil? %>
+											<%= select_tag :update_date, options_from_collection_for_select(get_search_date_options, :first, :last), { include_blank: 'none', class: "form-control" } %>
+									<% else %>
+											<%= select_tag :update_date, options_from_collection_for_select(get_search_date_options, :first, :last, params[:update_date]), { include_blank: 'None', class: "form-control" } %>
+									<% end %>
+								</div>
 							</div>
 						</div>
 					</div>
