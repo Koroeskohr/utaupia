@@ -10,7 +10,9 @@
 <body>
 <%= render 'shared/header' %>
 <div class="main-container">
+	<% if !flash.blank? %>
   <%= render 'shared/flashes' %>
+	<% end %>
 	<%= yield %>
 </div>
 <%= render 'shared/footer' %>
