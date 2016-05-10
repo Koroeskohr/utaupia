@@ -6,7 +6,7 @@
 $(document).on("page:change", ->
 	$("a.favorites")
 		.on("ajax:success", (e, xhr, status, error) ->
-			$("a.favorites").toggleClass("none");
+			$("a.favorites").toggleClass("favorites-hidden");
 		)
 		.on("ajax:error", (e, xhr, status, error) ->
 			console.log("error while faving the utauloid");

@@ -2,10 +2,14 @@
 	position: relative;
 }
 
-.showcase-utauloid-content-infos-top-edit-link,
+.showcase-utauloid-content-infos-top-links,
 .utauloid-show-comments-list-item-edit-link {
 	display: block;
 	margin-bottom: 10px;
+}
+
+.showcase-utauloid-content-infos-top-links > a {
+	margin-left: 10px;
 }
 
 .utauloid-show-voicebanks-list-title,
@@ -130,7 +134,7 @@
 }
 
 @media (min-width: $screen-sm-min) {
-	.showcase-utauloid-content-infos-top-edit-link,
+	.showcase-utauloid-content-infos-top-links,
 	.utauloid-show-comments-list-item-edit-link {
 		float: right;
 	}
