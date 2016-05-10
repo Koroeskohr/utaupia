@@ -34,4 +34,9 @@ class ApplicationController < ActionController::Base
     redirect_to utauloids_path, :flash => { :error => message }
   end
 
+  def redirect_to(options = {}, response_status = {})
+    ::Rails.logger.error("Redirected by #{caller(1).first rescue "unknown"}")
+    super(options, response_status)
+  end
+
 end
