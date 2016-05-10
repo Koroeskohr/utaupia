@@ -63,6 +63,9 @@ $(document).on("page:change", ->
 set_audio_preview_events = () ->
 	$("audio")
 		.on("ended", () ->
+			if $("div#" + $(this).attr("id")).hasClass('showcase-utauloid-audio-preview-button-open')
+				$("div#" + $(this).attr("id")).removeClass('showcase-utauloid-audio-preview-button-open');
+
 			$("div#" + $(this).attr("id")).find("i.fa").toggleClass('fa-play-circle-o').toggleClass('fa-pause-circle-o');
 		)
 	$("div[id^=audio_]")
