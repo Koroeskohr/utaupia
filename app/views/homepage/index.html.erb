@@ -1,6 +1,6 @@
 <div class="homepage">
 	<% if !@utauloid_showcase.blank? %>
-		<%= render 'utauloids/partials/showcase', utau: @utauloid_showcase %>
+		<%= render 'utauloids/partials/showcase', utau: @utauloid_showcase, on_homepage: true; %>
 	<% end %>
 	<div class="utauloid-list">
 		<%= render 'utauloids/partials/search' %>
