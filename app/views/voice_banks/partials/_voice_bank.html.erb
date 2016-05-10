@@ -8,7 +8,7 @@
 		<%= link_to voice_bank.name, voice_bank.download_link.to_s %>
 	</div>
   
-  <% if current_user.id == utau.creator_id && utau.creator_is_user == true %>
+  <% if !current_user.blank? && current_user.id == utau.creator_id && utau.creator_is_user == true %>
   <div class="utauloid-show-voicebanks-list-item-links">
 		<%= link_to t('edit'), edit_voice_bank_path(voice_bank) if voice_bank.utauloid.creator == current_user %>
 		<%= link_to t('delete'), voice_bank_path(voice_bank), method: 'delete' if voice_bank.utauloid.creator == current_user %>

@@ -42,7 +42,7 @@
 									<div class="showcase-utauloid-content-infos-top col-xs-12 col-sm-12">
 										<div>
 											<h3 class="showcase-utauloid-content-infos-top-name"><%= link_to "#{utau.name} - #{utau.japanese_name}", utau, title:"#{utau.name} - #{utau.japanese_name}" %></h3>
-											<% if !on_homepage && current_user.id == utau.creator_id && utau.creator_is_user == true %>
+											<% if !on_homepage && !current_user.blank? && current_user.id == utau.creator_id && utau.creator_is_user == true %>
 											<%= link_to t('edit'),  edit_utauloid_path(utau), title: t('edit'), class: "showcase-utauloid-content-infos-top-edit-link" %>
 											<% end %>
 											<span class="showcase-utauloid-content-infos-top-creator">

@@ -2,7 +2,7 @@
 	<div class="utauloid-show-voicebanks-list-title">
 		<h2><%= t('voicebank') %></h2>
 	</div>
-	<% if current_user.id == utau.creator_id && utau.creator_is_user == true %>
+	<% if !current_user.blank? && current_user.id == utau.creator_id && utau.creator_is_user == true %>
 	<div class="utauloid-show-voicebanks-list-add-link">
 		<%= link_to t('add'), new_voice_bank_path(utau) %>
 	</div>
