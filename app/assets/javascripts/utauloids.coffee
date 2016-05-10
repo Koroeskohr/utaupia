@@ -61,6 +61,10 @@ $(document).on("page:change", ->
 )
 
 set_audio_preview_events = () ->
+	$("audio")
+		.on("ended", () ->
+			$("div#" + $(this).attr("id")).find("i.fa").toggleClass('fa-play-circle-o').toggleClass('fa-pause-circle-o');
+		)
 	$("div[id^=audio_]")
 		.on("click", () ->
 			$(this).find('i.fa').toggleClass('fa-play-circle-o');
