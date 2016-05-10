@@ -15,7 +15,7 @@ class UserInfo < ActiveRecord::Base
 		:url => "/users/:attachment/:hash_:style.:extension",
 		:hash_secret => RANDOM_SECRET,
 		styles: {
-			medium: "100x",
+			medium: "280x280#",
 			thumb: "100x100#" },
 		:convert_options => {
 			:medium => "-quality 80",
