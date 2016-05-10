@@ -27,7 +27,7 @@ $(document).on("page:update", ->
 set_comments_events = () ->
 	$("a[id^=edit_comment_]")
 		.on("ajax:success", (e, data, status, xhr) ->
-			parent_id = $(this).closest('.comment-item').attr('id');
+			parent_id = $(this).closest('.utauloid-show-comments-list-item').attr('id');
 			console.log(xhr);
 			$('#' + parent_id).html(xhr.responseText);
 
