@@ -1,9 +1,17 @@
-<div class="voice-bank">
-  <h4><%= voice_bank.name %></h4>
+<div class="utauloid-show-voicebanks-list-item">
   <% if voice_bank.is_append %>
+  <div class="utauloid-show-voicebanks-list-item-append">
   	<span class="is-append"><%= t('voicebank_is_append') %></span>
+  </div>
   <% end %>
- 	<%= link_to t('download'), voice_bank.download_link.to_s %>
-  <%= link_to t('edit'), edit_voice_bank_path(voice_bank) if voice_bank.utauloid.creator == current_user %>
-  <%= link_to t('delete'), voice_bank_path(voice_bank), method: 'delete' if voice_bank.utauloid.creator == current_user %>
+  <div class="utauloid-show-voicebanks-list-item-download">
+		<%= link_to voice_bank.name, voice_bank.download_link.to_s %>
+	</div>
+  
+  <% if current_user.id == utau.creator_id && utau.creator_is_user == true %>
+  <div class="utauloid-show-voicebanks-list-item-links">
+		<%= link_to t('edit'), edit_voice_bank_path(voice_bank) if voice_bank.utauloid.creator == current_user %>
+		<%= link_to t('delete'), voice_bank_path(voice_bank), method: 'delete' if voice_bank.utauloid.creator == current_user %>
+	</div>
+	<% end %>
 </div>

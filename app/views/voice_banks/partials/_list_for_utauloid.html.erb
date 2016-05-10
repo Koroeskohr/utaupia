@@ -1,7 +1,15 @@
-<div class="voicebank-list">
-	<% utauloid.voice_banks.each do |vb| %>
+<div class="utauloid-show-voicebanks-list">
+	<div class="utauloid-show-voicebanks-list-title">
+		<h2><%= t('voicebank') %></h2>
+	</div>
+	<% if current_user.id == utau.creator_id && utau.creator_is_user == true %>
+	<div class="utauloid-show-voicebanks-list-add-link">
+		<%= link_to t('add'), new_voice_bank_path(utau) %>
+	</div>
+	<% end %>
+	<% voice_banks.each do |vb| %>
 	  <% if !vb.new_record? %>
-	    <%= render partial: 'voice_banks/partials/voice_bank', locals: { voice_bank: vb } %>
+	    <%= render partial: 'voice_banks/partials/voice_bank', locals: { utau: utau, voice_bank: vb } %>
 	  <% end %>
 	<% end %>
 </div>

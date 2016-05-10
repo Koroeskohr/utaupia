@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="col-xs-12 col-sm-3">
 			<div class="utauloid-show-voicebanks">
-				
+				<%= render partial: "voice_banks/partials/list_for_utauloid", locals: { utau: @utauloid, voice_banks: @voice_banks } %>
 			</div>
 		</div>
 

@@ -4,6 +4,7 @@ class VoiceBanksController < ApplicationController
   def new
     @utauloid = Utauloid.friendly.find(params[:utauloid_id])
     return redirect_to :root_path if @utauloid.creator != current_user
+    @voice_banks = @utauloid.voice_banks.order(is_append: :asc)
     @voice_bank = @utauloid.voice_banks.new
   end
 

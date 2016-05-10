@@ -8,13 +8,49 @@
 	margin-bottom: 10px;
 }
 
-
+.utauloid-show-voicebanks-list-title,
 .utauloid-show-comments-title {
 	margin-bottom: 40px;
 	font-family: "Montserrat";
 	font-size: 32px;
 	text-transform: uppercase;
 	color: $text-color;
+}
+
+.utauloid-show-voicebanks-list-title,
+.utauloid-show-comments-title {
+	@include border-bottom(1px, $text-color);
+	word-wrap: break-word;
+}
+
+.utauloid-show-voicebanks-list-add-link {
+	margin-bottom: 20px;
+}
+
+.utauloid-show-voicebanks-list .utauloid-show-voicebanks-list-item-download a,
+.utauloid-show-voicebanks-list .utauloid-show-voicebanks-list-item-download a:visited,
+.utauloid-show-voicebanks-list .utauloid-show-voicebanks-list-item-download a:hover,
+.utauloid-show-voicebanks-list .utauloid-show-voicebanks-list-item-download a:active,
+.utauloid-show-voicebanks-list .utauloid-show-voicebanks-list-item-download a:active:hover,
+.utauloid-show-voicebanks-list .utauloid-show-voicebanks-list-item-download a:active:focus,
+.utauloid-show-voicebanks-list .utauloid-show-voicebanks-list-item-download a:focus {
+	font-family: "Raleway";
+	font-color: $text-blue-light;
+}
+
+.utauloid-show-voicebanks-list-item {
+	margin-bottom: 20px;
+	font-size: 14px;
+	color: $text-blue-light;
+}
+
+.utauloid-show-voicebanks-list-item-append,
+.utauloid-show-voicebanks-list-item-download {
+	display: inline-block;
+}
+
+.utauloid-show-voicebanks-list-item-append {
+	margin-right: 5px;
 }
 
 #new_utauloid_comment {
@@ -53,7 +89,15 @@
 .utauloid-show-comments-list-item a:active,
 .utauloid-show-comments-list-item a:active:hover,
 .utauloid-show-comments-list-item a:active:focus,
-.utauloid-show-comments-list-item a:focus {
+.utauloid-show-comments-list-item a:focus,
+.utauloid-show-voicebanks-list a,
+.utauloid-show-voicebanks-list a:visited,
+.utauloid-show-voicebanks-list a:hover,
+.utauloid-show-voicebanks-list a:active,
+.utauloid-show-voicebanks-list a:active:hover,
+.utauloid-show-voicebanks-list a:active:focus,
+.utauloid-show-voicebanks-list a:focus {
+	font-family: "Montserrat";
 	color: $text-color;
 }
 
@@ -61,17 +105,19 @@
 .utauloid-show-comments-list-item a:active,
 .utauloid-show-comments-list-item a:active:hover,
 .utauloid-show-comments-list-item a:active:focus,
-.utauloid-show-comments-list-item a:focus {
+.utauloid-show-comments-list-item a:focus,
+.utauloid-show-voicebanks-list a:visited,
+.utauloid-show-voicebanks-list a:hover,
+.utauloid-show-voicebanks-list a:active,
+.utauloid-show-voicebanks-list a:active:hover,
+.utauloid-show-voicebanks-list a:active:focus,
+.utauloid-show-voicebanks-list a:focus {
 	@include border-bottom(1px, $text-color);
 }
 
 .utauloid-show-comments-list-item-date {
 	margin-bottom: 10px;
 	color: $text-blue-light;
-}
-
-.utauloid-show-comments-list-item-edit-link {
-	font-family: "Montserrat";
 }
 
 .utauloid-show-comments-list-item-content {

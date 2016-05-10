@@ -1,6 +1,7 @@
 en:
   about: 'About us'
   account: 'Account'
+  add: 'Add'
   add_comment: 'Add your comment...'
   all_utauloids: 'All UTAUloids'
   audio_preview: 'Audio preview'
@@ -73,6 +74,7 @@ en:
   user_utauloids: "User's UTAUloids"
   vocadb_url: 'VocaDB URL'
   voice_characterisation: 'Voice Characterisation'
+  voicebank: 'Voicebank'
   voicebank_add: 'Add voice bank'
   voicebank_is_append: 'Append'
   voicebanks: 'Voice banks'
