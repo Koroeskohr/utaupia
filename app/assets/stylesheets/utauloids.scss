@@ -53,11 +53,12 @@
 	margin-right: 5px;
 }
 
-#new_utauloid_comment {
+.new_utauloid_comment {
 	margin-bottom: 20px;
 }
 
-#new_utauloid_comment > input {
+.new_utauloid_comment > input,
+.add-comment-not-loged {
 	margin-bottom: 10px;
 }
 

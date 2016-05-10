@@ -13,9 +13,7 @@
 				<div class="utauloid-show-comments-title">
 					<h2><%= t('comments') %></h2>
 				</div>
-				<% if current_user %>
-					<%= render partial: "utauloid_comments/partials/new" %>
-				<% end %>
+				<%= render partial: "utauloid_comments/partials/new" %>
 				<div id="comments_list" class="utauloid-show-comments-list">
 				<% if !@comments.blank? %>
 					<% @comments.each do |c| %>

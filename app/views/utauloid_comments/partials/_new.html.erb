@@ -1,5 +1,12 @@
-<%= form_for @comment do |form| %>
-	<%= form.text_field :message, class: 'form-control', placeholder: "#{t('add_comment')}#{current_user.blank? ? t('login_to_comment') : ''}", required: true %>
-	<%= form.hidden_field :utauloid_id %>
-  <%= form.submit "Submit your comment", class: 'btn btn-success' %>
+<% if current_user %>
+	<%= form_for @comment do |form| %>
+		<%= form.text_field :message, class: 'form-control', placeholder: t('add_comment'), required: true %>
+		<%= form.hidden_field :utauloid_id %>
+	  <%= form.submit "Submit your comment", class: 'btn btn-success' %>
+	<% end %>
+<% else %>
+<form class="new_utauloid_comment" method="get" action="/login">
+	<%= text_field_tag '', nil, class: "form-control", placeholder: "#{t('add_comment')} #{t('login_to_comment')}" %>
+	<input class="btn btn-success" type="submit" value="Submit your comment" name="commit">
+</form>
 <% end %>
