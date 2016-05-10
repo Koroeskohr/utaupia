@@ -12,6 +12,7 @@
 		    <%= render "user_infos/partials/edit_user_infos", form: builder %>
 		  <% end %>
 	  </div>
+		<%= link_to "Permanently delete my account", user_path(current_user.id), method: :delete, data: { confirm: "Are you sure? This is permanent and you wont ever be able to login with that account." } %>
 	  <%= form.submit t('edit'), class: 'btn btn-success' %>
 	  <%= link_to t('cancel'), account_path, class: 'btn btn-warning' %>
 	<% end %>
