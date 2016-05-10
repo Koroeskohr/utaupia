@@ -1,21 +1,33 @@
 <div class="utauloid-show">
 	<%= render 'utauloids/partials/showcase', utau: @utauloid, on_homepage: false; %>
 
-	
-	<div class="">
-		<h2><%= t('comments') %></h2>
-			<div id="comments_list">
-			<% if !@comments.blank? %>
-				<% @comments.each do |c| %>
-					<% if !c.message.blank? %>
-						<%= render partial: "utauloid_comments/partials/list_item", locals: { comment: c } %>
+	<div class="container">
+		<div class="col-xs-12 col-sm-3">
+			<div class="utauloid-show-voicebanks">
+				
+			</div>
+		</div>
+
+		<div class="col-xs-12 col-sm-9">
+			<div class="utauloid-show-comments">
+				<div class="utauloid-show-comments-title">
+					<h2><%= t('comments') %></h2>
+				</div>
+				<% if current_user %>
+					<%= render partial: "utauloid_comments/partials/new" %>
+				<% end %>
+				<div id="comments_list" class="utauloid-show-comments-list">
+				<% if !@comments.blank? %>
+					<% @comments.each do |c| %>
+						<% if !c.message.blank? %>
+							<%= render partial: "utauloid_comments/partials/list_item", locals: { comment: c } %>
+						<% end %>
 					<% end %>
 				<% end %>
-			<% end %>
+				</div>
 			</div>
-			<% if current_user %>
-				<%= render partial: "utauloid_comments/partials/new" %>
-			<% end %>
 		</div>
+
 	</div>
+
 </div>

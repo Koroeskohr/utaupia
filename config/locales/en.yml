@@ -1,6 +1,7 @@
 en:
   about: 'About us'
   account: 'Account'
+  add_comment: 'Add your comment...'
   all_utauloids: 'All UTAUloids'
   audio_preview: 'Audio preview'
   audio_preview_max_filesize: "Your file can't exceed 1000kb."
@@ -32,6 +33,7 @@ en:
   last_update: 'Last Update'
   last_utauloids: 'Latest UTAUloids'
   login: 'Login'
+  login_to_comment: 'Log in to add a comment'
   news: 'News'
   has_notifications: 'You have %{number} unseen messages.'
   has_no_notifications: 'You have 0 notifications.'

@@ -1,6 +1,5 @@
-<%= form_for @comment, html: {class: 'form-comment'} do |form| %>
-	<%= form.label 'Add a comment' %>
-	<%= form.text_field :message, class: 'form-control', required: true %>
+<%= form_for @comment do |form| %>
+	<%= form.text_field :message, class: 'form-control', placeholder: "#{t('add_comment')}#{current_user.blank? ? t('login_to_comment') : ''}", required: true %>
 	<%= form.hidden_field :utauloid_id %>
   <%= form.submit "Submit your comment", class: 'btn btn-success' %>
 <% end %>

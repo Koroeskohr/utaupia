@@ -1,3 +1,86 @@
 .utauloid-show .showcase-utauloid-content {
 	position: relative;
 }
+
+.showcase-utauloid-content-infos-top-edit-link,
+.utauloid-show-comments-list-item-edit-link {
+	display: block;
+	margin-bottom: 10px;
+}
+
+
+.utauloid-show-comments-title {
+	margin-bottom: 40px;
+	font-family: "Montserrat";
+	font-size: 32px;
+	text-transform: uppercase;
+	color: $text-color;
+}
+
+#new_utauloid_comment {
+	margin-bottom: 20px;
+}
+
+#new_utauloid_comment > input {
+	margin-bottom: 10px;
+}
+
+#utauloid_comment_message {
+	font-size: 12px;
+}
+
+.utauloid-show-comments-list-item {
+	margin-bottom: 20px;
+	padding: 10px;
+	font-size: 14px;
+	color: $text-color;
+	border: 1px solid $blue;
+}
+
+.utauloid-show-comments-list-item-user,
+.utauloid-show-comments-list-item-date, {
+	font-family: "Montserrat";
+}
+
+.utauloid-show-comments-list-item-user {
+	text-transform: uppercase;
+	margin-bottom: 5px;
+}
+
+.utauloid-show-comments-list-item a,
+.utauloid-show-comments-list-item a:visited,
+.utauloid-show-comments-list-item a:hover,
+.utauloid-show-comments-list-item a:active,
+.utauloid-show-comments-list-item a:active:hover,
+.utauloid-show-comments-list-item a:active:focus,
+.utauloid-show-comments-list-item a:focus {
+	color: $text-color;
+}
+
+.utauloid-show-comments-list-item a:hover,
+.utauloid-show-comments-list-item a:active,
+.utauloid-show-comments-list-item a:active:hover,
+.utauloid-show-comments-list-item a:active:focus,
+.utauloid-show-comments-list-item a:focus {
+	@include border-bottom(1px, $text-color);
+}
+
+.utauloid-show-comments-list-item-date {
+	margin-bottom: 10px;
+	color: $text-blue-light;
+}
+
+.utauloid-show-comments-list-item-edit-link {
+	font-family: "Montserrat";
+}
+
+.utauloid-show-comments-list-item-content {
+	font-family: "Raleway";
+}
+
+@media (min-width: $screen-sm-min) {
+	.showcase-utauloid-content-infos-top-edit-link,
+	.utauloid-show-comments-list-item-edit-link {
+		float: right;
+	}
+}
