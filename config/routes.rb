@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
+  root to: 'homepage#index', as: 'root_path'
+
+  get '/terms-and-conditions', to: 'static_pages#tos', as: 'terms_and_conditions'
 
   ActiveAdmin.routes(self)
 
   # removes the users namespace to the sign_in and sign_out actions, and renaming them as login and logout
-  devise_for :users, :path => '', :path_names => { sign_in: 'login', 
-                                                   sign_out: 'logout', 
-                                                   edit: 'account/edit' }
+  devise_for :users, 
+    :path => '', 
+    :path_names => { sign_in: 'login', 
+                     sign_out: 'logout', 
+                     edit: 'account/edit' }
 
   resources :users, only: [:show, :index, :destroy, :edit, :update]
   resources :users do
@@ -27,7 +32,6 @@ Rails.application.routes.draw do
   post '/account/user_links/create', to: 'user_links#create', as: 'user_links'
   match '/account/user_links/:id', to: 'user_links#update', as: 'user_link', via: [:patch, :put, :delete]
 
-  root to: 'homepage#index', as: 'root_path'
 
   resources :utauloids do
     get 'report', on: :member
