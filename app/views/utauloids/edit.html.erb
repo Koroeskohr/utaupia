@@ -77,19 +77,28 @@
 		<div class="form-group">
 			<%= f.label :voice_language_ids, t('language'), class: 'col-sm-2 col-xs-12' %>
 			<div class="col-sm-9 col-xs-12">
-				<%= f.collection_check_boxes :voice_language_ids, VoiceLanguage.order(:name), :id, :name, {}, class: 'checkbox-inline' %>
+				<% VoiceLanguage.order(:name).each_with_index do |vl, i| %>
+				  	<%= label_tag vl.name, nil, id: "utauloid_voice_language_ids_#{vl.id}", class: @utauloid.voice_language_ids.include?(vl.id) ? "btn btn-success" : "btn btn-default" %>
+				  	<%= check_box_tag "utauloid[voice_language_ids][]", vl.id, @utauloid.voice_language_ids.include?(vl.id) ? true : false, id: "utauloid_voice_language_ids_#{vl.id}", class: "" %>
+				<% end %>
 			</div>
 		</div>
 		<div class="form-group">
 			<%= f.label :voicebank_type_ids, t('voicebank_type'), class: 'col-sm-2 col-xs-12' %>
 			<div class="col-sm-9 col-xs-12">
-				<%= f.collection_check_boxes :voicebank_type_ids, VoicebankType.order(:name), :id, :name, {}, class: 'checkbox-inline' %>
+				<% VoicebankType.order(:name).each_with_index do |vbt, i| %>
+			  	<%= label_tag vbt.name, nil, id: "utauloid_voicebank_type_ids_#{vbt.id}", class: @utauloid.voicebank_type_ids.include?(vbt.id) ? "btn btn-success" : "btn btn-default" %>
+			  	<%= check_box_tag "utauloid[voicebank_type_ids][]", vbt.id, @utauloid.voicebank_type_ids.include?(vbt.id) ? true : false, id: "utauloid_voicebank_type_ids_#{vbt.id}", class: "" %>
+				<% end %>
 			</div>
 		</div>
 		<div class="form-group">
 			<%= f.label :voice_characteristic_ids, t('voice_characterisation'), class: 'col-sm-2 col-xs-12' %>
 			<div class="col-sm-9 col-xs-12">
-				<%= f.collection_check_boxes :voice_characteristic_ids, VoiceCharacteristic.order(:name), :id, :name, {}, class: 'checkbox-inline' %>
+				<% VoiceCharacteristic.order(:name).each_with_index do |vc, i| %>
+			  	<%= label_tag vc.name, nil, id: "utauloid_voice_characteristic_ids_#{vc.id}", class: @utauloid.voice_characteristic_ids.include?(vc.id) ? "btn btn-success" : "btn btn-default" %>
+			  	<%= check_box_tag "utauloid[voice_characteristic_ids][]", vc.id, @utauloid.voice_characteristic_ids.include?(vc.id) ? true : false, id: "utauloid_voice_characteristic_ids_#{vc.id}", class: "" %>
+				<% end %>
 			</div>
 		</div>
 		<div class="form-group">

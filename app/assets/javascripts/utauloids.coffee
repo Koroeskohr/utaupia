@@ -105,6 +105,14 @@ $(document).on("page:change", ->
 			checkbox = $("input[type=checkbox][id=" + $(this).attr('id') + "]");
 			$(checkbox).prop('checked', !$(checkbox).prop("checked"));
 		)
+
+	$(".utauloid-edit > form label.btn")
+		.on("click", (e) ->
+			$(this).toggleClass('btn-default');
+			$(this).toggleClass('btn-success');
+			checkbox = $("input[type=checkbox][id=" + $(this).attr('id') + "]");
+			$(checkbox).prop('checked', !$(checkbox).prop("checked"));
+		)
 )
 # search form
 
