@@ -137,3 +137,81 @@
 		@include border-right(1px, $border-white);
 	}
 }
+
+
+/* Forms */
+.user-edit-form {
+	font-family: "Raleway";
+	padding-top: 40px;
+}
+
+.user-edit-form-title {
+	margin-bottom: 20px;
+	font-family: "Montserrat";
+	font-size: 26px;
+	color: $text-color;
+}
+
+
+.user-edit-form-label {
+	margin-bottom: 10px;
+	font-family: "Montserrat";
+	color: $text-color;
+	text-transform: uppercase;
+}
+
+.user-edit-form a:not(.btn),
+.user-edit-form a:not(.btn):visited,
+.user-edit-form a:not(.btn):hover,
+.user-edit-form a:not(.btn):active,
+.user-edit-form a:not(.btn):active:hover,
+.user-edit-form a:not(.btn):active:focus,
+.user-edit-form a:not(.btn):focus {
+	color: $text-color;
+}
+
+.user-edit-form a:not(.btn):visited,
+.user-edit-form a:not(.btn):hover,
+.user-edit-form a:not(.btn):active,
+.user-edit-form a:not(.btn):active:hover,
+.user-edit-form a:not(.btn):active:focus,
+.user-edit-form a:not(.btn):focus {
+	border-color: $text-color;
+}
+
+.user-edit-form-user-links {
+	padding-top: 20px;
+	@include border-top(1px, $text-color);
+}
+
+.user-link-block {
+	margin-bottom: 20px;
+}
+
+@media (max-width: $screen-xs-max) {
+	.user-edit-form-avatar {
+		width: 280px;
+		height: 280px;
+	}
+}
+
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+	.user-edit-form-avatar {
+		width: 150px;
+		height: 150px;
+	}
+}
+
+@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+	.user-edit-form-avatar {
+		width: 210px;
+		height: 210px;
+	}
+}
+
+@media (min-width: $screen-lg-min) {
+	.user-edit-form-avatar {
+		width: 280px;
+		height: 280px;
+	}
+}
