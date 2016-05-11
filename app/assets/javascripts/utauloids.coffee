@@ -28,10 +28,17 @@ $(document).on("page:update", ->
 checkUtauloidFormChanged = () ->
   window.utauloidFormChanged = false
   if $(".utauloid-edit").length 
-    $(".utauloid-edit .utauloid-form input").change( ->
+    $(".utauloid-edit .utauloid-form").on("change input", ->
       window.utauloidFormChanged = true;
     )
-    $(window).bind("beforeunload", ->
+    $(".utauloid-edit .utauloid-form input+label").on("click", ->
+      window.utauloidFormChanged = true;
+    )
+    $(".utauloid-edit .utauloid-form").on("submit", (e) ->
+      $(window).off("beforeunload");
+      return true;
+    );
+    $(window).on("beforeunload", ->
       if(window.utauloidFormChanged)
         return "You have unsaved changes. Do you really want to close this page?"; 
     )
