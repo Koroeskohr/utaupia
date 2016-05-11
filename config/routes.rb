@@ -51,4 +51,5 @@ Rails.application.routes.draw do
   resources :utauloid_comments, only: [:create, :edit, :update]
   resources :difficulty_votes, only: [:create, :update]
 
+  get '/autocomplete_search', to: "utauloids#autocomplete_search"
 end

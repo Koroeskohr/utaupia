@@ -1,6 +1,6 @@
 class UtauloidsController < ApplicationController
 	before_action :ensure_xhr, only: [:report]
-	before_action :authenticate_user!, except: [:show, :index]
+	before_action :authenticate_user!, except: [:show, :index, :autocomplete_search]
 
 	def show
 		@utauloid = Utauloid.friendly.find(params[:id])
@@ -91,6 +91,10 @@ class UtauloidsController < ApplicationController
 		else
 			render :json => { status: 404 }
 		end
+	end
+
+	def autocomplete_search
+		render :json => { "results": Utauloid.search(get_search_params) }
 	end
 
 private

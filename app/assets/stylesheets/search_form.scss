@@ -99,6 +99,27 @@
 	padding-right: 50px;
 }
 
+.utauloid-list-search-form-name-autocomplete {
+	position: relative;
+}
+
+.utauloid-list-search-form-name-autocomplete> ul {
+	position: absolute;
+	width: 100%;
+	top: 100%;
+	background-color: white;
+	color: $text-color;
+	z-index: 1;
+	@include border-left(1px, $green);
+	@include border-right(1px, $green);
+	@include border-bottom(1px, $green);
+}
+
+.utauloid-list-search-form-name-autocomplete > ul > li {
+	margin: 10px;
+	cursor: pointer;
+}
+
 .utauloid-list-search-form-characteristics {
 	font-size: 16px;
 	text-transform: uppercase;

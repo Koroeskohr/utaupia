@@ -5,6 +5,7 @@
 				<div class="utauloid-list-search-form-name-wrapper">
 					<%= text_field_tag :name, params[:name], value: params[:name], placeholder: "#{t('search_name_placeholder')}", class: "form-control" %>
 					<%= fa_icon "search" %>
+					<div class="utauloid-list-search-form-name-autocomplete"><ul></ul></div>
 				</div>
 			</div>
 		</div>

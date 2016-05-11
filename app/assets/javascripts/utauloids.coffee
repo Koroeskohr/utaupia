@@ -142,7 +142,41 @@ $(document).on("page:change", ->
       checkbox = $("input[type=checkbox][id=" + $(this).attr('id') + "]");
       $(checkbox).prop('checked', !$(checkbox).prop("checked"));
     )
+
+  $('.utauloid-list-search-form-name-wrapper > input')
+    .on("input", (e) ->
+      if e.target.value == null || e.target.value == ''
+        $('.utauloid-list-search-form-name-autocomplete > ul').html('');
+        return;
+
+      window.clearTimeout(window.autocompleteTimeout);
+      window.autocompleteTimeout = window.setTimeout(processAutocomplete, 500, e);
+
+    )
 )
+
+processAutocomplete = (e) ->
+  $.ajax({
+    url: '/autocomplete_search',
+    dataType: 'json',
+    method: 'GET',
+    data: {'name': e.target.value},
+    success: (data) ->
+      $('.utauloid-list-search-form-name-autocomplete > ul').html('');
+      if data.results.length > 0
+        for key, value of data.results
+          $('.utauloid-list-search-form-name-autocomplete > ul').append('<li>' + value.name + '</li>');
+        $('body')
+          .on('click', (e) ->
+            if !$(e.target).is('li')
+              $('.utauloid-list-search-form-name-autocomplete > ul').html('');
+          )
+        $('.utauloid-list-search-form-name-autocomplete > ul > li')
+          .on("click", (e) ->
+            $('.utauloid-list-search-form-name-wrapper > input').val($(e.target).html());
+            $('.utauloid-list-search-form-name-autocomplete > ul').html('');
+          )
+  })
 # search form
 
 # forms
@@ -172,12 +206,9 @@ $(document).on("page:change", ->
 )
 
 processCreatorSwitch = (e) ->
-  console.log($(e));
   if $(e).hasClass('bootstrap-switch-on')
-    console.log('on');
     $('.utauloid-form-is-creator-text-container').addClass('utauloid-form-is-creator-text-container-hidden');
   else
-    console.log('off');
     $('.utauloid-form-is-creator-text-container').removeClass('utauloid-form-is-creator-text-container-hidden');
 # forms
 
