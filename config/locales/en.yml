@@ -55,6 +55,7 @@ en:
   search_advanced: 'Advanced options'
   search_name_placeholder: 'Search an UTAUloid name'
   search_creator_name_placeholder: "Search with creator's name"
+  search_on_youtube: "Search on YouTube"
   see_all_utauloids: 'See all UTAUloids'
   showcase_listen_preview: 'Listen to a preview:'
   sign_out: 'Sign out'

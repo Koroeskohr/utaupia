@@ -2,14 +2,21 @@
 	<div class="utauloid-show-voicebanks-list-title">
 		<h2><%= t('voicebank') %></h2>
 	</div>
+
 	<% if !current_user.blank? && current_user.id == utau.creator_id && utau.creator_is_user == true %>
 	<div class="utauloid-show-voicebanks-list-add-link">
 		<%= link_to t('add'), new_voice_bank_path(utau) %>
 	</div>
 	<% end %>
-	<% voice_banks.each do |vb| %>
-	  <% if !vb.new_record? %>
-	    <%= render partial: 'voice_banks/partials/voice_bank', locals: { utau: utau, voice_bank: vb } %>
-	  <% end %>
+	<% if voice_banks.any? %>
+		<% voice_banks.each do |vb| %>
+		  <% if !vb.new_record? %>
+		    <%= render partial: 'voice_banks/partials/voice_bank', locals: { utau: utau, voice_bank: vb } %>
+		  <% end %>
+		<% end %>
+	<% else %>
+		<div>
+			<a href="https://www.youtube.com/results?search_query=<%= utau.name.gsub(/\s/, '+') %>"><%= t('search_on_youtube') %></a>
+		</div>
 	<% end %>
 </div>
