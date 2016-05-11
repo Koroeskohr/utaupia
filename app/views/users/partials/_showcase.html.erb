@@ -1,0 +1,63 @@
+<div class="showcase">
+	<div class="showcase-user">
+		<div>
+			<div class="showcase-user-content">
+
+				<div class="showcase-background">
+					<div class="showcase-background-image" style="background-image: url('<%= user.user_info.avatar.url(:medium) %>');"></div>
+				</div>
+
+				<div class="container">
+					<div class="showcase-user-content-infos">
+
+						<div class="row">
+
+							<div class="col-xs-12 col-sm-3">
+								<div class="showcase-user-audio-preview-button">
+									<%= image_tag user.user_info.avatar.url(:medium), class: "img-responsive" %>
+								</div>
+							</div>
+
+							<div class="col-sm-9 col-xs-12">
+								<div class="row">
+									<div class="showcase-user-content-infos-top col-xs-12 col-sm-12">
+										<div>
+											<h2 class="showcase-user-content-infos-top-name"><%= user.nickname %></h2>
+											<% if !current_user.blank? && current_user.id == user.id %>
+											<%= link_to t('edit'), edit_user_path(user), title: t('edit'), class: "showcase-user-content-infos-top-links" %>
+											<%= link_to t('user_notifications'), messages_path, title: t('user_notifications'), class: "showcase-user-content-infos-top-links" %>
+											<% end %>
+										</div>
+									</div>
+								</div>
+
+								<div class="showcase-user-content-infos-bottom row">
+									<div class="col-xs-12 col-sm-6">
+										<h3><%= t('description') %></h3>
+										<% if @user.user_info.description.blank? %>
+										<p><%= t('description_empty') %></p>
+										<% else %>
+										<p><%= @user.user_info.description %></p>
+										<% end %>
+									</div>
+									<div class="col-xs-12 col-sm-6 showcase-user-content-infos-bottom-personal-links">
+									<% if !@user.user_info.user_links.blank? %>
+										<h3><%= t('user_links') %></h3>
+										<% @user.user_info.user_links.each do |l| %>
+											<a href="<%= l.link %>" target="_blank" class="user-link"><%= l.link %></a>
+										<% end %>
+									<% end %>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

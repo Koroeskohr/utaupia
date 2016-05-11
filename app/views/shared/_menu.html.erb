@@ -1,26 +1,25 @@
-<div class="menu">
-	<div class="container">
-		<div class="row">
-			<nav class="main-menu col-sm-9 col-xs-12">
-				<ul class="hidden-xs">
-					<li><%= link_to t('find_an_utauloid'), utauloids_path %></li>
-					<li><%= link_to t('news'), "", title: "Comming soon", class: 'disabled' %></li>
-					<li><%= link_to t('what_is_utau'), "", title: "Comming soon", class: 'disabled' %></li>
-					<li><%= link_to t('tutorial'), "", title: "Comming soon", class: 'disabled' %></li>
-					<li><%= link_to t('about'), "", title: "Comming soon", class: 'disabled' %></li>
-				</ul>
-				<div class="visible-xs hidden-sm">
+<div class="container">
+	<div class="row">
+		<nav class="main-header-nav col-xs-12 col-sm-12">
+			<ul class="hidden-xs">
+				<li class="main-header-nav-logo"><%= link_to t('site_name'), root_path_path, title: t('site_name'), class: "a-without-hover" %></li>
+				<li><%= link_to t('find_an_utauloid'), utauloids_path, title: t('find_an_utauloid') %></li>
+				<li><%= link_to t('about'), "", title: "Comming soon", class: 'disabled' %></li>
+			</ul>
+			<ul class="visible-xs hidden-sm">
+				<li class="main-header-nav-logo"><%= link_to t('site_name'), root_path_path, title: t('site_name') %></li>
+				<li>
 					<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="menu-xs-button"><%= t('menu') %></a>
-					<ul class="dropdown-menu">
-						<li><%= link_to t('find_an_utauloid'), utauloids_path %></li>
-						<li><%= link_to t('news'), root_path_path %></li>
-						<li><%= link_to t('what_link_to is_utau'), root_path_path %></li>
-						<li><%= link_to t('tlink_to utorial'), root_path_path %></li>
-						<li><%= link_to ('about'), root_path_path %></li>
+					<ul class="main-header-nav-dropdown dropdown-menu">
+						<li><%= link_to t('find_an_utauloid'), utauloids_path, title: t('find_an_utauloid') %></li>
+						<li><%= link_to t('about'), "", title: "Comming soon", class: 'disabled' %></li>
 					</ul>
-				</div>
-			</nav>
-			<%= render "shared/header_account" %>
-		</div>
+				</li>
+			</ul>
+			<ul>
+				<li><%= link_to t('utauloid_add'), new_utauloid_path, title: t('utauloid_add') %></li>
+				<%= render "shared/header_account" %>
+			</ul>
+		</nav>
 	</div>
 </div>

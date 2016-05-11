@@ -14,6 +14,7 @@ k.skip_confirmation!
 k.save!
 
 puts 'Adding categories'
+c1 = Category.create!(name: 'None')
 c1 = Category.create!(name: 'Vipperloid')
 
 puts 'Adding voice characteristics'

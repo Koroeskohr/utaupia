@@ -6,7 +6,7 @@
 $(document).on("page:change", ->
 	$("a.favorites")
 		.on("ajax:success", (e, xhr, status, error) ->
-			$("a.favorites").toggleClass("none");
+			$("a.favorites").toggleClass("favorites-hidden");
 		)
 		.on("ajax:error", (e, xhr, status, error) ->
 			console.log("error while faving the utauloid");
@@ -27,7 +27,7 @@ $(document).on("page:update", ->
 set_comments_events = () ->
 	$("a[id^=edit_comment_]")
 		.on("ajax:success", (e, data, status, xhr) ->
-			parent_id = $(this).closest('.comment-item').attr('id');
+			parent_id = $(this).closest('.utauloid-show-comments-list-item').attr('id');
 			console.log(xhr);
 			$('#' + parent_id).html(xhr.responseText);
 
@@ -61,10 +61,20 @@ $(document).on("page:change", ->
 )
 
 set_audio_preview_events = () ->
-	$("span[id^=audio_]")
+	$("audio")
+		.on("ended", () ->
+			if $("div#" + $(this).attr("id")).hasClass('showcase-utauloid-audio-preview-button-open')
+				$("div#" + $(this).attr("id")).removeClass('showcase-utauloid-audio-preview-button-open');
+
+			$("div#" + $(this).attr("id")).find("i.fa").toggleClass('fa-play-circle-o').toggleClass('fa-pause-circle-o');
+		)
+	$("div[id^=audio_]")
 		.on("click", () ->
-			$(this).toggleClass('played');
-			$(this).toggleClass('paused');
+			$(this).find('i.fa').toggleClass('fa-play-circle-o');
+			$(this).find('i.fa').toggleClass('fa-pause-circle-o');
+			if $(this).hasClass('showcase-utauloid-audio-preview-button')
+				$(this).toggleClass('showcase-utauloid-audio-preview-button-open');
+
 			pauseAllAudio($(this).attr('id'));
 			playAudio($(this).attr('id'));
 		)
@@ -74,9 +84,9 @@ pauseAllAudio = (audio_id) ->
 			this.pause();
 		)
 
-	$("span:not(#" + audio_id + "):not(.paused)").each( ->
-			$(this).toggleClass('played');
-			$(this).toggleClass('paused');
+	$("div[id^=audio_]:not(#" + audio_id + ") i.fa.fa-pause-circle-o").each( ->
+			$(this).toggleClass('fa-play-circle-o');
+			$(this).toggleClass('fa-pause-circle-o');
 		)
 
 playAudio = (audio_id) ->
@@ -89,24 +99,22 @@ playAudio = (audio_id) ->
 
 # search form
 $(document).on("page:change", ->
-	$("#search-form")
+	$("#utauloid-list-search-form-hidden-button")
+		.on("click", (e) ->
+			$("#utauloid-list-search-form-hidden").toggleClass("utauloid-list-search-form-hidden-open");
+			$(this).find("i.fa").toggleClass("fa-chevron-down").toggleClass("fa-chevron-up");
+		)
+
+	$("#utauloid-list-search-form")
 		.on("ajax:success", (e, xhr, status, error) ->
-			$('.grid').html(xhr);
+			$('#utauloid-list-grid-items').html(xhr);
 			set_audio_preview_events();
 		)
 		.on("ajax:error", (e, xhr, status, error) ->
 			console.log("Error while fetching the search results");
 		)
 
-	$("form[id=search-form] label.btn")
-		.on("click", (e) ->
-			$(this).toggleClass('btn-default');
-			$(this).toggleClass('btn-success');
-			checkbox = $("input[type=checkbox][id=" + $(this).attr('id') + "]");
-			$(checkbox).prop('checked', !$(checkbox).prop("checked"));
-		)
-
-	$(".utauloid-edit > form label.btn")
+	$("form[id=utauloid-list-search-form] label.btn")
 		.on("click", (e) ->
 			$(this).toggleClass('btn-default');
 			$(this).toggleClass('btn-success');
@@ -115,6 +123,42 @@ $(document).on("page:change", ->
 		)
 )
 # search form
+
+# forms
+$(document).on("page:change", ->
+	$(".utauloid-edit form label.btn")
+		.on("click", (e) ->
+			$(this).toggleClass('btn-default');
+			$(this).toggleClass('btn-success');
+			checkbox = $("input[type=checkbox][id=" + $(this).attr('id') + "]");
+			$(checkbox).prop('checked', !$(checkbox).prop("checked"));
+		)
+
+	$(".utauloid-new form label.btn")
+		.on("click", (e) ->
+			$(this).toggleClass('btn-default');
+			$(this).toggleClass('btn-success');
+			checkbox = $("input[type=checkbox][id=" + $(this).attr('id') + "]");
+			$(checkbox).prop('checked', !$(checkbox).prop("checked"));
+		)
+
+	$(".utauloid-form-is-creator-container .bootstrap-switch")
+		.on("click", (e) ->
+			processCreatorSwitch($(".utauloid-form-is-creator-container .bootstrap-switch"));
+		)
+
+	processCreatorSwitch($(".utauloid-form-is-creator-container .bootstrap-switch"));
+)
+
+processCreatorSwitch = (e) ->
+	console.log($(e));
+	if $(e).hasClass('bootstrap-switch-on')
+		console.log('on');
+		$('.utauloid-form-is-creator-text-container').addClass('utauloid-form-is-creator-text-container-hidden');
+	else
+		console.log('off');
+		$('.utauloid-form-is-creator-text-container').removeClass('utauloid-form-is-creator-text-container-hidden');
+# forms
 
 # difficulty vote
 $(document).on("page:change", ->

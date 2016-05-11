@@ -1,8 +1,47 @@
-<footer class="container">
-	<div class="footer-content">
-		<div class="row">
-			<div class="col-sm-12 col-xs-12">
-				<p><%= link_to 'Utaupia', root_path_path %> © 2016</p>
+<footer class="main-footer">
+	<div class="main-footer-top">
+		<div class="container">
+			<div class="row">
+				<div class="main-footer-top-item col-lg-3 col-md-4 col-sm-5 col-xs-12">
+					<div>
+						<span class="main-footer-top-item-title"><%= t('who_we_are') %></span>
+						<span class="main-footer-top-item-title-big"><%= t('site_name') %></span>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, eos rem sunt nostrum possimus autem quia minus amet placeat laudantium, ratione aliquid odio quam voluptatibus sit, molestiae natus architecto similique?
+						</p>
+						<%= link_to fa_icon('chevron-right', text: t('about'), right: true), "", title: "Comming soon", class: 'disabled' %>
+					</div>
+				</div>
+				<div class="main-footer-top-item col-lg-3 col-md-4 col-sm-5 col-xs-12">
+					<div>
+						<span class="main-footer-top-item-title"><%= t('get_in_touch') %></span>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur voluptatibus soluta eius fugit magni, iure, sed deserunt provident porro doloremque laborum dolorum. Porro atque laudantium sed tenetur facere, nostrum fuga!
+						</p>
+						<span class="main-footer-top-item-address">
+							Lorem ipsum dolor sit amet,<br>
+							01 02 03 04 05
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="main-footer-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="main-footer-bottom-block col-xs-12 col-sm-4">
+					© 2016 Utauloid. All right reserved
+				</div>
+				<div class="main-footer-bottom-block col-xs-12 col-sm-8">
+					<ul class="main-footer-bottom-links">
+						<li class="main-header-nav-logo"><%= link_to t('site_name'), root_path_path, title: t('site_name') %></li>
+						<li>.</li>
+						<li><%= link_to t('find_an_utauloid'), utauloids_path, title: t('find_an_utauloid') %></li>
+						<li>.</li>
+						<li><%= link_to t('about'), "", title: "Comming soon", class: 'disabled' %></li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>

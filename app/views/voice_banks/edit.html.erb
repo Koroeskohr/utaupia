@@ -1,19 +1,23 @@
 <div class="voicebank-edit">
-  <%= render 'shared/errors', entity: @voice_bank %>
-  <%= form_for @voice_bank, html: {class: 'form-horizontal'} do |f| %>
-    <%= f.hidden_field :utauloid_id %>
-    <div class="form-group">
-      <%= f.label :name, 'Title of the bank' %>
-      <%= f.text_field :name, class: 'form-control' %>
+  <div class="container">
+    <div class="col-xs-12 col-sm-12">
+      <%= render 'shared/errors', entity: @voice_bank %>
+      <%= form_for @voice_bank do |f| %>
+        <%= f.hidden_field :utauloid_id %>
+        <div class="form-group">
+          <%= f.label :name, 'Title of the bank', class: "voicebank-edit-form-label" %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :download_link, class: "voicebank-edit-form-label" %>
+          <%= f.text_field :download_link, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :is_append, "This voicebank is an append", class: "voicebank-edit-form-label" %>
+          <%= f.check_box :is_append %>
+        </div>
+        <%= f.submit t('submit'), class: 'btn btn-success' %>
+      <% end %>
     </div>
-    <div class="form-group">
-      <%= f.label :download_link %>
-      <%= f.text_field :download_link, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= f.label :is_append, "This voicebank is an append" %>
-      <%= f.check_box :is_append %>
-    </div>
-    <%= f.submit t('submit'), class: 'btn btn-success' %>
-  <% end %>
+  </div>
 </div>

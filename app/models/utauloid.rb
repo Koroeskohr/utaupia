@@ -55,8 +55,8 @@ class Utauloid < ActiveRecord::Base
     :url => "/utauloids/:attachment/:hash_:style.:extension",
     :hash_secret => RANDOM_SECRET,
     styles: {
-      medium: "100x",
-      thumb: "150x150#" },
+      medium: "210x210#",
+      thumb: "100x100#" },
     :convert_options => {
       :medium => "-quality 80",
       :thumb => "-quality 80"
@@ -71,7 +71,7 @@ class Utauloid < ActiveRecord::Base
     :url => "/utauloids/:attachment/:hash_:style.:extension",
     :hash_secret => RANDOM_SECRET,
     styles: {
-      medium: "500x",
+      medium: "280x280#",
       thumb: "100x100#" },
     :convert_options => {
       :medium => "-quality 80",
