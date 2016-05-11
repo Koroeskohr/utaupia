@@ -39,6 +39,11 @@ class VoiceBanksController < ApplicationController
   end
 
   def destroy
+    @voice_bank = VoiceBank.find(params[:id])
+    return redirect_to @voice_bank.utauloid if @voice_bank.utauloid.creator != current_user
+    if @voice_bank.destroy
+      redirect_to @voice_bank.utauloid
+    end
   end
 
   private
