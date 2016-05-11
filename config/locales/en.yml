@@ -41,7 +41,7 @@ en:
   has_notifications: 'You have %{number} unseen messages.'
   has_no_notifications: 'You have 0 notifications.'
   menu: 'Menu'
-  more_informations: 'More informations'
+  more_information: 'More info'
   name: 'Name'
   name_of_the_creator: 'Name of the creator'
   more_filters: 'More filters'
