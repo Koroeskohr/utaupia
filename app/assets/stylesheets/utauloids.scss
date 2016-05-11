@@ -12,7 +12,13 @@
 	margin-left: 10px;
 }
 
+.utauloid-show-voicebanks,
+.utauloid-show-more-informations {
+	margin-bottom: 40px;
+}
+
 .utauloid-show-voicebanks-list-title,
+.utauloid-show-more-informations-title,
 .utauloid-show-comments-title {
 	margin-bottom: 40px;
 	font-family: "Montserrat";
@@ -22,9 +28,38 @@
 }
 
 .utauloid-show-voicebanks-list-title,
+.utauloid-show-more-informations-title,
 .utauloid-show-comments-title {
 	@include border-bottom(1px, $text-color);
 	word-wrap: break-word;
+}
+
+.utauloid-show-more-informations a.utauloid-show-more-informations-link,
+.utauloid-show-more-informations a.utauloid-show-more-informations-link:visited,
+.utauloid-show-more-informations a.utauloid-show-more-informations-link:hover,
+.utauloid-show-more-informations a.utauloid-show-more-informations-link:active,
+.utauloid-show-more-informations a.utauloid-show-more-informations-link:active:hover,
+.utauloid-show-more-informations a.utauloid-show-more-informations-link:active:focus,
+.utauloid-show-more-informations a.utauloid-show-more-informations-link:focus {
+	display: inline-block;
+	font-family: "Montserrat";
+	color: $text-blue-light;
+	text-transform: uppercase;
+	margin-bottom: 10px;
+}
+
+a.utauloid-show-more-informations-link {
+	transition: text-decoration 0.2s ease 0s;
+	font-size: 16px;
+}
+
+a.utauloid-show-more-informations-link i.fa {
+	transition: margin-left 0.2s ease 0s;
+	margin-left: 10px;
+}
+
+a.utauloid-show-more-informations-link:hover i.fa {
+	margin-left: 15px;
 }
 
 .utauloid-show-voicebanks-list-add-link {
@@ -39,7 +74,7 @@
 .utauloid-show-voicebanks-list .utauloid-show-voicebanks-list-item-download a:active:focus,
 .utauloid-show-voicebanks-list .utauloid-show-voicebanks-list-item-download a:focus {
 	font-family: "Raleway";
-	font-color: $text-blue-light;
+	color: $text-blue-light;
 }
 
 .utauloid-show-voicebanks-list-item {

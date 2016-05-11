@@ -6,6 +6,24 @@
 			<div class="utauloid-show-voicebanks">
 				<%= render partial: "voice_banks/partials/list_for_utauloid", locals: { utau: @utauloid, voice_banks: @voice_banks } %>
 			</div>
+			<div class="utauloid-show-more-informations">
+				<diV class="utauloid-show-more-informations-title">
+					<h2><%= t('more_informations') %></h2>
+				</diV>
+				<% if !@utauloid.wiki_url.blank? %>
+				<div>
+					<a href=<%= @utauloid.wiki_url %> title=<%= t('wiki') %> class="utauloid-show-more-informations-link"><%= fa_icon('chevron-right', text: t('wiki'), right: true) %></a>
+				</div>
+				<% end %>
+				<% if !@utauloid.vocadb_url.blank? %>
+				<div>
+					<a href=<%= @utauloid.vocadb_url %> title=<%= t('vocadb') %> class="utauloid-show-more-informations-link"><%= fa_icon('chevron-right', text: t('vocadb'), right: true) %></a>
+				</div>
+				<% end %>
+				<div>
+					<a href="https://www.youtube.com/results?search_query=<%= @utauloid.name.gsub(/\s/, '+') %>" title=<%= t('search_on_youtube') %> class="utauloid-show-more-informations-link"><%= fa_icon('chevron-right', text: t('search_on_youtube'), right: true) %></a>
+				</div>
+			</div>
 		</div>
 
 		<div class="col-xs-12 col-sm-9">
