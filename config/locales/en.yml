@@ -1,9 +1,11 @@
 en:
   about: 'About us'
   account: 'Account'
+  avatar: 'Avatar'
   add: 'Add'
   add_comment: 'Add your comment...'
   all_utauloids: 'All UTAUloids'
+  are_you_the_creator: 'Are you the creator?'
   audio_preview: 'Audio preview'
   audio_preview_max_filesize: "Your file can't exceed 1000kb."
   anonymous: 'Anonymous'
@@ -14,7 +16,7 @@ en:
   creator_name: 'Creator Name'
   creator_name_if_not_you: "Name of the creator (if it's not you)"
   comments: 'Comments'
-  cover: 'Cover'
+  cover: 'Cover Picture'
   delete: 'Delete'
   description: 'About me'
   description_empty: "This user didn't write a description yet."
@@ -40,6 +42,7 @@ en:
   has_no_notifications: 'You have 0 notifications.'
   menu: 'Menu'
   name: 'Name'
+  name_of_the_creator: 'Name of the creator'
   more_filters: 'More filters'
   note_this_utauloid: 'Note the difficulty'
   notif_when_utauloid_commented: 'Receive a notification when someone posts a comment on one of your UTAUloids'
@@ -64,6 +67,7 @@ en:
   utauloid_dont_have_audio_preview: 'No audio preview available'
   utauloid_dont_have_vote: 'Nobody has evaluated this Utauloid yet.'
   utauloids_are_showable: 'Show your UTAUloids'
+  utau_infos: 'UTAUloid informations'
   utauloid_showcase: "Week's light on"
   user_dont_have_favorites: "This user doesn't have favorites yet."
   user_dont_have_utauloids: "This user doesn't have UTAUloids yet."

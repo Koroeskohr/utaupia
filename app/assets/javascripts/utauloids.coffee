@@ -121,16 +121,44 @@ $(document).on("page:change", ->
 			checkbox = $("input[type=checkbox][id=" + $(this).attr('id') + "]");
 			$(checkbox).prop('checked', !$(checkbox).prop("checked"));
 		)
+)
+# search form
 
-	$(".utauloid-edit > form label.btn")
+# forms
+$(document).on("page:change", ->
+	$(".utauloid-edit form label.btn")
 		.on("click", (e) ->
 			$(this).toggleClass('btn-default');
 			$(this).toggleClass('btn-success');
 			checkbox = $("input[type=checkbox][id=" + $(this).attr('id') + "]");
 			$(checkbox).prop('checked', !$(checkbox).prop("checked"));
 		)
+
+	$(".utauloid-new form label.btn")
+		.on("click", (e) ->
+			$(this).toggleClass('btn-default');
+			$(this).toggleClass('btn-success');
+			checkbox = $("input[type=checkbox][id=" + $(this).attr('id') + "]");
+			$(checkbox).prop('checked', !$(checkbox).prop("checked"));
+		)
+
+	$(".utauloid-form-is-creator-container .bootstrap-switch")
+		.on("click", (e) ->
+			processCreatorSwitch($(".utauloid-form-is-creator-container .bootstrap-switch"));
+		)
+
+	processCreatorSwitch($(".utauloid-form-is-creator-container .bootstrap-switch"));
 )
-# search form
+
+processCreatorSwitch = (e) ->
+	console.log($(e));
+	if $(e).hasClass('bootstrap-switch-on')
+		console.log('on');
+		$('.utauloid-form-is-creator-text-container').addClass('utauloid-form-is-creator-text-container-hidden');
+	else
+		console.log('off');
+		$('.utauloid-form-is-creator-text-container').removeClass('utauloid-form-is-creator-text-container-hidden');
+# forms
 
 # difficulty vote
 $(document).on("page:change", ->

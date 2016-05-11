@@ -139,3 +139,193 @@
 		float: right;
 	}
 }
+
+/* Forms */
+.utauloid-form {
+	font-family: "Raleway";
+	padding-top: 40px;
+}
+
+.utauloid-form-title {
+	margin-bottom: 20px;
+	font-family: "Montserrat";
+	font-size: 26px;
+	color: $text-color;
+}
+
+.utauloid-form h2 {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  font-family: "Montserrat";
+  font-size: 32px;
+	color: #516981;
+  text-transform: uppercase;
+  word-wrap: break-word;
+  border-bottom: 1px solid #516981;
+}
+
+.utauloid-form-label {
+	margin-bottom: 10px;
+	font-family: "Montserrat";
+	color: $text-color;
+	text-transform: uppercase;
+	word-wrap: break-word;
+}
+
+.utauloid-form-avatar .form-image-upload-label > i {
+	font-size: 70px;
+}
+
+.utauloid-form .select-container > select {
+  -webkit-appearance:none;
+     -moz-appearance:none;
+          appearance:none;
+	margin-bottom: 15px;
+	padding-right: 25px;
+  cursor: pointer;
+}
+
+.utauloid-form .select-container > i {
+	color: $text-color;
+	position: absolute;
+	top: 10px;
+	right: 30px;
+	font-size: 12px;
+	pointer-events: none;
+}
+
+.utauloid-form a:not(.btn),
+.utauloid-form a:not(.btn):visited,
+.utauloid-form a:not(.btn):hover,
+.utauloid-form a:not(.btn):active,
+.utauloid-form a:not(.btn):active:hover,
+.utauloid-form a:not(.btn):active:focus,
+.utauloid-form a:not(.btn):focus {
+	color: $text-color;
+}
+
+.utauloid-form a:not(.btn):visited,
+.utauloid-form a:not(.btn):hover,
+.utauloid-form a:not(.btn):active,
+.utauloid-form a:not(.btn):active:hover,
+.utauloid-form a:not(.btn):active:focus,
+.utauloid-form a:not(.btn):focus {
+	border-color: $text-color;
+}
+
+.utauloid-form input[type=checkbox] {
+	display: none;
+}
+
+.utauloid-form label.btn {
+	margin-bottom: 20px;
+	padding: 15px 30px;
+	font-size: 12px;
+}
+
+.utauloid-form-is-creator-text-container-hidden {
+	display: none;
+}
+
+.form-audio-preview-upload {
+	position: relative;
+	background-position: center;
+	background-size: cover;
+	border: 5px solid $green;
+	height: 150px;
+}
+
+.form-audio-preview-upload-actived {
+	background-color: $green;
+}
+
+.form-audio-preview-upload-actived .form-audio-preview-upload-label > i {
+	font-size: 26px;
+	color: white;
+	word-wrap: break-word;
+}
+
+.form-audio-preview-upload-input {
+	position: absolute;
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	z-index: -1;
+}
+
+.form-audio-preview-upload-label {
+	width: 100%;
+	height: 100%;
+	transition: background-color 0.2s ease 0s;
+	text-align: center;
+	cursor: pointer;
+}
+
+.form-audio-preview-upload-label:hover {
+	background-color: $background-green;
+}
+
+.form-audio-preview-upload-label > i {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%) translateX(-50%);
+	font-size: 100px;
+	color: $green;
+	opacity: 0.7;
+	transition: color, opacity 0.2s ease 0s;
+}
+
+.form-audio-preview-upload-label:hover > i {
+	color: white;
+	opacity: 1;
+}
+
+@media (max-width: $screen-xs-max) {
+	.utauloid-form-avatar {
+		width: 210px;
+		height: 210px;
+	}
+
+	.utauloid-form-cover {
+		width: 280px;
+		height: 280px;
+	}
+}
+
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+	.utauloid-form-avatar {
+		width: 100px;
+		height: 100px;
+	}
+
+	.utauloid-form-cover {
+		width: 150px;
+		height: 150px;
+	}
+}
+
+@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+	.utauloid-form-avatar {
+		width: 150px;
+		height: 150px;
+	}
+
+	.utauloid-form-cover {
+		width: 210px;
+		height: 210px;
+	}
+}
+
+@media (min-width: $screen-lg-min) {
+	.utauloid-form-avatar {
+		width: 210px;
+		height: 210px;
+	}
+
+	.utauloid-form-cover {
+		width: 250px;
+		height: 250px;
+	}
+}
