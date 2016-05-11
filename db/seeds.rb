@@ -28,8 +28,8 @@ t4 = VoicebankType.create!(name: 'Other')
 
 puts 'Adding voice languages'
 l2 = VoiceLanguage.create!(name: 'Japanese')
-l1 = VoiceLanguage.create!(name: 'Chinese')
 l3 = VoiceLanguage.create!(name: 'English')
+l1 = VoiceLanguage.create!(name: 'Chinese')
 l4 = VoiceLanguage.create!(name: 'Other')
 
 

@@ -94,7 +94,7 @@
 									<%= f.label :voice_language_ids, t('language'), class: 'utauloid-form-label' %>
 								</div>
 								<div class="col-xs-12 col-sm-10">
-									<% VoiceLanguage.order(:name).each_with_index do |vl, i| %>
+									<% VoiceLanguage.order(:id).each_with_index do |vl, i| %>
 								  	<%= label_tag vl.name, nil, id: "utauloid_voice_language_ids_#{vl.id}", class: @utauloid.voice_language_ids.include?(vl.id) ? "btn btn-success" : "btn btn-default" %>
 								  	<%= check_box_tag "utauloid[voice_language_ids][]", vl.id, @utauloid.voice_language_ids.include?(vl.id) ? true : false, id: "utauloid_voice_language_ids_#{vl.id}", class: "" %>
 									<% end %>
@@ -107,7 +107,7 @@
 									<%= f.label :voicebank_type_ids, t('voicebank_type'), class: 'utauloid-form-label' %>
 								</div>
 								<div class="col-xs-12 col-sm-10">
-									<% VoicebankType.order(:name).each_with_index do |vbt, i| %>
+									<% VoicebankType.order(:id).each_with_index do |vbt, i| %>
 								  	<%= label_tag vbt.name, nil, id: "utauloid_voicebank_type_ids_#{vbt.id}", class: @utauloid.voicebank_type_ids.include?(vbt.id) ? "btn btn-success" : "btn btn-default" %>
 			  						<%= check_box_tag "utauloid[voicebank_type_ids][]", vbt.id, @utauloid.voicebank_type_ids.include?(vbt.id) ? true : false, id: "utauloid_voicebank_type_ids_#{vbt.id}", class: "" %>
 									<% end %>
