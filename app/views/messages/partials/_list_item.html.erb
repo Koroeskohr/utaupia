@@ -14,5 +14,5 @@
 	</div>
 	<%= link_to 'Delete', delete_message_path(message) unless message.deleted %>
 	<%= link_to 'Mark as seen', mark_as_seen_message_path(message) unless message.seen %>
-	<%= link_to 'Mark as not seen', mark_as_not_seen_message_path(message) unless !message.seen %>
+	<%= link_to 'Mark as unread', mark_as_not_seen_message_path(message) unless !message.seen %>
 </div>
