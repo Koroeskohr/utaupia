@@ -7,11 +7,11 @@ $(document).on("page:change", ->
 				label = $(this).closest('.form-image-upload').find('.form-image-upload-label');
 
 
-				$(label).find('i.fa').toggleClass('fa-upload');
+				$(label).find('i.fa').toggleClass('fa-file-image-o');
 
 				reader.onload = (e) ->
 					$(image).css('background-image', 'url("' + e.target.result + '")');
-					$(label).find('i.fa').toggleClass('fa-upload');
+					$(label).find('i.fa').toggleClass('fa-file-image-o');
 
 				reader.readAsDataURL(this.files[0]);
 		)
