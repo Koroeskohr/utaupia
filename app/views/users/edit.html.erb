@@ -97,14 +97,23 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="form-group">
+						<div class="form-group user-edit-buttons">
 							<div class="col-xs-12 col-sm-9 col-sm-offset-3">
 							  <%= form.submit t('edit'), class: 'btn btn-success' %>
 							  <%= link_to t('cancel'), account_path, class: 'btn btn-warning' %>
 							</div>
 						 </div>
 					</div>
-
+					<div class="row">
+						<div class="form-group">
+							<div class="col-xs-12 col-sm-9 col-sm-offset-3">
+								<div class="user-delete-account">
+									<%= link_to "Permanently delete my account", user_path(current_user.id), method: :delete, data: { confirm: "Are you sure? This is permanent and you wont ever be able to login with that account." }, class: 'btn btn-danger' %>
+								
+								</div>
+							</div>
+						</div>
+					</div>
 				<% end %>
 			</div>
 		</div>

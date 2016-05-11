@@ -179,7 +179,16 @@
 	border-color: $text-color;
 }
 
-.user-edit-form-user-links {
+.user-edit-form-user-links{
+	padding-top: 20px;
+	@include border-top(1px, $text-color);
+}
+
+.user-edit-buttons > div {
+	margin-bottom: 20px;
+}
+
+.user-delete-account {
 	padding-top: 20px;
 	@include border-top(1px, $text-color);
 }
