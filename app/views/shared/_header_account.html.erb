@@ -1,38 +1,44 @@
-<div class="col-sm-3 col-xs-12 menu-right">
-	<div class="row">
-		<div class="col-sm-8 col-xs-6 add-utau">
-			<%= link_to 'Add UTAUloid', new_utauloid_path %>
-		</div>
-		<div class="col-sm-4 col-xs-6">
-			<div class="dropdown">
-			<% if user_signed_in? %>
-				<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= t('account') %></a>
-			<% else %>
-				<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= t('login') %></a>
-			<% end %>
-				<div class="dropdown-menu row <%= user_signed_in? ? "account" : "login" %>">
-			  <% if user_signed_in? %>
-					<div class="col-sm-4 col-xs-12">
-						<%= link_to account_path do  %>
-							<%= image_tag current_user.user_info.avatar.url(:thumb), class: "img-responsive" %>
-						<% end %>
+<li>
+	<div class="main-header-account dropdown">
+	<% if user_signed_in? %>
+		<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<%= current_user.nickname %>">
+			<div class="flex-row">
+				<div class="flex-column hidden-xs">
+					<%= current_user.nickname %>
+				</div>
+				<div class="flex-column">
+					<div class="img-circle-container">
+						<%= image_tag current_user.user_info.avatar.url(:thumb), class: "img-responsive" %>
 					</div>
-					<div class="col-sm-8 col-xs-12">
-						<%= link_to current_user.nickname, account_path %>
-						<% if !current_user.messages.where(seen: false, deleted: false).blank? %>
-						<%= link_to "#{t('has_notifications', number: current_user.messages.where(seen: false, deleted: false).count)}", messages_path %>
-						<% else %>
-						<%= link_to "#{t('has_no_notifications')}", messages_path %>
-						<% end %>
-						<%= link_to "#{t('sign_out')}", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
-					</div>
-				<% else %>
-				  <div class="col-sm-12">
-						<%= render 'devise/shared/signin' unless user_signed_in? %>
-				  </div>
-				<% end %>
 				</div>
 			</div>
+		</a>
+	<% else %>
+		<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<%= t('login') %>"><%= t('login') %></a>
+	<% end %>
+		<div class="main-header-account-dropdown dropdown-menu <%= user_signed_in? ? "account" : "login" %>">
+	  <% if user_signed_in? %>
+			<div>
+				<%= link_to account_path, {title: t('account')} do |l| %>
+					<%= image_tag current_user.user_info.avatar.url(:thumb), class: "img-responsive" %>
+				<% end %>
+			</div>
+			<div>
+				<span class="main-header-account-dropdown-username"><%= link_to t('account'), account_path, title: t('account'), class: "a-without-hover" %></span>
+				<span>
+				<% if !current_user.messages.where(seen: false, deleted: false).blank? %>
+				<%= link_to t('has_notifications', number: current_user.messages.where(seen: false, deleted: false).count), messages_path, title: t('has_notifications', number: current_user.messages.where(seen: false, deleted: false).count), class: "a-without-hover" %>
+				<% else %>
+				<%= link_to t('has_no_notifications'), messages_path, title: t('has_no_notifications'), class: "a-without-hover" %>
+				<% end %>
+				</span>
+				<%= link_to t('sign_out'), destroy_user_session_path, method: :delete, title: t('sign_out'), class: "btn btn-danger btn-white" %>
+			</div>
+		<% else %>
+		  <div class="main-header-account-dropdown-formlogin">
+				<%= render 'devise/shared/signin' unless user_signed_in? %>
+		  </div>
+		<% end %>
 		</div>
 	</div>
-</div>
+</li>

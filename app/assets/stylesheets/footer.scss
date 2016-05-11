@@ -1,0 +1,117 @@
+.main-footer {
+	font-family: "Montserrat";
+	color: $text-blue-light;
+}
+
+.main-footer-top a,
+.main-footer-top a:visited,
+.main-footer-top a:active,
+.main-footer-top a:hover,
+.main-footer-top-item-title,
+.main-footer-top-item-title-big {
+	letter-spacing: $text-montserrat-default-letter-spacing;
+	text-transform: uppercase;
+	color: white;
+}
+
+.main-footer-bottom a,
+.main-footer-bottom a:visited,
+.main-footer-bottom a:active,
+.main-footer-bottom a:hover{
+	letter-spacing: $text-montserrat-default-letter-spacing;
+	text-transform: uppercase;
+	color: $text-blue-light;
+}
+
+.main-footer p {
+	margin-bottom: 20px;
+	font-family: "Raleway";
+	font-size: 12px;
+	line-height: 150%;
+}
+
+.main-footer-top {
+	padding-top: 70px;
+	padding-bottom: 70px;
+	background-color: $blue;
+}
+
+.main-footer-top-item-title,
+.main-footer-top-item-title-big {
+	display: block;
+	margin-bottom: 20px;
+	text-transform: uppercase;
+}
+
+.main-footer-top-item-title {
+	font-size: 16px;
+}
+
+.main-footer-top-item-title-big {
+	font-size: 45px;
+}
+
+.main-footer-top-item a {
+	transition: text-decoration 0.2s ease 0s;
+	font-size: 16px;
+}
+
+.main-footer-top-item a i.fa {
+	transition: margin-left 0.2s ease 0s;
+	margin-left: 10px;
+}
+
+.main-footer-top-item a:hover i.fa {
+	margin-left: 15px;
+}
+
+.main-footer-top-item-address {
+	line-height: 1.5em;
+}
+
+.main-footer-bottom {
+	padding-top: 35px;
+	padding-bottom: 35px;
+	background-color: $blue-dark;
+	font-size: 12px;
+}
+
+.main-footer-bottom a:hover {
+	border-color: $text-blue-light;
+}
+
+.main-footer-bottom-links > li {
+	text-transform: uppercase;
+}
+
+@media (max-width: $screen-xs-max) {
+	.main-footer-top-item:not(:last-child) > div {
+		padding-bottom: 20px;
+		margin-bottom: 40px;
+		@include border-bottom(1px, $blue-dark)
+	}
+
+	.main-footer-bottom {
+		text-align: center;
+	}
+
+	.main-footer-bottom .main-footer-bottom-block:not(:last-child) {
+		margin-bottom: 30px;
+	}
+
+	.main-footer-bottom-links > li {
+		display: block;
+	}
+
+	.main-footer-bottom-links > li:nth-child(even) {
+		margin-bottom: 5px;
+	}
+}
+
+@media (min-width: $screen-sm-min) {
+	.main-footer-bottom-links > li {
+		display: inline;
+		margin-left: 20px;
+		float: right;
+	}
+}

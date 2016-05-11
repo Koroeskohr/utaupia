@@ -1,12 +1,19 @@
-<% if !@utauloid_showcase.blank? %>
-	<%= render 'utauloids/partials/showcase', utau: @utauloid_showcase %>
-<% end %>
-<div class="list">
-	<%= render 'utauloids/partials/search' %>
-	<div class="grid">
-		<div class="grid-top">
+<div class="homepage">
+	<% if !@utauloid_showcase.blank? %>
+		<%= render 'utauloids/partials/showcase', utau: @utauloid_showcase, on_homepage: true; %>
+	<% end %>
+	<div class="utauloid-list">
+		<%= render 'utauloids/partials/search' %>
+		<div class="utauloid-list-title">
 			<h2><%= t('last_utauloids') %></h2>
 		</div>
-		<%= render 'utauloids/partials/list', utauloids: @utauloids %>
+		<div class="utauloid-list-grid">
+			<div class="utauloid-list-grid-top">
+			</div>
+			<%= render 'utauloids/partials/list', utauloids: @utauloids %>
+		</div>
+		<div class="utauloid-list-see-all">
+			<%= link_to t('see_all_utauloids'), utauloids_path, title:t('see_all_utauloids'), class:"btn btn-success" %>
+		</div>
 	</div>
 </div>

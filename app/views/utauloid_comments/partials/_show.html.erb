@@ -1,6 +1,14 @@
-<div class="comment-item-top">
-	<span class="comment-user"><%= link_to comment.user.nickname, comment.user %></span>
-	<%= link_to "Edit", edit_utauloid_comment_path(comment), remote: true, class: 'comment-edit', id: "edit_comment_#{comment.id}" unless !current_user || current_user.id != comment.user_id %>
+<div class="utauloid-show-comments-list-item-user">
+	<%= link_to comment.user.nickname, comment.user %>
 </div>
-<span class="comment-date"><%= comment.created_at.strftime("%F, at %H:%M") %></span>
-<p><%= comment.message %></p>
+<div class="utauloid-show-comments-list-item-date">
+	<span><%= comment.created_at.strftime("%F, at %H:%M") %></span>
+</div>
+<% if current_user && current_user.id == comment.user_id%>
+<div class="utauloid-show-comments-list-item-edit-link">
+	<%= link_to t('edit'), edit_utauloid_comment_path(comment), remote: true, id: "edit_comment_#{comment.id}" %>
+</div>
+<% end %>
+<div class="utauloid-show-comments-list-item-content">
+	<p><%= comment.message %></p>
+</div>

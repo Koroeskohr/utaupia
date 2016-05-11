@@ -1,19 +1,19 @@
-<% if current_user.favorites.include? @utauloid %>
-<%= link_to "Delete favorite", remove_favorite_path(@utauloid.id), 
+<% if current_user.favorites.include? utau %>
+<%= link_to "Delete favorite", remove_favorite_path(utau.id), 
       remote: true, 
       method: :delete,
-      class: 'favorites delete' %>
-<%= link_to "Add to favorites", add_favorite_path(@utauloid.id), 
+      class: 'favorites favorites-delete' %>
+<%= link_to "Add to favorites", add_favorite_path(utau.id), 
       method: :post, 
       remote: true, 
-      class: 'favorites add none' %>
+      class: 'favorites favorites-add favorites-hidden' %>
 <% else %>
-<%= link_to "Delete favorite", remove_favorite_path(@utauloid.id), 
+<%= link_to "Delete favorite", remove_favorite_path(utau.id), 
       remote: true, 
       method: :delete, 
-      class: 'favorites delete none' %>
-<%= link_to "Add to favorites", add_favorite_path(@utauloid.id), 
+      class: 'favorites favorites-delete favorites-hidden' %>
+<%= link_to "Add to favorites", add_favorite_path(utau.id), 
       method: :post, 
       remote: true, 
-      class: 'favorites add' %>
+      class: 'favorites favorites-add' %>
 <% end %>

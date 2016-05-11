@@ -11,6 +11,8 @@ $(document).on("page:change", ->
 			checkbox = $("input[type=checkbox][id=" + $(this).attr('id') + "]");
 			$(checkbox).prop('checked', !$(checkbox).prop("checked"));
 		)
+
 	$(".bootstrap-switch").bootstrapSwitch();
 )
+
 # message form

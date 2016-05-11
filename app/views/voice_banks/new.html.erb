@@ -1,27 +1,30 @@
 <div class="voicebank-new">
-	<%= render 'shared/errors', entity: @voice_bank %>
-	<%= form_for @voice_bank, html: {class: 'form-horizontal'} do |f| %>
-		<%= f.hidden_field :utauloid_id %>
-		<div class="form-group">
-			<%= f.label :name, 'Title of the bank' %>
-			<%= f.text_field :name, class: 'form-control' %>
+	<div class="container">
+		<div class="col-xs-12 col-sm-8">
+			<%= render 'shared/errors', entity: @voice_bank %>
+			<%= form_for @voice_bank, html: { class: "new_voice_bank" } do |f| %>
+				<%= f.hidden_field :utauloid_id %>
+				<div class="form-group">
+					<%= f.label :name, 'Title of the bank', class: "voicebank-new-form-label" %>
+					<%= f.text_field :name, class: 'form-control' %>
+				</div>
+				<div class="form-group">
+					<%= f.label :download_link, class: "voicebank-new-form-label" %>
+					<%= f.text_field :download_link, class: 'form-control', value: 'http://' %>
+				</div>
+				<div class="form-group">
+					<%= f.label :is_append, "This voicebank is an append", class: "voicebank-new-form-label" %>
+					<%= f.check_box :is_append %>
+				</div>
+				<%= f.submit t('submit'), class: 'btn btn-success' %>
+			<% end %>
 		</div>
-		<div class="form-group">
-			<%= f.label :download_link %>
-			<%= f.text_field :download_link, class: 'form-control', value: 'http://' %>
+		<div class="col-xs-12 col-sm-3 col-sm-offset-1">
+			<div class="voicebank-new-voicebank-list">
+				<% if !@utauloid.voice_banks.blank? %>
+				  <%= render partial: "voice_banks/partials/list_for_utauloid", locals: { utau: @utauloid, voice_banks: @voice_banks } %>
+				<% end %>
+			</div>
 		</div>
-		<div class="form-group">
-			<%= f.label :is_append, "This voicebank is an append" %>
-			<%= f.check_box :is_append %>
-		</div>
-		<%= f.submit t('submit'), class: 'btn btn-success' %>
-	<% end %>
-	<div class="voicebank-new-voicebank-list">
-		<h2><%= t('voicebanks') %></h2>
-		<% if @utauloid.voice_banks.blank? %>
-
-		<% else %>
-		  <%= render partial: "voice_banks/partials/list_for_utauloid", locals: {utauloid: @utauloid} %>
-		<% end %>
 	</div>
 </div>

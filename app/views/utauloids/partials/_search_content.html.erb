@@ -1,112 +1,202 @@
-<div class="form-group-top row">
-	<div class="form-row col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
-		<%= text_field_tag :name, params[:name], value: params[:name], placeholder: "#{t('search_name_placeholder')}", class: "form-control" %>
-	</div>
-	<div class="form-row form-characteristics col-ms-12 col-xs-12">
+<div class="form-group">
+	<div class="utauloid-list-search-form-name">
 		<div class="row">
-			<%= label_tag t('voice_characterisation'), nil, class: "main-label col-sm-12 col-xs-12" %>
-			<div class="col-sm-12 col-xs-12">
-			  <% VoiceCharacteristic.order(:name).each_with_index do |vc, i| %>
-				  <% if params[:voice_characteristic].nil? %>
-				  	<%= label_tag vc.name, nil, id: "voice_characteristic_#{vc.id}", class: "btn btn-default" %>
-				  	<%= check_box_tag "voice_characteristic[]", vc.id, false, id: "voice_characteristic_#{vc.id}", class: "" %>
-				  <% else %>
-				  	<%= label_tag vc.name, nil, id: "voice_characteristic_#{vc.id}", class: "btn #{params[:voice_characteristic].include?(vc.id.to_s) ? 'btn-success' : 'btn-default'}" %>
-				  	<%= check_box_tag "voice_characteristic[]", vc.id, params[:voice_characteristic].include?(vc.id.to_s) ? true : false, id: "voice_characteristic#{vc.id}", class: "" %>
-				  <% end %>
-				<% end %>
+			<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+				<div class="utauloid-list-search-form-name-wrapper">
+					<%= text_field_tag :name, params[:name], value: params[:name], placeholder: "#{t('search_name_placeholder')}", class: "form-control" %>
+					<%= fa_icon "search" %>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="row">
-	<div class="form-group-left col-sm-5 col-xs-12">
+<div class="form-group">
+	<div class="utauloid-list-search-form-characteristics">
 		<div class="row">
-			<%= label_tag t('gender'), nil, class: "main-label col-sm-3 col-xs-3" %>
-			<div class="col-sm-9 col-xs-9">
-			  <% Utauloid.genders.keys.map {|gender| [gender.titleize,gender]}.each_with_index do |g, i| %>
-				  <% if params[:gender].nil? %>
-				  	<%= label_tag g.first, nil, id: "gender_#{g.second}", class: "btn btn-default" %>
-				  	<%= check_box_tag "gender[]", g.second, false, id: "gender_#{g.second}", class: "" %>
-				  <% else %>
-				  	<%= label_tag g.first, nil, id: "gender_#{g.second}", class: "btn #{params[:gender].include?(g.second) ? 'btn-success' : 'btn-default'}" %>
-						<%= check_box_tag "gender[]", g.second, params[:gender].include?(g.second) ? true : false, id: "gender_#{g.second}", class: "" %>
-				  <% end %>
-				<% end %>
-			</div>
-		</div>
-		<div class="row">
-			<%= label_tag t('language'), nil, class: "main-label col-sm-3 col-xs-3" %>
-			<div class="col-sm-9 col-xs-9">
-			  <% VoiceLanguage.order(:name).each_with_index do |l, i| %>
-				  <% if params[:language].nil? %>
-				  	<%= label_tag l.name, nil, id: "language_#{l.id}", class: "btn btn-default" %>
-				  	<%= check_box_tag "language[]", l.id, false, id: "language_#{l.id}", class: "" %>
-				  <% else %>
-				  	<%= label_tag l.name, nil, id: "language_#{l.id}", class: "btn #{params[:language].include?(l.id.to_s) ? 'btn-success' : 'btn-default'}" %>
-				  	<%= check_box_tag "language[]", l.id, params[:language].include?(l.id.to_s) ? true : false, id: "language_#{l.id}", class: "" %>
-				  <% end %>
-				<% end %>
-			</div>
-		</div>
-		<div class="row">
-			<%= label_tag t('voicebank_type'), nil, class: "main-label col-sm-3 col-xs-3" %>
-		  <div class="col-sm-9 col-xs-9">
-			  <% VoicebankType.order(:name).each_with_index do |vbt, i| %>
-				  <% if params[:voicebank_type].nil? %>
-				  	<%= label_tag vbt.name, nil, id: "voicebank_type_#{vbt.id}", class: "btn btn-default" %>
-				  	<%= check_box_tag "voicebank_type[]", vbt.id, false, id: "voicebank_type_#{vbt.id}", class: "" %>
-				  <% else %>
-				  	<%= label_tag vbt.name, nil, id: "voicebank_type_#{vbt.id}", class: "btn #{params[:voicebank_type].include?(vbt.id.to_s) ? 'btn-success' : 'btn-default'}" %>
-				  	<%= check_box_tag "voicebank_type[]", vbt.id, params[:voicebank_type].include?(vbt.id.to_s) ? true : false, id: "voicebank_type_#{vbt.id}", class: "" %>
-				  <% end %>
-				<% end %>
+			<%= label_tag t('voice_characterisation'), nil, class: "utauloid-list-search-form-label" %>
+			<div class="col-xs-12 col-sm-12">
+				<div class="flex-horizontal-center-wrap">
+				  <% VoiceCharacteristic.order(:name).each_with_index do |vc, i| %>
+					  <% if params[:voice_characteristic].nil? %>
+					  	<%= label_tag vc.name, nil, id: "voice_characteristic_#{vc.id}", class: "btn btn-default" %>
+					  	<%= check_box_tag "voice_characteristic[]", vc.id, false, id: "voice_characteristic_#{vc.id}", class: "" %>
+					  <% else %>
+					  	<%= label_tag vc.name, nil, id: "voice_characteristic_#{vc.id}", class: "btn #{params[:voice_characteristic].include?(vc.id.to_s) ? 'btn-default' : 'btn-default'}" %>
+					  	<%= check_box_tag "voice_characteristic[]", vc.id, params[:voice_characteristic].include?(vc.id.to_s) ? true : false, id: "voice_characteristic#{vc.id}", class: "" %>
+					  <% end %>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="form-group-right col-sm-7 col-xs-12 search-characteristics">
-		<div class="row">
-			<div class="col-sm-6 col-xs-12">
-				<div class="row">
-					<%= label_tag t('creator_name'), nil, class: "main-label col-sm-4 col-xs-3" %>
-					<div class="col-sm-8 col-xs-9">
-						<%= text_field_tag :creator_name, params[:creator_name], placeholder: "#{t('search_creator_name_placeholder')}", class: "form-control" %>
-					</div>
+</div>
+
+<div class="row utauloid-list-search-form-inline">
+	<div class="col-xs-12 col-sm-6">
+		<div class="form-group">
+			<div class="flex-left-nowrap">
+				<div class="utauloid-list-search-form-inline-label">
+					<%= label_tag t('gender'), nil, class: "utauloid-list-search-form-label" %>
 				</div>
-				<div class="row">
-					<%= label_tag t('release_date'), nil, class: "main-label col-sm-4 col-xs-3" %>
-					<div class="col-sm-8 col-xs-9">
-						<% if params[:release_date].nil? %>
-								<%= select_tag :release_date, options_from_collection_for_select(get_search_date_options, :first, :last), { include_blank: 'None', class: "form-control" } %>
-						<% else %>
-								<%= select_tag :release_date, options_from_collection_for_select(get_search_date_options, :first, :last, params[:release_date]), { include_blank: 'None', class: "form-control" } %>
+				<div>
+					<div class="flex-left-wrap">
+					  <% Utauloid.genders.keys.map {|gender| [gender.titleize,gender]}.each_with_index do |g, i| %>
+						  <% if params[:gender].nil? %>
+						  	<%= label_tag g.first, nil, id: "gender_#{g.second}", class: "btn btn-default" %>
+						  	<%= check_box_tag "gender[]", g.second, false, id: "gender_#{g.second}", class: "" %>
+						  <% else %>
+						  	<%= label_tag g.first, nil, id: "gender_#{g.second}", class: "btn #{params[:gender].include?(g.second) ? 'btn-success' : 'btn-default'}" %>
+								<%= check_box_tag "gender[]", g.second, params[:gender].include?(g.second) ? true : false, id: "gender_#{g.second}", class: "" %>
+						  <% end %>
 						<% end %>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 col-xs-12">
-				<div class="row">
-					<%= label_tag t('last_update'), nil, class: "main-label col-sm-4 col-xs-3" %>
-					<div class="col-sm-8 col-xs-9">
-						<% if params[:update_date].nil? %>
-								<%= select_tag :update_date, options_from_collection_for_select(get_search_date_options, :first, :last), { include_blank: 'None', class: "form-control" } %>
-						<% else %>
-								<%= select_tag :update_date, options_from_collection_for_select(get_search_date_options, :first, :last, params[:update_date]), { include_blank: 'None', class: "form-control" } %>
-						<% end %>
-					</div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-6">
+		<div class="form-group">
+			<div class="flex-left-nowrap">
+				<div class="utauloid-list-search-form-inline-label">
+					<%= label_tag t('language'), nil, class: "utauloid-list-search-form-label" %>
 				</div>
-				<div class="row">
-					<%= label_tag t('group'), nil, class: "main-label col-sm-4 col-xs-3" %>
-					<div class="col-sm-8 col-xs-9">
-						<% if params[:group].nil? %>
-							<%= select_tag :group, options_from_collection_for_select(Category.order(:name), :id, :name), { include_blank: 'None', class: "form-control" } %>
-						<% else %>
-							<%= select_tag :group, options_from_collection_for_select(Category.order(:name), :id, :name, params[:group]), { include_blank: 'None', class: "form-control" } %>
-						<% end %>
+				<div>
+					<div class="flex-left-wrap">
+					  <% VoiceLanguage.order(:name).each_with_index do |l, i| %>
+					  <% if params[:language].nil? %>
+					  	<%= label_tag l.name, nil, id: "language_#{l.id}", class: "btn btn-default" %>
+					  	<%= check_box_tag "language[]", l.id, false, id: "language_#{l.id}", class: "" %>
+					  <% else %>
+					  	<%= label_tag l.name, nil, id: "language_#{l.id}", class: "btn #{params[:language].include?(l.id.to_s) ? 'btn-success' : 'btn-default'}" %>
+					  	<%= check_box_tag "language[]", l.id, params[:language].include?(l.id.to_s) ? true : false, id: "language_#{l.id}", class: "" %>
+					  <% end %>
+					<% end %>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<%= submit_tag "Search", class: "btn btn-primary" %>
+
+<% if !params[:voicebank_type].nil? || !params[:group].nil? || !params[:release_date].nil? || !params[:update_date].nil? || !params[:creator_name].nil? %>
+<div class="utauloid-list-search-form-hidden-button">
+	<span id="utauloid-list-search-form-hidden-button"><%= t('more_filters') %><%= fa_icon "chevron-up" %></span>
+</div>
+<div id="utauloid-list-search-form-hidden" class="utauloid-list-search-form-hidden-open">
+<% else %>
+<div class="utauloid-list-search-form-hidden-button">
+	<span id="utauloid-list-search-form-hidden-button"><%= t('more_filters') %><%= fa_icon "chevron-down" %></span>
+</div>
+<div id="utauloid-list-search-form-hidden">
+<% end %>
+	<div class="row utauloid-list-search-form-inline">
+		<div class="col-xs-12 col-sm-6">
+			<div class="form-group">
+				<div class="flex-left-nowrap">
+					<div class="utauloid-list-search-form-inline-label">
+						<%= label_tag t('voicebank_type'), nil, class: "utauloid-list-search-form-label" %>
+					</div>
+					<div>
+					  <div class="flex-left-wrap">
+						  <% VoicebankType.order(:name).each_with_index do |vbt, i| %>
+							  <% if params[:voicebank_type].nil? %>
+							  	<%= label_tag vbt.name, nil, id: "voicebank_type_#{vbt.id}", class: "btn btn-default" %>
+							  	<%= check_box_tag "voicebank_type[]", vbt.id, false, id: "voicebank_type_#{vbt.id}", class: "" %>
+							  <% else %>
+							  	<%= label_tag vbt.name, nil, id: "voicebank_type_#{vbt.id}", class: "btn #{params[:voicebank_type].include?(vbt.id.to_s) ? 'btn-success' : 'btn-default'}" %>
+							  	<%= check_box_tag "voicebank_type[]", vbt.id, params[:voicebank_type].include?(vbt.id.to_s) ? true : false, id: "voicebank_type_#{vbt.id}", class: "" %>
+							  <% end %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-6">
+			<div class="form-group">
+				<div class="flex-left-nowrap">
+					<div class="utauloid-list-search-form-inline-label">
+						<%= label_tag t('group'), nil, class: "utauloid-list-search-form-label" %>
+					</div>
+					<div>
+						<div class="flex-left-wrap">
+							<div class="select-container">
+								<%= fa_icon "chevron-down" %>
+								<% if params[:group].nil? %>
+									<%= select_tag :group, options_from_collection_for_select(Category.order(:name), :id, :name), { include_blank: 'None', class: "form-control" } %>
+								<% else %>
+									<%= select_tag :group, options_from_collection_for_select(Category.order(:name), :id, :name, params[:group]), { include_blank: 'None', class: "form-control" } %>
+								<% end %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row utauloid-list-search-form-inline">
+		<div class="col-xs-12 col-sm-6">
+			<div class="form-group">
+				<div class="flex-left-wrap utauloid-list-search-form-inline-date">
+					<div class="flex-left-nowrap utauloid-list-search-form-inline-date-first">
+						<div class="flex-left-nowrap">
+							<div class="utauloid-list-search-form-inline-label">
+								<%= label_tag t('release_date'), nil, class: "utauloid-list-search-form-label" %>
+							</div>
+						</div>
+						<div>
+							<div class="flex-left-wrap">
+								<div class="select-container">
+									<%= fa_icon "chevron-down" %>
+									<% if params[:release_date].nil? %>
+											<%= select_tag :release_date, options_from_collection_for_select(get_search_date_options, :first, :last), { include_blank: 'None', class: "form-control" } %>
+									<% else %>
+											<%= select_tag :release_date, options_from_collection_for_select(get_search_date_options, :first, :last, params[:release_date]), { include_blank: 'None', class: "form-control" } %>
+									<% end %>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="flex-left-nowrap utauloid-list-search-form-inline-date-second">
+						<div class="flex-left-nowrap">
+							<div class="utauloid-list-search-form-inline-label">
+								<%= label_tag t('last_update'), nil, class: "utauloid-list-search-form-label" %>
+							</div>
+						</div>
+						<div>
+							<div class="flex-left-wrap">
+								<div class="select-container">
+									<%= fa_icon "chevron-down" %>
+									<% if params[:update_date].nil? %>
+											<%= select_tag :update_date, options_from_collection_for_select(get_search_date_options, :first, :last), { include_blank: 'none', class: "form-control" } %>
+									<% else %>
+											<%= select_tag :update_date, options_from_collection_for_select(get_search_date_options, :first, :last, params[:update_date]), { include_blank: 'None', class: "form-control" } %>
+									<% end %>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-6">
+			<div class="form-group">
+				<div class="flex-left-nowrap">
+					<div class="utauloid-list-search-form-inline-label">
+						<%= label_tag t('creator_name'), nil, class: "utauloid-list-search-form-label" %>
+					</div>
+					<div>
+						<div class="flex-left-wrap">
+							<%= text_field_tag :creator_name, params[:creator_name], placeholder: "#{t('search_creator_name_placeholder')}", class: "form-control" %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="utauloid-list-search-form-submit">
+	<%= submit_tag "Search", class: "btn btn-success" %>
+</div>

@@ -1,124 +1,194 @@
 <div class="utauloid-edit">
-	<div class="row">
-		<div class="col-sm-4 col-sm-offset-4 col-xs-12">
-			<%= render 'shared/errors', entity: @utauloid %>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-xs-12">
+
+				<% if @utauloid.errors.any? %>
+					<%= render 'shared/errors', entity: @utauloid %>
+				<% end %>
+
+				<%= form_for @utauloid, html: {class: 'utauloid-form'} do |f| %>
+				<div class="row">
+					<div class="col-sm-12 col-xs-12">
+						<div class="form-group">
+							<h2><%= t('audio_preview') %></h2>
+							<div class="utauloid-form-audio-preview form-audio-preview-upload <%= 'form-audio-preview-upload-actived' unless @utauloid.audio_preview_file_name.blank? %>">
+								<%= f.file_field :audio_preview, class: 'form-audio-preview-upload-input' %>
+								<% if @utauloid.audio_preview_file_name.blank? %>
+								<%= f.label :audio_preview, fa_icon('file-audio-o'), class: 'form-audio-preview-upload-label' %>
+								<% else %>
+								<%= f.label :audio_preview, raw("<i>#{@utauloid.audio_preview_file_name}</i>"), class: 'form-audio-preview-upload-label' %>
+								<% end %>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+			  	<div class="col-xs-12 col-sm-3">
+						<div class="form-group">
+							<h2><%= t('cover') %></h2>
+							<div class="utauloid-form-cover form-image-upload" style="background-image: url('<%= @utauloid.cover.url(:medium) %>');">
+								<%= f.file_field :cover, class: 'form-image-upload-input' %>
+								<%= f.label :cover, fa_icon('file-image-o'), class: 'form-image-upload-label' %>
+							</div>
+						</div>
+						<div class="form-group">
+							<h2><%= t('avatar') %></h2>
+							<div class="utauloid-form-avatar form-image-upload" style="background-image: url('<%= @utauloid.avatar.url(:medium) %>');">
+								<%= f.file_field :avatar, class: 'form-image-upload-input' %>
+								<%= f.label :avatar, fa_icon('file-image-o'), class: 'form-image-upload-label' %>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xs-12 col-sm-9">
+						<h2><%= t('utau_infos') %></h2>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-xs-12 col-sm-2">
+									<div>
+									<%= f.label :name, t('name'), class: 'utauloid-form-label' %>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-10">
+									<%= f.text_field :name, class: 'form-control', placeholder: "Please enter name in Western order" %>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-xs-12 col-sm-2">
+									<%= f.label :japanese_name, t('japanese_name'), class: 'utauloid-form-label' %>
+								</div>
+								<div class="col-xs-12 col-sm-10">
+									<%= f.text_field :japanese_name, class: 'form-control' %>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-xs-12 col-sm-2">
+									<%= f.label :gender, t('gender'), class: 'utauloid-form-label' %>
+								</div>
+								<div class="col-xs-12 col-sm-4">
+									<div class="select-container">
+										<%= fa_icon "chevron-down" %>
+										<%= f.select(:gender, Utauloid.genders.keys.map {|gender| [gender.titleize,gender]}, {}, class: 'form-control') %>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-2">
+									<%= f.label :category_id, t('group'), class: 'utauloid-form-label' %>
+								</div>
+								<div class="col-xs-12 col-sm-4">
+									<div class="select-container">
+										<%= fa_icon "chevron-down" %>
+										<%= f.collection_select :category_id, Category.all, :id, :name, {}, class: 'form-control' %>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-xs-12 col-sm-2">
+									<%= f.label :voice_language_ids, t('language'), class: 'utauloid-form-label' %>
+								</div>
+								<div class="col-xs-12 col-sm-10">
+									<% VoiceLanguage.order(:name).each_with_index do |vl, i| %>
+								  	<%= label_tag vl.name, nil, id: "utauloid_voice_language_ids_#{vl.id}", class: @utauloid.voice_language_ids.include?(vl.id) ? "btn btn-success" : "btn btn-default" %>
+								  	<%= check_box_tag "utauloid[voice_language_ids][]", vl.id, @utauloid.voice_language_ids.include?(vl.id) ? true : false, id: "utauloid_voice_language_ids_#{vl.id}", class: "" %>
+									<% end %>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-xs-12 col-sm-2">
+									<%= f.label :voicebank_type_ids, t('voicebank_type'), class: 'utauloid-form-label' %>
+								</div>
+								<div class="col-xs-12 col-sm-10">
+									<% VoicebankType.order(:name).each_with_index do |vbt, i| %>
+								  	<%= label_tag vbt.name, nil, id: "utauloid_voicebank_type_ids_#{vbt.id}", class: @utauloid.voicebank_type_ids.include?(vbt.id) ? "btn btn-success" : "btn btn-default" %>
+			  						<%= check_box_tag "utauloid[voicebank_type_ids][]", vbt.id, @utauloid.voicebank_type_ids.include?(vbt.id) ? true : false, id: "utauloid_voicebank_type_ids_#{vbt.id}", class: "" %>
+									<% end %>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-xs-12 col-sm-2">
+									<%= f.label :voice_characteristic_ids, t('voice_characterisation'), class: 'utauloid-form-label' %>
+								</div>
+								<div class="col-xs-12 col-sm-10">
+									<% VoiceCharacteristic.order(:name).each_with_index do |vc, i| %>
+								  	<%= label_tag vc.name, nil, id: "utauloid_voice_characteristic_ids_#{vc.id}", class: @utauloid.voice_characteristic_ids.include?(vc.id) ? "btn btn-success" : "btn btn-default" %>
+			  						<%= check_box_tag "utauloid[voice_characteristic_ids][]", vc.id, @utauloid.voice_characteristic_ids.include?(vc.id) ? true : false, id: "utauloid_voice_characteristic_ids_#{vc.id}", class: "" %>
+									<% end %>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-xs-12 col-sm-2">
+									<%= f.label :vb_release_date, t('release_date'), class: 'utauloid-form-label' %>
+								</div>
+								<div class="col-xs-12 col-sm-4">
+									<%= f.date_field :vb_release_date, class: 'form-control', placeholder: 'YYYY/MM/DD' %>
+								</div>
+								<div class="col-xs-12 col-sm-2">
+									<%= f.label :vb_last_update, t('last_update'), class: 'utauloid-form-label' %>
+								</div>
+								<div class="col-xs-12 col-sm-4">
+									<%= f.date_field :vb_last_update, class: 'form-control', placeholder: 'YYYY/MM/DD' %>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-xs-12 col-sm-2">
+									<%= f.label :creator_name, t('are_you_the_creator'), class: 'utauloid-form-label' %>
+								</div>
+								<div class="col-xs-12 col-sm-3 utauloid-form-is-creator-container">
+									<%= check_box_tag 'is_creator', 'yes', @utauloid.creator_name.blank? ? true : false, class: 'utauloid-form-is-creator bootstrap-switch' %>	
+								</div>
+								<div class="col-xs-12 col-sm-7 utauloid-form-is-creator-text-container utauloid-form-is-creator-text-container-hidden">
+									<%= f.text_field :creator_name, class: 'form-control', placeholder: t('name_of_the_creator') %>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-xs-12 col-sm-2">
+									<%= f.label :wiki_url, t('wiki_url'), class: 'utauloid-form-label' %>
+								</div>
+								<div class="col-xs-12 col-sm-10">
+									<%= f.text_field :wiki_url, placeholder: "http://utau.wikia.com/wiki", class: 'form-control' %>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-xs-12 col-sm-2">
+									<%= f.label :vocadb_url, t('vocadb_url'), class: 'utauloid-form-label' %>
+								</div>
+								<div class="col-xs-12 col-sm-10">
+									<%= f.text_field :vocadb_url, placeholder: "http://vocadb.net/Ar/", class: 'form-control' %>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group">
+						<div class="col-xs-12 col-sm-9 col-sm-offset-3">
+							<%= f.submit t('submit'), class: 'btn btn-success' %>
+						</div>
+					</div>
+				</div>
+				<% end %>
+
+			</div>
 		</div>
 	</div>
-	<%= form_for @utauloid, html: {class: 'form-horizontal'} do |f| %>
-		<div class="form-group">
-			<%= f.label :name, t('name'), class: 'col-sm-2 col-xs-12' %>
-			<div class="col-sm-9 col-xs-12">
-				<%= f.text_field :name, class: 'form-control' %>
-			</div>
-		</div>
-		<div class="form-group">
-			<%= f.label :japanese_name, t('japanese_name'), class: 'col-sm-2 col-xs-12' %>
-			<div class="col-sm-9 col-xs-12">
-				<%= f.text_field :japanese_name, class: 'form-control' %>
-			</div>
-		</div>
-		<div class="form-group">
-			<%= f.label :avatar, t('thumbnail'), class: 'col-sm-2 col-xs-12' %>
-			<div class="col-sm-3 col-xs-12">
-				<%= f.file_field :avatar, class: '' %>
-			</div>
-			<div class='col-sm-2 col-xs-12'>
-				<%= image_tag @utauloid.avatar.url(:thumb) %>
-			</div>
-		</div>
-		<div class="form-group">
-			<%= f.label :cover, t('cover'), class: 'col-sm-2 col-xs-12' %>
-			<div class="col-sm-3 col-xs-12">
-				<%= f.file_field :cover, class: '' %>
-			</div>
-			<div class='col-sm-2 col-xs-12'>
-				<%= image_tag @utauloid.cover.url(:thumb) %>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="col-sm-2 col-xs-2">
-				<%= f.label :audio_preview, t('audio_preview') %>
-				<span class='sub-label'><%= t('audio_preview_max_filesize') %></span>
-			</div>
-			<div class="col-sm-3 col-xs-12">
-				<%= f.file_field :audio_preview, class: '' %>
-			</div>
-			<div class="col-sm-2 col-xs-12">
-				<% if !@utauloid.audio_preview.blank? %>
-					<audio id="<%= "audio_#{@utauloid.id}" %>" preload='none' src='<%= @utauloid.audio_preview.url %>' type='<%= @utauloid.audio_preview.content_type %>'></audio>
-					<span class="audio-preview paused" id="<%= "audio_#{@utauloid.id}" %>"></span>
-				<% end %>
-			</div>
-		</div>
-		<div class="form-group">
-			<%= f.label :gender, t('gender'), class: 'col-sm-2 col-xs-12' %>
-			<div class="col-sm-9 col-xs-12">
-				<%= f.select(:gender, Utauloid.genders.keys.map {|gender| [gender.titleize,gender]}, {}, class: 'form-control') %>
-			</div>
-		</div>
-		<div class="form-group">
-			<%= f.label :vb_release_date, t('release_date'), class: 'col-sm-2 col-xs-12' %>
-			<div class="col-sm-9 col-xs-12">
-				<%= f.date_field :vb_release_date, class: 'form-control' %>
-			</div>
-		</div>
-		<div class="form-group">
-			<%= f.label :vb_last_update, t('last_update'), class: 'col-sm-2 col-xs-12' %>
-			<div class="col-sm-9 col-xs-12">
-				<%= f.date_field :vb_last_update, class: 'form-control' %>
-			</div>
-		</div>
-		<div class="form-group">
-			<%= f.label :category_id, t('group'), class: 'col-sm-2 col-xs-12' %>
-			<div class="col-sm-9 col-xs-12">
-				<%= f.collection_select :category_id, Category.all, :id, :name, {}, class: 'form-control' %>
-			</div>
-		</div>
-		<div class="form-group">
-			<%= f.label :voice_language_ids, t('language'), class: 'col-sm-2 col-xs-12' %>
-			<div class="col-sm-9 col-xs-12">
-				<% VoiceLanguage.order(:name).each_with_index do |vl, i| %>
-				  	<%= label_tag vl.name, nil, id: "utauloid_voice_language_ids_#{vl.id}", class: @utauloid.voice_language_ids.include?(vl.id) ? "btn btn-success" : "btn btn-default" %>
-				  	<%= check_box_tag "utauloid[voice_language_ids][]", vl.id, @utauloid.voice_language_ids.include?(vl.id) ? true : false, id: "utauloid_voice_language_ids_#{vl.id}", class: "" %>
-				<% end %>
-			</div>
-		</div>
-		<div class="form-group">
-			<%= f.label :voicebank_type_ids, t('voicebank_type'), class: 'col-sm-2 col-xs-12' %>
-			<div class="col-sm-9 col-xs-12">
-				<% VoicebankType.order(:name).each_with_index do |vbt, i| %>
-			  	<%= label_tag vbt.name, nil, id: "utauloid_voicebank_type_ids_#{vbt.id}", class: @utauloid.voicebank_type_ids.include?(vbt.id) ? "btn btn-success" : "btn btn-default" %>
-			  	<%= check_box_tag "utauloid[voicebank_type_ids][]", vbt.id, @utauloid.voicebank_type_ids.include?(vbt.id) ? true : false, id: "utauloid_voicebank_type_ids_#{vbt.id}", class: "" %>
-				<% end %>
-			</div>
-		</div>
-		<div class="form-group">
-			<%= f.label :voice_characteristic_ids, t('voice_characterisation'), class: 'col-sm-2 col-xs-12' %>
-			<div class="col-sm-9 col-xs-12">
-				<% VoiceCharacteristic.order(:name).each_with_index do |vc, i| %>
-			  	<%= label_tag vc.name, nil, id: "utauloid_voice_characteristic_ids_#{vc.id}", class: @utauloid.voice_characteristic_ids.include?(vc.id) ? "btn btn-success" : "btn btn-default" %>
-			  	<%= check_box_tag "utauloid[voice_characteristic_ids][]", vc.id, @utauloid.voice_characteristic_ids.include?(vc.id) ? true : false, id: "utauloid_voice_characteristic_ids_#{vc.id}", class: "" %>
-				<% end %>
-			</div>
-		</div>
-		<div class="form-group">
-			<%= f.label :creator_name, t('creator_name_if_not_you'), class: 'col-sm-2 col-xs-12' %>
-			<div class="col-sm-9 col-xs-12">
-				<%= f.text_field :creator_name, class: 'form-control' %>
-			</div>
-		</div>
-		<div class="form-group">
-			<%= f.label :wiki_url, t('wiki_url'), class: 'col-sm-2 col-xs-12' %>
-			<div class="col-sm-9 col-xs-12">
-				<%= f.text_field :wiki_url, placeholder: "http://utau.wikia.com/wiki", class: 'form-control' %>
-			</div>
-		</div>
-		<div class="form-group">
-			<%= f.label :vocadb_url, t('vocadb_url'), class: 'col-sm-2 col-xs-12' %>
-			<div class="col-sm-9 col-xs-12">
-				<%= f.text_field :vocadb_url, placeholder: "http://vocadb.net/Ar/", class: 'form-control' %>
-			</div>
-		</div>
-		<%= f.submit t('submit'), class: 'btn btn-success' %>
-	<% end %>
 </div>

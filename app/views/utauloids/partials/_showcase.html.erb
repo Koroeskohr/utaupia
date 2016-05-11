@@ -1,25 +1,107 @@
-<div class="showcase row">
-	<div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 showcase-container">
-		<div class="row row-top">
-			<div class="col-sm-12 col-xs-12 showcase-top">
-				<h2><%= t('utauloid_showcase') %></h2>
-			</div>
+<div class="showcase">
+	<% if on_homepage %>
+	<div class="container">
+		<div class="showcase-title row">
+			<h2><%= t('utauloid_showcase') %></h2>
 		</div>
-		<div class="row row-content">
-			<div class="col-sm-5 col-xs-12 showcase-left">
-				<%= image_tag utau.cover.url(:medium), class: "img-responsive" %>
-			</div>
-			<div class="col-sm-7 col-xs-12 showcase-right">
-				<h3><%= link_to "#{utau.name} - #{utau.japanese_name}", utau %></h3>
-				<p><span class='bright-pink'><%= "#{t('gender')}: " %></span><%=t('utau.gender') %></p>
-				<p><span class='bright-pink'><%= "#{t('language')}: " %></span><%= "#{utau.voice_languages.collect { |c| c.name }.join(", ")}" %></p>
-				<p><span class='bright-pink'><%= "#{t('voicebank_type')}: " %></span><%= "#{utau.voicebank_types.collect { |c| c.name }.join(", ")}" %></p>
-				<p><span class='bright-pink'><%= "#{t('characteristics')}: " %></span><%= "#{utau.voice_characteristics.collect { |c| c.name }.join(", ")}" %></p>
-				<div class="showcase-audio">
-					<p><%= t('showcase_listen_preview') %></p>
-					<%= audio_tag utau.audio_preview.url, controls: true unless utau.audio_preview.blank? %>
+		<% end %>
+				
+		<div class="showcase-utauloid row">
+			<% if on_homepage %>
+			<div class="col-xs-12 col-sm-12">
+			<% else %>
+			<div>
+			<% end %>
+				<div class="showcase-utauloid-content">
+
+					<div class="showcase-background">
+						<div class="showcase-background-image" style="background-image: url('<%= utau.cover.url(:medium) %>');"></div>
+					</div>
+
+					<% if !on_homepage %>
+					<div class="container">
+					<% end %>
+
+					<div class="showcase-utauloid-content-infos">
+						<div class="row">
+							<div class="col-xs-12 col-sm-3">
+								<% if !utau.audio_preview_file_name.blank? %>
+								<%= audio_tag utau.audio_preview.url, controls: false, id: "audio_showcase_preview" unless utau.audio_preview.blank? %>
+								<% end %>
+								<div id="<%= utau.audio_preview_file_name.blank? ? "" : "audio_showcase_preview" %>" class="showcase-utauloid-audio-preview-button">
+									<% if !utau.audio_preview_file_name.blank? %>
+									<div class="showcase-utauloid-audio-preview-button-icon-container">
+										<%= fa_icon "play-circle-o" %>
+									</div>
+									<% end %>
+									<%= image_tag utau.cover.url(:medium), class: "img-responsive" %>
+								</div>
+							</div>
+							<div class="col-sm-9 col-xs-12">
+								<div class="row">
+									<div class="showcase-utauloid-content-infos-top col-xs-12 col-sm-12">
+										<div>
+											<h3 class="showcase-utauloid-content-infos-top-name"><%= link_to "#{utau.name} - #{utau.japanese_name}", utau, title:"#{utau.name} - #{utau.japanese_name}" %></h3>
+											<div class="showcase-utauloid-content-infos-top-links">
+												<% if !on_homepage && !current_user.blank? && current_user.id == utau.creator_id && utau.creator_is_user == true %>
+												<%= link_to t('edit'),  edit_utauloid_path(utau), title: t('edit'), class: "showcase-utauloid-content-infos-top-edit-link" %>
+												<% end %>
+												<% if !on_homepage && !current_user.blank? %>
+													<%= render 'favorite_utauloids/partials/favorites', utau: utau %>
+												<% end %>
+											</div>
+											<span class="showcase-utauloid-content-infos-top-creator">
+												<%= t('created_by') %> -
+												<% if utau.creator_is_user && utau.creator.user_info.utauloids_are_showable %>
+													<%= link_to utau.creator.nickname, user_path(utau.creator), title:utau.creator.nickname %>
+												<% elsif utau.creator_is_user && !utau.creator.user_info.utauloids_are_showable %>
+													<%= t('anonymous') %>
+												<% else %>
+													<%= utau.creator_name %>	
+												<% end %>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="showcase-utauloid-content-infos-bottom row">
+									<div class="col-xs-12 col-sm-6">
+										<span class="showcase-utauloid-content-infos-bottom-attribute-title"><%= t('gender') %></span>
+										<span class="showcase-utauloid-content-infos-bottom-attribute-content"><%= utau.gender %></span>
+										<span class="showcase-utauloid-content-infos-bottom-attribute-title"><%= t('language') %></span>
+										<span class="showcase-utauloid-content-infos-bottom-attribute-content"><%= utau.voice_languages.collect { |c| c.name }.join(", ") %></span>
+										<% if !on_homepage %>
+										<span class="showcase-utauloid-content-infos-bottom-attribute-title hidden-xs"><%= t('release_date') %></span>
+										<span class="showcase-utauloid-content-infos-bottom-attribute-content hidden-xs"><%= utau.vb_release_date.strftime("%Y.%m.%d") %></span>
+										<% end %>
+									</div>
+									<div class="col-xs-12 col-sm-6">
+										<span class="showcase-utauloid-content-infos-bottom-attribute-title"><%= t('voicebank_type') %></span>
+										<span class="showcase-utauloid-content-infos-bottom-attribute-content"><%= utau.voicebank_types.collect { |c| c.name }.join(", ") %></span>
+										<span class="showcase-utauloid-content-infos-bottom-attribute-title"><%= t('characteristics') %></span>
+										<span class="showcase-utauloid-content-infos-bottom-attribute-content"><%= utau.voice_characteristics.collect { |c| c.name }.join(", ") %></span>
+										<% if !on_homepage %>
+										<span class="showcase-utauloid-content-infos-bottom-attribute-title hidden-xs"><%= t('update_date') %></span>
+										<span class="showcase-utauloid-content-infos-bottom-attribute-content hidden-xs"><%= utau.vb_last_update.strftime("%Y.%m.%d") %></span>
+										<% end %>
+									</div>
+								</div>
+								<% if !on_homepage %>
+								<div class="showcase-utauloid-content-infos-bottom row hidden-sm hidden-md hidden-lg">
+									<div class="col-xs-12">
+										<span class="showcase-utauloid-content-infos-bottom-attribute-title"><%= t('release_date') %></span>
+										<span class="showcase-utauloid-content-infos-bottom-attribute-content"><%= utau.vb_release_date.strftime("%Y.%m.%d") %></span>
+										<span class="showcase-utauloid-content-infos-bottom-attribute-title"><%= t('update_date') %></span>
+										<span class="showcase-utauloid-content-infos-bottom-attribute-content"><%= utau.vb_last_update.strftime("%Y.%m.%d") %></span>
+									</div>
+								</div>
+								<% end %>
+							</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>
+
 	</div>
 </div>

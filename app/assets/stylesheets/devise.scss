@@ -1,0 +1,38 @@
+.devise-form {
+	font-family: "Raleway";
+	padding-top: 40px;
+}
+
+.devise-form-title {
+	margin-bottom: 20px;
+	font-family: "Montserrat";
+	font-size: 26px;
+	color: $text-color;
+}
+
+
+.devise-label {
+	margin-bottom: 10px;
+	font-family: "Montserrat";
+	color: $text-color;
+	text-transform: uppercase;
+}
+
+.devise-form a,
+.devise-form a:visited,
+.devise-form a:hover,
+.devise-form a:active,
+.devise-form a:active:hover,
+.devise-form a:active:focus,
+.devise-form a:focus {
+	color: $text-color;
+}
+
+.devise-form a:visited,
+.devise-form a:hover,
+.devise-form a:active,
+.devise-form a:active:hover,
+.devise-form a:active:focus,
+.devise-form a:focus {
+	border-color: $text-color;
+}

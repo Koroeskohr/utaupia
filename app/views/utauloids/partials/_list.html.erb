@@ -1,9 +1,17 @@
-<div class="row">
-	<% if !@utauloids.blank? %>
-		<% @utauloids.each do |utauloid| %>
-			<%= render 'utauloids/partials/list_item', utau: utauloid %>
-		<% end %>
-	<% else %>
-		<%= render 'utauloids/partials/search_not_found' %>
-	<% end %>
+<div class="container">
+	<div class="row">
+		<div id="utauloid-list-grid-items" class="flex-horizontal-space-between-wrap">
+			<% if !@utauloids.blank? %>
+				<% @utauloids.each do |utauloid| %>
+					<%= render 'utauloids/partials/list_item', utau: utauloid %>
+				<% end %>
+			<% elsif !user_utaus.blank? %>
+				<% user_utaus.each do |utauloid| %>
+					<%= render 'utauloids/partials/list_item', utau: utauloid %>
+				<% end %>
+			<% else %>
+				<%= render 'utauloids/partials/search_not_found' %>
+			<% end %>
+		</div>
+	</div>
 </div>

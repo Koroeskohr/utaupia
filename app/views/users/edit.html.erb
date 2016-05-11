@@ -1,18 +1,112 @@
 <div class="user-edit">
-	<%= render 'shared/errors', entity: @user %>
-	<%= form_for @user, html: { multipart: true, class: 'form-horizontal' } do |form| %>
-	  <div class="form-group">
-	  	<%= form.label :nickname, t('name'), class: 'main-label col-sm-2 col-xs-12' %>
-	  	<div class="col-sm-10 col-xs-12">
-	  		<%= form.text_field :nickname, class: 'form-control' %>	
-	  	</div>
-	  </div>
-	  <div class="user-edit-user-infos">
-		  <%= form.fields_for :user_info do |builder| %>
-		    <%= render "user_infos/partials/edit_user_infos", form: builder %>
-		  <% end %>
-	  </div>
-	  <%= form.submit t('edit'), class: 'btn btn-success' %>
-	  <%= link_to t('cancel'), account_path, class: 'btn btn-warning' %>
-	<% end %>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-xs-12">
+				<% if @user.errors.any? %>
+					<%= render 'shared/errors', entity: @user %>
+				<% end %>
+				<%= form_for @user, html: { multipart: true, class: "user-edit-form" } do |form| %>
+					<div class="form-group user-edit-form-title">
+            <h2><%= t('edit') %></h2>
+          </div>
+
+				  <%= form.fields_for :user_info do |builder| %>
+				  <div class="row">
+				  	<div class="col-xs-12 col-sm-3">
+							<div class="form-group">
+								<div class="user-edit-form-avatar form-image-upload", style="background-image: url('<%= current_user.user_info.avatar.url(:medium) %>')">
+									<%= builder.file_field :avatar, class: 'form-image-upload-input' %>
+									<%= builder.label :avatar, fa_icon('file-image-o'), class: 'form-image-upload-label' %>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-9">
+						  <div class="form-group">
+						  	<%= form.label :nickname, t('name'), class: 'user-edit-form-label' %>
+						  	<div class="">
+						  		<%= form.text_field :nickname, class: 'form-control' %>	
+						  	</div>
+						  </div>
+
+							<div class="form-group">
+								<%= builder.label :description, t('description'), class: 'user-edit-form-label' %>
+								<div class="">
+									<%= builder.text_area :description, class: 'form-control' %>	
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-xs-12 col-sm-9">
+										<%= builder.label :favorites_are_showable, t('favorites_are_showable'), class: 'user-edit-form-label' %>
+									</div>
+									<div class="col-xs-12 col-sm-3">
+										<%= builder.check_box :favorites_are_showable, class: 'bootstrap-switch' %>	
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-xs-12 col-sm-9">
+										<%= builder.label :utauloids_are_showable, t('utauloids_are_showable'), class: 'user-edit-form-label' %>
+									</div>
+									<div class="col-xs-12 col-sm-3">
+										<%= builder.check_box :utauloids_are_showable, class: 'bootstrap-switch' %>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-xs-12 col-sm-9">
+										<%= builder.label :notif_when_vb_updated, t('notif_when_vb_updated'), class: 'user-edit-form-label' %>
+									</div>
+									<div class="col-xs-12 col-sm-3">
+										<%= builder.check_box :notif_when_vb_updated, class: 'bootstrap-switch' %>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-xs-12 col-sm-9">
+										<%= builder.label :notif_when_utauloid_faved, t('notif_when_utauloid_faved'), class: 'user-edit-form-label' %>
+									</div>
+									<div class="col-xs-12 col-sm-3">
+										<%= builder.check_box :notif_when_utauloid_faved, class: 'bootstrap-switch' %>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-xs-12 col-sm-9">
+										<%= builder.label :notif_when_utauloid_commented, t('notif_when_utauloid_commented'), class: 'user-edit-form-label' %>
+									</div>
+									<div class="col-xs-12 col-sm-3">
+										<%= builder.check_box :notif_when_utauloid_commented, class: 'bootstrap-switch' %>
+									</div>
+								</div>
+							</div>
+							<div class="form-group user-edit-form-user-links">
+								<h3 class="user-edit-form-label" ><%= t('user_links') %></h3>
+								<div class="row">
+								<%= builder.fields_for :user_links do |builder| %>
+								  <%= render "user_links/partials/edit_user_links", form: builder %>
+								<% end %>
+								</div>
+							</div>
+						  <% end %>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+							<div class="col-xs-12 col-sm-9 col-sm-offset-3">
+							  <%= form.submit t('edit'), class: 'btn btn-success' %>
+							  <%= link_to t('cancel'), account_path, class: 'btn btn-warning' %>
+							</div>
+						 </div>
+					</div>
+
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>
