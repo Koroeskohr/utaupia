@@ -41,6 +41,7 @@ en:
   has_notifications: 'You have %{number} unseen messages.'
   has_no_notifications: 'You have 0 notifications.'
   menu: 'Menu'
+  more_informations: 'More informations'
   name: 'Name'
   name_of_the_creator: 'Name of the creator'
   more_filters: 'More filters'
@@ -77,6 +78,7 @@ en:
   user_links: "User's personal links"
   user_notifications: 'Notifications'
   user_utauloids: "User's UTAUloids"
+  vocadb: 'VocaDB'
   vocadb_url: 'VocaDB URL'
   voice_characterisation: 'Voice Characterisation'
   voicebank: 'Voicebank'
@@ -86,4 +88,5 @@ en:
   voicebank_type: 'Voice bank Type'
   what_is_utau: 'What is UTAU?'
   who_we_are: 'Who we are'
+  wiki: 'UTAU Wikia'
   wiki_url: 'Wiki URL'
