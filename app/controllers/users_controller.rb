@@ -34,6 +34,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    redirect_to :root_path unless @user == current_user
+    if @user.destroy
+      flash[:success] = 'Your account has been permanently deleted.'
+      sign_out @user
+      redirect_to :root_path
+    end
+  end
+
   def utauloids
     @utauloids = @user.utauloids
   end

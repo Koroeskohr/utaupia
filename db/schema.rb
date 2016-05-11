@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160125122849) do
+ActiveRecord::Schema.define(version: 20160507162541) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       null: false
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 20160125122849) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.boolean  "tos",                    default: false, null: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
@@ -174,8 +175,8 @@ ActiveRecord::Schema.define(version: 20160125122849) do
     t.string   "japanese_name"
     t.text     "description"
     t.integer  "gender",                                                     null: false
-    t.datetime "vb_release_date",            default: '2016-01-27 13:55:01'
-    t.datetime "vb_last_update",             default: '2016-01-27 13:55:01'
+    t.datetime "vb_release_date",            default: '2016-01-29 09:59:03'
+    t.datetime "vb_last_update",             default: '2016-01-29 09:59:03'
     t.integer  "category_id"
     t.string   "creator_name"
     t.boolean  "creator_is_user"

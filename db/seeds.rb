@@ -9,7 +9,7 @@
 puts 'Seeding database'
 
 puts 'Adding admins'
-k = User.new(nickname: 'koroeskohr', email: 'somebodywas@gmail.com', password: 'azerazer', password_confirmation: 'azerazer', role: User.roles[:administrator])
+k = User.new(nickname: 'koroeskohr', email: 'somebodywas@gmail.com', password: 'azerazer', password_confirmation: 'azerazer', role: User.roles[:administrator], tos: true)
 k.skip_confirmation!
 k.save!
 
@@ -33,14 +33,16 @@ l3 = VoiceLanguage.create!(name: 'English')
 l4 = VoiceLanguage.create!(name: 'Other')
 
 
-creator_name = [nil, "someone"].sample
 utauloid = Utauloid.new(name: "Test buddy",
      vb_release_date: (rand*10).days.ago,
      vb_last_update: (rand*8).days.ago,
-     gender: ['male', 'female', 'undefined', 'other'].sample,
+     voice_languages: [l1, l2],
+     voicebank_types: [t1, t3],
+     gender: 'male',
      creator_name: "Oui",
      creator_is_user: false)
-utauloid.creator = User.first
+utauloid.creator_id = User.first.id
+
 utauloid.save!
 
 

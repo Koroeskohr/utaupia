@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   # rescue_from NoMethodError, with: :not_found
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:nickname, :email, :password, :password_confirmation) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:nickname, :email, :password, :password_confirmation, :tos) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:nickname, :password, :password_confirmation, :current_password) }
   end
 
@@ -32,6 +32,11 @@ class ApplicationController < ActionController::Base
     message = "An unexpected error happened"
     logger.error message
     redirect_to utauloids_path, :flash => { :error => message }
+  end
+
+  def redirect_to(options = {}, response_status = {})
+    ::Rails.logger.error("Redirected by #{caller(1).first rescue "unknown"}")
+    super(options, response_status)
   end
 
 end
