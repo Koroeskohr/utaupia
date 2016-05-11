@@ -27,14 +27,14 @@ $(document).on("page:update", ->
 
 checkUtauloidFormChanged = () ->
   window.utauloidFormChanged = false
-  if $(".utauloid-edit").length 
-    $(".utauloid-edit .utauloid-form").on("change input", ->
+  if $(".utauloid-form").length 
+    $(".utauloid-form").on("change input", ->
       window.utauloidFormChanged = true;
     )
-    $(".utauloid-edit .utauloid-form input+label").on("click", ->
+    $(".utauloid-form input+label").on("click", ->
       window.utauloidFormChanged = true;
     )
-    $(".utauloid-edit .utauloid-form").on("submit", (e) ->
+    $(".utauloid-form").on("submit", (e) ->
       $(window).off("beforeunload");
       return true;
     );
