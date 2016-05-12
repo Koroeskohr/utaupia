@@ -1,26 +1,23 @@
 module UtauloidsHelper
 	def get_search_date_options
 		{
-			one_day: "1 day",
-			three_days: "3 days",
-			one_week: "1 week",
-			one_month: "1 month",
-			six_months: "6 months"
+			inf_one_month: "< 1 month",
+			inf_six_months: "< 6 months",
+			inf_one_year: "< 1 year",
+			sup_one_year: "> 1 year"
 		}
 	end
 
 	def get_query_date(value)
 		return case value
-		when 'one_day'
-			1.day.ago
-		when 'three_days'
-			3.days.ago
-		when 'one_week'
-			1.week.ago
-		when 'one_month'
+		when 'inf_one_month'
 			1.month.ago
-		when 'six_months'
+		when 'inf_six_months'
 			6.months.ago
+		when 'inf_one_year'
+			1.year.ago
+		when 'sup_one_year'
+			1.year.ago
 		else
 			Time.now
 		end
