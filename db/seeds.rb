@@ -18,7 +18,15 @@ c1 = Category.create!(name: 'None')
 c1 = Category.create!(name: 'Vipperloid')
 
 puts 'Adding voice characteristics'
-vc1 = VoiceCharacteristic.create!(name: 'Soft')
+vc1 = VoiceCharacteristic.create!(name: 'Breathy')
+vc2 = VoiceCharacteristic.create!(name: 'Whisper')
+vc3 = VoiceCharacteristic.create!(name: 'Robotic')
+vc4 = VoiceCharacteristic.create!(name: 'Childish')
+vc5 = VoiceCharacteristic.create!(name: 'Low Voice')
+vc6 = VoiceCharacteristic.create!(name: 'Calm')
+vc7 = VoiceCharacteristic.create!(name: 'Bright')
+vc8 = VoiceCharacteristic.create!(name: 'Falsetto')
+vc9 = VoiceCharacteristic.create!(name: 'Light')
 
 puts 'Adding voicebank types'
 t1 = VoicebankType.create!(name: 'CV')

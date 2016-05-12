@@ -176,8 +176,8 @@ ActiveRecord::Schema.define(version: 20160512104010) do
     t.string   "japanese_name"
     t.text     "description"
     t.integer  "gender",                                                     null: false
-    t.datetime "vb_release_date",            default: '2016-05-12 10:06:05'
-    t.datetime "vb_last_update",             default: '2016-05-12 10:06:05'
+    t.datetime "vb_release_date",            default: '2016-05-12 14:05:55'
+    t.datetime "vb_last_update",             default: '2016-05-12 14:05:55'
     t.integer  "category_id"
     t.string   "creator_name"
     t.boolean  "creator_is_user"
