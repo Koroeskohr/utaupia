@@ -5,7 +5,7 @@
 				<% @utauloids.each do |utauloid| %>
 					<%= render 'utauloids/partials/list_item', utau: utauloid %>
 				<% end %>
-			<% elsif !user_utaus.blank? %>
+			<% elsif local_assigns[:user_utaus] && !user_utaus.nil? %>
 				<% user_utaus.each do |utauloid| %>
 					<%= render 'utauloids/partials/list_item', utau: utauloid %>
 				<% end %>

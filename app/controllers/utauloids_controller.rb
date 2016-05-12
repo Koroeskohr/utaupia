@@ -46,6 +46,8 @@ class UtauloidsController < ApplicationController
 		@utauloid.voice_languages << VoiceLanguage.where(id: params[:voice_language_ids])
 		@utauloid.voicebank_types << VoicebankType.where(id: params[:voicebank_type_ids])
 		@utauloid.voice_characteristics << VoiceCharacteristic.where(id: params[:voice_characteristic_ids])
+		@utauloid.vb_release_date = Time.now if @utauloid.vb_release_date.blank?
+		@utauloid.vb_last_update = Time.now if @utauloid.vb_last_update.blank?
 		if @utauloid.save
 			redirect_to new_voice_bank_path(@utauloid)
 		else
