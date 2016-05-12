@@ -1,3 +1,129 @@
-// Place all the styles related to the Messages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.user-messages {
+	margin-top: 40px;
+}
+
+.user-messages-filters-title,
+.user-messages-messages-title {
+	margin-bottom: 40px;
+	font-family: "Montserrat";
+	font-size: 32px;
+	text-transform: uppercase;
+	color: $text-color;
+	@include border-bottom(1px, $text-color);
+	word-wrap: break-word;
+}
+
+.user-messages-form input[type=checkbox] {
+	display: none;
+}
+
+.user-messages-form label.btn,
+.user-messages-form-delete *.btn {
+	display: block;
+	margin-bottom: 20px;
+	padding: 15px 30px;
+	font-size: 12px;
+	white-space: normal;
+}
+
+.messages-list-item-item {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	clear: both;
+}
+
+.messages-list-item-item:not(:last-child) {
+	@include border-bottom(1px, $text-color);
+}
+
+.messages-list-item-item > div {
+	height: 100%;
+}
+
+.messages-list-item-content {
+	min-height: 115px;
+	padding: 10px;
+	border: 1px solid $text-color;
+}
+
+.messages-list-item-item-checkbox {
+	position: relative;
+	height: 100%;
+}
+
+.messages-list-item-item-checkbox-container {
+	margin-top: 100%;
+	margin-left: 50%;
+}
+
+.messages-list-item-content-sender,
+.messages-list-item-content-title {
+	font-family: "Montserrat";
+}
+
+.messages-list-item-content-sender {
+	margin-bottom: 5px;
+	color: $text-color;
+}
+
+.messages-list-item-content-title {
+	margin-bottom: 15px;
+	color: $text-blue-light;
+}
+
+.messages-list-item-content-content {
+	font-family: "Raleway";
+	color: $text-color;
+}
+
+.messages-list-item-content-content a,
+.messages-list-item-content-content a:hover,
+.messages-list-item-content-content a:active,
+.messages-list-item-content-content a:active:hover,
+.messages-list-item-content-content a:active:focus,
+.messages-list-item-content-content a:focus {
+	margin-bottom: 10px;
+	color: $text-blue-light;
+}
+
+.messages-list-item-content-content a:hover,
+.messages-list-item-content-content a:active,
+.messages-list-item-content-content a:active:hover,
+.messages-list-item-content-content a:active:focus,
+.messages-list-item-content-content a:focus {
+	@include border-bottom(1px, $text-blue-light);
+}
+
+.messages-list-item-content-buttons {
+	text-align: center;
+}
+
+.messages-list-item-content-buttons > div {
+	display: block;
+	font-size: 25px;
+	margin: 14px;
+}
+
+.messages-list-item-content-buttons > div a,
+.messages-list-item-content-buttons > div a:hover,
+.messages-list-item-content-buttons > div a:active,
+.messages-list-item-content-buttons > div a:active:hover,
+.messages-list-item-content-buttons > div a:active:focus,
+.messages-list-item-content-buttons > div a:focus {
+	color: $text-color;
+}
+
+.messages-list-item-content-buttons > div a.messages-list-item-content-buttons-seen,
+.messages-list-item-content-buttons > div a.messages-list-item-content-buttons-seen:hover,
+.messages-list-item-content-buttons > div a.messages-list-item-content-buttons-seen:active,
+.messages-list-item-content-buttons > div a.messages-list-item-content-buttons-seen:active:hover,
+.messages-list-item-content-buttons > div a.messages-list-item-content-buttons-seen:active:focus,
+.messages-list-item-content-buttons > div a.messages-list-item-content-buttons-seen:focus {
+	color: $text-blue-light;
+}
+
+@media (max-width: $screen-xs-max) {
+	.messages-list-item-content {
+		margin-top: 10px;
+	}
+}

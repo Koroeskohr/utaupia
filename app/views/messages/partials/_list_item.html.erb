@@ -1,18 +1,46 @@
-<div class="message-item">
-	<div class="message-item-checkbox-block">
-		<p>Mark as selected</p>
-		<%= check_box_tag "delete_messages[]", message.id, false, id: "messages_#{message.id}" %>
-	</div>
+<div class="messages-list-item-item">
+	<div class="row">
+		<div class="col-xs-1 col-sm-1">
+			<div class="messages-list-item-item-checkbox">
+				<div class="messages-list-item-item-checkbox-container">
+					<%= check_box_tag "delete_messages[]", message.id, false, id: "messages_#{message.id}" %>
+				</div>
+			</div>
+		</div>
 
-	<div class="user-message-sender">
-		<span>Sender: </span>
-		<span class="large"><%= message.author_id.blank? ? "Utaupia" : User.find(message.author_id).nickname %></span>
+		<div class="col-xs-2 col-sm-2">
+			<div class="messages-list-item-utauloid-thumbnail">
+				<%= link_to(image_tag(Utauloid.find(message.utauloid_id).avatar.url(:thumb), class: 'img-responsive'), utauloids_path(Utauloid.find(message.utauloid_id))) %>
+			</div>
+		</div>
+
+		<div class="col-xs-12 col-sm-9">
+			<div class="messages-list-item-content">
+				<div class="row">
+					<div class="col-xs-9 col-sm-9">
+						<div class="messages-list-item-content-sender">
+							<span class="large">Send by <%= message.author_id.blank? ? "Utaupia" : link_to(User.find(message.author_id).nickname, user_path(User.find(message.author_id))) %></span>
+						</div>
+						<div class="messages-list-item-content-title">
+							<span class="large"><%= get_content_message(message.title, message.author_id, message.utauloid_id) %></span>
+						</div>
+						<div class="messages-list-item-content-content">
+							<%= get_content_message(message.message, message.author_id, message.utauloid_id).html_safe %>
+						</div>
+					</div>
+					<div class="col-xs-3 col-sm-3">
+						<div class="messages-list-item-content-buttons">
+							<div>
+								<%= link_to fa_icon('eye'), mark_as_seen_message_path(message), title: t('mark_as_seen'), class: 'messages-list-item-content-buttons-not-seen' unless message.seen %>
+								<%= link_to fa_icon('eye'), mark_as_not_seen_message_path(message), title: t('mark_as_not_seen'), class: 'messages-list-item-content-buttons-seen' unless !message.seen %>
+							</div>
+							<div>
+								<%= link_to fa_icon('trash'), delete_message_path(message) unless message.deleted %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="message-item-title">
-		<span>Title: </span>
-		<span class="large"><%= link_to get_content_message(message.title, message.author_id, message.utauloid_id), message_path(message) %></span>
-	</div>
-	<%= link_to 'Delete', delete_message_path(message) unless message.deleted %>
-	<%= link_to 'Mark as seen', mark_as_seen_message_path(message) unless message.seen %>
-	<%= link_to 'Mark as unread', mark_as_not_seen_message_path(message) unless !message.seen %>
 </div>

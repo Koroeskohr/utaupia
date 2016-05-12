@@ -40,6 +40,8 @@ en:
   news: 'News'
   has_notifications: 'You have %{number} unseen messages.'
   has_no_notifications: 'You have 0 notifications.'
+  mark_as_seen: 'Mark as seen'
+  mark_as_not_seen: 'Mark as not seen'
   menu: 'Menu'
   more_information: 'More info'
   name: 'Name'
