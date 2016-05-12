@@ -14,5 +14,11 @@
 		    <%= render partial: 'voice_banks/partials/voice_bank', locals: { utau: utau, voice_bank: vb } %>
 		  <% end %>
 		<% end %>
+	<% else %>
+	<div class="utauloid-show-voicebanks-list-item">
+	  <div class="utauloid-show-voicebanks-list-item-download">
+			<p>This UTAUloid doesn't have any voicebank at the moment.</p>
+		</div>
+	</div>
 	<% end %>
 </div>
