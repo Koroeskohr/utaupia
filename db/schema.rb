@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160507162541) do
+ActiveRecord::Schema.define(version: 20160512104010) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       null: false
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20160507162541) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.text     "title"
+    t.integer  "utauloid_id"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -175,8 +176,8 @@ ActiveRecord::Schema.define(version: 20160507162541) do
     t.string   "japanese_name"
     t.text     "description"
     t.integer  "gender",                                                     null: false
-    t.datetime "vb_release_date",            default: '2016-05-07 16:34:59'
-    t.datetime "vb_last_update",             default: '2016-05-07 16:34:59'
+    t.datetime "vb_release_date",            default: '2016-05-12 10:06:05'
+    t.datetime "vb_last_update",             default: '2016-05-12 10:06:05'
     t.integer  "category_id"
     t.string   "creator_name"
     t.boolean  "creator_is_user"

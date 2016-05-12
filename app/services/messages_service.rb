@@ -28,8 +28,10 @@ class MessagesService
 			commenter = User.find(user_id)
 
 			user.messages.create(message_type: message_type,
-													title: "New comment on your Utauloid #{utauloid.name}:",
-													message: "#{commenter.nickname} posted a message on your Utauloid #{utauloid.name}. Check it!")
+													title: "[:author_name:] posted a comment on your Utauloid [:utauloid_name:]",
+													message: "[:author_link:] posted a message on your Utauloid [:utauloid_link:]",
+													author_id: commenter.id,
+													utauloid_id: utauloid.id)
 		end
 	end
 
@@ -46,8 +48,10 @@ class MessagesService
 			commenter = User.find(user_id)
 
 			user.messages.create(message_type: message_type,
-													title: "New favorite on your Utauloid #{utauloid.name}:",
-													message: "#{commenter.nickname} fav your Utauloid #{utauloid.name}. Check it!")
+													title: "[:author_name:] favored your Utauloid [:utauloid_name:]",
+													message: "[:author_link:] fav your Utauloid [:utauloid_link:]",
+													author_id: commenter.id,
+													utauloid_id: utauloid.id)
 		end
 	end
 
@@ -62,8 +66,10 @@ class MessagesService
 
 			users.each do |user|
 				user.messages.create(message_type: message_type,
-														title: "New update on Utauloid #{utauloid.name}!",
-														message: "The Utauloid #{utauloid.name} have been updated! Check what's new")
+														title: "New update on Utauloid [:utauloid_name:]!",
+														message: "The Utauloid [:utauloid_link:] have been updated! Check what's new",
+														author_id: commenter.id,
+														utauloid_id: utauloid.id)
 			end
 		end
 	end

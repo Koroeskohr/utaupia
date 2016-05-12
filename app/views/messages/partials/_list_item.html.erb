@@ -10,7 +10,7 @@
 	</div>
 	<div class="message-item-title">
 		<span>Title: </span>
-		<span class="large"><%= link_to message.title, message_path(message) %></span>
+		<span class="large"><%= link_to get_content_message(message.title, message.author_id, message.utauloid_id), message_path(message) %></span>
 	</div>
 	<%= link_to 'Delete', delete_message_path(message) unless message.deleted %>
 	<%= link_to 'Mark as seen', mark_as_seen_message_path(message) unless message.seen %>

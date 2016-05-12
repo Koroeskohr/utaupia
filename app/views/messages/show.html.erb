@@ -3,6 +3,6 @@
 		<%= link_to t('back_to_notification'), messages_path %>
 	</div>
 	<h2><%= @message.author_id.blank? ? "Utaupia" : User.find(@message.author_id).nickname %></h2>
-	<h1><%= @message.title %></h1>
-	<p><%= @message.message %></p>
+	<h1><%= get_content_message(@message.title, @message.author_id, @message.utauloid_id).html_safe %></h1>
+	<p><%= get_content_message(@message.message, @message.author_id, @message.utauloid_id).html_safe %></p>
 </div>
