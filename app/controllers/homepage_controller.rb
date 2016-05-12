@@ -5,6 +5,6 @@ class HomepageController < ApplicationController
 		if !homepage_params.utauloid_showcase.nil?
 			@utauloid_showcase = homepage_params.utauloid_showcase
 		end
-		@utauloids = Utauloid.order("id DESC").limit(6)
+		@utauloids = Utauloid.order("id DESC").limit(5)
 	end
 end
