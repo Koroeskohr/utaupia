@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-sm-8 col-sm-offset-2">
 				<div class="utauloid-list-search-form-name-wrapper">
-					<%= text_field_tag :name, params[:name], value: params[:name], placeholder: "#{t('search_name_placeholder')}", class: "form-control" %>
+					<%= text_field_tag :name, params[:name], value: params[:name], placeholder: "#{t('search_name_placeholder')}", class: "form-control", autocomplete: 'off' %>
 					<%= fa_icon "search" %>
 					<div class="utauloid-list-search-form-name-autocomplete"><ul></ul></div>
 				</div>
