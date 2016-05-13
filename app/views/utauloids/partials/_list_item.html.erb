@@ -14,9 +14,11 @@
 				</div>
 			<% end %>
 			</div>
-			<div class="grid-item-name">
-				<h3><%= link_to utau.name, utau, title: utau.name %></h3>
-			</div>
+      <%= link_to utau do %>
+      <div class="grid-item-name">
+        <h3><%= utau.name %></h3>
+      </div>
+      <% end %>
 		</div>
 		<%= image_tag utau.avatar.url(:medium), alt: utau.name, class: "img-responsive" %>
 	</div>

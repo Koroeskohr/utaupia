@@ -97,6 +97,15 @@
 	letter-spacing: $text-montserrat-default-letter-spacing;
 	text-transform: uppercase;
 	color: $text-color-dark;
+
+	h3 {
+		color: white;
+	}
+
+	&:hover h3 {
+		color: white;
+		text-decoration: underline;
+	}
 }
 
 .grid-item-append {
