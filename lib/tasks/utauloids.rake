@@ -24,9 +24,15 @@ namespace :utauloids do
 			u.gender = row['gender'].downcase unless row['gender'].blank?
 			u.creator_name = row['creator_name'] unless row['creator_name'].blank?
 			u.creator_is_user = row['creator_name'].blank?
-			u.vb_release_date = Date.parse(row['vb_release_date']) unless row['vb_release_date'].blank?
-			if row['vb_last_update'].blank?
-				u.vb_last_update = Date.parse(row['vb_release_date']) unless row['vb_release_date'].blank?
+			if row['vb_release_date'].blank?
+				u.vb_release_date = Time.now
+			else
+				u.vb_release_date = Date.parse(row['vb_release_date'])
+			end
+			if row['vb_last_update'].blank? && row['vb_release_date'].blank?
+				u.vb_last_update = Time.now
+			elsif row['vb_last_update'].blank?
+				u.vb_last_update = Date.parse(row['vb_release_date'])
 			else
 				u.vb_last_update = Date.parse(row['vb_last_update']) unless row['vb_last_update'].blank?
 			end
