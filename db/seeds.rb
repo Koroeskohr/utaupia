@@ -26,7 +26,7 @@ vc1 = VoiceCharacteristic.create!(name: 'Breathy')
 vc2 = VoiceCharacteristic.create!(name: 'Whisper')
 vc3 = VoiceCharacteristic.create!(name: 'Robotic')
 vc4 = VoiceCharacteristic.create!(name: 'Childish')
-vc5 = VoiceCharacteristic.create!(name: 'Low Voice')
+vc5 = VoiceCharacteristic.create!(name: 'Low')
 vc6 = VoiceCharacteristic.create!(name: 'Calm')
 vc7 = VoiceCharacteristic.create!(name: 'Bright')
 vc8 = VoiceCharacteristic.create!(name: 'Falsetto')
@@ -43,20 +43,6 @@ l2 = VoiceLanguage.create!(name: 'Japanese')
 l3 = VoiceLanguage.create!(name: 'English')
 l1 = VoiceLanguage.create!(name: 'Chinese')
 l4 = VoiceLanguage.create!(name: 'Other')
-
-
-utauloid = Utauloid.new(name: "Test buddy",
-     vb_release_date: (rand*10).days.ago,
-     vb_last_update: (rand*8).days.ago,
-     voice_languages: [l1, l2],
-     voicebank_types: [t1, t3],
-     gender: 'male',
-     creator_name: "Oui",
-     creator_is_user: false)
-utauloid.creator_id = User.first.id
-
-utauloid.save!
-
 
 puts 'Creating homepage'
 Homepage.create
