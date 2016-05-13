@@ -13,7 +13,7 @@ k = User.new(nickname: 'koroeskohr', email: 'somebodywas@gmail.com', password: '
 k.skip_confirmation!
 k.save!
 
-u = User.new(nickname: 'TestAccount', email: 'test@example.com', password: 'example', password_confirmation: 'example', role: User.roles[:administrator], tos: true)
+u = User.new(nickname: 'TestAccount', email: 'test@example.com', password: 'examplepass', password_confirmation: 'examplepass', role: User.roles[:administrator], tos: true)
 u.skip_confirmation!
 u.save!
 
