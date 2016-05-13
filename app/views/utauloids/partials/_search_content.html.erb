@@ -63,7 +63,7 @@
 				</div>
 				<div>
 					<div class="flex-left-wrap">
-					  <% VoiceLanguage.order(:name).each_with_index do |l, i| %>
+					  <% VoiceLanguage.order(:id).each_with_index do |l, i| %>
 					  <% if params[:language].nil? %>
 					  	<%= label_tag l.name, nil, id: "language_#{l.id}", class: "btn btn-default" %>
 					  	<%= check_box_tag "language[]", l.id, false, id: "language_#{l.id}", class: "" %>
@@ -99,7 +99,7 @@
 					</div>
 					<div>
 					  <div class="flex-left-wrap">
-						  <% VoicebankType.order(:name).each_with_index do |vbt, i| %>
+						  <% VoicebankType.order(:id).each_with_index do |vbt, i| %>
 							  <% if params[:voicebank_type].nil? %>
 							  	<%= label_tag vbt.name, nil, id: "voicebank_type_#{vbt.id}", class: "btn btn-default" %>
 							  	<%= check_box_tag "voicebank_type[]", vbt.id, false, id: "voicebank_type_#{vbt.id}", class: "" %>

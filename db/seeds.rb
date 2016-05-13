@@ -13,6 +13,10 @@ k = User.new(nickname: 'koroeskohr', email: 'somebodywas@gmail.com', password: '
 k.skip_confirmation!
 k.save!
 
+u = User.new(nickname: 'TestAccount', email: 'test@example.com', password: 'example', password_confirmation: 'example', role: User.roles[:administrator], tos: true)
+u.skip_confirmation!
+u.save!
+
 puts 'Adding categories'
 c1 = Category.create!(name: 'None')
 c1 = Category.create!(name: 'Vipperloid')
