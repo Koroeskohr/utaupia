@@ -3,7 +3,7 @@ active_admin_form_for [:admin, resource] do |f|
   f.inputs 'Details' do
     f.input :name
     f.input :japanese_name
-    f.input :description, "About me"
+    f.input :description
     f.input :gender, :as => :select, :collection => Utauloid.genders.keys.to_a.map { |g| [g.humanize, g] }
     f.input :category_id, :as => :select, :collection => Category.all
     f.input :voice_characteristics, :as => :check_boxes, :collection => VoiceCharacteristic.all
@@ -11,6 +11,8 @@ active_admin_form_for [:admin, resource] do |f|
     f.input :voicebank_types, :as => :check_boxes, :collection => VoicebankType.all
     f.input :wiki_url
     f.input :vocadb_url
+    f.input :audio_preview
+
 
     f.has_many :voice_banks, heading: "Voice banks", allow_destroy: true do |vb|
       vb.input :name
