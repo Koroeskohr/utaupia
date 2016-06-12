@@ -11,8 +11,6 @@ class UserInfo < ActiveRecord::Base
   has_many :user_links
 
 	has_attached_file :avatar,
-		:path => ":rails_root/public/users/:attachment/:hash_:style.:extension",
-		:url => "/users/:attachment/:hash_:style.:extension",
 		:hash_secret => RANDOM_SECRET,
 		styles: {
 			medium: "280x280#",

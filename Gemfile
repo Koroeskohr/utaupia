@@ -7,8 +7,7 @@ gem "paperclip", "~> 4.3"
 gem 'will_paginate', '~> 3.1'
 gem "font-awesome-rails", '~>4.6'
 gem 'figaro'
-gem 'aws-sdk'
-
+gem 'aws-sdk', '< 2.0'
 # validates 
 gem 'validates_timeliness', '~> 4.0'
 gem 'validate_url', '~> 1.0', '>= 1.0.2'
