@@ -25,3 +25,8 @@
 # Ignore uploaded images
 public/users
 public/utauloids
+
+# Ignore application configuration
+/config/application.yml
+
+/public/assets

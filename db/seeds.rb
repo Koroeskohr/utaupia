@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
+ActiveRecord::Base.transaction do 
 puts 'Seeding database'
 
 puts 'Adding admins'
@@ -46,3 +46,5 @@ l4 = VoiceLanguage.create!(name: 'Other')
 
 puts 'Creating homepage'
 Homepage.create
+
+end

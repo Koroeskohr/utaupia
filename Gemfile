@@ -6,6 +6,8 @@ gem 'friendly_id', '~> 5.1.0'
 gem "paperclip", "~> 4.3"
 gem 'will_paginate', '~> 3.1'
 gem "font-awesome-rails", '~>4.6'
+gem 'figaro'
+gem 'aws-sdk'
 
 # validates 
 gem 'validates_timeliness', '~> 4.0'
